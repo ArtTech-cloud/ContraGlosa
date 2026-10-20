@@ -2,9 +2,7 @@
 
 Resumo para a equipe chegar no sábado com o projeto instalado.
 
-> **Atualização de 20/10/2026, 19h:** a chave da API chegou e a avaliação real rodou: todas as metas bateram
-> (decisão 90%, recall 100%, valores 100%, evidência 100%, 4 de 4 adversos). O bloqueio descrito abaixo acabou.
-> O estado completo e atual está em `docs/CONTEXTO.md`; esta página será refeita antes de sábado.
+> O contexto completo (domínio, arquitetura, decisões, configuração, linha do tempo) está em `docs/CONTEXTO.md`.
 
 ## Situação
 
