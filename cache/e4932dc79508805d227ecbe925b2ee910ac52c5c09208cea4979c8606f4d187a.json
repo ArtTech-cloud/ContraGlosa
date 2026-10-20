@@ -1,0 +1,73 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSpwkKEAgTGAI4AUIIdGhpbmtpbmcSDAyt6JRibOhCTwvROhoMha13+9Mo5uJeDVexIjAuGgRZLuZTfgmcvso/QUJ0eibHpaEoIslnAzuEqur4Mdh09V4RjbFF5uRrVssx6nEqxAhv6q5Q1ukY30cbWUHgFNfcKfzWO01pSJgt3jo7vIZVaFnCDHa8DoJwT5KHKvoKn0mYCzyOeQPV3JpkffvtXLcHfYslorZyNx0lJsj1WNCSiDrcIjZANbbFx+eXRQUzMeqHd5ZQGW2trVE8cmYe3riQYoxh8jPn5R9/i3iv3tNaPe0o4JRMRBbJWpAdHPPlGLfxKkObOsOn3ZoM3RZRRPZle2EvOcr8gSf8TVgxjGuH6bth76URR7epc27QQuA/xn1RA3MZDZNTcBEv2XcMQBUuJIEdf5PV7X+cBRD4TnRlrUgtZYzd59RVh4KGhd+uJ32UNgnOVRR8o6b2hYP6nRwm0umXrRh6aKUmOwfSAuxm4cUxSmnQ9/uWbqhlvLYsejpEKkmd7ZFAAtsTswhxQyTbaJGuf8OSOhnsi22z3pZOvRhUGhfBArp/EiQWnvPTiddO5mbse3BmtYXIdJM1/49tnAZ6rok2hJsYCtHkaO9hq99kMFVqiUj5Yzw6eH5g5QfNdqpNIZC8iN5xBHFliwhGxMojfu/mIfvn6lnNxrscYV62xJ76qnn8sP73KTJYQRGrN37JoHUqNet5d0h/yg7DlKbKvzGQsn68TaBOTem7cx4Jsji0fFr7qkPb8M0s/DE9a1TJmbHZFbf/6bTv0aOt9ovhc1Hajw71ak3EBKvi7mOb1JFwkBirw06ajPZX5NoYrVJX3QFzYcKtdUSrwZOAfa+apSwWpLxGTg5s3AU9KtC/B/CBTZHaOnTX280pMwBbIGhmILXRduBhsAv+Bi4vWios63tzIXO6XxnPmI5SETukLvBwt18JlzM3cabAOZF243oAputibWXIIALZ2YqFSsYB4WeF2l638Fx6IdlSnW2Ux7zrE7zGk9FRBJaDwtvTYC/Ttc1OxfBdpQvGwQlHkmhI8PgL4VB5vt51pGw9iIJ+97mP9qkm84JJxEI+l3JZQ6lpSi7VvRKe7791VR4hxT/PPWAdkCFoiR/mRKO2M7GvaDHVBQspwi8ku+zddF6zq4ZecPDiWxYOezLCpohgenlNgiSOVfLkhsmRDSHjcSmIEtvFTfasE+l/JQ9LPl1fxabp6e8wD2JLsYpE4tD9VkwvpuJN1+ESyK4SOxpGYt8k17uVK1mXDfpWyO5TlpnlGxsAEWvY8KHJkopd6qeHyv1rRHIg06Lb0d0JUYBOWGSBdFqWT7CayrZsz/L37eYH1bAhrx/oU+/iHpKk2AsKiV4qE0PrR0ompClZr10IIFd28IX/a+uZeF6mzKZFHKjC+PaiGsIHYMcQdTjVRcM5lz1T8VqyhcW0q6E0K6f7r6MsOjMBguj2yTyz1T/olJXH9v7j0YsQHBkZFNFvUa06y/JTCpSP43R4PDPNDnnIpPbZQaR8cA7AWFEAY9CkGYn3FJ8RlLyYy6vutFOTsf6X860iLWx+O9V14stJYJ/Yq20Wm78YAQ=="
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_013cJesePSfKf6gnpyTBEqfn",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "1601"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01RmYDYbckwQTdw2yUC1ovzc",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "1414"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_019vExrTRXWPKxCgfwUZdf4U",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "3287"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01HWnLMDDY7Ed9hBGVWQQ5am",
+    "name": "consultar_operadora",
+    "input": {
+     "nome": "CERRADO — Operadora de Planos (fictícia)"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01TSse9G5suehZ8SxyTDvk37",
+    "name": "calcular_intervalo",
+    "input": {
+     "data_inicio": "20/08/2026",
+     "data_fim": "03/09/2026"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01Bt1BgEqeWe1xLN2CGBwY81",
+    "name": "calcular_intervalo",
+    "input": {
+     "data_inicio": "05/09/2026",
+     "data_fim": "30/09/2026"
+    }
+   }
+  ],
+  "stop_reason": "tool_use",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 639,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 4537,
+  "latencia_ms": 3687
+ }
+}

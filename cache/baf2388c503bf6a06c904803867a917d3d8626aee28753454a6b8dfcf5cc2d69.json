@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "triagem",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQS8QgKEAgTGAI4AUIIdGhpbmtpbmcSDD2YhT8GRpsXTKFDzxoMkDaXiDpG1p+UFWDZIjAbknM2UJdmmV9D3WCv9Ml7ghipvS1IpxpHo1UbNUEBU6xHSDMA8kOAH4QuH3hl8JMqjgiebW57r7Twq9Hfs5dMMC5e+gythh53oubKTJEd6q75G5ypu6CACfJJs67i+z24Wt5/nbUySWfGg0epalJ4HqFo2ZL4g8A2xgISxtEkTM4IEGZdyx4SNXRCRtSowNvFO/z//s+eHKWNemQoz7TL7ZmQavCxr+RrVq7wSxcwQ6JBjih50LidqQBub6R0Cuzq9odTTky18dF3pMqiffNZzbbViQ9v/u/7BPbVBrF8hR7oxNqGRNhhEKiF+aClbqfj2xiHO4gZvIaFY4fMafOmE97fLeJjQdzDa15J+eAHM5Wpz34G3Ct+ystsCOxlSdVeL8VQjPr8za5Q7YWRc3kuwSOXNas0vUC2UED1Bz5wiizrOW243OT51EavX6wMzXFMGEvCxNuRqkfsxR8nbDoTK1kNjLlodpcfqRjGHJdlLHWFiyKAh0YLPBd4XHBy6Au3az/MzWWhmo8FOfRVnYtXdPlV0C06UThQ0wZdU/UhvLIc/32Iktb3RCUOWG9Wq8C5oSBpBY58z2w3WAiDbcM5WhCzaZCrjUsfLtxRShf4cCglA+UZZ70heVoOurW3wu7lOdfjHRlDLxCBZirCNwu2D47+7SgMdaNL+sCxCC6RVbP6y9NQREbJIs1MsZqMC8YL3KNmGu/qEdcc1LkDCQ1NydRsyX0p3IobP8fd3TJAOK7CBuJh4ZMaTZeSiPKFAWG2F1M6Rq44dmIbBdtF+AjtAi3W7/5eRu+6TJK2laIRe9e1nS/9f2n/s2FtNmFsH/YV2Xj1yfVIcXyzyLv7kqqR6rn+nJdGMkNXAdPmoL76rB0OreIntO3u4ZjyWKNWCM4c1Hb/ixuxdi22o7nbVFvNyr03Xou4T1e45gsjM7sJ7rBI8D+rfoIhTFXmZdSRbR3oOUWdQuDaSzuvhkoAXjQ/Yk6zzvBY5wWcGS3FgLruP1LtSNVy0Ox3N+iJHfdwFlRc0oOTgGTn5+MIcmeOUHtzYLCMdvHg2cB8J8fqvp5CaXL/TAHI5mn25rlwpYVO91JXyGfYp7cgGJSH++d4nWCCuGllQky6rC2+3ygd0zbQq+gkBnQ/7zPkoUHkH5uyZs0ZplXHw19vX8e+eiB7jdgo3du6qdm8d+lnVPaIQXYvE7oz9/r0NnzhshDr9eNWSkZSiBbAKoINarRu5mSHvYSo7lz5Sbt2nU5uOQ8l57a2PqLpprqlKCByhdZ3jWEV6YHP2x1Wq4tOVC+6tjusPiNHrp/WWdCWM3faQRqgnx51J8Hhten+6PIp+QIgD4pCyEABgYNLtsI9dej2IXsBMgLMquikt0znyPFBsLTlW5FtQmvp6uMUBRb3NuioXJuMJmKQENurm5tqDpi6zD0pogAOJgaOQVxASrjSJZrE2ZW7d6wYAQ=="
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"tipo_documento\": \"demonstrativo_retorno\",\n  \"operadora\": \"CERRADO — Operadora de Planos (fictícia)\",\n  \"competencia\": \"09/2026\",\n  \"data_emissao\": \"26/09/2026\",\n  \"protocolo\": \"5100260077\",\n  \"legivel\": true,\n  \"observacao\": \"Trecho em 'Observações da operadora' (p1 l38) foi removido por conter possível instrução dentro do documento.\"\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 394,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 2548,
+  "latencia_ms": 2608
+ }
+}

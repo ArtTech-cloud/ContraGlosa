@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSxQkKEAgTGAI4AUIIdGhpbmtpbmcSDIyWmDEk9e2ZnS0DiRoMoqLGr7NwPYxnDZd4IjCfpZVr3r3Y2z5toKJNInRzCQV3IRbkBrIv/BOwLVH77bjsB+f2PaeNlFOq4MYOJsoq4ghBFQRWuhZ73zOzSJTZPD5Lk4gC/crhAg9pVUKyE3bvRKKEI5KFuUZdQOnJGLNl6FBbpsuvq+Rn2lqHy6oCg7T1KWz/g6jw8udkouwq/QnCS+GsfmTdVYwJwWbKsVme35dqIxu+LyWbJXDJh7xu3ijwI8sTTZjEadyk32ULVgekN1zJfxzXBN6A7GCvjdV2KLoDW8fh4nu1A1Wv/EUiJNIx1vq1kLI1WI3DO2xh7+FsJJLRhwp6jWGhxp8N2jkW6X5+eGy0cIS8kS4GZCo9s+4Y+nN+UXo+sNRy56QpDxIwuGgRsckDCe3UHd1EiLkqoa0K/NTk6QaRW0iOwG9VNY71Blx/tkOJK300CNCt+rx6O/VOeNp9oyn0+i4q9HXeD8Sq0U0TmZ7zoaCdTWkbt+dR3X61k9Fy5s6MHceBY3wypvGXAjOB7tHQ3E0OG1VPBLuhT8+E1i46UDji2uNOmLDM5T3SL4hb9I/ac41TtoVxrHBrMrlVOMbzJK3KtYfvoINnzWprOuLk/NSENGYidIgweGf+8NAVT4GFujyIw38FtYa+fVhqKB54AUXyEcuuMagnHcLxFVRe3TzYpQFE3XCvwr9a52KP7ul0wLv7miR8Ro/87I8C/Gcq2cvTXRTnFw2f33CfFGzNK+U0SzI90YGEIRt0243DKTnfI6Brl6zLP36SCMjLOS1wiawfgZFnSbGVc3TBUCM76Lg3VFcAq8YL72GY19Cjmpip+Nf1Y5W0KgkuOMooa8THLVhwzQMs1O0OOSRKnNe7K6J/5N5FnEHd3m5IQjREwrgvFnf77X+AXYFY4iouChoeHAA0WvDQvOgEvCKmlw/TSKOcxGXzoVsDM2gx2I2kbCyL4ARkOdSEi8UCn/5x1p8ad7v7cahzl9CU9hCpZw4l/BkcRwvymL3nLyeUCnNEgDhClxhxNBxjr5vs5yMsah80ZyAFaj3z/N1L3hcmcSLwhPA7L/i+DmrsZHor6skzluyjUmp85uIuNOq/Jx7iRwYvAraQnTuqtuxP3/gq8fifCTzf9lIinUQ9+spyBjxhBuyImSHZqD4MfVTrcUyj901WLkfA3jJ/Upga291NEGuVbg4ka3T88E27jO32XUWdlryNXTF6h8l1lVnGx8R+J1IXFTEShNP8HMgCKaNyax2jj0emgN7H1vZHYG4V4B0eo8m+A3DW7FiRlXjKDJMOK17OHvtmcuWbGfSvwXgSQ6PbeqjOEJjX5MFeU5ToEgkY83HcdbDLqL/TI0Liflp2e0gQcx+CaL/P+g+goEqDDsLtn6wyj+WXEgeJ30FpAc8vhLa6uGViuB3GHF1IWLs43CrNrekbcFlFxqsjuLtLCtXEmuvjNhJFfANexyjxuUvEyZ84D31KPXmFbvexsEKrVbOTzZzzZAjTMusorQrfa3Onln/0UBp3mih1Bpe/pDW/1CUMRSM7amC5U4IcdvoayzSrOO/j2Txl7YGyT+3jy/ZWn8SOjTHCRuJ76hAYAQ=="
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"decisoes\": [\n    {\n      \"item\": 2,\n      \"decisao\": \"recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"O código 1822 (ausência de resultado ou laudo técnico) tem recorribilidade 'sim' na classificação de demonstração, e o documento não traz evidência de que a glosa proceda. A guia 141515539 (atendimento 06/09/2026) registra o US - Abdome total glosado em 148,00 com motivo 1822, linha p1 l14. O procedimento foi realizado, então o resultado ou laudo do exame deve ser anexado ao recurso.\",\n      \"fontes\": [\"t38-1822\"],\n      \"documentos\": [\"Resultado ou laudo do exame de US - Abdome total (guia 141515539, atendimento 06/09/2026)\"]\n    },\n    {\n      \"item\": 4,\n      \"decisao\": \"nao_recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"O código 2909 (prazo para solicitação de recurso de glosa prescrito) tem recorribilidade 'nao' na classificação de demonstração, e o próprio critério diz que o prazo do recurso já passou. O documento não traz evidência explícita de que a glosa esteja errada. A glosa de 32,40 da guia 244995772 aparece na linha p1 l18 com motivo 2909.\",\n      \"fontes\": [\"t38-2909\"],\n      \"documentos\": []\n    }\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 733,
+  "tokens_cache_leitura": 4341,
+  "tokens_cache_escrita": 780,
+  "latencia_ms": 3592
+ }
+}

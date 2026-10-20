@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "triagem",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSvwcKEAgTGAI4AUIIdGhpbmtpbmcSDNXig52ErDTxgFBPGRoMfmq8P896SCH4yzz3IjAH8TKKzWw5Od26obuHP53f0OJLJA6Mt1KxbFORmYixB2viKe3pGV8ggqcXy2UeMmwq3Abjh0/373qx35LaDvbseC1F0aKpS18ifMWcyGfzzm/PUkuyZYLG23PRMzjMpT/ds53Jy5JyMZllsgt9JXWats10lrMQm09C+wQyH7CV2hjjiLHCTaOsavimxQQo/P42kPe4Ru5ZvxdYDkrLRIQ+ozD0LQXD28h+3aD7W+rqxrEsnRbjSOgXXd06PcVFiZkkHwk+JQ+Qs1qgbvqE3F76ADT39ezfpQXLJCbFPbm1RjvIC6u2iliLzBn05NZte8IdJ/0Lmp3u2siA+8lFDG8S6JwTVklDYgDz158UTv+fuJKGSSYX21nHw3GKcedsYdKkqRmtPkBoZcp18gmVjN6vjg6uV3tdj5ZO6ZXYIuqSg5fe+IIv0+yrDlhBM6P0IlslxZikVJZzc/rBV5U0AgxiOYyASSzYJ+5YmFlg63uTb5ZqSlZ/4VR0C5VnTRrSWzJwafd/jISzQDhJlkLlrbOXEisAnFZ6sBajTOKeBfn9eWJI0Nnt6pxoEj2Gh2n8EMTHqRsqVMgT1G2U44d0gVaRGXsOqsDlCxP1tR/1/C0iX4gt03cAwOsjKyIvRoFjtH+NDiCdGgBVq79nJh2LUuOqTtB1i3ivyZvGwyeEth3LQ6l7Q/CtzTuJIRx4WSdYv9sAB+vcMy6mZKE664wTYL/T4vvqMUiA/zahAWwp/g10S6L52UEw15bWYBS7NiA4iqrifRArfHynAbTAjwQLJMw7Ip7ePyNi3KVzWWINLM/GSXB7AooWRR8n0fAFh3gqanryGHpFW9Kh/vRTeMvl4KjCsGFHmkkjoJ2+HPDHB8h32GmkfQAKH76uWycDeobOIkp7NQkQQZKzvNN1uYfagvVcp1syk9yNKDJNje8ZkX44Va2+iLEqPKtvLsu5aOyPgvdmBuMqkkQSvdLmRR2SHNGqMAcMEs+J73RzUu6URUZ+qB/6pNcyh6viISdL8V0W1oY+Lb46T1E4uWudWqAiEBN0RRmd5FM/H9e6MsOr/nIGNt3ScZMYiAUjI3c89mZ1AVmsll+69ulN9fjRJvLNBq7FP4ZDiwgOALGi5RbQyk59AXQ3Xfm45kgHpDlUSxr6VnRTbX+pvCTu96rVMEBjpCZBgLvF0Ghb4MpqPdNY9P8Lh3ihz+ZEteB4BhU4kYjrShgB"
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"tipo_documento\": \"demonstrativo_retorno\",\n  \"operadora\": \"CERRADO — Operadora de Planos (fictícia)\",\n  \"competencia\": \"09/2026\",\n  \"data_emissao\": \"26/09/2026\",\n  \"protocolo\": \"5100260077\",\n  \"legivel\": true,\n  \"observacao\": \"Há um trecho removido em 'Observações da operadora' [p1 l37], marcado como possível instrução dentro do documento; foi ignorado.\"\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 334,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 2493,
+  "latencia_ms": 2188
+ }
+}

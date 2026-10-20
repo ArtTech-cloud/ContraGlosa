@@ -1,0 +1,56 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSoAYKEAgTGAI4AUIIdGhpbmtpbmcSDKEpy/Cmhop0laMwZRoMp51YyGuf+eJViqL5IjA0k1YzPwZdnxkCof6IbVCb3qakr2I+ObDpOMJTWvGMfXNScGjCuKzyDmwhlPxgwicqvQWlDGLc9PMoHPWef7kxc/EWxcdmt6nI8JkLGe6IIHHgWUxwAR0aPm584yd1nE0OKr+0RzFy5gWgH1vA4hicwK/1f8YeW19qTlhnOgIzEtI0yTTbFzCkG7QhVn9PAk6NlA9pTjQuvYMoisnuuzowsrIEOyvwdW+p2dtD4tt8LEzIwUJ/lu5S926KJP/rE9g0RylV8gk1J5qf11SLUl5MF5HHHJXdI13QfTurB9d4XrNfYk5xTNhKV776DmjnH/WbiEq9Wq8xOxZUaP+n5f6WtD3dXDetOcRy7XI3RVat7/iuOQ7sJG4ybw3rCP/8uXZ71oUHnp2C32uxHP+lrM73480moKi2x6suxtCrK31iD/cdL8Kdpe56CnfeVAJpHYy1O4pMfV5vIiaIZuZdjoe/3sjKURy25X7y9L34JVvnGKYwoqz8yJoqhLA73ly7UuTsjCNcRKR7z/Q9EfI4cmWT5+yl42tN5cY6Ih9Hni/PV1SJtDghq6qcn/4soh7yTdoXLCqKgSGwqKu6R293On7GDzv9JUC/f2f4GEXPqUoeHWXcFJWtC7n5GElhJVlGIokwfi4zbvYZZQTk1r4MdE9tSQK2+Fd+87YG0M+Tkotk5trm5IOMGMzlh8Pfy5YJDlBi5kqi5ZcyjVtqgEpMJWWJlN8w6LNQBjGSuKIhofj7acgOF2bofE51G6c1hJ00g0EuQoJ1Zp8KkGl1THgUwPwf2rjaVMCNh8Pq84no28ar/TSYrewth72nhwXCXoPeu/+UOsOjAmJfuf3TxO38XjVSgfDeDEi7y380NfbuqkK66gNepjt77KrbH3l8C6L0MSvh0X4B5g1DDhkqfDwjjAQQ4QF1KX4BuvDW2SGLscHIb1TNdYOaYNK3Iu/55BUPS2tFyDNzXH106XNLPDB5f8NgmF1KctaLQBQI6xMVIf4VXhgB"
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01HZwKTyfB9SADqPVPFcrU6y",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "1509"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_016kCN7zEJRw33wFhc39oULJ",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "3214"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01KyZ2qWykr5tBoWf6YnNEAz",
+    "name": "consultar_operadora",
+    "input": {
+     "nome": "OPERADORA AURORA"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_018mrkzt1P4VKTJhw42kNEP6",
+    "name": "buscar_base",
+    "input": {
+     "consulta": "glosa 1509 código CID inválido recurso; glosa 3214 cobrança fora do prazo contratual",
+     "k": 5
+    }
+   }
+  ],
+  "stop_reason": "tool_use",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 351,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 3904,
+  "latencia_ms": 3641
+ }
+}

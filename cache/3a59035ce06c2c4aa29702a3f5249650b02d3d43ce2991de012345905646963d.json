@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "redacao",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"recursos\": [\n    {\"item\": 2, \"texto\": \"Recurso de glosa — guia 454996519\\n\\nOperadora: CERRADO — Operadora de Planos\\nProtocolo do lote: 5100220931\\nGuia: 454996519\\nData do atendimento: 05/09/2026\\nBeneficiário: CART-de0f7ba5\\nProcedimento: 40304361 — Hemograma com contagem de plaquetas ou fraçõ.\\nCódigo da glosa: 1414 — DATA DE VALIDADE DA SENHA EXPIRADA [CONFERIR DESCRIÇÃO OFICIAL NA TABELA 38]\\nValor apresentado: R$ 18,50\\nValor glosado: R$ 18,50\\n\\nPedido:\\nSolicitamos a revisão da glosa deste item e o pagamento do valor glosado, R$ 18,50.\\n\\nArgumentação:\\nA glosa 1414 indica que a senha de autorização estava com a data de validade expirada. O atendimento da guia 454996519 ocorreu em 05/09/2026.\\n\\nA senha de autorização, número 55120943 (número da senha, não código de procedimento), tem validade até 30/09/2026. Ou seja, estava vigente na data do atendimento.\\n\\nDiante disso, solicitamos a revisão da glosa. Encaminhamos o comprovante da senha com a data de validade e a guia com a data do atendimento para análise.\\n\\nFicamos à disposição para esclarecimentos.\\n\\nFundamento normativo: [FUNDAMENTO A CONFIRMAR]\\n\\nDocumentos anexos:\\n- Comprovante da senha de autorização, número 55120943, com a data de validade (até 30/09/2026)\\n- Guia 454996519 (atendimento em 05/09/2026)\\n\\nProtocolo do recurso: [A PREENCHER]\\nAssinatura do responsável: [A PREENCHER]\"}\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 1083,
+  "tokens_cache_leitura": 1695,
+  "tokens_cache_escrita": 2363,
+  "latencia_ms": 4641
+ }
+}

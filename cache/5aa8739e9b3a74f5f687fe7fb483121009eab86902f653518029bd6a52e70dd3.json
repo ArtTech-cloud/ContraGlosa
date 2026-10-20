@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "triagem",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQS+QoKEAgTGAI4AUIIdGhpbmtpbmcSDK0IF9c1TFQ2HkeOKxoMYKJs5eXUb0CkJES4IjDAhiwvDpW/69qhUNPqJl31lndSXi9OB9Zxhvq87vaXDf04Go1FXiWb97tnyEOAqDQqlgrN5LXj/N0T8EVlDnLBEBxdPKbarBQJfGf3SI0dlQCEKr2E4DPxkYHsa9S5issBJZeFZUKclo48A9OwZWJ2rPGPYJClr0SIdYQecpnEzrO3qGZFTuzMvLYTJVaMVNxsNdGnvCI3IIWJFvSz5spGJu8kpgsx6EFjQ1TNBWsbj/MalrmCZWaR5L80LGvYtwLXftS9RCZ0/EiWLm8t+oBIw3KJCie07C07OptMYOn5nNADKEWA2BNBk1OApYRL+Y31ztQDRjmseK586Cu49+7dbPMik56+UaTfPZLyrDZ/4/pACuyLUN6b7eDeMpxYDIWsIKrM6iSYiPsEPX2v4I9mJHho2VB6f702z7zOCqNOsPSK4x2VA6GVd4rC7I1/E2qsweJb+Gd5ll+55ptUgfX9af13K9dNzWHEz1qZ/9y8GV/268kNk//kVKPiwWsuTwevL/oJnop0JIsGVkQp1/Sgx13M/6mcZiJ2WJJ6E8QSHD04E2r3n+c3ZZHzLjOhQNhi4aE4db4wS59CMekgyRtGotOTxIX6vy/DBC2CdKIZVcnrLw91+z9vVUbO6GaeXAxnRzHB6yVcBajm4p4mC17KsnHuVhoo1jLqWX9Nvifc48/q2F+Gnc8dgGdQTDREJPYvZPMHSMnSlAEGv62fg/wxX42AlFumYWLjm8Wkb6WIh4nHPD6hv5VIVXKUx4xgsrlJyMkz6CHm53anhiGkL/br98Nj0U5rE2ZPcKIGF+EortNNNoDMNb1Pw1Jsph9Rc3Sf/BBV9UutCMealya+lvz+iUB7fX9U33PMggssf28uOAutnZE31xRDj0X0ohV8U91LwrOLRYZ77hylxCIZ3F3ztOnj+1K6sSgWhZeVOnkEtbjclKybyhuvc3IRLW8sqjUTAxCq+rX2JeG6vMI72kjb/RQcn5SPWajS7QOTxYEZC50BmogirPeDiegYA+QO4HnKB1DQV3S/HWXdqoIGbDHCdchJuBpPR/kMtkibD6TNqlWy3qiCJa0XworjKDCeYdbiybeL5xpkXhnFAsLpGuPCoxGQZJ0jjMSjxkj9xtJMei+7klKZwQ5xTvutXj1osNeQjjGpB3nAdoXWsvwFcRuHSCwB6wdE3X/OheCQgim2DdN/TtZRlTd2CRIiwivZ60KYBmXuAS5TwZkDXEqxUIBBWQL3QlIDxIWJpRJhPcT/7GSSS4CG47Asd1VFiQmpBFv3NbDmCx3Qqs+mX6lDWm39+bAVIkmWqBwEGS7vwXxmHqIuUhUJw6/T0nAY+cmJTpcgQOeLbWxNTTMxnlAADlYhgHnFlRc2s3GPEJ9i9WqCaaxaDUYG+R+z6+hSEvmaF7b44HqBTrXtn2rs/jip55oVpbfdq6zkmVtQG4KuUZopsDjK2hebs0ZnqmzVnRMm//ej2kCIHT19xJ0xC3b2N/6CNKK2wQcT0pKGZsG9QXcXhXx8hRtprC3UMdUqRhIDhboJHmxQWsBt009Jgw+diJNghZqRYiS7zOHfEZXn0T5c5crTf0KVOsPFoQSEkqgnblB2UbFWum/cv37I91f+EQ07jyCOTAS8XMwOX2Eahyzan5uV34zSXCAjaBwy3DyzWShE9cxY0/DWsWGzX/BhvichbyLsgJmkGidTN0T18j1QrwitmwV7urLCIiWztNlxTGDuo7o3bgj5S36hDWhC06qKIMicL8N5O8pLZozknWhlNF7nlaGmSW0gfiafvNuYjGgyfitAU/V+EgYYAQ=="
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"tipo_documento\": \"demonstrativo_retorno\",\n  \"operadora\": \"CERRADO — Operadora de Planos (fictícia)\",\n  \"competencia\": \"09/2026\",\n  \"data_emissao\": \"30/09/2026\",\n  \"protocolo\": \"5100300412\",\n  \"legivel\": true,\n  \"observacao\": \"A linha [p1 l2] informa que o documento é fictício e não tem valor real.\"\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 478,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 2541,
+  "latencia_ms": 2577
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01NKuWHUwQUJqT7e9NgbvtQp",
+    "name": "consultar_operadora",
+    "input": {
+     "nome": "Operadora Boreal de Saúde"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_0115E349zR7kUexLsWYErn8S",
+    "name": "buscar_base",
+    "input": {
+     "consulta": "prazo de recurso de glosa vencido e laudo ausente em procedimento",
+     "k": 4
+    }
+   }
+  ],
+  "stop_reason": "tool_use",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 882,
+  "tokens_cache_leitura": 4085,
+  "tokens_cache_escrita": 860,
+  "latencia_ms": 4953
+ }
+}

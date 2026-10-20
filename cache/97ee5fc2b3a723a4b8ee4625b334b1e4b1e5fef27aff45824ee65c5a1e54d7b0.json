@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "redacao",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSlw8KEAgTGAI4AUIIdGhpbmtpbmcSDKenHMwwukFqy7fbZxoMBN2lr2t1hdDwjwBLIjCjenp9P5uUfr/3ItV+PoC0YDO7k1AWGTy432LNN0xAexszte0x0D9MLY9wfGtaoUYqtA4y+u09Vis7ecGp+11KfSD55FHbCIdx757PntN1hZ4mv4T+WpDYgESHreLNDjNstCh6Ubvh72QPzUGitVnenccqAhnfK4FxuYt9mpjfWrbh61Kk23z078Ars9MmWLLxj2+qbHs5g4T3gz9b27ScumRBzkPu2ydWlTgVh9n6hvD4Wo3RS5Hr7sfnX6pq7rBYNEYIQYhwONRCK4zisWXOPSgknhkPt+uwpTgUlau/agyb3xY+hxz++N8JPIa0dQiaKCHqMk1U5lRnmUa+dEeQZXuzjiWrqxwLhrc/vvSfmJ5BUrlQ7lJVW8it6FsmJBZSZGxxXPmQTZhsKkol+BU5ZlXFTXq82ZaOsDe4x19X/XMSYSTv8z/cUJ1897HmEyu8CqdRkY39vF8yXmI2LWlN+4qCiv2PPgiOUf3GAaVV3MsQEPfxB85OFCj789pt4pzLfGH7ER9C6Yfv8J9DQFseLJDtEamWiVKV1jUfiwKfvhCJt9QqsQ2dzEiu+Mjz3W8J+55K+59P5Y5HiCupEAR6u0HRqOpqIgnTfrWREH8/yJFhCVuOvyHjedSpBVpjrAClUOTQt61ZQsyrQ4mGBdAveE778ezMUXpERpfIoZceCkd8Isxqu40dZP+6W9b55ghemkPeGGj7I0Ks/Yui3VjLoBkE1t34WSwl6t1vv5bqnnsJREr+dyntvTwpKBoP+2gjMKAJ3/3TrPCMjzqFJOLPfTXk78RuxwMRpc11BXl1dx0ttBk1C7jaQTkb4yoqqIppQxFLi2NoE0S0/QVxAvT69d69YleNl+vDSIuX547h4rkuLIX76IeV5Mmn9cUIori/e3XiHti1qBuxeMawLla5uLp4KszuvztgPKooFHLhGb3FvMTmrZ6mnQIOBWOYSWTbiNa27iscBEKmjF9D8ap5WS4jzHZAUkOJT0HrJOIHaioItMxbewvizXGobg4cVq7lFApeXSNI25GV47IbBPQ2m12qd44wiL9fIBNknsJLpVbCh2rdxqnnPzyNzH0HMCJcavc+NylIgOSBR22hpr5cZr961HSpr1vOT58uU3+R6Or6amqbvNV63tPw4XUyBw5K02LaxL38N/OEjs/tpRhiZnma0ac2gEJJ5DKqLE8EYiROyI19Uqg6DjUBl+O53jUUF53T/9LDU8SaulI95LYIB0wdvRDdFCSWGJPDjy9w3tL2R5UpJjctY+pvWczijoN5BknFyQ27R2gJxEBTPrD9A+JLnar3AoPTKVKRcAkhJWkOAWCeVZwp2eRe6l3Kwem6VAr/jPv2PkZhIb7ta6Vrx9npkWk0qw/DNOPvExket91G8+KgGuPSeQ5uAfybFeCQBTRUiT2mCcrRkMCMfS+mg/h93vKMTHIbW9miGRe1a0esWd0AZ+mfkmFtyn4rQa27SiCqtO8q2uPFnQi+kkqgTFGCW5nQ4lpfToyloZrbEcHDbZN5ThKhlr91XWtRd/6HwFuXk+C5/lKNrRRKpAMdVYg67ihGKjPwQxGFdfHSllWORUN9G48UBoOKNCCUdptiJ+FkFiqZjfxZT36eGZZe+Bf1vDbVGLOAHPlZK1Y1vRwzrj0y+GEzWyWfFctEJKIp8z16YfY22zD5knBw5IoN9Zg8KvtBjUjpn5MJtlA47LpL8Rc65AqFsLEKbqnGoQNm5wO8H5FseXTaF7n0LAgEghEZZROvNgzqfG/uzeyCcLFYfpuFed1WDaJTl1VCuj2o3Z8MEDAoTL6ypXypVhXZtvkxQtAHWOPIlM72Kzy3DysvaIGLzqeT2iDdYqxmg5LDOhkiQ4hZUlVN0SPY3pWwmR0pp2erQ8PQIMWM+GBT/QpnpqIW19pvQPiUN3ByX2e55fGSeIpoTM6e+3C6PWeumdh15IDun9t8a65QEYLMzOcU1o32c7hIC9Pjgg6tXZWFDX2RssYGZiq/oF3yk+3ZvV05TUPIHWTElLhxzsPow+jCaq1EWV7M0BTRFRgvlVM2i3337DYuoRbDAPldvbGxQ2KA3967s6eMn4wFjNm+xIVAVQg69ZufgAhen5SN4r5u/eBgbrcsyCAiw3wiNYItFzkuHNOhOX4QML3AqzRnTwar9qlS4W2FACWLOlsW9+w53hEv4O3MT//+CW0jI8hy+1pBBaN/ALYFJaD7y+38my+2FAtNDq6zYv8JRXeG4fScllt6YC7ezKZwdKoIMLd53QXARCLBEzB/yCbVT5fi1RnIqIfnALTKlb2rZsWAVS+cX1jscoDP2YkbYFSsZ2iN5bEUjS9/bCQ4Rdts2fYCVy0IXVN4qVCuwr7VsCMvbWjn0zJADLCocAVsKigdBcxIwVrVbKxkg5vJWJWyEGmKwudLopkDtaTP6qicef3y/4Y/uia09r5ggRjZMj2Aim6Yj+LT2RGwXbJri3KlnfE8NaDDpMYlCgrKtceZmaDJU7w3eFJE6TeTUTImul8GgXG+GarBkg9aQxgB"
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"recursos\": [\n    {\"item\": 4, \"texto\": \"Recurso de glosa — guia 218966663\\n\\nOperadora: Operadora Boreal de Saúde\\nProtocolo do lote: 8800925501\\nGuia: 218966663\\nData do atendimento: 09/09/2026\\nBeneficiário: CART-98b2a915\\nProcedimento: 40901114 - US - Mamas\\nCódigo da glosa: 1822 - COBRANÇA DE PROCEDIMENTO COM AUSÊNCIA DE RESULTADO OU LAUDO TÉCNICO\\nValor apresentado: R$ 110,00\\nValor glosado: R$ 110,00\\n\\nPedido:\\nSolicitamos a revisão da glosa e o pagamento do valor glosado, R$ 110,00, referente ao procedimento 40901114 - US - Mamas, realizado em 09/09/2026, na guia 218966663.\\n\\nArgumentação:\\nA glosa 1822 indica ausência de resultado ou laudo técnico para o procedimento cobrado. Informamos que o exame foi realizado na data de atendimento informada e que o resultado/laudo correspondente é encaminhado em anexo a este recurso. [CONFIRMAR ANTES DO ENVIO: laudo ou resultado existe, está assinado e corresponde à guia 218966663 e ao atendimento de 09/09/2026]\\n\\nO documento anexo comprova a realização do procedimento, com identificação da guia, da data do atendimento e do exame cobrado, o que permite a revisão do item.\\n\\nDiante do exposto, solicitamos a reanálise do item e a liberação do valor glosado de R$ 110,00.\\n\\nFundamento normativo: [FUNDAMENTO A CONFIRMAR]\\n\\nDocumentos anexos:\\n- Laudo ou resultado do ultrassom de mamas (guia 218966663, atendimento 09/09/2026)\\n- Cópia da guia 218966663\\n\\nProtocolo do recurso: [A PREENCHER]\\nAssinatura do responsável: [A PREENCHER]\"}\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 1331,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 1727,
+  "latencia_ms": 5422
+ }
+}

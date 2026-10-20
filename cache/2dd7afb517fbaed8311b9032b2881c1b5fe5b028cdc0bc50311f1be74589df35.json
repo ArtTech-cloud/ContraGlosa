@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "triagem",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"tipo_documento\": \"demonstrativo_retorno\",\n  \"operadora\": \"Operadora Boreal de Saúde\",\n  \"competencia\": \"09/2026\",\n  \"data_emissao\": \"15/09/2026\",\n  \"protocolo\": \"8800912345\",\n  \"legivel\": true,\n  \"observacao\": \"A guia 428883603 tem atendimento em 17/09/2026, data posterior à emissão do demonstrativo (15/09/2026).\"\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 590,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 2485,
+  "latencia_ms": 2952
+ }
+}

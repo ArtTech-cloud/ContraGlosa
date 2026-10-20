@@ -1,0 +1,83 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSjAgKEAgTGAI4AUIIdGhpbmtpbmcSDDHfxXCWKOBZ/4fY1BoMPCTK9Vx8kzzdiu76IjB9U3DVW2C7k8t4WQNXUIX9Ugadeodr6ac6I+PsNyC+8uGNcYgP7LM9rqR0gOiyBzoqqQenfuhEQ2+ayzZCvyLKjuBi3sbFW/f8anCZ1eyVndOo0A3ITlBto3l6wESTdYcDZ40w93cUt/FM0BA/O49Unh3hrno8K3OxpYpjkbY0S4Oq4urU2d5cspvalD0BIs4bdacQCwFy0e4q4/OhQBRYJCnk8/NdtNQXkP9cLdEOe7JAaKkDt+solSFbvbOzKu0SCRrnmL9fTISr1QMCyUnE8y9Z+dIPi6vShhce3crCN7xbUqrFdeLiwS4UEgvpYTDzc1iV/AUSvU4sVThpZJ8OaSCIiaxQW2ul0KI2BM0+kFPITSLM/90hKv6MnRbRrnLo7VWZ2kV38FRah6ZlRBe0fgOT8voVEijsFtEHjIMeKZs0FBy6Lq2DHpb+YLzc/hq2ThupEhtm+Sz3Ki1lKSGKaVbjYhSMRg3y9AG4lcRWtN+j1GdLsn9CFvhvl+yDaWpr3LMJFlroTJ3mAVFJ1Gg69wfp749G6UTkqe5yJ4gcxQrl8nLIiNJookbaKHFHGCprCEWSr61z8jNErb1YjERKs+YLjbQkLvxFRVry3uGVASXnt3jlIPyTflf2GQ6VwI0IqntQsSkGorAE/nmlF4C5fU7JetCqYikiBpYLK1TmC516RsUwImvZi62h/9NH0L018Cjxd39BcJfuq5XAESqDj13bBVX+3XpYI2j8Ksp6firm6D3qWo3ypkfE0SX9n6v/cOhwg65eTdSCGx25jzPgCh88tKoELJoNPseRNdKfuyvUfdqpXP71aZSAWXrT3EXrSX/QMt/gF6GQVGPzN2QShBeVKA9VDf9Gpzg5HItWaQNAAIzml7AH27lR8E40HVL3hmazpCS6aR0kAcnC50PIPTOjwTs0jSbJN3pqLyUG+dNPODsh5To0uiNH4hJtA5yen5YCzzF9sWxnRceSVWRVpfaTdVTHEkpg+raurgsYKEJV+somXTGJ0Z+10cj3cwtEFX/8LMfl5c3PTrQeRMVw80lvkQnKIafU2vVpfeha4eySQS1lqmi+igqYLodlfm7icrAVWEDtvKdwSuTUOyY4FXi0vQ+PIo04tqni+5EpCv3zaMoAdNKM38gx4kUhGeyft/iZuHeQ/va6NaVn7zDpeO9GLhUjiI51W5JRaDlEwgz9WyktimWN/olfEv/wF5DBosn2Kj5sCiTL2b0rpoCNfB7uxGGX8R1CAQWu2gdCpOjB9H7x65Ac/l9/+I3YiKoTohnPw5b6VXsvGpWiUdqm0AdVcV85qTptiCc6GAE="
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01QzH69VvRK9BsxUvRNVFmVa",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "1823"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01GJPqTzsC6pHEsBUGibLJ3z",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "1705"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01BcAPEEJLtYNFT8VvSC81a5",
+    "name": "consultar_operadora",
+    "input": {
+     "nome": "OPERADORA AURORA"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01NtVSsvvB8LQtiHWFbck59h",
+    "name": "calcular_intervalo",
+    "input": {
+     "data_inicio": "04/08/2026",
+     "data_fim": "14/09/2026"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01ME3UUBCCugKgoww7TcoaiS",
+    "name": "calcular_intervalo",
+    "input": {
+     "data_inicio": "02/09/2026",
+     "data_fim": "12/09/2026"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_015RDXZN3d1EokFwJbn8yaEy",
+    "name": "buscar_base",
+    "input": {
+     "consulta": "glosa 1823 procedimento realizado pelo mesmo profissional em prazo inferior ao estipulado retorno",
+     "k": 5
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01EYNr6oVXoJC5XiWkYpyjne",
+    "name": "buscar_base",
+    "input": {
+     "consulta": "glosa 1705 valor apresentado a maior recurso",
+     "k": 5
+    }
+   }
+  ],
+  "stop_reason": "tool_use",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 751,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 4345,
+  "latencia_ms": 4093
+ }
+}

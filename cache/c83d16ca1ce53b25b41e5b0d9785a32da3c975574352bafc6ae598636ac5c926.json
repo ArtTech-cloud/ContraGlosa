@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"decisoes\": [\n    {\n      \"item\": 0,\n      \"decisao\": \"revisao_humana\",\n      \"confianca\": \"baixa\",\n      \"justificativa\": \"A glosa 1017 (carteira vencida) é recorrível apenas se a carteira estava válida em 01/09/2026 ou se houve renovação antes do atendimento. O documento não traz a data de validade da carteira CART-be3ca4c8 nem outra linha com essa carteira que comprove renovação. Conferir com o paciente ou com a operadora a validade da carteira na data do atendimento [p1 l8-l10].\",\n      \"fontes\": [\"t38-1017\"],\n      \"documentos\": [\"Comprovante de renovação da carteira, se houver\", \"Cópia da carteira válida na data do atendimento (01/09/2026)\"]\n    },\n    {\n      \"item\": 3,\n      \"decisao\": \"nao_recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A glosa 1719 (reanálise negada, análise conforme tabela acordada) tem critério de recorribilidade 'nao': a reanálise já foi negada com base na tabela acordada, e um novo recurso tende a não ter efeito. O documento não traz evidência explícita de erro na glosa de R$ 3,30 sobre a hemoglobina glicada [p1 l15] e [p2 l12].\",\n      \"fontes\": [\"t38-1719\"],\n      \"documentos\": []\n    },\n    {\n      \"item\": 4,\n      \"decisao\": \"recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A glosa 1822 (cobrança de procedimento sem resultado ou laudo técnico) é recorrível: o procedimento foi realizado e anexar o resultado ou laudo resolve a pendência. O documento não traz laudo nem resultado do US - Mamas da guia 218966663, o que é exatamente o que o recurso deve suprir [p1 l16-l18] e [p2 l13].\",\n      \"fontes\": [\"t38-1822\"],\n      \"documentos\": [\"Laudo do ultrassom de mamas (guia 218966663, atendimento 09/09/2026)\", \"Resultado do exame assinado pelo médico responsável\"]\n    }\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 1290,
+  "tokens_cache_leitura": 4707,
+  "tokens_cache_escrita": 1142,
+  "latencia_ms": 5844
+ }
+}

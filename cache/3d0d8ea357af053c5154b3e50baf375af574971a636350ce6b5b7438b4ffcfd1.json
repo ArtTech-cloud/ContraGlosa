@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "redacao",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSuQkKEAgTGAI4AUIIdGhpbmtpbmcSDKxEOmK1Vyt73TNh0hoMWYdCgbhOXsvVa4s/IjCHV9On22Yi4xdoumefTR7HH++io/L458AZxMba0PQrQLG4BSn/3C/f4sK7r007lhwq1gggE9LzS/9WfGaHgqsJz1yr9Z3Es++2CxxLAi7redtA9BZANDz/rYtxjXZ15PcKFrQwaH+1hnWfagBgpepDPzWQJEeCa0xhBsATOmK/tAY0gaXos5NxEqBUXFZuf7TJpjnFDczmX61J3QQyRuz6KoB6b2th9pZ+wNYYoH4rT6U7zWbW8y2qnCt2HKG2cJks+mYnDEsa6nx1eNGcilKAMEXSjN/0rJ55Y5emSjE4x/3kAjwh2cnLJovWdcTD2dpuY/5NeQVLVjMNqjLoXc4IGEN/EUN6UJYAhxr2fKMJ9eg5Rl8Pz1k6n7sseuYyaPGA8YpfMKIznkK0JFxDON+894AFGHWovcbpQ6ir1zNP8jKFMWzTJHdD0ykcpavBx9ACPxNyMT79jG8G97GX6iurWPxmtAaDm9u2tZ02kJoPfDgih9m8ht4skiuqgIsu57iFT7hEeHXDDBaWvHYjQ3P6SmA0lya5wiL/orBh9qyE0jaH5ysR6GZFfKiFUpSR2uQR+s+qPGErEkBmjKloVy2Fk3+GHKHbSrykGWI57NoyhwvN9nx2DCcyi/WFt4yOniVkUXTYr+l82woAK3IxgpQMJnpeOFBqSQfJKu6KCzo0QQ0mKFpGxbuDGIEpvACvwMOurefawJwmPoVhKK2oRKi/V21yoAW4thDIts1I3Mozjld/+syysvNm3hIo2IYXANSSvHPgsmB0soGbyqq1sU5rXhG7CDiPo/RU6jeCiRXlTgytofQh4Mv7Q2YibtzWarHIO9r/Ecj67ynnP3KATL1PCAgtyiWyt2Zsj7xGXgQ4h5RHjqfNMdWEaA2M1wiuB8PCQoMhmM77B9AlPHoFJGUEqgjYlnTyyMVOnGsPhmCoC7PvNN2Ld6hdkWHKhiuveuo/0hH2uyLaFt2T183tRwSrOgQoGjzmY47oLx6B3SkzoiDM+oVZ3LPeZG4/NonbX4jMkzt+XqCTmcxija24dEoEjqo6CUYR6v2cEhxbPQn9Lh10b3rleDO8ZUit3a0an5FbyvHQ7VggQyjHioFmeq5AlVtwS3y4jg909Q9WKRqlEplve9lZg3rLwipoaqmsBtIKEME/k8XkDHvipNxQUsnc7y8DJpDjZGM7A945asZ88jiH0Ej+3w3LMx5nwn2CexDroPhKqubOubTB2a6NToBDBbq6GVHfgMI1wGmraZg8607wr4CTVSjDDV9gi0E1F2eJ4xcfV65BJ/lIHld2TgoVUWQnZwt6aH1GnW3qH00XeGO99vqG5fYnuyt4slpkUQwYEzq0yi8+Tz0xSNw/oBAJv6Yv/4HUKTIfY/Ldb1myyBVe7RMZfLKU/AmOQnjLChFvffZlvp2S+A8sL5UDDrPk8yxdb6RAh4XOwbFQXb4mnFXw4eVCn0n1IvlCcFL//7A3mzvjRyUmU5/UcrWg9CIKgNSlpYra+6MFj0VHu6U+paPBBlD4on4ji4comdt4l0AGQpClg2gEOG8YAQ=="
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"recursos\": [\n    {\"item\": 2, \"texto\": \"Recurso de glosa — guia 454996519\\n\\nOperadora: CERRADO — Operadora de Planos\\nProtocolo do lote: 5100220931\\nGuia: 454996519\\nData do atendimento: 05/09/2026\\nBeneficiário: CART-de0f7ba5\\nProcedimento: 40304361 — Hemograma com contagem de plaquetas ou fraçõ.\\nCódigo da glosa: 1414 — DATA DE VALIDADE DA SENHA EXPIRADA [CONFERIR DESCRIÇÃO OFICIAL NA TABELA 38]\\nValor apresentado: R$ 18,50\\nValor glosado: R$ 18,50\\n\\nPedido:\\nSolicitamos a revisão da glosa deste item e o pagamento do valor glosado, R$ 18,50.\\n\\nArgumentação:\\nA glosa 1414 indica que a senha de autorização estava com a data de validade expirada. O atendimento da guia 454996519 ocorreu em 05/09/2026.\\n\\nA senha de autorização nº 55120943 tem validade até 30/09/2026. Ou seja, estava vigente na data do atendimento.\\n\\nDiante disso, solicitamos a revisão da glosa. Encaminhamos o comprovante da senha com a data de validade e a guia com a data do atendimento para análise.\\n\\nFicamos à disposição para esclarecimentos.\\n\\nFundamento normativo: [FUNDAMENTO A CONFIRMAR]\\n\\nDocumentos anexos:\\n- Comprovante da senha de autorização nº 55120943 com a data de validade (até 30/09/2026)\\n- Guia 454996519 (atendimento em 05/09/2026)\\n\\nProtocolo do recurso: [A PREENCHER]\\nAssinatura do responsável: [A PREENCHER]\"}\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 856,
+  "tokens_cache_leitura": 4058,
+  "tokens_cache_escrita": 1199,
+  "latencia_ms": 3436
+ }
+}

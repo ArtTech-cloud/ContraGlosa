@@ -1,0 +1,47 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSmwgKEAgTGAI4AUIIdGhpbmtpbmcSDMy1oSDMdQRuIjK8bBoMDfSelNHELhDSZLttIjAnZbNSjN9dzwmLcz/zzMkp7Zb3OAhwjhdca800SGT5MFWiDmxML5hpsFNki0LECHUquAeYB9qqthBLshCFkKlMPas1LPmjzxIClJWAqlQqE8h0r8XqdCdFf3H5VvecjlMQRoD0Dbii8nkeTXMdqZ2pp0XBMN6PgWA9yVdpoQFtgH0hnX1d4f0mT95SRkts1BfBjP1pMhea4w/4B810Fg4f1z+9cUwqrtD68AqelMSqsCF2H2WmnDKgEEW35xFg208TTce2tCb7yneEgtxnVOosqFR1aJJwLN9GOwrFulyOwMrkptey5hxu36TvvuEUC9Grx4FF+AmQ0miLUR8Qcpb1e9gPbA8l+hWJF4UdBB2LMjGe95nUSPL654/0ACf7N1CjXMDzeZqAb99AQLAS/ogENdSY+gzrTvp7YGyMri2Epla3RIamiQ9XnkE7truZK6safes4hYX+bQHsMcNIfAn2yffsuFu3Ck7mRZc5I38ZhUKUazBMlkdf05aY8aaibQBlTSooJz62jRp04UhefykSu08u1B7kgT8llTAxxSyaXQ1HqdcH+RpNcfP0/XdFJ1VFdU78R17UwN3bGbweBxCYYf7CnvjUwFr6aIF0CsBfy6Y4VqsctPPALnfqYD2Y/t0KahktivQ4lYOvxJWMsOOqBAPupByi+lX3Z109/kJY5CiPqch+/g53+cM72orJzr7NifjHlvimgRVEj/VSN3uXcXbFdd/AqXKkgwNDyWISQMSdMDXZFpvFJuw37CHFcGXiib1ikHLVWERr9LwX/ibPDMT52f4njnjsWd/YvLfnrX7xE4LfYKpT+PfPxfX0wi4vrjoi1cfFqwASAc59FCHek2qnKD0HCtF6IvrLEyHDAD802GfXfZBBu0/eYNC4cs4Gr+lp0KemEjbKu/Cogj+jVSBTGmWMZRR9IGFLx3LJRaO/Kj2rITasG3WGxQJz13Kaq02wUO/lQHM/izZESYlabaFD00DDJz6wZFy/cGjBiaxfhib2Gitwocxa11tQ9T/SxODyiWcW+pqAgbM0LIfhC0lVnvDFLEhh7yUHYX97ZAezhPB2cNUorSx2uS6dLmaQ2bdBYhdbskg2NAsKSDN1alOEOR1eymXGRCH260KLXI4SwWxfo8B/hc8pBHcImHRPv1yrHRbbKwDxFwHoBWfgxkgOzf+HGgdKLdxx8A2kS59F8EVI6hoB+vnXxOz+K67oNQdp+ifsPmT16mC4XnH3oN68LRVnQjQIpA9goP0gFydNARFr8RgzTrrkrh1T9o8KDalCfpf0saWJtKfTL7lIg5cn94nrX1Ck/M0RkQVeOvnYR3g9dFY7U0A4GAE="
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01RUETDBrQiERJH1Dtse1kP6",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "1509"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01GjFqmGLok37GoMPi5gPMQE",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "3170"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_011SrJSnuy4sDf7ULsiGg8iW",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "1006"
+    }
+   }
+  ],
+  "stop_reason": "tool_use",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 356,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 3982,
+  "latencia_ms": 2797
+ }
+}

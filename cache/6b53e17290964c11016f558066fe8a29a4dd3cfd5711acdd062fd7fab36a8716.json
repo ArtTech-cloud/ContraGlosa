@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSiQgKEAgTGAI4AUIIdGhpbmtpbmcSDChCIcledeaA8HM8wBoM0MIQPgrHX6qopBJGIjArybiKaGmiJFSPgeA1FHYXcOoRVNPwiqyQ1vJJDB1hmGYvexikLY2yoBun0qD+Le8qpge+1VNMav/3SuZkg+saXge/3XtER461IF5S0lDbzCw878fhXA3TbSMKtL3Pr/ukeVb5xJ1cSfIXU7TfC9bKk8UUK5dvlNMH+C+ha0eFQs7E+RItIpieoJe8T3hWdZRx0TYH421ufxZeAs6WVpclhFoOvxAhildQ4dWsChKZJy9putU6fgHx+C0zkabr0Y/9c2blufa1YwemtXhLdKjx///cN+RcFAvtBhY975HpW4Dt/f4Cyecm3HdabZ2GqWPpcm/5MZN1oFsNcVBxnOIRKfJWeko1rCVFYnu8agEnWR6GXpOxdOysZDo1zkbms65qXXOoJUAZ49go1UYgDIOqFG4CIP7s//ZclsdSAuMsahyH+EGfquk9ldTXl9BpcffMFLZX1Z7YCdNfFApAvM0tkSESYkO0lEGQcJQPm6G0DKOGQbmVQ/DaqRbHaCWLUrTgq6Pwr2MBhRW3etHWsFUbtF5W9QPls3xs/xTtVGDmly/e0mcuF9uFGCAXMx5yhV94f9iba3d349bZVLHot0pveEbEPQMgW0Pyso4VI8yj7b2FVDt5maIFo2TRNxfBG8QgeMR6gUohbGpQxsSt6tniSgSgZBcJxGOoPwCDcv+m+jhDRVEcjtjP5eF1JZVajhnuO93lG2m1xB3fQ7249iu0ThE87eGkWdnjFI2M/G8mRz20i81668k6Yp0biULUZLjoRAsArDD4Rp7mrxxZk5CRPdIg5m1pRQ+RqV3TI7VtjPPHdYY6ysEYIM6LxEgaYga0Z+FbAF9oN4YVZ2kziZuo7bUAiIHDk+m5yLD9iqzktaneoI0Ae5b7NAdQY2V5kI/qhSZNvvK/3bZYCHQBMgyTBSWySIjlUgOugHmU04IKZxOmAujt8kwvD+R94HAicI10byXhqOgN+CDZNUdeUQCZf4uyPZSdCNE7sIxqtCq4ICVW9WLhq6NlDC7RcFQf3lsyh7ElxoIfcgJdaHTBuERAp1sCeGVgoRw5TW9ks5hLMs9giUpLBfmBWSl4UBViwTingIJ4aboybcHVG6ZDkduDPlohdyWGAx26dOHXioTbmcmHLhdEH4KbRk3UBxPqogkQEtqwbWQdQ3bQ65wA9fEe7wjL7CnLpWdiHMfu4SVS9iJAsmBREw1gOd3ty+T5ICHyhy8JYCuQZsn2c3UU3XXciT/0dBw3zyboGp2SuncpYAOIehvP+TzWVeqoO2rxTs/DDiSyHoNKRzt8P9fjtTExLEMCjp8V7x8dGAE="
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"decisoes\": [\n    {\n      \"item\": 1,\n      \"decisao\": \"recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A glosa 3170 (assinatura/carimbo do profissional solicitante inexistente) existe na Tabela 38 e o critério de demonstração a classifica como recorrível (falha formal sanável). O demonstrativo não traz nenhuma evidência de que a glosa procede, então a recomendação é recorrer com a guia assinada e carimbada anexada. A glosa refere-se à guia 987489848, atendimento 01/09/2026, item 40302040 Glicose, glosado 6,90.\",\n      \"fontes\": [\"t38-3170\"],\n      \"documentos\": [\"Guia 987489848 com assinatura e carimbo do profissional solicitante\"]\n    }\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 438,
+  "tokens_cache_leitura": 3723,
+  "tokens_cache_escrita": 408,
+  "latencia_ms": 3171
+ }
+}

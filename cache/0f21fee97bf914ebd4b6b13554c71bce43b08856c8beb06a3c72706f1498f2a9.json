@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "triagem",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSowkKEAgTGAI4AUIIdGhpbmtpbmcSDO43HEwRLLOy6/4A1xoM5GSQKsH4+53679jTIjA6h+3ctMyqt0Ae9qw5zE1nAMmRwA+O/O1el6PQeWruJoRrMppHSfzkZZLUv32ZO1gqwAjUUcCRvdmU/CE2tJo+eSli80M6s7eOHCZFceu0RsD+tL8ve04C6XjGPcgDDrIk1WoWCta49prdoQAlzs7ufxzTx4sqKiYHv3pg0t0xZc9kCfFhIS+pR2BA1WnzZAZ+y2Z+h/4oUD62Owl4e+RjKMeUCrguJ9G635jmOeyxtzNA8OICgTPPqCgGgZmieHHSd7XgelyrzJjlJfbGUkajdsh3XfgM0sWLRUmjso4nnFXLk5X1n84dRQGW3R/p/AhYZL0EwGve9CNbO5LPYlYpkocySQGg6Wg5NH4UUNZK1hkqyqzz1v5+e7lhrY0tPKKOU7E/gIh0McTRk+0CK5zqSVUh0egWJwhgLwaV8+LOLPAGWyAvddlQT/PLJZk60bPkwZ6TjUPPAljta2KwvlCZwBhaL4Skf84EPyds5MCFJSZfiJl9gkq5lZl8Yt9oN7xtWvIylM8MEDm2lP3a/2+MF4bYynCpn2qD6oEiWgdB5nKIkjMVjgiGXNdHe9DYg8RZjPUMjZGJPwZkOwb3aPbqO7Njf/fNouasd+SpFJ/DBiDvkeeW3WdhAIZmZZ/IZ2CoA6QEwclNGG0w2J1sAcQrXU5Yi7RKS6s4eUW95XFBzGA1TNqfEtAlwJ2gn4z1lgMCSl9UeUOshkPS3hvDKSczv9ToVdno23Z6euBvjqrF7PhF8Q1IQayKfylSveOmNayZOiS05piGeruwZWMrnjFMq8dMjKTq9boW2Oe3lCZ2jsnC3AKctmTPpfQldpnqbtL+qAh2YK39LHdCAMSBEyypATOvonTGuxJD18awygYdr+jHDuStv7yUlBJDvkTFr9VfdAGQJ6xMkEj2+gyxb+PHYOQySBvvSZVQz62FnpUA7cPJVxSEGcRPAqXAcmoZCCutf64HeLS04904faZ12/WDY0uf7bHAevHgXq4biWMNXOmTGnsdBh/0yOwQSLh+mZ7V0tMucbX1PHdInRxgiTutbXL0nrSnmQPRsSWuQYf8s1sVKYUQKb/2sKPzig1sVqYyiy9P7BVDIw89M1KWyKRImhZhaQaH0g/iHljjJIKLSQ8aPxEhRwFZI4/INcmwkYFVYG1Js9nSrEVuI/hGY8hB2PilYt5hq1H+VD88woW9MhEHh5tV6o+U/AuuH7ulBfO06q6aKH2r4X3Behh/+GCri23Zl0uUQ5DlDD/QqZs3yqpcKAaSo5wbnoxtgjKbMP6jIOSmI5nm+HhU72awdHVvqPepuK70lS+zkd5y8Tdte4wUDqjjHwX4mi2PPFWQmCQOC3muOYhCHVcQVApPnXDKfO7a5SIQ/AvQaNh5nUI/uF0NkoyNKuf+1BiO0JxzmrtpN7J7/QONNG2JpOkZslKioTzL9LZHDSKxd3slxNwrskq4lKTnPIptAnWC2hzKWKAnQFjNH0IKp8dqwzqLVo4se/ZnhZhze2jft5IsYg5yd6WUkxgB"
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"tipo_documento\": \"demonstrativo_retorno\",\n  \"operadora\": \"Operadora Boreal de Saúde\",\n  \"competencia\": \"09/2026\",\n  \"data_emissao\": \"18/09/2026\",\n  \"protocolo\": \"8800918230\",\n  \"legivel\": true,\n  \"observacao\": \"O cabeçalho indica Folha 1/2, mas a página 2 não foi enviada; a análise pode estar incompleta.\"\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 412,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 1691,
+  "latencia_ms": 2202
+ }
+}

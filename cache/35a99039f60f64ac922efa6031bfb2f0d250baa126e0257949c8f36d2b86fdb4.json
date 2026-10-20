@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "redacao",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"recursos\": [\n    {\"item\": 2, \"texto\": \"Recurso de glosa — guia 454996519\\n\\nOperadora: CERRADO — Operadora de Planos\\nProtocolo do lote: 5100220931\\nGuia: 454996519\\nData do atendimento: 05/09/2026\\nBeneficiário: CART-de0f7ba5\\nProcedimento: 40304361 — Hemograma com contagem de plaquetas ou fraçõ.\\nCódigo da glosa: 1414 — [CONFIRMAR DESCRIÇÃO OFICIAL NA TABELA 38]\\nValor apresentado: R$ 18,50\\nValor glosado: R$ 18,50\\n\\nPedido\\nSolicitamos a revisão da glosa 1414 e o pagamento do valor glosado, R$ 18,50.\\n\\nArgumentação\\nA glosa 1414 foi aplicada sob a justificativa de data de validade da senha expirada. Entretanto, a guia 454996519 foi apresentada com a senha de autorização nº 55120943, cuja data de validade é 30/09/2026.\\n\\nO atendimento ocorreu em 05/09/2026, data anterior ao término da validade informada para a senha, ou seja, dentro do período de validade da autorização.\\n\\nDiante disso, solicitamos a revisão da análise da guia. [A CONFIRMAR ANTES DO ENVIO: situação da senha de autorização nº 55120943 junto à operadora, verificando se não há registro de cancelamento ou alteração]\\n\\nFundamento normativo: [FUNDAMENTO A CONFIRMAR]\\n\\nDocumentos anexos\\n- Comprovante da senha de autorização nº 55120943 com a data de validade (30/09/2026)\\n- Guia 454996519 com o demonstrativo de análise (item 3, glosa 1414)\\n- Pedido ou relatório do atendimento de 05/09/2026 que comprove a realização do hemograma\\n\\nProtocolo do recurso: [A PREENCHER]\\nAssinatura do responsável: [A PREENCHER]\"}\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 1257,
+  "tokens_cache_leitura": 1791,
+  "tokens_cache_escrita": 2648,
+  "latencia_ms": 5813
+ }
+}

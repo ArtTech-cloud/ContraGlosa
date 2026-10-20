@@ -1,0 +1,65 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_014fGqJi8LVnqnWn2tNUx7gX",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "3209"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01WzYAPRH5QkNM9kUm8Ycrqw",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "1818"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01UCrYrZ3yuH5mTqpoTksi5s",
+    "name": "consultar_operadora",
+    "input": {
+     "nome": "Operadora Boreal de Saúde"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_012fAdsi5S4tSBcW33QUS9iG",
+    "name": "calcular_intervalo",
+    "input": {
+     "data_inicio": "03/09/2026",
+     "data_fim": "17/09/2026"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01FFTCo9F57G8ctbTFJoqMCe",
+    "name": "buscar_base",
+    "input": {
+     "consulta": "glosa 3209 duplicidade procedimento recurso; glosa 1818 autorização prévia senha validade",
+     "k": 5
+    }
+   }
+  ],
+  "stop_reason": "tool_use",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 1255,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 4646,
+  "latencia_ms": 6468
+ }
+}

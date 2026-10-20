@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQS6AYKEAgTGAI4AUIIdGhpbmtpbmcSDLkDUjbqfVzX/URRbhoMuZx6sY0GLCmC/JBzIjCCbYbwUqFV7fbgUXeJItvIQNUQW9w+aiknnSx5Qw8Dt+/lrBNwpnt1Jqq4MAwNc7sqhQaIW5pHTGLiVsuTihXK8aVmB9qy4yiYAz8/EqKz5mJOg2AkZaMz63L6yjVYR9iDXCs3xRzpURCx83X+B+/qMbKZpG9cHiUhMAbEstQDSjAMKrwr39Q1XvRJP1se4YLG8PDHsafvazNwgVJu1JR4BkURL/5OIBF17WMEJRPNqDBeSijLIyD3gIyx1ASLakacueNbbF8MFe9+kkb+aVqtDqOu2VhBxsNPA7/dwtRrX6gEnEKtBb71tSRXFJ8kjSxy0JOEiqReMg0CZ7R4RRXHkjYV8xIyKZgV7G4J6GqHoc3qhmh6gzN5XSzGriieA9Wi1TCsj4CUX7inNHJ5u7+u0UaWBDpSbHdo1Cdch1cDfKQVbaZFllKgd5yyrewYynH6AzNaxKde8080ny5oFaFDtAKm99fgLbDILaJHpw9QruOX7ekeJOcRD7P2EhzWIJ60u603ggacqE3iEpmFdy9Afup18Sc6YPWGDC9SvGxofIj9zpr2HFP78it9H7F8/9v1qpw5eovd6nO+ltrH2vS1eedtg7ajyVM2NeUpb4qYHaO7aNeMiScnFHc4wJiGh1udMJjSk8bgmn6eYD9iG/26hKs4dWW4X3IqDhASdHF0MVavo/uiZgQ5n2jN9xGEW6ym+w2aXqNkzACDbJU+6kZGttfuAJUO8oglrur3iK6Priwi1IPkctyTkDtk0i2POqZKQBFng9un+5b8P441U2gy9KV2V9D4n1dAJqQvXCBiwflpg4ePjG7Z4Vl28a8mNcBq6d76zEgIB9EbAQYkuX1wbIuzYZtMPtU83nyCm6xP2kvEJnp4gJi+pwVib1OiYWEbdRpTagQvVhr4UJ8JSo9bVBkmODmk2NQsx7DmRsgQNBzL8vgXrZRNVL1YhCyuIcvaoFZEnYukAILR7kA4Dw/WFa5bm+IeKyAd0MvqTg57BfP5K1+9Gql151LHmYWlmzeAb7hMjCBafN2z9EfMTIBl79S7AMOH1/c6ksIw/FrCqIjp1jZsX4ptgCrvYMDdGofQEgy4LlvVrxgB"
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"decisoes\": [\n    {\n      \"item\": 1,\n      \"decisao\": \"nao_recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A guia 600648266 (03/09/2026) é da mesma carteira CART-a66480cf e do mesmo procedimento 10101012 da guia 334825505, cobrada em 20/08/2026 e já paga [p1 l10]. O intervalo entre as duas consultas é de 14 dias (calculado), menor que o intervalo de retorno de 30 dias da operadora. Dentro desse intervalo, a glosa 1601 tende a proceder.\",\n      \"fontes\": [\"t38-1601\", \"nota-retorno\", \"op-cerrado\"],\n      \"documentos\": []\n    },\n    {\n      \"item\": 2,\n      \"decisao\": \"recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A guia 454996519 (atendimento em 05/09/2026) traz a senha de autorização 55120943, com validade até 30/09/2026 [p1 l21]. O atendimento ocorreu 25 dias antes do fim da validade (calculado), ou seja, dentro da validade da senha, o que contraria a glosa 1414 (senha expirada). Vale contestar com o comprovante da senha, conferindo antes com a operadora se a senha não foi cancelada ou alterada.\",\n      \"fontes\": [\"t38-1414\", \"nota-autorizacao\"],\n      \"documentos\": [\"Comprovante da senha de autorização 55120943 com a data de validade (30/09/2026)\", \"Guia 454996519 com o demonstrativo de análise (item 3, glosa 1414)\", \"Pedido ou relatório do atendimento de 05/09/2026 que comprove a realização do hemograma\"]\n    },\n    {\n      \"item\": 3,\n      \"decisao\": \"revisao_humana\",\n      \"confianca\": \"baixa\",\n      \"justificativa\": \"A glosa 3287 indica que a consulta 10101012 (guia 427818492, 10/09/2026, carteira CART-4934f447) não tem cobertura pelo plano. O documento não traz o contrato nem a verificação no Rol da ANS, e a decisão depende disso. Há uma inconsistência a conferir: o item 5 da mesma guia (glicose, 40302040) foi pago normalmente [p1 l30].\",\n      \"fontes\": [\"t38-3287\", \"nota-glosa\"],\n      \"documentos\": [\"Contrato ou carteira do plano do beneficiário CART-4934f447, com o rol de coberturas\", \"Verificação do procedimento 10101012 no Rol da ANS vigente\", \"Relatório médico que justifique a consulta\"]\n    }\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 998,
+  "tokens_cache_leitura": 10095,
+  "tokens_cache_escrita": 1328,
+  "latencia_ms": 5406
+ }
+}

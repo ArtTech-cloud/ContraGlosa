@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "triagem",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSlwoKEAgTGAI4AUIIdGhpbmtpbmcSDPwKQYoLlHbXqmN+dhoM1lqbArZAXaQtIAQ9IjDW8w02QRBhd/NhMaGhaRJOotsuknHgJUy2xaTmN8aJsda22xTCGCIsw03neGMSGMQqtAnckWJKvPULQB3496Gn9G9IVLIU7LnHL9xMZFKA9xT0InX9R9c55uYIMRsQ5Jo7uDdkWLRkbY6F9LyKtrhjfU/tCSX2B6rxV0fQxBTwfspeMp7M0E4+BLlWXqdvT2ZoBz7NBwsr9Xfr8G98ndCWRXk3KAtz3LmDnQQ7S93eeGptDrHT6OLdA+5ZdiVHGGtWj9zxfnG1QGcztHDWzMWnZhkbyovtdsK9v+8SfzTvAT/myCbD+YtIvTWgO32VbN1KFGHECPWOikTRNE6kwKMjSUWkgVKN6v6tGm6xmofE+Sqq19J+JadK7DVJHGeNHGZyDVnoqz05oB5baqQT1qQkGww6glqOdtLt2t5iwIjJc5As436Or1IRqNyaEGBgCK5FCWe+f8VZ4aTs0PjIsJeg0XT63vO+U+0ToBkgawRaeRE/iirx1pdV908HDRkuJhv8Ma2RxQWOosW97Ibnleoui/DOw5bGkBQLcnZvg3tIeECt8yuM95S/BHNlGZb080o/265S8hZBGzlVmafjesawgu8Vkw0k/b9oysxvayoxSJLULE5gTZg+4X1vTGoAKMPmDupdRs4R1awFP0IrXVAWEnHewTjbXXOmKIbYuntSD+k6Ks9QbV88VJBDmUfkjjqD0YIPT7RpughIdyichZtVqUAcPKo/BT2kN1yPPbGFnOZm3WonNkczNje/+7Aq+XsCDaZqkojxB8uBn9RgK5VqMgb+Ryjy60HL+kyo2WWn0IvMpSNsom+c1zOtAA9uxSKkrIQ2SsmnqTGxWI4kQZ9MYqQSa/13oiIjLrbbRLDZ7+cIKoWldt+/1+yNZL7auyCcwqTEOcb+j8sZemhVAsTucNLucKD+4zw7szIIQTyfNpcRae/OL/lX20c6qtmB1MPvJsh0VjKZBA2e6KF3hfdvkkehZgSnVpH+Cr8sEeydFNPrttQZ5cetDLeyEWCi/EfYWQmYwibZaTP/CDJ+/r1DZSLdhQ9lbgC5QE0eNAqj6OyQcnTZvoUiMsIXnVNb1zQOzKE6CPI8AWwaE3HTKP7hJsyyLtMoOjRaDJ/Hj9f+ksX1c3zwJdiDFMO/t8j4twDfqnT8i5ol8HXTdc0GOdPQp35pjcX80EunGYgmfLw1qfuKL2MyMNn3bcJTszOMfx1Miu0C4quNEkMiDi+WbV4Px06rewBQjfcDdk8ybvV9lJljwpUDB3n73gEWtpgxI2np5m/DUeLiZAbEr0Xz9QtzcoDfFIXoQTDhMMOxdmwk4q2EsJ8YP24GwpjTgrXK/BCxA29HpI5JdV8LUrn+2oqBbQP8931acrlgK8lYl75plWHmg276PmDcmg26VjwrocbrjZ9wOAN0mljY6V4Xw5WnGUTTpBsvwoE4Ba67QhFk3vVGSU6Y0T3dM93N4RfIl9Ae6BJvVoCPNlzsPZuRCwrn39i/61s3OKfDwAG8D8G4Rxvvc/0ilkabti00oVfqlS33S84tiSl3AZiYP/hCoMFacVutMkwb/24sPoGh08iA/VyYoC+zNQiFsIXBabmB9Brj7/Oj/BfCNKX8lVIcQo6BFxfWtNJCNuA1MkybU9VCKHs6xDNYyQAOiV2zAeNoo4XYKdRQYuXiGAE="
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"tipo_documento\": \"demonstrativo_retorno\",\n  \"operadora\": \"OPERADORA AURORA\",\n  \"competencia\": \"09/2026\",\n  \"data_emissao\": \"08/10/2026\",\n  \"protocolo\": \"2026100877\",\n  \"legivel\": true,\n  \"observacao\": \"O cabeçalho informa que a operadora é fictícia, para demonstração.\"\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 408,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 2055,
+  "latencia_ms": 2454
+ }
+}

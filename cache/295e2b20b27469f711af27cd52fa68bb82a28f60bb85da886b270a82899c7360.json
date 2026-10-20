@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"decisoes\": [\n    {\n      \"item\": 2,\n      \"decisao\": \"recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A glosa 1509 (CÓDIGO CID INVÁLIDO) é recorrível pelo critério de demonstração: erro de preenchimento corrigível, com reapresentação da guia com o CID correto. O documento não mostra que a glosa procede, pois não traz nenhuma evidência de que o CID informado esteja correto. Confira o CID da guia 921582057 antes de reapresentar.\",\n      \"fontes\": [\"t38-1509\"],\n      \"documentos\": [\"Guia 921582057 corrigida com o CID válido\", \"Relatório médico, se houver\"]\n    },\n    {\n      \"item\": 3,\n      \"decisao\": \"recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A glosa 3170 (ASSINATURA/CARIMBO DO PROFISSIONAL SOLICITANTE INEXISTENTE) é falha formal sanável pelo critério de demonstração, com anexação da guia assinada e carimbada. O documento não mostra que a glosa procede, pois não há evidência de que a assinatura e o carimbo estejam presentes. Esta glosa refere-se à mesma guia 921582057 do item 2.\",\n      \"fontes\": [\"t38-3170\"],\n      \"documentos\": [\"Guia 921582057 com assinatura e carimbo do profissional solicitante\"]\n    },\n    {\n      \"item\": 4,\n      \"decisao\": \"nao_recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A glosa 1006 (ATENDIMENTO APÓS O DESLIGAMENTO DO BENEFICIÁRIO) não é recorrível pelo critério de demonstração, pois indica que o beneficiário já estava desligado na data do atendimento. O documento não traz evidência explícita de que a glosa está errada: o token CART-ab2db251 aparece apenas nesta guia 543156427. Não há documentos típicos para anexar a este recurso.\",\n      \"fontes\": [\"t38-1006\"],\n      \"documentos\": []\n    },\n    {\n      \"item\": 5,\n      \"decisao\": \"nao_recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A glosa 1006 (ATENDIMENTO APÓS O DESLIGAMENTO DO BENEFICIÁRIO) aplica-se a este item da mesma guia 543156427, com o mesmo beneficiário CART-ab2db251. O documento não traz evidência explícita de que a glosa está errada, e o critério indica que a cobrança cabe ao paciente ou a outra fonte. Não há documentos típicos para anexar.\",\n      \"fontes\": [\"t38-1006\"],\n      \"documentos\": []\n    }\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 1485,
+  "tokens_cache_leitura": 4238,
+  "tokens_cache_escrita": 1140,
+  "latencia_ms": 6452
+ }
+}

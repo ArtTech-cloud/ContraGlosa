@@ -1,0 +1,55 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSjAYKEAgTGAI4AUIIdGhpbmtpbmcSDNxTnvRtqNvAhZqbzhoMC4nYtzktutY40A4WIjAWM3TZcWNSMPs/HIUMprOHFeIiY863doKtUCEEiRZwagjHamc0FPnOze6vwRRkxQ8qqQXYRi41MLgR/yEkQ3oFOLs7oLIzBrfrTm+prDuD5LJivnzZegqh6td8hbi4vYbL8sByGXQgTU3sphWoTj4n+6/vCxXMxMQXX86WUlHYadrxVn8N8xHaCGGdcN/vqphllD6qwbjeXbovC4LHnvZbqC28nXjiQx1vmU5V1LKcrm53wfZJUjAzvqZXlqyF5U+edIO3/KUv8L8JkTeh0MYZ/cT1RdQkOhdf550gn47Drsjfc2CKkGLxh+RncPZcVSnZFdxxcaMF0v+kqkU34JUhiY6DE+ob00vm/ePOhhxvQ7xrdeCohSsu7sLwNu8J7mS4k0ZCMZVJSNsst5i33Y4pigqligAaBjoPJf9ZOurlJqBK3w6Xs+kyLA1UnTDond+e5ouhRkhr34tVPk7lvGOaLWLSMdxBnk6JPvcacFIk/ItSk0AK2hbvc+iMYsobkg9uvcxJMuUnLrhBuAfh+lNDRMw6/D6CW+vXytkhqbHyJy5qCEKqPRqfEQHV6yUjn2pvglLNYt7UefdvD+9eWE5CqyHRmTv5Bb8aBf223v9itNNKksC77hbvaJ7ezJU96gGhZuEXYGkC8nbm3MiRVqp9gycYqYT1NTbKeKfyUalsDBS1r3Z/+EC7podIsez1KY3P/rVtmHSK61Z6bqa0ZQdDB/YlYcdXtytkVPauBOf9PDyKWNa8kXl7OuM8topyyfXQfXb8d3EiCfYrncCiDGpDqn0/L9KAYfvR9s3XaNXjp2KZVV045u/peYIh1YGtAOnLGuITfNgv7TgUW21JldH5Tp0KgB7TSp++zZhnwS8k6xBhF+jGz/D6dvaiJUZknBUOw+3K2KKf+9ixHwU1eQZPMqK+wc3z2FWWpYb5yp0wrGyPiUT0JwROl8DcVmtA+KhPtMJrnS/0/+inkRsYAQ=="
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01GttvxLrnTvyHPmeNCQnoFR",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "1006"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_014KWVTc8Mc4oSLv2ZcPk5cz",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "1509"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_0173Hgph855nCy6D2fyEvAqK",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "3214"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_018CkrC3MQNx6wX6zJ1CoNwt",
+    "name": "consultar_operadora",
+    "input": {
+     "nome": "CERRADO — Operadora de Planos (fictícia)"
+    }
+   }
+  ],
+  "stop_reason": "tool_use",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 305,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 4470,
+  "latencia_ms": 2608
+ }
+}

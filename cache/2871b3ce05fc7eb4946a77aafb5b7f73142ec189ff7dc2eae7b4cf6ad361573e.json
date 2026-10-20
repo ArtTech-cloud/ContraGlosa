@@ -1,0 +1,41 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01L1rYz3JmzRRknz3xeAR1yd",
+    "name": "calcular_intervalo",
+    "input": {
+     "data_inicio": "20/08/2026",
+     "data_fim": "03/09/2026"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_014AwmhU6V6HehAeTLAh8y8q",
+    "name": "calcular_intervalo",
+    "input": {
+     "data_inicio": "05/09/2026",
+     "data_fim": "30/09/2026"
+    }
+   }
+  ],
+  "stop_reason": "tool_use",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 1188,
+  "tokens_cache_leitura": 4552,
+  "tokens_cache_escrita": 5543,
+  "latencia_ms": 6968
+ }
+}

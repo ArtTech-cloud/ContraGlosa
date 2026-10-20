@@ -1,0 +1,55 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSkAcKEAgTGAI4AUIIdGhpbmtpbmcSDKi3IzD41edburq2EBoMG/bLORphyWoLc6vgIjA5RULzLlcmcsgzDWAQI5gruYDPF5BLMtgIhp+Xc5Nm0WHoyFfEHqy9x03u2Q5mBJAqrQbxGGcx3R/nuMkv+jEQG5WkY6Q+RiDNAApiMfHUEuxAMq1ymDn4yS7UnVpxe0306wu2Q0jsHMecv/CIv5Lp7CyAtD93J34xDOAELVlS1oeH5gfrlUqjlF+WKUg1CyoWy0J4ysFrApBBKgEBQXYEVF4qDICdsTk8GD6DtNb+tbNfY1OjeM1DU9kt4+R24JRbcA0AKRhdNwvoOB1RzKCvUBkXTjWTBE4rFWVerD4Dbx0S36GRGpYPeIYVbZlFBzbiHBFT2nFvYkSXyuKFQ9y5hMKqtVFKnpM6eKxYNDWlJv1I6iWaVe+KZTtpW3t1PAY0r47lt3uDVD2FWA23yDL1YeqsSETzETJGXCNVWUKrjC6FIv9Uz9dO9TUI3ikzqUyoCLdN1HOth3P0b3CQilEw/Y9+ha3qiglU98py8ipp8AIytiwYxz/Vxs0H2ptptcYqzH6yvYevKpUJj4+RMRnL4jhOHOQX97AHrL+6HfKrS85g9HoREGThGVrZU+ap7bO+nhqWcogSu5hz6EWHWRzm0IiwDBWKCzxj1OlaJWxOywO1HFgOKMX4XMNBAFnD3PV7wupo0S5MHWSZZzGaG1PXfV/zBaYe78vwZhz12DKyi+Paj33auhIVlTvWiS4h9r5iXCzF+590YeFLORCN53+z9QCa5LM5RS2Es1QWpckqeSEWf1hTDE42XgYd9NZTOo1br2zI5+X96aaXvIMlNAp9KzZ2pIZQqA/Rdd3if7MEgUOBKbuuLkNZz/7HcVZ0dXbUsycPEvXjeX7KqN3kt97HaxZNr8d0vfpqzdboQXPZEZW3CRr8uYYEkMBw6o45v3tF0iYVjgTry5/Fu8fq/9UnJVPJAKtdBZ8VmOfbLP8G0nA2+GCHopMSYlDMLexmiykE6mK4M0Cgo8+Habe/HH0qEDR0mfUwrLHVQ5nZmOFSZTABJBpUgTmvZdNnJcfJmRvdGweE6xzazF/kNYFUjV0Z8ZC4BUIvyqPGxk3l2cgiGt6keyzNZs0aGJngpyKYlCeYjvm3+BvZ01owWi7YLVH9jvG2K56NItQBTkIqXLZKojh9YPGrNAVwAvjZ2GB67SEYAQ=="
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01TWeSkwbZAHxGxRSgD2zZmp",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "1705"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01MXNLNFYJftgt4yh2Fr7Mck",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "1818"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01PN9kh5hmmCpwe49TQnKnvK",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "3214"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01MXr7xaciSFxDKuMGCvCRNU",
+    "name": "consultar_operadora",
+    "input": {
+     "nome": "CERRADO"
+    }
+   }
+  ],
+  "stop_reason": "tool_use",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 351,
+  "tokens_cache_leitura": 4527,
+  "tokens_cache_escrita": 0,
+  "latencia_ms": 2905
+ }
+}

@@ -1,0 +1,82 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSmAgKEAgTGAI4AUIIdGhpbmtpbmcSDHgkudzEFJPb3SWn2xoMiSErOta5+HdQD8AoIjAqt5M67EcYK6qN+ceyyFr1CP9ebB5MhUyTAvJQgDpOXHESeG0Yz8ATmkSB2CXhr+MqtQe3TK5GnmT9UUXFiFH/3nWyvrbbEqdAXRBdRha6GVH1RMfwNIguL1pemb+l6ZzqzjQiX926Dsrx2jNMvUaQwavk8lehF22Bdd+Ug0ey61ViYZvFIOO15s1rqoWNkvetHe4YjttvLhC4t1J8hI7+gk2inVZetgTuc8prUeq1BXXOft6sVK71HMp6AhfWC/b7D6wccfN5iPeH8BVBL1li29z52qcIKx775pLqEm0B/7Ll3x2VfQY3aqZlGd23oVWYxKUzEC5DUYzFolTBi4w7gM0IEbJR6MYv6q2S6Ejl1evEv+BWmPx4If5N0bpUNLXziKEFnYE1TMcDxOloDKcQJN6rczscUnycq+yXMqISJ8BUbP6aGdEgrGElkpdzbbXuWl/hmYuYu+WPVoawXklDARrfOFe2L7PGLnHF4dcxnPE5x6TmekNiQaob+ZEh2Ar4Gsd8sGpMX6j30reDvxYPpHl2ukFNj2XZqCFfYRIbI4DGOo2WhY3r0aOf5U/MP4YAc3MDuELbKzvMwFLFvstHqtsnB6+EbxKvxrxTxMNmO+aWfIPAKiJkb0FmYAWxOD4Rvr/Dlcz0Bht+73Rs7LXsmBolato/QY9fHVNDHf4PCMoq92jItmQOideqFImK4HNaz7pZR24RXywO2RelwY49SPuK9+LB7ps26l4WnKBWAqaeR8AsmuuNcijKVbCRxWw9nZYdJsnwFelqXQoSWKtVaMZ4hRtDb6aY9kUGsGy26loziydb4ewdCh+zgw6f8WUL9w0DtKXGO6GyHzpjp2wUzE1fiLAPOioZV2/p4tA2QaqDrIx8bSbi7VKxo4ZGXYM+wdDjbw67gCi3kBHV6TiKydf0DgF3XJtDorJmJDhDQK75OQVwFBFweq2haBim6BISX3AhdyA5Nh2vLoAK8D2qbPaO/VpMu7hqqn/VBVuvaN71U8cTl0tgRjvxQO/QacwoDfdTtHtK7vPQ/J3VF2JQe6UEzvmAl63p2keMW+qRL8i6xkzskGoUuAks2705Mxb2Teq1XYHoJLHotOOOpjqWBD+V3IOMyLcyJD/tI21rkQWIXuhQfED9WdDEOhg3Zz8osaOw9wtEBMLRW1+IomyEzhWZKZkFsck5yj4cHFwmAPVOKqjoReKfdOSYxyfb4wy19MRXVY5zyqsugx1HElLzdAl22OdMLTWGpHK+wkQyo0h60MA6ryBSqa3mnJqTxP7a0qB2xMHDPlmTXdzUrqjNFN0YteCKDT/g77uwI0N+PFUu7K8xTMqDGAE="
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_012vbGVeaXEqpUkjAaTSUySf",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "1601"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01MLRyjjQHMgdUZQsHoEnzuf",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "1414"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01RtKPthKpVCkBKnVBsFW7vh",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "3287"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01GSvAwKXca57LnNxWDXsg8B",
+    "name": "consultar_operadora",
+    "input": {
+     "nome": "CERRADO — Operadora de Planos (fictícia)"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01FVTixvzXd7TMT5EMP97aSW",
+    "name": "buscar_base",
+    "input": {
+     "consulta": "reincidência no atendimento glosa 1601 consulta mesmo beneficiário",
+     "k": 5
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_013C7Xs2eK77snTpSa3ptf6W",
+    "name": "buscar_base",
+    "input": {
+     "consulta": "senha de autorização validade glosa 1414 data do atendimento",
+     "k": 5
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_0155kkmVzDc7EWvPyM32c8tR",
+    "name": "buscar_base",
+    "input": {
+     "consulta": "procedimento não coberto pelo plano glosa 3287 recurso",
+     "k": 5
+    }
+   }
+  ],
+  "stop_reason": "tool_use",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 688,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 4552,
+  "latencia_ms": 4016
+ }
+}

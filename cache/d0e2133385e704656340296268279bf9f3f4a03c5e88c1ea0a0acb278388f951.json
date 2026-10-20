@@ -1,0 +1,31 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSrQsKEAgTGAI4AUIIdGhpbmtpbmcSDMR1FmXDpPjaRCJtAhoMKbUsBy5tctQuEZusIjBTAok25BAon2ElO9LgvtEy54rUVHbKMVhrbSWtQDCxvY+QOG4Br/rpSgB8VFB3OE8qygov4ZKkCH1mzHgqTy4ul3aLt+iKYToQhlz35QSKcpLoyTbklX1hSclW4lhG5RRCy4PbAAhAxImIIth4sjJ62NozxSo5H/hrmfmpi4VMNDRRIIWqGPfh1oouMZchr9W2qDHAEfdOA80DewMDiU4jMJ0KwD9fnjbYIcEg0pUQUOpa/kCX/GxquiT+JOzMU7fow+9aLlskEEv3ycgjTW+VsKHFc9jriMXic0XIqukSL0NkoSd1jSi+Db2Gbxjjuabd9gA5NJJrho9cjeUzCleP71JMg6hvaKjyZJOROJTPWf1xgxbfbWkYN04kouvkiksC/56tP3VqtScCVHFGUpiS6pNEdKyICaHSUFGHlmp8Juxbdqie6vvYdKss4T1MBrPq7150983sZv1GF23e77N7lkG9upfHYYAVL8xoXE2Kau0cmrtgPpox+E8AtnHX67Fftek4EljnZH8EpYTTFJP2D1r4Kz0BNbyZq+AU36uhxwsmfBxhB0IJ9eBlm4yxUF/50Sph8zmSneipjnh6gKw2nyOEOE3sJcoe6ZERthK0LFIziSz0H6pz5S/LXpUvrJqTNmBv5tb+4Fc8f52FAZLaeTmuhPtfM/w5asUTb3TJ3twBVCNEIr0HLGSFR43eodxKIEKFe+t9L6BQGG8SsFAYcmtsm9mJRJf16r+ArOBPKyciuAeNnwVS9DgpATglRCSdFBZitzOlSHbPq1SXyZgYwrlOXahSwkm9ac640/Icz5NFzO04MjbRqQ6PeupArv+BAR5s1Ss2aIc54tipxhp6SKBagdRsBUlG7Cbm39itqHA22/Gc60wg2qNpZq6dxdJeojl2cuD7pGglNyxWboDRGDgUniE6VCckIE9T8vJ0Y4qcRzW9zNLEcg2FNKMlwDQ59nuXJ3vAFCP0OnD2iz7I/+ybbnDMWBoT1DZh7f/do6cYCK2tIdfmA1P6EGy1Fz5YVSyPO51nRaavv8IVmaNVrgV1ECkyh8R9ANFNC9noY03PNhuZ9X4XrsGrQdqQxlMMxttozOYzdsopr3hi85G9EyNMfuZEssiFOqmKFEhCpGXojgl0qBVdoZea55hwcQaWCJ2JCQqnh714y102fGr/HAdjhswzVKNpq1/hRwiNGF7GJGb+Oua8xJEhSwkO95s0ru9CtYQNRLzeCtX2+BcX70GvbXaPYNWhLsdiLomHJz1OFxgKcPkbJAEsdQmOEN/OxYGyc9sDXpU4l65/ZVvlIeoghmcBgf4WL0jjLvjGQYh8ib5j0CPH4tV9H716Ro5epRMYf9Gp7yhUFGfs/iAxGw7hUjvUWz72XkCLDHJfFGTnRCcg2reI1WrGs/rf6FDOBd/kRJ1MTDu+h8jnE3j0JKUv06tnWS4IzygEMCIohBCeeET5ip36vzAjPBFg0B7erqEFgGqkyWbIhSC1Fs8U+AbyKxcZBRRwoaBVSu1BY0uknd+bWIDb/ASSIhQxY2tx23VSt0yXz/GVpmRJLb2Dl1paMRaZW+GGGEXSRTbed+GR/hTHP3NngIyOS7N8fzru7LqmeOdqIoyTPFdiDD8FnBrnJq6llJTAcYiMT/H3T1VMoBPM8D6179tYq/5lrjGEZcAnltWsrjsflMSMBDV2J08CJS7U7pAMws7pLrw3RgqPZ+HIC3q3K3UenuDH0GrH1nokDcc9eQHi3ROdeInDVWbeJ5dhGOihn0nS167zTOBPCnyTFrFU8OZ8cP9FLcg48WcYUDlyn01O8LCgOCckgTll3/INslC2BKXFTPoV2VC6Vb+lQI81D+iWqPQxCfLBB7PsjUFHZTO7moChGAE="
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_011sKPReyqBbJEuF5WvcCiCT",
+    "name": "consultar_operadora",
+    "input": {
+     "nome": "CERRADO — Operadora de Planos (fictícia)"
+    }
+   }
+  ],
+  "stop_reason": "tool_use",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 395,
+  "tokens_cache_leitura": 4783,
+  "tokens_cache_escrita": 1175,
+  "latencia_ms": 3141
+ }
+}

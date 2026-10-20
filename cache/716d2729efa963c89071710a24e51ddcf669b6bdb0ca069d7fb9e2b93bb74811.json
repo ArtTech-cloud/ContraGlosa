@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"decisoes\": [\n    {\n      \"item\": 1,\n      \"decisao\": \"recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A guia 408543286 (14/09/2026, CART-f02d494b) foi glosada com código 1823 (retorno). A consulta anterior do mesmo beneficiário é a guia 508099906 (04/08/2026), separada por 41 dias, e o intervalo de retorno da Operadora Aurora é de 30 dias. Como o intervalo é maior que o prazo de retorno, a nova consulta não caracteriza retorno e a glosa pode ser contestada.\",\n      \"fontes\": [\"t38-1823\", \"op-aurora\", \"nota-retorno\"],\n      \"documentos\": [\"Guia 508099906 (consulta de 04/08/2026, CART-f02d494b)\", \"Guia 408543286 (consulta de 14/09/2026, CART-f02d494b)\"]\n    },\n    {\n      \"item\": 3,\n      \"decisao\": \"nao_recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A guia 291981022 (12/09/2026, CART-81b6caae) foi glosada com código 1823. A consulta anterior do mesmo beneficiário é a guia 976636522 (02/09/2026), separada por 10 dias, menos que o intervalo de retorno de 30 dias da Operadora Aurora. Dentro do prazo, a glosa tende a proceder, e o documento não traz evidência em contrário.\",\n      \"fontes\": [\"t38-1823\", \"op-aurora\", \"nota-retorno\"],\n      \"documentos\": []\n    },\n    {\n      \"item\": 4,\n      \"decisao\": \"recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A guia 856639572 (09/09/2026, CART-1e7b73de) apresentou a consulta 10101012 por R$ 135,00, valor igual ao contratado com a Operadora Aurora (R$ 135,00). Foi glosado R$ 15,00 com código 1705 (valor apresentado a maior). Como o valor apresentado não superou o contratado, a diferença glosada pode ser contestada.\",\n      \"fontes\": [\"t38-1705\", \"op-aurora\", \"nota-valor\"],\n      \"documentos\": [\"Guia 856639572 (09/09/2026)\", \"Tabela de preços ou contrato com a Operadora Aurora comprovando o valor de R$ 135,00 para a consulta 10101012\"]\n    }\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 1467,
+  "tokens_cache_leitura": 4345,
+  "tokens_cache_escrita": 3962,
+  "latencia_ms": 6906
+ }
+}

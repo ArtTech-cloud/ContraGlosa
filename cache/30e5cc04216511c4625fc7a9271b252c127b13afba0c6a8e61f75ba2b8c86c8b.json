@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"decisoes\": [\n    {\n      \"item\": 0,\n      \"decisao\": \"nao_recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A glosa 1006 (atendimento após o desligamento do beneficiário) é não recorrível pelo critério do código. O demonstrativo não traz nenhuma evidência de que o beneficiário CART-15471037 estivesse ativo na data do atendimento (04/09/2026) — a cobrança cabe ao paciente ou a outra fonte, não ao recurso.\",\n      \"fontes\": [\"t38-1006\"],\n      \"documentos\": []\n    },\n    {\n      \"item\": 1,\n      \"decisao\": \"nao_recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"Mesma glosa 1006 da guia 600136075 (item 1, glicose, CART-15471037, 04/09/2026). O código é não recorrível e o documento não mostra evidência de que o beneficiário estivesse ativo na data do atendimento. O resultado segue o do item 0.\",\n      \"fontes\": [\"t38-1006\"],\n      \"documentos\": []\n    },\n    {\n      \"item\": 2,\n      \"decisao\": \"recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A glosa 1509 (código CID inválido) é um erro de preenchimento corrigível, e o critério do código é recorrível, com reapresentação da guia com o CID correto. O documento não mostra que a glosa procede. Para o recurso, o faturista deve anexar a guia corrigida com o CID válido e, se houver, o relatório médico.\",\n      \"fontes\": [\"t38-1509\"],\n      \"documentos\": [\"guia 553439227 corrigida com o CID válido\", \"relatório médico, se houver\"]\n    },\n    {\n      \"item\": 4,\n      \"decisao\": \"nao_recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A glosa 3214 (cobrança fora do prazo estipulado no contrato com o prestador) é não recorrível: em regra a glosa procede. O documento não traz nenhuma evidência de que o prazo contratual foi cumprido na guia 967132406 (US - Mamas, 09/09/2026).\",\n      \"fontes\": [\"t38-3214\"],\n      \"documentos\": []\n    }\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 1185,
+  "tokens_cache_leitura": 4786,
+  "tokens_cache_escrita": 1108,
+  "latencia_ms": 5921
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "triagem",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQS+gkKEAgTGAI4AUIIdGhpbmtpbmcSDKVy+g/aOJj93qR3lhoMP3XlvBO86N4R5g3mIjAKVgSs5+CY973bYayibONRPWxyNqJzWI+aVNMu8FBn/CPaIpPCQ9bEvhnZX6GXokkqlwmV0m6NeTvfD/umlCUOkl3RTjQ/1TfjJgseZKiPoBPu+Ek/9/q7/ruHYzcsTMNyqy9l/vjFzP+/uWw/VLhtNaGkR/SPxNeKZlKTH1Px4mkf7QMTlZ+IxwAWomGcOULfdVj0R+M+0g7RX3mn7jFzkqAHgjkyyedfyx+zFAhrc9LVIe3dPaLdu44YN+7u5z9eDRM6AV2fV7obrmataeDonh907t99XEImdeLeJLgizya8yWDMfasK2eZmFuUWzzeYq6qQl/uvwSN5airDaTSxeyvZHaY7gog0OgX7IMQ9zQf+ksCBqu0Fg41NFimkTXPKPyiGCTyHnNYOg3PgBPpFZzgI6MAghOl7/skopZ8uZRvuD7dNACNbpcSILAhdPpqb2upG86V0+KQBRpzkpKSLpRTnGkBe4DmNGkkYaLy0BNaxLSn67eI1f1ygrNNXIs42cxwJUrTI/W5NnqREO9RKgbBvvWQrA8Ex/HwvBXtv3DyqAO13/lVsgVYnEmwVRDpbJvu/d2f5TA5M8uidSLNRSgIL1qyTSJatNpDkbGjHzbwqwDgyh9wVpVfPRWfvTPQ5d2Qkfv4LAYN1O1YFSDXS8YAI4DuI5nza7e2wum7ywuXRdoFfRKOwtt54WTZx05SIHULCt9Rk+s4ri5Edmp4IkQ0SDYHNupeBPsIHsYNfvxXq0soupu3rgGuXFtPB8jhnnz6d+5BkqpUqZfX/NC7/PvcCgLZDXPJMU7DdcS6KGB8YYpBa65iQBttc6Q1C5eR5fVxRLjbgwoLij+bvgfJHOUJbFieYFvtMcMajoksVmTrNhAu21Zq0Pd9nPZinhhL8ehziv6EHan3FLFV8XIOWhzK45rrKPNEZvrn7vnub7QUE926afEww83OXdFx6bxWBHRXFCpPZYlXHYVUTLtvyhlpPYluz5UeeYz/ObbGqEtU+BqjAdsN0qIMfFm01yj/hTiQuuvqGgCmnXwPaU4VJuACFKXP8xUmMmju+eK7S/gvVP3dJFcshChgwK6PTvHnCd5MOGpRx0qqtGtMmf3GjoKxFrqAT3jLP2vQLlca0C1DPXFrn8ixCnn5GFZ9HDe70l4Q7pVNZU1Px76+bH6Y18Pg+0H/lExx8cHqFlCvio3AfI+PB3M9EPupLN6YF/0blllRv55of/0jAfcsAYhOckrpvL7bEqgg+Ok5hui4EVNf0d9CxD/LJjybLsUylqRIg9T/V6ZzvpkxEolnlwFMxq7mruZMF87PjuPjqAuXyMNo0UdaBCTSebHV175EieyN9cd5VllwI1NkNFjAosQq0zwIDeWbIsMTZlDsXLLONvCKnscbuRqrXH04a//vFNhkMCuvpLUFw6vP/lhHCwv4HLEmitY3jL+ihaJLBbDEOuKgGpHuiFgN1qfqcfmsE60K7fDPqEFtiKQ9TUwAQfeWUCUV2rLpxxoqtitJcbZneZgC++ZXmtxjyRCCSlsEjtvWvUdzhuMchuNEkzzzgbSF03fjbX23alSrQHh8RJsg7vPmQ/jC3rK8o80meitKRL9HKjrb5I9urj/AnP/0Eez+UXqE4NbnFgkrvehgB"
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"tipo_documento\": \"demonstrativo_retorno\",\n  \"operadora\": \"Operadora Boreal de Saúde\",\n  \"competencia\": \"09/2026\",\n  \"data_emissao\": \"25/09/2026\",\n  \"protocolo\": \"8800925501\",\n  \"legivel\": true,\n  \"observacao\": \"O cabeçalho traz a indicação 'fictícia, só para demonstração' para operadora e credenciado.\"\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 419,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 2391,
+  "latencia_ms": 2264
+ }
+}

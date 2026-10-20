@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "triagem",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSpQoKEAgTGAI4AUIIdGhpbmtpbmcSDMW0KTgcAIRhfYXJfhoM0SeKHtKn3QLPMMS5IjBZjqZoBcUNWhzA8hkgY5P5Quhv0vcHf8+pJ/ShYXrmtkpRGKKkMtWU+wC9jznt56Eqwgl5uq9gNiOiAqHmx99nxcpyp4dYhHA+v9OAJR5/FTQoNF4Gbn8yqloHDswk8z+bWVGCpw94WbDvy/D1N4V/fCkvCRxbLelitS2cy5ify0BfDQo9iNH5lczynoAW6ouCMJWtZr6UqBRgsES6Vod/1TYTRF6Ja5aYxv3WTVTzkO0ZY9qvPy82sTO1zP//2D7Kcync8zj9V46ws8+sBm8RqRfqclbwbSTsa+9SjL3KQ0pflP6o+NdRVGtqwyu7HoJxrPrF7vqPA+ac4KRC2DNf/AfwiR1A4T/4+nzrCvPgJ13iU/osQcs1AwV15VKLs+rzYPeuBKXrOFzrz/1KrRKeznfAsyW4j9IXq/rqASt+zJDZk4CCKbjNihlAmT1BspYCK2bkZhKtWcIQpYzNThE17vpQMBZ0lHXgl0tayWjWwa1VDn/xPIvU6FXOc3mb3HdjTuCxAXYz0lMoVrp9h3Vk7k3FR9LYHm8AZBnmt/q7lTi6i4gWocb2YQuS5ZcwFmBYDcDHckEsbD/eahJ++hmnjMNzBENgJgTeNmKSHOVHLqOxO9Jqz/UlI8M/WEYJ9r2hKiwlvA7HzZ5JeXBimiBKjQEniiJzwPbURAsYlX9kgO7ybn188D0w4QCbtZRFO0DUdXAIipDGHWhEd2AY70ya5TydBXgJgM6GDBEWSXsnDq/7vioERS4Y6QSIOWp5qc7LZ3g80kpRFsZSoHcQ5eDv/BuAlXI+z2gumT65sDbSqBdMhvZ0YLSQx5G4mcUbLgpXR6Ydw4Ruq2fm+9KjPcGj9Ye+tKmBGI1HOjh/Qx5KMJvDhSAVvI7g5oloD5cD7NUmaKwZZa8bxQA99iK3RKA/4hhDhHfgq42d7eJFyl8Kqbj+a+hAy9TYeC90uFDo4ylTZngB9J0NA1LmdInMDBfSfk2ZHnahBBKiWUx3viTCepdlmV2YPOm6YksLFAQ2ViKpV8yi46JWq5dNyMdxzhm8mWgi1ge8sRzAReyUNx77fbH60oOoMdcP5eoBh6JbVa2wp7BjlwFMbsqe/XRB2nDVPJU8G4Z98DYLeAlr32BZQuuqe8lSg/eiAlo430oZxtsINNits/dOoAaKETg1c/E4WrMB1w/Nyu4cFwLugvuJgU4EHIqr+az+IAv5wsqtPahoobOUsogp5aKtIwlZ0OMmus0Z6fwAuRFLIQ0uGPaYsRgaRGfCkOmrVkBHo6cQzILpBaOMc/dl/N/l+DlqHtb3m9t9rPRTpTaO1KSrQKxm1VURre3lB5P49fLA+z0fky6QKzh1NSjAHFdqBX+AzHc8b8F0+kEFjTxtBHfdAk1q5ua3K67iAAiM4iDBr1rIwR8GUTM1J1ZSZRK+bWNX/fo6/Dls4x2x/DX12As9RbHcQKoNufMQr6n7AyQ51kAgQ9K+nPgyieAveh97id2FT2x4BFDhywgKL16sK/vy3/Vlj+vM259nkpTVPtBD3+FEcS4IN8kN3NzRoGTOKLaZumGoKrgm4cam8OVuuPqi4Ky2laMFSN/1pk1w/d7dIAqsY7UsII0fMDesWougHnuwgeJaH8p5YfBb/P21lhULPJ3ck8qszQ0/pVXmcf28C+FTKCc/1Cm7pP804Wa33v90BH0X9ur+7+4YAQ=="
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"tipo_documento\": \"demonstrativo_retorno\",\n  \"operadora\": \"Operadora Boreal de Saúde\",\n  \"competencia\": \"09/2026\",\n  \"data_emissao\": \"20/09/2026\",\n  \"protocolo\": \"8800920788\",\n  \"legivel\": true,\n  \"observacao\": \"O motivo 2909 da guia 244995772 indica 'PRAZO PARA SOLICITAÇÃO DE RECURSO DE GLOSA PRESCRITO', o que pode impedir o recurso desse item.\"\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 510,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 2108,
+  "latencia_ms": 3016
+ }
+}

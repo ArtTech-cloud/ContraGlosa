@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "triagem",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSyAkKEAgTGAI4AUIIdGhpbmtpbmcSDGK+QfslHF8t6hj5vBoMLeZ8HxRkP1XXm2r3IjCF7WeSlfDilylkIaAowb5m7NI6p0ghblePvqV14h4vsr6TOplrEhLwwWpRSJFTS/Aq5Qi5/VnuxVti++6QIRAMve2Xym072w6pHoXoyKqi73/Y5ucZJTeAn3evu0GdcF/G2h8RGObxenbLlA51hclnTH6j+wZrkMMS5zWbVGFkbYFTvCUdrrAwH15Yh8x0wmtEQrLDqId0ijKNdMvAxNB2T+Z9VbUZ3nZiohzYEwqzI1VwLp1W2lRCf8zYhhq4eO1CZySjUZiqfN8d7QDLg9ITjwzZsCQdb6mRfYhy4wFDjLaZ0BaiLZjkZRDvhG0OfC08W+hCNwBtPp6IxOWwfzAb/9RXmGMlwEjNyIumMLQxYcXv2qHetjRnn4cqraTr1syK/k+vPA/PyRkQEgcUm260J2Bveg5q3UiyU0qSTIUtoyUFF8mXzaWcP03YdRJpyy6exdIZjCzg2Mlk+B+8AFJJ1mohW8l7GcjVclg+iexFe/bZhriFTV2RAgkZoUQIIMRDK7lCLCe5i69d8+UysqYUQZnTS0XncVJGvYyPLPLXB4m/kW6ooQpjbQYMo9hX8yA/kxtts3ksUTfQQGqwMfey/L4HSTYtH8MPoHWuQqcRY/z2Xji230s0QXFXL2YC/FKs33DHqy+bHINFHV7kim1KuA8AU/mA6yGtjvUMBlNh7G7hm1+JlQosFXlDN1MsbzVfdqu4RC57yWdTWVkRHjA0UKxKvxWYGkTjBP0F8cmlHCSZls+KXVNyV4LH5fYGRkYKvUJFfj460UpAkbuGBoMwaqCGZOPRJUfdtaLoElHyflGyxH3KmkHj+Wi9EVMgCCgbHS5H8RgXyP7hQqViOBjXU6dxuSjS3M7utPMtjbGhCHkgqa+WTRcRGhgGjeRAWbzUh5VFzxuzEdc+qmXzFKXuGMB91bCqDd8BEe1sLnOCydMwD64QoDw/vKU2aO6BpDWwuc3JHCeYLmreeRxSJQUwVuyZ7jC9yhu78Sd5l0qb5qUbwgpmL1f2ZREhxF7lbYgyk1msYWlufiyMj+fEa3hBAFQLsbgirrucYZuqGzpB8bghVFBWVSFXGNTvEjOWUlT5xZveTRur9fM9i3Z1MfLQFNuJ1+HAIt1Qkwk7bo+zE8Udu/p++JmeEyPNTmcz3VFxoSjFS/XvhphZ2LiBW+SGLDqEaejyyNHCDFPZvqmK4ObzE0MJkxEgwBh88le8QwOVDsxI9w/51afa6ejHcl+otYUwXpCmd86kLDrAgh1hw2h6nLol8UUxyghdBbqaWmUFu8mBIBl4pIS6TTjUa2LoH0qoRIQm9/3jie7351NlBkRw2W9NwGJrJlXwOL1WS59fuItS0d0PaUywxt/6Gk0TSDAsMUTOadvEBlNQ9ILrgZxwHSq+XQYNViRqDGAy5t2pkG4FnZ/ASz7arvVJksvvipjGBhMdZvosxsbEY5GenhA0EJMzxJPwlsZxmVOZJH+aO4hHwTZNYPtwtVQqsmR4maFXf8S74bVxvCouX2kySiRuNauPb642SXcbc5wuyBqPbPe+dUOEtbx5fdM8aZPIjIX5oMNZlc0YAQ=="
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"tipo_documento\": \"demonstrativo_retorno\",\n  \"operadora\": \"OPERADORA AURORA\",\n  \"competencia\": \"09/2026\",\n  \"data_emissao\": \"01/10/2026\",\n  \"protocolo\": \"2026100114\",\n  \"legivel\": true,\n  \"observacao\": \"A operadora se identifica no cabeçalho como fictícia, criada para demonstração.\"\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 403,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 2010,
+  "latencia_ms": 2718
+ }
+}

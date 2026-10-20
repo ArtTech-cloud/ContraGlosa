@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "triagem",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSpAgKEAgTGAI4AUIIdGhpbmtpbmcSDNUoxvrB5DuR8BH6jxoM2oAy77WK8zarLr4IIjAeh9Um9mbhfQmYMRdRaxFXXKc2htYwGY3qDYuSV/RpxOsIQdKq9tsUEqVEke8ek3YqwQcmxKslbW53Y1mzGdf8bHNqPfylcqooOlg6WIfIAOpWZrQ170BowKfED4PJUKZXO60vb8geypPCOFrULapuaqqq66gZmu/71EnzQmbyzzSsFQ04hNxgzP4IBT2tK+zL1H52p4Q1edJ4AExk6N9MtgDCL08aF9AfsUB0f9a02HZV2be0qCfavU4P/q8XeSFskue8Qn9JFhGceB7NGUNcqFr6dANYKwnJ0H9V8loe489KlSdX0pjJ7PSIk23qnu/PXhk10AilBV6Z5bhwCPqo9wkbq2azXDHvGTccugiDVyAh956BJb6UVUADlI9wulhJiZHE28aPOGCZKSk+2enxJg4HM9xdyO9Yw7MU9kPExI8raffRkeIMn5VJN2EF9XsxeGmldBu15IgVzId0mQ7VKB8bewG+ugq+skOa+pDguhuc1HFqMg2wEOE+agnpn5f5+PGltanbHJT7uft0BsW9T15DB3D+iRkuz6P5q7JIv0ABkXE0j8/KQS1q8AkCsTpiO+MkUsvZCJU17KEfHdHAWPUXciZt0QzK/iEw2/QSqwio5Wz6g468YBWopSdv8+n5cUbs5loHlyjbgo9yFMqPxu5ICJc+Btkv65x2ap2Zr7awGhcg2ELf3MJBBgk5WUG2LAFzCWdS6LqXy6gzKXSluAmSnHU1lHJW6z5J7tsy0gQqYJUucAwkyelUcxARbJbgR7o/DLJ2JZjEcM0YQwXOk55kIwn+77PRv5s98e6Ko7JMpuSArJGWI6POejNVulfYHFOFszzBEM3LfMHYmmX68nEyvI6gQ1ZW7mdX4gw+9UVFpOopzcMSqAuLSP17vzu2w8AjSyxkqkpqM6L4q+gTQ69LMbGXswW0A4OvlPAmDyAOM70tqEXboWOFfMI0JXQPnMsjlWRRWREkxPr9dH2lc2QCQlBK0Es5Ci1lN/7A63l7/8gaoBThw64S2thwwt6Kc/P4XMVJgTNM8Zd4RWgfKk3LFTuDqtl/UfBTITbqhxuU9V9VjPCAKIc1S1KQn57Ebh+dUnlN9Jaq4znVLD43etwZj+tw3cUWRzi7nk4N6o/lRanMfLydQF/ccqXxtObDo4BweGISNVzh2YoilIMiJwI2x5IfvFZOyVJk02EU+5HhM/ZPZWoEB1lh+HSVNxh8beExTtLJ4JCRXYVEovztRyxV/siaTvO696fxhsbG9hYrLJN0SaoeVzI96uFnmKE7xRtM7b/VacDxCKpeUjCEo4yq3Pd1GPADpiX2GboKBQajfK5EU5QC+XEZLuDg+fFHRZ1mGAE="
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"tipo_documento\": \"demonstrativo_retorno\",\n  \"operadora\": \"OPERADORA AURORA\",\n  \"competencia\": \"09/2026\",\n  \"data_emissao\": \"05/10/2026\",\n  \"protocolo\": \"2026100533\",\n  \"legivel\": true,\n  \"observacao\": \"O cabeçalho informa que a operadora é fictícia, criada para demonstração.\"\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 316,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 1949,
+  "latencia_ms": 1717
+ }
+}

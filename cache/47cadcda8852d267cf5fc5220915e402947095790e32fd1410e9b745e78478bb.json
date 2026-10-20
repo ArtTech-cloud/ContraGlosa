@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"decisoes\": [\n    {\n      \"item\": 1,\n      \"decisao\": \"revisao_humana\",\n      \"confianca\": \"media\",\n      \"justificativa\": \"A glosa 3170 (assinatura/carimbo do profissional solicitante inexistente) existe na Tabela 38 e, pela classificação de demonstração, é falha formal sanável por anexação da guia assinada e carimbada. O documento não mostra qual é o problema real na guia 987489848, e a consulta da mesma guia (item 0, p1 l10) foi liberada integralmente, o que sugere que a falha, se existir, pode estar só na glicose ou ser um erro de leitura. Confira no original físico ou no sistema se a guia tem assinatura e carimbo do solicitante antes de recorrer. A classificação 3170 é proposta da equipe, ainda a validar com especialista.\",\n    \"fontes\": [\"t38-3170\"],\n    \"documentos\": [\n      \"Guia original 987489848 (atendimento 01/09/2026), com assinatura e carimbo do profissional solicitante, se a conferência confirmar que faltavam\",\n      \"Demonstrativo de pagamento e glosas, Protocolo nº 8800918230, Lote B-2212, emitido em 18/09/2026 (p1 l11)\",\n      \"Pedido de solicitação da glicose (40302040) assinado pelo profissional solicitante, se houver\"\n    ]\n  }\n]\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 1289,
+  "tokens_cache_leitura": 3467,
+  "tokens_cache_escrita": 1691,
+  "latencia_ms": 7750
+ }
+}

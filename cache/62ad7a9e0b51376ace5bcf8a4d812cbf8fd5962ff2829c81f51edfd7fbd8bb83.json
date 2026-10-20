@@ -1,0 +1,49 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSvgoKEAgTGAI4AUIIdGhpbmtpbmcSDNmQO6arAxWlKaALPRoMWLHQP9Mo8rVIboIGIjCuHXzzN6yuyCC4ADKgpBRopY+iWryPmNqFGumiSusocHqQDmJkKBgTPTGAW+bxG5wq2wn9ZWNovSpHB8NvBkLvgFNwPv05YHfi5WM3fUFA9Ahg7l/+W0QaCerzm5V4eG8wj6v2LXbzS9hhZJMo2DjEAUCwNAbE22qyLfmbgFLV/brSpMbvmYzfAepeWQJUqYk7MBSjS/gG2pkPAEqib/toXv1u4l988nwkMkhcOCrLHb0e+E0Y0iRtED5DK4A6cjyHLmX/dwnffROM3gjjlELp3e0NMnc/5Ooo5GGlqhPzVsXzxJdcnKdHp75ef7WWpM0umDcBTznVAKxkbbXlM3uA/yP6v8OOoeFVijJo2JSkQLZH6d943gkvOj0RnlGu4pgQP85XdO7H8fFFahMw0EIxIGDbv8v1+d723SssdbRNvZ8G1hylWK7u/3OkIUEo2YxLD2WLG6upDjkh5D4rtBFk15WMxF0mk9aFIdNnRKJNfzhHEIUw+O8DTPmIe2VRDlnuKg7OmCTbZP3H9qLlb2m2maa89+Rcsa2DF3H6XGMg9iunun+pY3hb+2nfnWQJURaox9zoynNtuAKSPGlzBavJpEoVMP0t1XGl7ev/gb0jLMaGWSv6ZyyA+2ul0yeUe5HM2h/lYVbDw74FpkAu3Pa3S3lSKqwPgnNFxO+hrMnT5nEvaxe3UU11hD6qLbG25JTWjWo4UshPyONBALLG1/C+W6RgNL5q7kFqyH3M9x8RniaJ8VCy3KTf4SbRXcGhnXieLpb4Cith8RCvriJ1ffuIcF8tsGMtxhNy5hg3Xx38K+hurlSw11rDQj1PZZPs4lq9HCoHRi9MpOyrYVYDTW0OHMs8JvWmx1aJb1bE9UT0DuWc9+7/ODN6LVIditZ9NkdCzC4wRise/YI4GZlGUtkLKoSXbMJkXoS7cmFb9z+gcqIdW4nxk72dUTi9oErxzCFFNyBuKBiDLzryYKZ33vy5ERGinG3JSF9tdqKbkxNGpQug6TJnfcfil0N0LwEc+llrqyAB8xSpAZheX58lajyINl54/6DYmgoe0lQ6sx1W+gQ7ihzOrKoY3NV6Y9v16VarXRlLE/e4oq1fmmQJ5T3yh810/aP4PudJMgStZszrhdDNe/oBQouXiAYjAXc0A6n5+Dqz3TMpofjnHt+kXsJq5osS+TY0cZ2cFQJdpx0pq6CBvmhOtRf+dacLyiAP1JV1pAyvE4cBD17U1GSRw1Ad6dPLlAz1dnY/OSR2ZNQ6/pYsV+G6G+ZLV3U36S9ur4LQ6FVRFq8yS3qctqtYJmmRL1uDZG0XB76yl88p9lOZZaXALxgjHpq/wrGDK2r/3/w93AiU+NNPmk0+/z0QKMxsm8xqZiBH7Ji7ETFdiJyufIkSXEke5Lev8qSB8JUcnQ5liOSOulUdIiLnO0xYuo/dDm5gLI8jzpNfvSe96MN6V0+IvMyS4AV/0XndWfOc8SDmCaznyxWpMKmfFzgfHRay2TU/QwsD8VakPJFfKvmwYvbbsZYn4/2Yphz18az7sjvkdO9PwculvLqoj6YV76TQLl8jfKEDCOQBCBfY7KMFGoVoeHHlkMsgkcE6JWzUnwCdpcRPuTZDR8VB1yghvPfmlygIFpormEeFe7W4cREf+Kv9z5ikpdwODnNZZOhHylMlkhrZVH9FjS93l93jmGCXv7D/6N9GqnUJyKrHTqJ09UpNvXQXwzBkswXHflcjGAE="
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_013HfiaZFa9kvYVSSugeNWHc",
+    "name": "consultar_operadora",
+    "input": {
+     "nome": "CERRADO"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01H6fjQh1XQbjZF315i7Y99u",
+    "name": "calcular_intervalo",
+    "input": {
+     "data_inicio": "20/08/2026",
+     "data_fim": "03/09/2026"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_017iYQz7TRPfkWiV7LoJ8mtB",
+    "name": "buscar_base",
+    "input": {
+     "consulta": "reincidência retorno prazo intervalo consulta operadora",
+     "k": 5
+    }
+   }
+  ],
+  "stop_reason": "tool_use",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 515,
+  "tokens_cache_leitura": 4793,
+  "tokens_cache_escrita": 1192,
+  "latencia_ms": 3547
+ }
+}

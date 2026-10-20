@@ -1,0 +1,40 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSiAYKEAgTGAI4AUIIdGhpbmtpbmcSDN8qfS7vphoFeJcwBhoMZyxrlP/DQzZgVdakIjA5tS/KVTKsq3FH3PjjULc2H2Ld2DPvhaRXvbHghlcTtbe3LPRMFKizQcvNlmPbqo4qpQXjmAVBKahH+8Tp/c9P6whMSQWsyDk2LrGeb/aX17rcM8krOV+EPogW+TXCv0EC7zANKDTvOch1ow59JCEXNqM0UgymMup9OEmH4LpNAf/yNx8K3eu0MqJQa2wsBMj/lOUnxgp9alRJ89iecm76sd3i40XBg7Y7uXl+pTDWKWfPQ8NUrcYbpXa094TRuXrlE2wTvAUFI/nlrB1u7WATKSmMBj58JCUkP5YaeVCeypV2fquyZ3MF5ShLoBvbOq0VDqkxvH2DdrTG3ZXqLmC2PD5Ci0Gxwy2RXY5D+dSMyzlFUHDwEI7gxehH0j5esLqau4odlSt+JN6KGupGkFxqmH2h7DlRwUGWNB8luwRlOI7u6Xi/4WnIzvirMUhaOADbL4WZcqAIruzh/AWkwsMOfNnCwDAXjetRTXCeyrmzaP6ORSClgp0LweynNiuPx8ntoCUww4DLPyPKXFawuWwPr4ae/9tj0Pm+U+1tZBo6KUPX6A0lE+S2ihqFpXR4x/JUAgQbFnMhsUYXp82dqf24kwlLjN7j1IfENdoJRo/mbnFsec2oozIiTjOP0Aq4GPNr+nzPVcdPnqA8qHQqfX98ktidY9w4Daq9UySv6kZcHBTy01GstQVx2cmvoUd8AX3yZiyTSw1lFBDxoSZb0bpRWWDyryjGKPZUcUQPlMwWvPDmzRloqPNbWXwpiq4awU/YUZ34fGykMrMEhdaL0S1qy0R9GjXOF2tLOM1WJ2acuWlHYRvjOmhgIqNs1tdfiVPK6HdqRwPtZJO0RYF+eTcSMft77BJrjU6/M7pealP4W2KiecIKEKXBezTlnsW4+U7BpO/g/yR4yafdMmtAh8j0dVKtjDnRRzelpPIhGoY1A7ZvTUGBU94FQFsH/NfjzeQjJ35ujPbl5BgB"
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_012FbRTr98tK3WwVuNnDViKC",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "3170"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_015xDurGqAzgWUw45Mjsctj5",
+    "name": "buscar_base",
+    "input": {
+     "consulta": "glosa 3170 recorribilidade glicose duplicidade consulta mesmo token CART",
+     "k": 5
+    }
+   }
+  ],
+  "stop_reason": "tool_use",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 231,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 3467,
+  "latencia_ms": 2656
+ }
+}

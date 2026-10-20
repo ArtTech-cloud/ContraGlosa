@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"decisoes\": [\n    {\n      \"item\": 2,\n      \"decisao\": \"recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A glosa 3209 (duplicidade) é recorrível quando as cobranças são de atendimentos distintos. O item 1 (guia 139049847, 03/09/2026) e o item 2 (guia 428883603, 17/09/2026) têm guias e datas diferentes, ambos com o mesmo procedimento 40304361 e quantidade 1, e o item 1 foi pago. O documento não mostra que a glosa procede.\",\n      \"fontes\": [\"t38-3209\"],\n      \"documentos\": [\"Guia 139049847 (atendimento 03/09/2026)\", \"Guia 428883603 (atendimento 17/09/2026)\", \"Demonstrativo do lote B-2207, protocolo 8800912345\"]\n    },\n    {\n      \"item\": 4,\n      \"decisao\": \"nao_recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A glosa 3209 procede quando é o mesmo atendimento cobrado duas vezes. Os itens 3 e 4 são da mesma guia 703413841, mesma data (05/09/2026), mesmo procedimento 40901122 US - Abdome total e quantidade 1. O item 3 já foi pago (148,00), e o item 4 é a segunda cobrança do mesmo atendimento.\",\n      \"fontes\": [\"t38-3209\"],\n      \"documentos\": []\n    },\n    {\n      \"item\": 5,\n      \"decisao\": \"recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A glosa 1818 (exige autorização prévia) é recorrível quando há senha de autorização registrada para o atendimento. A guia 715249714 (atendimento 10/09/2026) traz a senha 48213377 no próprio demonstrativo. A validade da senha não entra no critério desse código.\",\n      \"fontes\": [\"t38-1818\"],\n      \"documentos\": [\"Comprovante da senha de autorização 48213377\", \"Guia 715249714 (atendimento 10/09/2026)\"]\n    }\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 1414,
+  "tokens_cache_leitura": 4902,
+  "tokens_cache_escrita": 884,
+  "latencia_ms": 6922
+ }
+}

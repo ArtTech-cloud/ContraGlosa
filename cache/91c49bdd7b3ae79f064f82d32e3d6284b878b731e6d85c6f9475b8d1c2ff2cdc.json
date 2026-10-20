@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQS/woKEAgTGAI4AUIIdGhpbmtpbmcSDLZufToCTDs2L8AErxoMW2Qwcd4G8+Fw2i6mIjAOtNKNfsQ3E8yU8XfFCXXbNwsr/AcYkDyGU/JpgrHMRoWvTSJ+MI4SQO5v+ctboYUqnAp9sJJOEytbR+5uYV+LhPPPCmtpMU+aTMyqUSTeSjq4SKxSCAueEhPXUxO/Gac2AlCgNDIkSXPpZE63lTcBvD/gtETd2FjOk/KHFUr9PewdOyo/OYfokPEyQnVCa/Wfyhv/1rZ0pjBgmq0WGZ0tICvvBMyEWdaCpKmvQWEbcINYKGdxerPtd014GkTqBPK8z/OFMOQWfI4b3/vXlRlSMfcZ8ASeqRQwi7370siWUimQNcPDHMtSk4tvmIfamOMqiBchLxI9hVMHkeLWPS+ky+C7hdn9kA3CipZN1nwkugpFgaacBcPyj421x6PVsDZTOUDrgFuuTtVGmMGmAVxEVqmCwkwJBFaeFd32tR50wPBpMeydqSSZSDnSI7jvrKVZuw6JHAaUN91UpScA6Clvzv2GRuFCYkhq+OzWEv4VB6hGe8fIFDLMaSof3NJiO5zsZ4slKLuxABYg+KB5vnPcty2qIOqf5qp61H8znUzqOqLGjRmNvW9GuRNoCfVVOEotZRNfSsd97y1s4j6BEhQM+NZCF4/rhYxGbNJ9TKkG+mzEXgByAp1ghhrf5NZ7k1l5AtuS8PE3NJtiEjWofJjp2bY1gark2PAs06el3LRw5c/CXCC+Qr7E+tfD7/2juRqhN/cIeylHqeGZwXfNEJd9uSWMDaae67NJJBO237VZly/sNzv8r6zK+/2HmfLDwtA4zzn+XB/ZJeUODptbwBEyX8kBBgvzpDYU8j00e660Z/yU31UbzSz4TUEOKWQT9rnnbKP4dJFyME0RMT85Dzliqi6pVULJN3zzK9w2kFP6yLTOThDrJiyflRrxUPznsHgftF7ys7lsJ9aSiwQrGIiR6EWECHYfcbDbfuPh8ICPe9OHUQz9VxzAW68fUODs+wYorqNsRYFQ1JC4j/ka2O88nz3yMLIDC16NEGkO1SVMZ2lgePX3eGLOaS0ZaHGXM+MPgiZsIiUeHWRcZoXsFZ5bpKRfZVyKv9bvyfAwqnZ7Mmx7bW1fTj12Fl+nFqRuLPV2AH1EOwW0jaKrnsTVm4IF27ciyH4Rjpjim0ed0wvg4ahZ9Dx+9k8gMqHrkddJvm/4lS9aWGqTDY+7nMlK3cOF0XqksFdsmmmxW7jtPgkxW3x763xkN1kt4y7qv4gEKREMoc0zrArUIMu6U6rYVg6JrCIbGxB4hdMIOsoPtsN7OMcydqLRScMP+EkiAkiuMUMJo8sHcRDfoKG/+u6c7SQGU6rFUsMKGstYs47LS7YIb6Az+PKgKkOwp1uqp9ivU/4twVxn4YN2fKsfOKhPEQODXQ21OVwdpkpUuNLy7ByNp5PEi69V4/DOxlyr93tpJyh+ZoVjvLItrAELO6PesjHF6azc1KNntF7dX0rwcypljTenC015k3X87BN0YFg39qjZ/G7N1t2YWbKuWD+LHoZ3bfXYfTQHAJplSdATSog20+Fv99mG6N+0enuN+JPXoRYiT/ocQBL5EGWO1TBJgPeZR3zpq42qu4vEk/55tumxNUhrfmE8XfuNfG9QkshHM2kTleeq7PUBwoKR46QW6BVjuOD3mB3fobbWotKHCq24cp+SoWUdkLwF76PX6OWqAEGRMOMGJKupLjGyn4/GNBCyPIEEymkHd2IYfWEvfeY5fvDdIEUy922j5bHM6hErS9JFxb8d94a1BfixZmy0P+thvkeh0LFG1FSuJSKcRUSgUXvRzpvlfAnhM885omY0mqZcDD2pR2fGw/47joXq8ooYAQ=="
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"decisoes\": [\n    {\n      \"item\": 2,\n      \"decisao\": \"recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"O código 1509 (CÓDIGO CID INVÁLIDO) existe na Tabela 38 e é classificado como recorrível: é erro de preenchimento corrigível, que se resolve reapresentando a guia com o CID correto. O documento não traz nenhuma evidência de que a glosa proceda. A guia 982692026 (CART-c7161e87, 16/09/2026) teve a consulta 10101012 glosada integralmente (135,00) por esse código.\",\n      \"fontes\": [\"t38-1509\"],\n      \"documentos\": [\"Guia 982692026 corrigida com o CID válido\", \"Relatório médico, se houver\"]\n    },\n    {\n      \"item\": 4,\n      \"decisao\": \"nao_recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"O código 3214 (COBRANÇA FORA DO PRAZO ESTIPULADO NO CONTRATO COM O PRESTADOR) existe na Tabela 38 e é classificado como não recorrível: em regra a glosa procede. O documento não traz evidência explícita de que a cobrança esteve dentro do prazo contratual, então não há base para recurso. A guia 160988000 (CART-57ced807, 18/09/2026) teve a US - Mamas (40901114) glosada integralmente (110,00).\",\n      \"fontes\": [\"t38-3214\"],\n      \"documentos\": []\n    }\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 831,
+  "tokens_cache_leitura": 4160,
+  "tokens_cache_escrita": 724,
+  "latencia_ms": 4500
+ }
+}

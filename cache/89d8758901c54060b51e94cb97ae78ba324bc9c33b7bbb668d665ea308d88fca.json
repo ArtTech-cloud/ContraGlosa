@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQS9AoKEAgTGAI4AUIIdGhpbmtpbmcSDG48Kgo9Kah6MdO/MRoMmQt3+bvpi/EdM6FtIjCuEvMECozDmMFqSChl3vfhHT6djmA8pI4jVk5CDN3HRS4N9gO6i7XK/vnSZNsCDLgqkQoQGY0Va57Ca+Y6Hk0OHAhXbWKVztjYHdI9t9Q3hOrTcGhR5nHekKzxs5XHjtSSHqnwVEVamsXZf9dun0QK8GUV8m+lrj/TGDNhrahnmdsCJRgjYuO6kUuDKIyS2e8JW6Uox5s3FiXcnhTknS0mo//E4TfGkrTjGnfJSvLH1xJ/PEPXFeCvVgBkUu5L9h9ToZ/TsEMSjJnHILAAZw7yvqqkOmNZCSvAmSjDwcT+o9+/o5figYI3qHiwzz7UVg4yipWdBXTFf3HTYfhM2drKCRdyt2dgApKQSyY2bL83Ws6QzXsGAOFjiHJqjOR6h0WVrZ7uT1HQJI7AbofJMkc1hZUKix3u3NcaUkcU+YF5MKgP+wSfXOhEgOUa3mbZDG/a5CoLqcFaqs46RrAPfOeBqL0PbWXHtH+uf+AIEbqydwJKvHyj1KhKJJ0zlqnR3oC6hb4z9mNAnypXrR6W/mKnwLlbbd8fTBRBx8lCw9+y1BaEsRaFK8gGidOUMIM1xHlCtw1MvZZdffWvdgOX3vh4RP07XxO7eUGWBX2bcIhQFgorNdgKE+Hobi5HPBcrQ4GPZNwD33l5CpiFaMSfnP4gY6ZjPTZH5cpQNmV5PtIqMoEcS/mERYYQV8tf3xCaBVpsCPclz31bXwzgfwRq/jtZ0+TglLkucUgAOT+z5Cg7VGLz04G/FsGU4ileajPL7UZSN856HvdD5iLVGIuib15rzohJ/HB/PDC75G/Kp/o0hjQEJJLbGf/W0NfBbX1gBqx72vpDn0Qn3Z4n4jc66VlylT5nIJAYtmK2sQWBhlMOAnMNAjnD0X1sXtEZ8nDN44x/x9yC1PDjuyy/zZ1jMCq7dArflk2vK01q2aO7UK7Aw/GyPYsBEaZw8XxtRVG2q6UYC0quiRxS0R5Swub9oqeREu4jlfuSyeMaf4sjBKk6SJi6UiYmWDYwoLYqIyGTIpQiPslrexwH3zoYiAmr8NzsYUSdGi0yhrAlBmVdfjI5J9IzoP4MVUG0e3MKsE3yrXjNN2w+KNAcHLocqHv027Nzt+qYK1ZJ3UV2N7hXLiIaS6iMeCN40UVHt/zSRwfFG/ZIWVLC+Lb36TtzKF51wnRFKVI9geSLuCXWSTp9sxEhHNoiVVqZP7OKYwvDmhUykM/eXGiFLVOvQuuUog1CEoXce5d2SpzemBk6zo9+oPZFqAinkurQyAD9z7+NqAWEhUkBl69TS7PsSKCb+g3Ng2+t2yytfBFjXzLgJLW6L+u9nShgeOMftE9P1c630byNH24PbziTLLe/PgfkZv20xYkifyBV2ZOMUVIWRMbWr+2jVOis8ffW9AmyPEhoIOYp1RsA8PttmnpU9BXuko59bda7fozoryQpI+8pwBgjh7lqNUL33Svebt/oJyO79pQlqOOUAU3W6PGU4kP8Zd5a+xXY+rgeC69gmVa9LI43+PROpkEp77FIxqzgOFEC17jq3MePY8MDd5An+7QHxzSARggarGc3VuqUxKM2ZKXBLylaMS/eNrjqiKrhUMNUqLzIW1nHxnE/zJ0fy3E9ck/5e6zCeMm/a/SieH/9j/46P01N/UP2ijawyk68bAQOmogq1NC0igerK+8RYN3fpvn2LgnGmMOSOgf75NOqiu+PXOflRp/m00f6QxrDHyoN7nmLhV26yN/5t+urZJltWiXR99ELOv78z4lStuj2U3NmVVVcyCfBNyToid6eHCoj7CJD9aHkA7NzGAE="
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"decisoes\": [\n    {\n      \"item\": 1,\n      \"decisao\": \"nao_recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A guia 334825505 do mesmo beneficiário (CART-a66480cf) é de 20/08/2026, e a guia 600648266 é de 03/09/2026, com 14 dias entre elas. O intervalo de retorno da Operadora Cerrado é de 30 dias, então o atendimento anterior está dentro do prazo e a glosa 1601 tende a proceder, conforme o critério do código.\",\n      \"fontes\": [\"t38-1601\", \"op-cerrado\", \"nota-retorno\"],\n      \"documentos\": []\n    },\n    {\n      \"item\": 2,\n      \"decisao\": \"recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"O demonstrativo informa a senha de autorização 55120943, válida até 30/09/2026. O atendimento da guia 454996519 ocorreu em 05/09/2026, dentro da validade, e o critério do código 1414 torna o item recorrível nessa situação. O documento não traz evidência de que a glosa proceda.\",\n      \"fontes\": [\"t38-1414\"],\n      \"documentos\": [\"Comprovante da senha de autorização 55120943 com a data de validade (até 30/09/2026)\", \"Guia 454996519 (atendimento em 05/09/2026)\"]\n    },\n    {\n      \"item\": 3,\n      \"decisao\": \"revisao_humana\",\n      \"confianca\": \"baixa\",\n      \"justificativa\": \"A glosa 3287 (procedimento sem cobertura pelo plano) depende do contrato do beneficiário CART-4934f447 e do Rol vigente, e o documento não traz essa evidência. O item de consulta da guia 427818492 foi recusado, enquanto a glicose da mesma guia foi aceita, o que deve ser conferido. O código exige análise de especialista.\",\n      \"fontes\": [\"t38-3287\"],\n      \"documentos\": [\"Contrato do plano do beneficiário CART-4934f447\", \"Relatório médico que justifique a consulta\", \"Verificação do procedimento 10101012 no Rol da ANS vigente [FUNDAMENTO A CONFIRMAR]\"]\n    }\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 1097,
+  "tokens_cache_leitura": 5985,
+  "tokens_cache_escrita": 1659,
+  "latencia_ms": 5733
+ }
+}

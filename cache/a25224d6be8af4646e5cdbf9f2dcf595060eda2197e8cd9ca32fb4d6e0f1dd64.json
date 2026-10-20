@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "redacao",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQS4gYKEAgTGAI4AUIIdGhpbmtpbmcSDPceiOMZ5NyfV/QJKBoMP4b78hu0uLBueyuQIjAKQZZRLWitWsEiZSjSOVLXm6QV1vtz/p43nWROHQlymlCCGnvac5rB970woIWDYSMq/wVENhu8xuzszg6u6PahjeTsbtBVaojEdiHelsrIwbRqjk8Nuwrnm7ONeYzFuCqKmffuAHPzRMFohspEoi8sgYtWqJ6DV5cbCxakUbQAVgI+lML4+d6sitjB6sqxiQHifMZbmZrLKRl4lGMp1x8FQ+JsdHDQ7ybzwqbRAADIGITx6j1e1kF6rpPSe6ptfqVCP0C/iRBIA/HpHJS+S5iiopmKADZoNhex0VmwuGFAbYZ5YxftYHCOUiY9AO9y4BqBhybPz8TW31YGfDpShdccjX5ZLOeoR0f4gJN1IYzwaT1wsRKqJM44TJdg5JU8jpAjJgRVKptuxIETLxee+m8uUnxKaTJ080NpVb71mwH0Xc0Qiiuj4wW0osa2tvFRK+ughxJ+Ozwo5JHsfYgr9AqwkQx2+Edow8OavD4YQ31W614YYdECq2j+3O7+iPapZMnq17JLbZjm3cM7bqOX/rSHpFeUXLo1pDHDh4tM0vrAiwnghexwquWSg8PUilnTnxCSSia1EMEIeu9bjW9Ex1g2g8HBTgSAc8z9gPjfOURZDRGSubDlH186hhlzWNeceHi3WQkP9ymNu+wCWsBsbQlXFJToHkBrnTlaIJiizY8E8ZffodhIlxjIkmG11jhqc4zDzYSvhL90EEjRDZihmMZmaJJgc55zgDJQNABai9rAxDjCSanR6knYiWC+dDRhL/bhgjWmuxSn2iXernPJJQdglcUgYc7EccY8B2g0WvbW7p//D8Qqqfh5QAM/KaG70MxkejUTPTLme3xVQeg422UnRxgjb1th+LKUBqyq/o/MiQdiAQ1arkaw5Vy4qrvMznuxlpQg7nfKmggauFBNXYjukN9eD3ldgo558rI/sJtszGuSpvAVCMXGEi6API4b5rDdkQpjSLbVcAtNsmjDvaGuTpaBR/ivYipEmXO+xuegFaT41652tUTxF1Y7S2Yu/++muVtyiGjDZj0I3JwJNPIV2fK5OrtI3+RXhjIwIcGsEoyC1AkkSWzbYluPzSkhhcIm1xgB"
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"recursos\": [\n    {\n      \"item\": 2,\n      \"texto\": \"Recurso de glosa — guia 553439227\\n\\nOperadora: CERRADO — Operadora de Planos (fictícia)\\nProtocolo do lote: 5100260077\\nGuia: 553439227\\nData do atendimento: 07/09/2026\\nBeneficiário: CART-29c61d6e\\nProcedimento: 10101012 Consulta em consultório\\nCódigo da glosa: 1509 — CÓDIGO CID INVÁLIDO [CONFIRMAR DESCRIÇÃO OFICIAL NA TABELA 38]\\nValor apresentado: R$ 142,50\\nValor glosado: R$ 142,50\\n\\nPedido\\nSolicitamos a revisão da glosa e o pagamento do valor glosado, R$ 142,50, referente à guia 553439227.\\n\\nArgumentação\\nA glosa 1509 foi aplicada por inconsistência no código CID informado na guia. Trata-se de erro de preenchimento, que pode ser corrigido sem alteração do atendimento realizado em 07/09/2026.\\n\\nEncaminhamos a guia 553439227 com o código CID corrigido, para que seja reanalisada. Caso a operadora entenda necessário, colocamo-nos à disposição para complementar as informações.\\n\\nSolicitamos, portanto, a revisão da glosa e o processamento do pagamento do valor glosado.\\n\\nFundamento normativo: [FUNDAMENTO A CONFIRMAR]\\n\\nDocumentos anexos:\\n- Guia 553439227 com o código CID corrigido\\n- Relatório médico (se houver)\\n\\nProtocolo do recurso: [A PREENCHER]\\nAssinatura do responsável: [A PREENCHER]\"\n    }\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 717,
+  "tokens_cache_leitura": 1643,
+  "tokens_cache_escrita": 1595,
+  "latencia_ms": 2672
+ }
+}
