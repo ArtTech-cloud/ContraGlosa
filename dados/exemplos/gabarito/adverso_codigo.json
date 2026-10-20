@@ -1,0 +1,117 @@
+{
+  "documento": "adverso_codigo.pdf",
+  "id": "adverso_codigo",
+  "layout": "B",
+  "operadora": "Operadora Boreal",
+  "data_emissao": "20/09/2026",
+  "prazo_recurso_dias": 45,
+  "prazo_final": "04/11/2026",
+  "totais_impressos": {
+    "valor_apresentado": 55890,
+    "valor_glosado": 30040,
+    "valor_pago": 25850
+  },
+  "soma_dos_itens": {
+    "valor_apresentado": 55890,
+    "valor_glosado": 30040,
+    "valor_pago": 25850
+  },
+  "adverso": "codigo_inexistente",
+  "pendencias_esperadas": [
+    "codigo_inexistente"
+  ],
+  "alertas_esperados": [],
+  "valores_em": "centavos",
+  "itens": [
+    {
+      "guia": "741480605",
+      "data_atendimento": "02/09/2026",
+      "codigo_procedimento": "10101012",
+      "pagina": 1,
+      "linha": 10,
+      "legivel": true,
+      "valor_apresentado": 12000,
+      "valor_glosado": 12000,
+      "valor_pago": 0,
+      "codigo_glosa": "1999",
+      "glosa": true,
+      "decisao_esperada": "revisao_humana",
+      "nota": "código não consta na Tabela 38 oficial"
+    },
+    {
+      "guia": "741480605",
+      "data_atendimento": "02/09/2026",
+      "codigo_procedimento": "40304361",
+      "pagina": 1,
+      "linha": 11,
+      "legivel": true,
+      "valor_apresentado": 1850,
+      "valor_glosado": 0,
+      "valor_pago": 1850,
+      "codigo_glosa": null,
+      "glosa": false,
+      "decisao_esperada": null,
+      "nota": ""
+    },
+    {
+      "guia": "141515539",
+      "data_atendimento": "06/09/2026",
+      "codigo_procedimento": "40901122",
+      "pagina": 1,
+      "linha": 14,
+      "legivel": true,
+      "valor_apresentado": 14800,
+      "valor_glosado": 14800,
+      "valor_pago": 0,
+      "codigo_glosa": "1822",
+      "glosa": true,
+      "decisao_esperada": "recorrer",
+      "nota": "anexar o laudo do exame"
+    },
+    {
+      "guia": "141515539",
+      "data_atendimento": "06/09/2026",
+      "codigo_procedimento": "10101012",
+      "pagina": 1,
+      "linha": 15,
+      "legivel": true,
+      "valor_apresentado": 12000,
+      "valor_glosado": 0,
+      "valor_pago": 12000,
+      "codigo_glosa": null,
+      "glosa": false,
+      "decisao_esperada": null,
+      "nota": ""
+    },
+    {
+      "guia": "244995772",
+      "data_atendimento": "08/09/2026",
+      "codigo_procedimento": "40316521",
+      "pagina": 1,
+      "linha": 18,
+      "legivel": true,
+      "valor_apresentado": 3240,
+      "valor_glosado": 3240,
+      "valor_pago": 0,
+      "codigo_glosa": "2909",
+      "glosa": true,
+      "decisao_esperada": "nao_recorrer",
+      "nota": "prazo do recurso já prescrito"
+    },
+    {
+      "guia": "244995772",
+      "data_atendimento": "08/09/2026",
+      "codigo_procedimento": "10101012",
+      "pagina": 1,
+      "linha": 19,
+      "legivel": true,
+      "valor_apresentado": 12000,
+      "valor_glosado": 0,
+      "valor_pago": 12000,
+      "codigo_glosa": null,
+      "glosa": false,
+      "decisao_esperada": null,
+      "nota": ""
+    }
+  ]
+}

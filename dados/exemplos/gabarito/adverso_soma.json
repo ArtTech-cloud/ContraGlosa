@@ -1,0 +1,117 @@
+{
+  "documento": "adverso_soma.pdf",
+  "id": "adverso_soma",
+  "layout": "A",
+  "operadora": "Operadora Aurora",
+  "data_emissao": "05/10/2026",
+  "prazo_recurso_dias": 30,
+  "prazo_final": "04/11/2026",
+  "totais_impressos": {
+    "valor_apresentado": 64440,
+    "valor_glosado": 24500,
+    "valor_pago": 29940
+  },
+  "soma_dos_itens": {
+    "valor_apresentado": 54440,
+    "valor_glosado": 24500,
+    "valor_pago": 29940
+  },
+  "adverso": "soma_divergente",
+  "pendencias_esperadas": [
+    "soma_divergente"
+  ],
+  "alertas_esperados": [],
+  "valores_em": "centavos",
+  "itens": [
+    {
+      "guia": "248769282",
+      "data_atendimento": "15/09/2026",
+      "codigo_procedimento": "10101012",
+      "pagina": 1,
+      "linha": 7,
+      "legivel": true,
+      "valor_apresentado": 13500,
+      "valor_glosado": 0,
+      "valor_pago": 13500,
+      "codigo_glosa": null,
+      "glosa": false,
+      "decisao_esperada": null,
+      "nota": ""
+    },
+    {
+      "guia": "248769282",
+      "data_atendimento": "15/09/2026",
+      "codigo_procedimento": "40302733",
+      "pagina": 1,
+      "linha": 8,
+      "legivel": true,
+      "valor_apresentado": 2130,
+      "valor_glosado": 0,
+      "valor_pago": 2130,
+      "codigo_glosa": null,
+      "glosa": false,
+      "decisao_esperada": null,
+      "nota": ""
+    },
+    {
+      "guia": "982692026",
+      "data_atendimento": "16/09/2026",
+      "codigo_procedimento": "10101012",
+      "pagina": 1,
+      "linha": 9,
+      "legivel": true,
+      "valor_apresentado": 13500,
+      "valor_glosado": 13500,
+      "valor_pago": 0,
+      "codigo_glosa": "1509",
+      "glosa": true,
+      "decisao_esperada": "recorrer",
+      "nota": "CID inválido é erro corrigível"
+    },
+    {
+      "guia": "982692026",
+      "data_atendimento": "16/09/2026",
+      "codigo_procedimento": "40301605",
+      "pagina": 1,
+      "linha": 10,
+      "legivel": true,
+      "valor_apresentado": 810,
+      "valor_glosado": 0,
+      "valor_pago": 810,
+      "codigo_glosa": null,
+      "glosa": false,
+      "decisao_esperada": null,
+      "nota": ""
+    },
+    {
+      "guia": "160988000",
+      "data_atendimento": "18/09/2026",
+      "codigo_procedimento": "40901114",
+      "pagina": 1,
+      "linha": 11,
+      "legivel": true,
+      "valor_apresentado": 11000,
+      "valor_glosado": 11000,
+      "valor_pago": 0,
+      "codigo_glosa": "3214",
+      "glosa": true,
+      "decisao_esperada": "nao_recorrer",
+      "nota": "conta fora do prazo contratual"
+    },
+    {
+      "guia": "160988000",
+      "data_atendimento": "18/09/2026",
+      "codigo_procedimento": "10101012",
+      "pagina": 1,
+      "linha": 12,
+      "legivel": true,
+      "valor_apresentado": 13500,
+      "valor_glosado": 0,
+      "valor_pago": 13500,
+      "codigo_glosa": null,
+      "glosa": false,
+      "decisao_esperada": null,
+      "nota": ""
+    }
+  ]
+}

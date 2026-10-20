@@ -1,0 +1,132 @@
+{
+  "documento": "adverso_imagem.pdf",
+  "id": "adverso_imagem",
+  "layout": "B",
+  "operadora": "Operadora Boreal",
+  "data_emissao": "18/09/2026",
+  "prazo_recurso_dias": 45,
+  "prazo_final": "02/11/2026",
+  "totais_impressos": {
+    "valor_apresentado": 42500,
+    "valor_glosado": 12690,
+    "valor_pago": 29810
+  },
+  "soma_dos_itens": {
+    "valor_apresentado": 42500,
+    "valor_glosado": 12690,
+    "valor_pago": 29810
+  },
+  "adverso": "pagina_sem_texto",
+  "pendencias_esperadas": [
+    "pagina_ilegivel"
+  ],
+  "alertas_esperados": [],
+  "valores_em": "centavos",
+  "itens": [
+    {
+      "guia": "987489848",
+      "data_atendimento": "01/09/2026",
+      "codigo_procedimento": "10101012",
+      "pagina": 1,
+      "linha": 10,
+      "legivel": true,
+      "valor_apresentado": 12000,
+      "valor_glosado": 0,
+      "valor_pago": 12000,
+      "codigo_glosa": null,
+      "glosa": false,
+      "decisao_esperada": null,
+      "nota": ""
+    },
+    {
+      "guia": "987489848",
+      "data_atendimento": "01/09/2026",
+      "codigo_procedimento": "40302040",
+      "pagina": 1,
+      "linha": 11,
+      "legivel": true,
+      "valor_apresentado": 690,
+      "valor_glosado": 690,
+      "valor_pago": 0,
+      "codigo_glosa": "3170",
+      "glosa": true,
+      "decisao_esperada": "recorrer",
+      "nota": "falta de assinatura é sanável"
+    },
+    {
+      "guia": "810705538",
+      "data_atendimento": "03/09/2026",
+      "codigo_procedimento": "10101012",
+      "pagina": 1,
+      "linha": 14,
+      "legivel": true,
+      "valor_apresentado": 12000,
+      "valor_glosado": 0,
+      "valor_pago": 12000,
+      "codigo_glosa": null,
+      "glosa": false,
+      "decisao_esperada": null,
+      "nota": ""
+    },
+    {
+      "guia": "810705538",
+      "data_atendimento": "03/09/2026",
+      "codigo_procedimento": "40301630",
+      "pagina": 1,
+      "linha": 15,
+      "legivel": true,
+      "valor_apresentado": 720,
+      "valor_glosado": 0,
+      "valor_pago": 720,
+      "codigo_glosa": null,
+      "glosa": false,
+      "decisao_esperada": null,
+      "nota": ""
+    },
+    {
+      "guia": "475047531",
+      "data_atendimento": "05/09/2026",
+      "codigo_procedimento": "10101012",
+      "pagina": null,
+      "linha": null,
+      "legivel": false,
+      "valor_apresentado": 12000,
+      "valor_glosado": 12000,
+      "valor_pago": 0,
+      "codigo_glosa": "1509",
+      "glosa": true,
+      "decisao_esperada": null,
+      "nota": "na página sem texto"
+    },
+    {
+      "guia": "475047531",
+      "data_atendimento": "05/09/2026",
+      "codigo_procedimento": "40316521",
+      "pagina": null,
+      "linha": null,
+      "legivel": false,
+      "valor_apresentado": 3240,
+      "valor_glosado": 0,
+      "valor_pago": 3240,
+      "codigo_glosa": null,
+      "glosa": false,
+      "decisao_esperada": null,
+      "nota": ""
+    },
+    {
+      "guia": "745839883",
+      "data_atendimento": "09/09/2026",
+      "codigo_procedimento": "40304361",
+      "pagina": null,
+      "linha": null,
+      "legivel": false,
+      "valor_apresentado": 1850,
+      "valor_glosado": 0,
+      "valor_pago": 1850,
+      "codigo_glosa": null,
+      "glosa": false,
+      "decisao_esperada": null,
+      "nota": ""
+    }
+  ]
+}
