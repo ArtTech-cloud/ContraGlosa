@@ -7,13 +7,13 @@
 
 | Etapa | Nome | Meta | Prazo (caixa) | Status |
 |---|---|---|---|---|
-| E0 | Repositório e ambiente | base pronta, chave da API conferida, roteiro de entrevista | ter 19h | concluída, exceto E0.4 (**bloqueada: falta `ANTHROPIC_API_KEY`**) |
-| E1 | Fatia ponta a ponta | 1 PDF fictício → glosas → decisão → recurso, na tela | **ter 23h** | concluída com cliente falso; falta rodar com o modelo real (chave) |
+| E0 | Repositório e ambiente | base pronta, chave da API conferida, roteiro de entrevista | ter 19h | concluída |
+| E1 | Fatia ponta a ponta | 1 PDF fictício → glosas → decisão → recurso, na tela | **ter 23h** | concluída |
 | E2 | Dados fictícios + Tabela 38 oficial | 2 layouts obrigatórios (3º se der), 10 documentos, gabarito | qua 13h | concluída (3 layouts) |
 | E3 | Agente robusto | verificadores, fallback, guardrails, trilha, cache | qua 21h | concluída |
-| E4 | Avaliação | métricas contra o gabarito, relatório | qui 12h | código pronto e testado; execução **bloqueada: falta a chave** (E4.1-E4.4) |
-| E5 | Interface da demo | tela final + modo demo offline | qui 20h | concluída; modo offline depende do cache da E4.4. E5.5 [C] não iniciada |
-| E6 | Entregáveis do edital | README do fluxo, BMC, pitch, tarefas de sábado | sex 12h | concluída; pitch aguarda os números da E4 |
+| E4 | Avaliação | métricas contra o gabarito, relatório | qui 12h | concluída: todas as metas batidas com Haiku 5.5 e análise v2 |
+| E5 | Interface da demo | tela final + modo demo offline | qui 20h | concluída; modo offline com cache dos 10 documentos. E5.5 [C] não iniciada |
+| E6 | Entregáveis do edital | README do fluxo, BMC, pitch, tarefas de sábado | sex 12h | concluída, com os números reais no pitch e no README |
 | E7 | Instalação do zero + revisão | demo roda de um clone limpo; subagente tenta quebrar | sex 16h | concluída (E7.1 a E7.4) |
 
 **Regras de corte:**

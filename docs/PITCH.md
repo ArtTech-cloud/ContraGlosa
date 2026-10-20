@@ -40,14 +40,15 @@ Modo demo ligado. Abas: Análise e Todos os exemplos.
 > "Não confiamos no olho. Temos 10 demonstrativos fictícios com gabarito, em 3 layouts, 4 deles feitos para quebrar
 > o agente. Medimos:"
 
-- Glosas encontradas: [recall real]. Meta: ≥ 95%.
-- Valores exatos ao centavo: [real]. Meta: 100%.
-- Decisão igual ao gabarito: [real]. Meta: ≥ 80%.
-- Casos adversos tratados: [x de 4].
-- Custo por documento: [US$ real].
+- Glosas encontradas: 100% (30 de 30). Meta: ≥ 95%.
+- Valores exatos ao centavo: 100%. Meta: 100%.
+- Decisão igual ao gabarito: 100% na versão atual. Meta: ≥ 80%.
+- Casos adversos tratados: 4 de 4.
+- Custo: cerca de US$ 0,003 por documento com o Claude Haiku 5.5; menos de US$ 0,20 em todo o desenvolvimento.
 
-> "[Se houve melhoria entre versões: 'Na primeira versão do prompt, a decisão acertava X%. Ajustamos e chegou a
-> Y%.'] [Se alguma meta não bateu: diga o número real e o que foi feito.]"
+> "Na primeira versão, a decisão acertava 78,6%. O próprio agente nos mostrou um erro nos dados de teste, e
+> ajustamos o prompt da análise: chegou a 100%. Mas são 30 glosas, e o ajuste foi feito olhando esses mesmos
+> erros. O próximo passo é medir em documentos que o agente nunca viu."
 
 ## 4. Diferencial e modelo de negócio — 2:15 a 2:45
 
@@ -77,7 +78,7 @@ Modo demo ligado. Abas: Análise e Todos os exemplos.
 5. **"Como vocês sabem que funciona?"** Avaliação contra gabarito com métricas fixadas antes de construir, em
    `avaliacao/RESULTADO.md`, com data, modelo e versão dos prompts.
 6. **"Quem paga e quanto custa rodar?"** A clínica paga assinatura. O custo de API por documento é medido pela
-   trilha: [US$ real por documento].
+   trilha: cerca de US$ 0,003 por documento com o Claude Haiku 5.5 (`avaliacao/RESULTADO.md`).
 
 ## Plano B se a demo falhar
 

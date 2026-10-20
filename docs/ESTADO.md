@@ -2,17 +2,14 @@
 
 Resumo para a equipe chegar no sábado com o projeto instalado.
 
-## Bloqueio principal: falta a chave da API
+## Situação
 
-Até agora, **nenhuma chamada ao modelo real foi feita**, porque o ambiente de construção não tinha
-`ANTHROPIC_API_KEY`. Tudo o que depende do modelo foi construído e testado com um cliente falso, mas três coisas
-só existem depois de rodar com a chave:
+O agente já rodou no modelo real, o Claude Haiku 5.5. O teste de fumaça passou, a avaliação tem números reais e o
+cache do modo demo cobre os 10 documentos com a configuração padrão. A demo roda offline em menos de 1 segundo por
+documento.
 
-1. o teste de fumaça da API (E0.4);
-2. os números reais da avaliação (E4.1 a E4.3), em `avaliacao/RESULTADO.md`;
-3. o cache do modo demo (E4.4), em `cache/`. **Sem ele, o modo demo mostra "sem resposta em cache".**
-
-Para destravar, com a chave no `.env` (copie de `.env.example`):
+Se alguém mudar um prompt, um documento ou a base, o cache daquela parte deixa de valer. Nesse caso, rode de novo
+com a chave no `.env` (copie de `.env.example`):
 
 ```bash
 python -m agente.fumaca
@@ -24,6 +21,7 @@ python -m agente.avaliar
 
 A avaliação roda os 10 documentos, grava o relatório e popula o cache de uma vez. Depois, faça o commit de
 `cache/` e de `avaliacao/`. Deixe `PSEUDONIMO_SEGREDO` vazio, senão o cache não serve para o resto da equipe.
+Ative o ambiente antes (`.venv\Scripts\activate`): com o Python global falta o `rank_bm25`.
 
 ## O que funciona
 
@@ -44,14 +42,16 @@ A avaliação roda os 10 documentos, grava o relatório e popula o cache de uma 
 
 ## Métricas atuais
 
-Ainda não há métricas do modelo real. A avaliação contra o gabarito foi validada com o cliente falso: ela dá 100%
-quando as respostas são as do gabarito e detecta decisão errada, injeção obedecida e glosa perdida.
+Com o Claude Haiku 5.5 e o prompt de análise v2, todas as metas foram batidas: recall, valores, decisão,
+evidência e casos adversos em 100%. A latência média foi de 20,7 s por documento ao vivo, e o custo, de US$ 0,03
+pelos 10 documentos. A primeira versão acertava 78,6% das decisões. A evolução e a leitura honesta desses números
+estão em `avaliacao/RESULTADO.md`.
 
 ## O que está frágil
 
-- **Prompts nunca rodaram no modelo real.** É provável que a primeira avaliação mostre ajustes a fazer,
-  principalmente na extração do layout Boreal (beneficiário só no cabeçalho da guia) e na análise de retorno e
-  duplicidade. Esse é o trabalho da pessoa 1 no sábado.
+- **100% em 30 glosas não é garantia.** O prompt v2 foi ajustado olhando os erros deste mesmo conjunto. Medir em
+  documentos novos, que o agente nunca viu, é o trabalho mais útil da pessoa 1 e da pessoa 2 no sábado.
+- **O modelo varia.** Duas rodadas iguais da v1 deram 78,6% e 82,1%. Para comparar versões, rode mais de uma vez.
 - **Modelo Haiku 5.5.** É o padrão desde 20/10/2026 (D29): mais barato e rápido, mas é o menor modelo. Se a
   avaliação ficar abaixo das metas, teste `AGENTE_ESFORCO=high` ou `AGENTE_MODELO=claude-sonnet-5-5`, sempre medindo
   com `python -m agente.avaliar`. O Haiku não tem fallback de recusa no servidor; uma recusa vira pendência.

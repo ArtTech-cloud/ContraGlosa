@@ -102,3 +102,21 @@ Tudo o que ele confirmou foi corrigido, com um teste de regressão em `tests/tes
   Sonnet e Opus). O pensamento adaptativo fica ligado, porque a documentação avisa que, com ele desligado, o Haiku pode
   pular uma chamada de ferramenta necessária quando a resposta também precisa sair em JSON. `CLAUDE.md`, `PLANO.md`
   e `.env.example` foram atualizados. As metas da avaliação não mudam.
+
+## E4 — Avaliação com o modelo real
+
+- **D30 · Dados corrigidos pelo que o agente apontou.** Na primeira avaliação, o agente mandou para revisão humana a
+  glosa 1006 (beneficiário desligado) do `aurora_01`. O motivo: o mesmo beneficiário tinha outro exame pago no mesmo
+  dia, na mesma guia. Ele estava certo, e o erro era dos dados fictícios. O `adverso_injecao` tinha a mesma falha. Nos
+  dois, o exame da mesma guia passou a ser glosado também com 1006. O total de glosas foi de 28 para 30. As duas
+  primeiras linhas da evolução usam os dados antigos.
+- **D31 · Prompt de análise v2 como padrão.** Com o v1, o Haiku pedia revisão humana em códigos "sim" e "não" por
+  falta de informação, e exigia a validade da senha no código 1818. O v2 manda seguir o critério desses códigos e
+  usar só o que o critério pede. A nota de autorização da base também ficou explícita. Decisão: de 90% para 100%.
+  Risco: o ajuste foi feito olhando os erros do mesmo conjunto de avaliação.
+- **D32 · Falso positivo no verificador de recurso.** A regra nova da D24, que recusa código de 8 dígitos fora da
+  Tabela 22, recusou uma senha de autorização de 8 dígitos. Agora a senha do item e números rotulados como senha ou
+  autorização são aceitos, com teste de regressão.
+- **D33 · Cache do modo demo.** O cache em `cache/` foi gerado pelas rodadas reais da avaliação. Ele cobre a
+  configuração padrão (análise v2) dos 10 documentos e também as respostas da v1. Nenhum arquivo do cache tem dado
+  pessoal (conferido com `dados_pessoais_restantes`). Custo de API do desenvolvimento até aqui: cerca de US$ 0,15.

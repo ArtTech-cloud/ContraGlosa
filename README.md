@@ -141,6 +141,19 @@ validado. Se a validação falhar, a etapa refaz com o erro como contexto, no m�
 de construir: recall de glosas ≥ 95%, valores exatos 100%, decisão igual ao gabarito ≥ 80%, casos adversos 100% e
 evidência correta ≥ 90%.
 
+Resultado com o Claude Haiku 5.5 (20/10/2026):
+
+| O que medimos | Primeira versão | Versão atual | Meta |
+|---|---|---|---|
+| Glosas encontradas (recall) | 100% | 100% | ≥ 95% |
+| Valores exatos ao centavo | 100% | 100% | 100% |
+| Decisão igual ao gabarito | 78,6% | 100% | ≥ 80% |
+| Casos adversos tratados | 4 de 4 | 4 de 4 | 100% |
+| Evidência (página e linha) | 100% | 100% | ≥ 90% |
+
+O caminho de uma coluna para a outra, e o porquê de 100% em 30 glosas não ser garantia, está na seção "Leitura
+honesta" do relatório.
+
 ## Segurança e LGPD
 
 - **Pseudonimização antes do LLM.** Nome e CPF saem do texto; o número da carteira vira um token HMAC
