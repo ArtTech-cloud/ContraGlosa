@@ -170,6 +170,9 @@ def extrair(caminho_zip: Path) -> None:
 
 
 if __name__ == "__main__":
+    for _s in (sys.stdout, sys.stderr):
+        if hasattr(_s, "reconfigure"):
+            _s.reconfigure(encoding="utf-8", errors="replace")
     if len(sys.argv) != 2:
         raise SystemExit(__doc__)
     extrair(Path(sys.argv[1]))

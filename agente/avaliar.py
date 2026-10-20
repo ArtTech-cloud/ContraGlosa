@@ -228,12 +228,20 @@ def escrever_relatorio(ag: dict, metricas: list[dict], meta: dict, historico: li
     return "\n".join(L) + "\n"
 
 
+def _utf8() -> None:
+    """O console do Windows usa cp1252 por padrão; força UTF-8 para acentos e setas."""
+    for s in (sys.stdout, sys.stderr):
+        if hasattr(s, "reconfigure"):
+            s.reconfigure(encoding="utf-8", errors="replace")
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--docs", help="ids separados por vírgula (padrão: todos)")
     ap.add_argument("--demo", action="store_true", help="força MODO_DEMO=1 (só cache)")
     ap.add_argument("--sem-historico", action="store_true", help="não registra no histórico")
     a = ap.parse_args(argv)
+    _utf8()
     if a.demo:
         os.environ["MODO_DEMO"] = "1"
     from agente.llm import ClienteAnthropic
@@ -258,9 +266,12 @@ def main(argv: list[str] | None = None) -> int:
             + (" [INTERROMPIDO]" if m["interrompido"] else ""),
             flush=True,
         )
-        if res.interrompido and any(p.tipo == "erro_api" for p in res.pendencias):
+        if res.interrompido:
             print("  " + res.pendencias[-1].motivo)
-            print("Parando: a API recusou a chamada. Confira a chave e o crédito.")
+            if any(p.tipo == "sem_cache" for p in res.pendencias):
+                print("Parando: o cache do modo demo não tem esta análise. Rode sem --demo, com a chave no .env.")
+            else:
+                print("Parando: a API recusou a chamada. Confira a chave e o crédito.")
             break
     ag = agregar(metricas)
     meta = {

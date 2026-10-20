@@ -1185,4 +1185,7 @@ def gerar() -> list[dict]:
 
 
 if __name__ == "__main__":
+    from agente.avaliar import _utf8
+
+    _utf8()
     gerar()
