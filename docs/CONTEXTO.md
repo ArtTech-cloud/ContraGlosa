@@ -35,8 +35,8 @@ documentação do fluxo (`README.md` e `docs/fluxo.md`). Tudo precisa estar no G
 ### Status das etapas do `PLANO.md`
 
 Todas as etapas E0 a E7 estão concluídas. Só não foi feita a E5.5 [C], o extra opcional de ler página escaneada com
-a visão do modelo. A árvore de trabalho está limpa: nada pendente de commit. O repositório **ainda não tem remoto**;
-push só com o OK do Arthur.
+a visão do modelo. A árvore de trabalho está limpa: nada pendente de commit. O repositório já está no GitHub (ArtTech-cloud/ContraGlosa).
+Novo push só com o OK do Arthur.
 
 ## 3. Números reais
 
