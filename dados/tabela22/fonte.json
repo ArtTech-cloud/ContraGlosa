@@ -1,0 +1,16 @@
+{
+  "url": "https://www.ans.gov.br/arquivos/extras/tiss/Padrao_TISS_Representacao_de_Conceitos_em_Saude_202609.zip",
+  "data_acesso": "2026-10-20",
+  "sha256_zip": "7f3d7a9794a8929fddd6f13af26dd9496087bf8b8670f275bd7ecd9a2f64172d",
+  "arquivo_origem": "Padrao_TISS_Representacao_de_Conceitos_em_Saude_202609/TUSS 22 - PROCEDIMENTOS E EVENTOS EM SAÚDE - VERSÃO 202609.xlsx",
+  "aba": "Tab 22  VERSÃO 202609",
+  "cabecalho": [
+    "Código do Termo",
+    "Termo",
+    "Descrição Detalhada",
+    "Data de início de vigência",
+    "Data de fim de vigência",
+    "Data de fim de implantação"
+  ],
+  "total_codigos": 5969
+}

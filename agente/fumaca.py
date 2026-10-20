@@ -40,7 +40,9 @@ def main() -> int:
         print("Sem conexão com a API.")
         return 1
     texto = "".join(b.text for b in resp.content if b.type == "text")
-    print(f"modelo={resp.model} resposta={texto!r} tokens_in={resp.usage.input_tokens} tokens_out={resp.usage.output_tokens}")
+    print(
+        f"modelo={resp.model} resposta={texto!r} tokens_in={resp.usage.input_tokens} tokens_out={resp.usage.output_tokens}"
+    )
     return 0
 
 
