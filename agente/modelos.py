@@ -206,3 +206,43 @@ class PassoTrilha(_Base):
     tokens_saida: int = 0
     latencia_ms: int = 0
     do_cache: bool = False
+
+
+class GlosaAnalisada(_Base):
+    item: int
+    guia: str
+    codigo_procedimento: str
+    codigo_glosa: str | None
+    descricao_oficial: str | None
+    existe_t38: bool
+    valor_glosado: int  # centavos
+    pagina: int
+    linha: int
+    decisao: Decisao
+    confianca: Confianca
+    justificativa: str
+    fontes: list[str] = Field(default_factory=list)
+    documentos: list[str] = Field(default_factory=list)
+    origem: Literal["agente", "codigo"] = "agente"
+    evidencia_ok: bool = True
+
+
+class Resultado(_Base):
+    documento: str
+    sha256: str = ""
+    triagem: Triagem | None = None
+    itens: list[ItemExtraido] = Field(default_factory=list)
+    totais: TotaisImpressos | None = None
+    glosas: list[GlosaAnalisada] = Field(default_factory=list)
+    recursos: list[Recurso] = Field(default_factory=list)
+    pendencias: list[Pendencia] = Field(default_factory=list)
+    alertas: list[Alerta] = Field(default_factory=list)
+    painel: dict = Field(default_factory=dict)
+    trilha: list[PassoTrilha] = Field(default_factory=list)
+    versoes_prompt: dict[str, str] = Field(default_factory=dict)
+    modelo: str = ""
+    tokens_entrada: int = 0
+    tokens_saida: int = 0
+    custo_usd: float = 0.0
+    latencia_ms: int = 0
+    interrompido: bool = False
