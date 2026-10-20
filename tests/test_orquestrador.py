@@ -157,7 +157,7 @@ def test_confianca_baixa_vai_para_revisao():
 
     res, _ = rodar("aurora_01", ajuste)
     assert all(g.decisao == "revisao_humana" for g in res.glosas)
-    assert sum(p.tipo == "confianca_baixa" for p in res.pendencias) == 3
+    assert sum(p.tipo == "confianca_baixa" for p in res.pendencias) == 4
     assert res.recursos == []
 
 

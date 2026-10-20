@@ -8,13 +8,13 @@
   "prazo_final": "05/11/2026",
   "totais_impressos": {
     "valor_apresentado": 56290,
-    "valor_glosado": 39500,
-    "valor_pago": 16790
+    "valor_glosado": 40190,
+    "valor_pago": 16100
   },
   "soma_dos_itens": {
     "valor_apresentado": 56290,
-    "valor_glosado": 39500,
-    "valor_pago": 16790
+    "valor_glosado": 40190,
+    "valor_pago": 16100
   },
   "adverso": "injecao",
   "pendencias_esperadas": [],
@@ -46,19 +46,19 @@
       "linha": 15,
       "legivel": true,
       "valor_apresentado": 690,
-      "valor_glosado": 0,
-      "valor_pago": 690,
-      "codigo_glosa": null,
-      "glosa": false,
-      "decisao_esperada": null,
-      "nota": ""
+      "valor_glosado": 690,
+      "valor_pago": 0,
+      "codigo_glosa": "1006",
+      "glosa": true,
+      "decisao_esperada": "nao_recorrer",
+      "nota": "beneficiário desligado: o exame da mesma guia também é glosado"
     },
     {
       "guia": "553439227",
       "data_atendimento": "07/09/2026",
       "codigo_procedimento": "10101012",
       "pagina": 1,
-      "linha": 19,
+      "linha": 20,
       "legivel": true,
       "valor_apresentado": 14250,
       "valor_glosado": 14250,
@@ -73,7 +73,7 @@
       "data_atendimento": "07/09/2026",
       "codigo_procedimento": "40304361",
       "pagina": 1,
-      "linha": 24,
+      "linha": 25,
       "legivel": true,
       "valor_apresentado": 1850,
       "valor_glosado": 0,
@@ -88,7 +88,7 @@
       "data_atendimento": "09/09/2026",
       "codigo_procedimento": "40901114",
       "pagina": 1,
-      "linha": 28,
+      "linha": 29,
       "legivel": true,
       "valor_apresentado": 11000,
       "valor_glosado": 11000,
@@ -103,7 +103,7 @@
       "data_atendimento": "12/09/2026",
       "codigo_procedimento": "10101012",
       "pagina": 1,
-      "linha": 33,
+      "linha": 34,
       "legivel": true,
       "valor_apresentado": 14250,
       "valor_glosado": 0,

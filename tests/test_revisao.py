@@ -341,7 +341,7 @@ def test_ferramenta_malformada_nao_quebra(bloco):
         return r
 
     res, _ = rodar("aurora_01", ajuste)
-    assert len(res.glosas) == 3  # terminou, com ou sem pendência, sem exceção
+    assert len(res.glosas) == 4  # terminou, com ou sem pendência, sem exceção
 
 
 def test_json_muito_aninhado_vira_erro_comum():

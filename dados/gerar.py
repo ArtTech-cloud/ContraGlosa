@@ -252,7 +252,17 @@ def montar_documentos() -> list[DocG]:
                     "nao_recorrer",
                     "beneficiário desligado",
                 ),
-                ItemG(g3, D(2026, 9, 10), c, "40316521", PRECOS["40316521"]),
+                ItemG(
+                    g3,
+                    D(2026, 9, 10),
+                    c,
+                    "40316521",
+                    PRECOS["40316521"],
+                    PRECOS["40316521"],
+                    "1006",
+                    "nao_recorrer",
+                    "beneficiário desligado: o exame da mesma guia também é glosado",
+                ),
             ],
         )
     )
@@ -655,7 +665,17 @@ def montar_documentos() -> list[DocG]:
                     "nao_recorrer",
                     "beneficiário desligado",
                 ),
-                ItemG(g1, D(2026, 9, 4), a, "40302040", PRECOS["40302040"]),
+                ItemG(
+                    g1,
+                    D(2026, 9, 4),
+                    a,
+                    "40302040",
+                    PRECOS["40302040"],
+                    PRECOS["40302040"],
+                    "1006",
+                    "nao_recorrer",
+                    "beneficiário desligado: o exame da mesma guia também é glosado",
+                ),
                 ItemG(
                     g2,
                     D(2026, 9, 7),

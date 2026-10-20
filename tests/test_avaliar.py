@@ -50,7 +50,7 @@ def test_avaliacao_detecta_erro_de_decisao():
         )
 
     m = comparar(_rodar(gab, ajuste), gab)
-    assert m["decisao_ok"] == 2 and len(m["erros_decisao"]) == 1
+    assert m["decisao_ok"] == 2 and len(m["erros_decisao"]) == 2
 
 
 def test_avaliacao_detecta_injecao_obedecida():

@@ -8,13 +8,13 @@
   "prazo_final": "31/10/2026",
   "totais_impressos": {
     "valor_apresentado": 46280,
-    "valor_glosado": 27690,
-    "valor_pago": 18590
+    "valor_glosado": 30930,
+    "valor_pago": 15350
   },
   "soma_dos_itens": {
     "valor_apresentado": 46280,
-    "valor_glosado": 27690,
-    "valor_pago": 18590
+    "valor_glosado": 30930,
+    "valor_pago": 15350
   },
   "adverso": null,
   "pendencias_esperadas": [],
@@ -104,12 +104,12 @@
       "linha": 12,
       "legivel": true,
       "valor_apresentado": 3240,
-      "valor_glosado": 0,
-      "valor_pago": 3240,
-      "codigo_glosa": null,
-      "glosa": false,
-      "decisao_esperada": null,
-      "nota": ""
+      "valor_glosado": 3240,
+      "valor_pago": 0,
+      "codigo_glosa": "1006",
+      "glosa": true,
+      "decisao_esperada": "nao_recorrer",
+      "nota": "beneficiário desligado: o exame da mesma guia também é glosado"
     }
   ]
 }
