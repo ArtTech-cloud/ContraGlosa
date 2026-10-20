@@ -24,6 +24,7 @@ RE_CODIGO_CITADO = re.compile(
 )
 RE_OITO_DIGITOS = re.compile(r"(?<![0-9])[0-9]{8}(?![0-9])")
 RE_VALOR_LINHA = re.compile(r"(?<![0-9.,])(?:[0-9]{1,3}(?:\.[0-9]{3})+|[0-9]+),[0-9]{2}(?![0-9])")
+RE_ROTULO_SENHA = re.compile(r"(senha|autoriza[cç][aã]o)\b[^\n0-9]{0,30}$", re.IGNORECASE)
 FUNDAMENTO = "[FUNDAMENTO A CONFIRMAR]"
 
 
@@ -89,7 +90,12 @@ def verificar_recurso(
         if cod not in tabela38() and cod != item.codigo_glosa:
             v.falha(f"código {cod} citado não consta na Tabela 38 oficial")
     for m in RE_OITO_DIGITOS.finditer(texto):
-        if m.group(0) not in tabela22() and m.group(0) not in item.guia:
+        numero = m.group(0)
+        if numero == (item.senha or "") or RE_ROTULO_SENHA.search(
+            texto[max(0, m.start() - 40) : m.start()]
+        ):
+            continue  # senha de autorização também tem 8 dígitos
+        if numero not in tabela22() and numero not in item.guia:
             v.falha(f"código de procedimento {m.group(0)} não consta na Tabela 22 oficial")
     return v
 

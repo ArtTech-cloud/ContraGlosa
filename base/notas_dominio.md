@@ -41,9 +41,10 @@ o contratado, a glosa da diferença procede.
 
 ## [id: nota-autorizacao]
 fonte: proposta da equipe para esta demonstração.
-Nas glosas de autorização, procure no documento a senha de autorização da guia e a validade dela. Com senha válida
-na data do atendimento, a glosa pode ser contestada com o comprovante. Sem senha no documento, a decisão depende de
-conferência com a recepção.
+Nas glosas de autorização, procure no documento a senha de autorização da guia. No código 1818 (procedimento que
+exige autorização prévia), a senha registrada na guia basta para contestar a glosa com o comprovante; a validade
+não é critério desse código. No código 1414 (senha expirada), compare a validade da senha com a data do
+atendimento. Sem senha no documento, a decisão depende de conferência com a recepção.
 
 ## [id: nota-fundamento]
 fonte: regra do projeto (CLAUDE.md): nenhuma norma citada como vigente sem verificação.

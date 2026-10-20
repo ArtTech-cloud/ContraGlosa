@@ -380,3 +380,13 @@ def test_pdf_com_bom_e_caminho_inexistente(tmp_path):
     with pytest.raises(PDFInvalido):
         extrair_texto(tmp_path / "nao_existe.pdf")
     assert extrair_texto(bytearray(dados)).linhas
+
+
+# falso positivo achado na avaliação real: senha de 8 dígitos tratada como procedimento
+def test_recurso_aceita_senha_de_oito_digitos():
+    it = _it().model_copy(update={"senha": "55120943"})
+    assert verificar_recurso(
+        BOM + "Senha de autorização 55120943, válida na data.", it, PERMITIDOS
+    ).ok
+    assert verificar_recurso(BOM + "Autorização nº 48213377.", _it(), PERMITIDOS).ok
+    assert not verificar_recurso(BOM + "Procedimento 99999999", _it(), PERMITIDOS).ok

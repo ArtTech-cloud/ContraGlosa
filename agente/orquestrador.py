@@ -54,7 +54,7 @@ LINHAS_TRIAGEM = 40
 
 def versoes_prompt() -> dict[str, str]:
     """Versão de cada prompt. AGENTE_PROMPTS='analise=v2,redacao=v2' sobrescreve."""
-    v = {"sistema": "v1", "triagem": "v1", "extracao": "v1", "analise": "v1", "redacao": "v1"}
+    v = {"sistema": "v1", "triagem": "v1", "extracao": "v1", "analise": "v2", "redacao": "v1"}
     for par in filter(None, os.getenv("AGENTE_PROMPTS", "").split(",")):
         etapa, _, ver = par.partition("=")
         v[etapa.strip()] = ver.strip()
