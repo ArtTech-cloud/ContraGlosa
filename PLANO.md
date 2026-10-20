@@ -8,12 +8,12 @@
 | Etapa | Nome | Meta | Prazo (caixa) | Status |
 |---|---|---|---|---|
 | E0 | Repositório e ambiente | base pronta, chave da API conferida, roteiro de entrevista | ter 19h | concluída |
-| E1 | Fatia ponta a ponta | 1 PDF fictício → glosas → decisão → recurso, na tela | **ter 23h** | em andamento (falta E1.6 `app.py`) |
+| E1 | Fatia ponta a ponta | 1 PDF fictício → glosas → decisão → recurso, na tela | **ter 23h** | concluída |
 | E2 | Dados fictícios + Tabela 38 oficial | 2 layouts obrigatórios (3º se der), 10 documentos, gabarito | qua 13h | concluída |
 | E3 | Agente robusto | verificadores, fallback, guardrails, trilha, cache | qua 21h | concluída |
 | E4 | Avaliação | métricas contra o gabarito, relatório | qui 12h | em andamento (falta E4.3-E4.4) |
-| E5 | Interface da demo | tela final + modo demo offline | qui 20h | **próxima** |
-| E6 | Entregáveis do edital | README do fluxo, BMC, pitch, tarefas de sábado | sex 12h | pendente |
+| E5 | Interface da demo | tela final + modo demo offline | qui 20h | concluída (falta E5.5 opcional) |
+| E6 | Entregáveis do edital | README do fluxo, BMC, pitch, tarefas de sábado | sex 12h | **próxima** |
 | E7 | Instalação do zero + revisão | demo roda de um clone limpo; subagente tenta quebrar | sex 16h | pendente |
 
 **Regras de corte:**
