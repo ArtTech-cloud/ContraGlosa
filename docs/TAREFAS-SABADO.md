@@ -43,7 +43,7 @@ python -m pytest -q
 streamlit run app.py
 ```
 
-Leia nesta ordem: `README.md`, `docs/fluxo.md` e `docs/ESTADO.md`.
+Leia nesta ordem: `docs/CONTEXTO.md`, `README.md` e `docs/fluxo.md`.
 
 ## Pessoa 1 — agente e avaliação
 
