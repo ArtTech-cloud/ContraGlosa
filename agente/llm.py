@@ -134,11 +134,12 @@ class ClienteAnthropic:
         )
         self.usar_fallback = os.getenv("AGENTE_FALLBACK", "1") != "0"
         self._cliente = None
-        PASTA_CACHE.mkdir(exist_ok=True)
+        self.pasta_cache = Path(os.getenv("AGENTE_PASTA_CACHE") or PASTA_CACHE)
+        self.pasta_cache.mkdir(parents=True, exist_ok=True)
 
     # ------------------------------------------------------------------ cache
     def _arquivo(self, chave: str) -> Path:
-        return PASTA_CACHE / f"{chave}.json"
+        return self.pasta_cache / f"{chave}.json"
 
     def _ler_cache(self, chave: str) -> RespostaLLM | None:
         arq = self._arquivo(chave)
