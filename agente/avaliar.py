@@ -203,14 +203,14 @@ def escrever_relatorio(ag: dict, metricas: list[dict], meta: dict, historico: li
             "",
             'Cada linha é uma execução completa da avaliação. É o registro de "medimos, melhoramos de X para Y".',
             "",
-            "| Data | Modelo | Prompts | Recall | Valores | Decisão | Evidência | Adversos | Custo |",
-            "|---|---|---|---|---|---|---|---|---|",
+            "| Data | Modelo | Prompts | Recall | Valores | Decisão | Evidência | Adversos | Custo | Nota |",
+            "|---|---|---|---|---|---|---|---|---|---|",
         ]
         for h in historico:
             L.append(
                 f"| {h['data']} | {h['modelo']} | {h['versoes_txt']} | {_pct(h['recall'])} | "
                 f"{_pct(h['valores_exatos'])} | {_pct(h['decisao'])} | {_pct(h['evidencia'])} | "
-                f"{_pct(h['adversos'])} | US$ {h['custo_usd']:.2f} |"
+                f"{_pct(h['adversos'])} | US$ {h['custo_usd']:.2f} | {h.get('nota', '')} |"
             )
     L += [
         "",
