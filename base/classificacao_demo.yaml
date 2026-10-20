@@ -1,0 +1,132 @@
+# DEMONSTRAÇÃO — proposta da equipe, a validar com especialista.
+# Classificação dos códigos da Tabela 38 usados nos dados fictícios.
+# descricao_oficial: copiada de dados/tabela38/tabela38.csv (Padrão TISS 202609, ANS).
+# recorribilidade: sim | nao | depende. 'depende' exige evidência no documento.
+demonstracao: true
+codigos:
+- codigo: '1509'
+  descricao_oficial: CÓDIGO CID INVÁLIDO
+  grupo: preenchimento
+  recorribilidade: sim
+  documentos_tipicos:
+  - guia corrigida com o CID válido
+  - relatório médico, se houver
+  justificativa: 'Tabela 38, código 1509 ("CÓDIGO CID INVÁLIDO"). Erro de preenchimento corrigível: reapresentar
+    com o CID correto.'
+- codigo: '3170'
+  descricao_oficial: ASSINATURA/CARIMBO DO PROFISSIONAL SOLICITANTE INEXISTENTE
+  grupo: preenchimento
+  recorribilidade: sim
+  documentos_tipicos:
+  - guia com assinatura e carimbo do profissional solicitante
+  justificativa: 'Tabela 38, código 3170 ("ASSINATURA/CARIMBO DO PROFISSIONAL SOLICITANTE INEXISTENTE"). Falha formal
+    sanável: anexar a guia assinada e carimbada.'
+- codigo: '1822'
+  descricao_oficial: COBRANÇA DE PROCEDIMENTO COM AUSÊNCIA DE RESULTADO OU LAUDO TÉCNICO
+  grupo: preenchimento
+  recorribilidade: sim
+  documentos_tipicos:
+  - resultado ou laudo do exame
+  justificativa: Tabela 38, código 1822 ("COBRANÇA DE PROCEDIMENTO COM AUSÊNCIA DE RESULTADO OU LAUDO TÉCNICO").
+    O procedimento foi feito; anexar o resultado ou laudo resolve a pendência.
+- codigo: '3209'
+  descricao_oficial: COBRANÇA DE PROCEDIMENTO/ITEM ASSISTENCIAL EM DUPLICIDADE
+  grupo: duplicidade
+  recorribilidade: depende
+  documentos_tipicos:
+  - guias das duas cobranças
+  - comprovação de datas distintas
+  justificativa: Tabela 38, código 3209 ("COBRANÇA DE PROCEDIMENTO/ITEM ASSISTENCIAL EM DUPLICIDADE"). Recorrível
+    se as cobranças forem de atendimentos distintos (data, guia ou quantidade diferentes). Se for o mesmo atendimento
+    cobrado duas vezes, a glosa procede.
+- codigo: '1823'
+  descricao_oficial: PROCEDIMENTO REALIZADO PELO MESMO PROFISSIONAL, NA MESMA ESPECIALIDADE, EM PRAZO INFERIOR AO
+    ESTIPULADO SEM JUSTIFICATIVA ADEQUADA
+  grupo: retorno
+  recorribilidade: depende
+  documentos_tipicos:
+  - guias das duas consultas com as datas
+  - prontuário, se necessário
+  justificativa: Tabela 38, código 1823 ("PROCEDIMENTO REALIZADO PELO MESMO PROFISSIONAL, NA MESMA ESPECIALIDADE,
+    EM PRAZO INFERIOR AO ESTIPULADO SEM JUSTIFICATIVA ADEQUADA"). Recorrível se o intervalo entre as consultas for
+    maior que o prazo de retorno da operadora. Dentro do prazo, a glosa procede.
+- codigo: '1601'
+  descricao_oficial: REINCIDÊNCIA NO ATENDIMENTO
+  grupo: retorno
+  recorribilidade: depende
+  documentos_tipicos:
+  - guias dos atendimentos com as datas
+  justificativa: Tabela 38, código 1601 ("REINCIDÊNCIA NO ATENDIMENTO"). Recorrível se o atendimento anterior estiver
+    fora do prazo de retorno da operadora. Dentro do prazo, a glosa procede.
+- codigo: '1705'
+  descricao_oficial: VALOR APRESENTADO A MAIOR
+  grupo: valor
+  recorribilidade: depende
+  documentos_tipicos:
+  - contrato ou tabela de preços acordada
+  - guia
+  justificativa: Tabela 38, código 1705 ("VALOR APRESENTADO A MAIOR"). Recorrível se o valor apresentado for igual
+    ou menor que o valor contratado. Se o apresentado superou o contratado, a glosa da diferença procede.
+- codigo: '1818'
+  descricao_oficial: COBRANÇA DE PROCEDIMENTO QUE EXIGE AUTORIZAÇÃO PRÉVIA
+  grupo: autorizacao
+  recorribilidade: depende
+  documentos_tipicos:
+  - número e comprovante da senha de autorização
+  justificativa: Tabela 38, código 1818 ("COBRANÇA DE PROCEDIMENTO QUE EXIGE AUTORIZAÇÃO PRÉVIA"). Recorrível se
+    houver senha de autorização registrada para o atendimento. Sem senha no documento, conferir com a recepção antes
+    de decidir.
+- codigo: '1414'
+  descricao_oficial: DATA DE VALIDADE DA SENHA EXPIRADA
+  grupo: autorizacao
+  recorribilidade: depende
+  documentos_tipicos:
+  - comprovante da senha com a data de validade
+  justificativa: Tabela 38, código 1414 ("DATA DE VALIDADE DA SENHA EXPIRADA"). Recorrível se o atendimento ocorreu
+    dentro da validade da senha. Depois da validade, a glosa procede.
+- codigo: '1006'
+  descricao_oficial: ATENDIMENTO APÓS O DESLIGAMENTO DO BENEFICIÁRIO
+  grupo: elegibilidade
+  recorribilidade: nao
+  documentos_tipicos: []
+  justificativa: 'Tabela 38, código 1006 ("ATENDIMENTO APÓS O DESLIGAMENTO DO BENEFICIÁRIO"). Beneficiário já desligado
+    na data do atendimento: a cobrança cabe ao paciente ou a outra fonte, não ao recurso.'
+- codigo: '1017'
+  descricao_oficial: DATA DE VALIDADE DA CARTEIRA VENCIDA
+  grupo: elegibilidade
+  recorribilidade: depende
+  documentos_tipicos:
+  - carteira válida na data do atendimento ou comprovante de renovação
+  justificativa: Tabela 38, código 1017 ("DATA DE VALIDADE DA CARTEIRA VENCIDA"). Depende de a carteira ter sido
+    renovada antes do atendimento; exige conferência com o paciente ou a operadora.
+- codigo: '3214'
+  descricao_oficial: COBRANÇA FORA DO PRAZO ESTIPULADO NO CONTRATO COM O PRESTADOR
+  grupo: prazo
+  recorribilidade: nao
+  documentos_tipicos: []
+  justificativa: 'Tabela 38, código 3214 ("COBRANÇA FORA DO PRAZO ESTIPULADO NO CONTRATO COM O PRESTADOR"). Conta
+    enviada fora do prazo contratual: em regra a glosa procede.'
+- codigo: '2909'
+  descricao_oficial: PRAZO PARA SOLICITAÇÃO DE RECURSO DE GLOSA PRESCRITO
+  grupo: prazo
+  recorribilidade: nao
+  documentos_tipicos: []
+  justificativa: 'Tabela 38, código 2909 ("PRAZO PARA SOLICITAÇÃO DE RECURSO DE GLOSA PRESCRITO"). O prazo do próprio
+    recurso já passou: não há o que recorrer.'
+- codigo: '1719'
+  descricao_oficial: REANÁLISE NEGADA, ANÁLISE CONFORME TABELA ACORDADA
+  grupo: valor
+  recorribilidade: nao
+  documentos_tipicos: []
+  justificativa: 'Tabela 38, código 1719 ("REANÁLISE NEGADA, ANÁLISE CONFORME TABELA ACORDADA"). A reanálise já
+    foi negada com base na tabela acordada: novo recurso tende a não ter efeito.'
+- codigo: '3287'
+  descricao_oficial: PROCEDIMENTO/ITEM ASSISTENCIAL NÃO POSSUI COBERTURA PELO PLANO DO BENEFICIÁRIO
+  grupo: outro
+  recorribilidade: depende
+  documentos_tipicos:
+  - contrato do plano
+  - relatório médico
+  - verificação no Rol da ANS
+  justificativa: Tabela 38, código 3287 ("PROCEDIMENTO/ITEM ASSISTENCIAL NÃO POSSUI COBERTURA PELO PLANO DO BENEFICIÁRIO").
+    Depende da cobertura contratual e do Rol vigente; exige análise de especialista.

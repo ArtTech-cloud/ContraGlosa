@@ -1,0 +1,19 @@
+# OPERADORAS E PARÂMETROS FICTÍCIOS — criados para a demonstração do hackathon.
+# Nenhuma operadora real. Prazos e valores são inventados e não representam contrato real.
+ficticio: true
+operadoras:
+  - nome: Operadora Aurora
+    apelido: aurora
+    prazo_recurso_dias: 30        # dias corridos a partir da emissão do demonstrativo
+    valor_consulta: "135,00"      # valor contratado da consulta 10101012
+    dias_retorno: 30              # consulta dentro desse intervalo é tratada como retorno
+  - nome: Operadora Boreal
+    apelido: boreal
+    prazo_recurso_dias: 45
+    valor_consulta: "120,00"
+    dias_retorno: 20
+  - nome: Operadora Cerrado
+    apelido: cerrado
+    prazo_recurso_dias: 40
+    valor_consulta: "142,50"
+    dias_retorno: 30
