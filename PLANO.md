@@ -14,7 +14,7 @@
 | E4 | Avaliação | métricas contra o gabarito, relatório | qui 12h | em andamento (falta E4.3-E4.4) |
 | E5 | Interface da demo | tela final + modo demo offline | qui 20h | concluída (falta E5.5 opcional) |
 | E6 | Entregáveis do edital | README do fluxo, BMC, pitch, tarefas de sábado | sex 12h | concluída |
-| E7 | Instalação do zero + revisão | demo roda de um clone limpo; subagente tenta quebrar | sex 16h | **próxima** |
+| E7 | Instalação do zero + revisão | demo roda de um clone limpo; subagente tenta quebrar | sex 16h | em andamento (E7.2 feita; falta E7.1, E7.3, E7.4) |
 
 **Regras de corte:**
 
