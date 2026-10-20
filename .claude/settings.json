@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(//d/AS-Sistemas/**)",
+      "Edit(//d/AS-Sistemas/**)",
+      "Read(//D/AS-Sistemas/**)",
+      "Edit(//D/AS-Sistemas/**)"
+    ]
+  }
+}

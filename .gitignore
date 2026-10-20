@@ -1,0 +1,14 @@
+# segredos
+.env
+# ambiente
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+# trilhas de execução (podem conter texto de documentos)
+.runs/
+# arquivos oficiais grandes baixados da ANS (o CSV extraído vai para o git)
+*.zip
+# configurações locais do Claude Code
+.claude/settings.local.json
