@@ -1177,6 +1177,10 @@ def gerar() -> list[dict]:
         gabaritos.append(gab)
         n_glosas = sum(1 for i in gab["itens"] if i["glosa"])
         print(f"{arquivo}: layout {doc.layout}, {len(doc.itens)} itens, {n_glosas} glosas")
+    from agente.ferramentas.base import gerar_markdown_derivado
+
+    gerar_markdown_derivado()
+    print("base/codigos_t38.md e base/operadoras.md atualizados")
     return gabaritos
 
 
