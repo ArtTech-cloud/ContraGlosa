@@ -92,3 +92,13 @@ Tudo o que ele confirmou foi corrigido, com um teste de regressão em `tests/tes
   negativo.
 - **D28 · `PSEUDONIMO_SEGREDO` vazio na demo.** O `.env.example` agora diz para deixar vazio: um segredo diferente muda
   os tokens e o modo demo não acha o cache.
+
+## Depois da entrega da E7
+
+- **D29 · Modelo padrão: `claude-haiku-5-5`.** Decisão do Arthur em 20/10/2026, no lugar do `claude-sonnet-5-5`.
+  O custo cai de US$ 2 / US$ 10 para US$ 0,10 / US$ 0,50 por milhão de tokens de entrada e saída, para prompts de até
+  100K tokens, e a latência também cai. O Haiku 5.5 não tem fallback de recusa no servidor: a documentação diz para não
+  enviar `fallbacks`, então o cliente deixa de enviar esse parâmetro para modelos Haiku (D10 continua valendo para
+  Sonnet e Opus). O pensamento adaptativo fica ligado, porque a documentação avisa que, com ele desligado, o Haiku pode
+  pular uma chamada de ferramenta necessária quando a resposta também precisa sair em JSON. `CLAUDE.md`, `PLANO.md`
+  e `.env.example` foram atualizados. As metas da avaliação não mudam.

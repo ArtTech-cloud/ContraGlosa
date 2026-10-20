@@ -18,7 +18,9 @@ def main() -> int:
         return 2
     import anthropic
 
-    modelo = os.getenv("AGENTE_MODELO", "claude-sonnet-5-5")
+    from agente.llm import MODELO_PADRAO
+
+    modelo = os.getenv("AGENTE_MODELO", MODELO_PADRAO)
     cliente = anthropic.Anthropic()
     try:
         resp = cliente.messages.create(

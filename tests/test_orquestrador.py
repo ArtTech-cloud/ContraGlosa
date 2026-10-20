@@ -191,21 +191,21 @@ def test_pdf_malformado(tmp_path):
 
 def test_modo_demo_sem_cache(tmp_path, monkeypatch):
     monkeypatch.setattr("agente.llm.PASTA_CACHE", tmp_path)
-    cli = ClienteAnthropic(modelo="claude-sonnet-5-5", modo_demo=True)
+    cli = ClienteAnthropic(modelo="claude-haiku-5-5", modo_demo=True)
     res = Orquestrador(cli).analisar(EXEMPLOS / "aurora_01.pdf")
     assert res.interrompido and res.pendencias[-1].tipo == "sem_cache"
 
 
 def test_cache_le_resposta_gravada(tmp_path, monkeypatch):
     monkeypatch.setattr("agente.llm.PASTA_CACHE", tmp_path)
-    cli = ClienteAnthropic(modelo="claude-sonnet-5-5", modo_demo=True)
+    cli = ClienteAnthropic(modelo="claude-haiku-5-5", modo_demo=True)
     ped = Pedido(
         etapa="triagem", versao="v1", system="s", messages=[{"role": "user", "content": "oi"}]
     )
     r = RespostaLLM(
         content=[{"type": "text", "text": "ok"}],
         stop_reason="end_turn",
-        modelo="claude-sonnet-5-5",
+        modelo="claude-haiku-5-5",
         tokens_entrada=10,
         tokens_saida=2,
     )

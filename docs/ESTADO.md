@@ -52,8 +52,9 @@ quando as respostas são as do gabarito e detecta decisão errada, injeção obe
 - **Prompts nunca rodaram no modelo real.** É provável que a primeira avaliação mostre ajustes a fazer,
   principalmente na extração do layout Boreal (beneficiário só no cabeçalho da guia) e na análise de retorno e
   duplicidade. Esse é o trabalho da pessoa 1 no sábado.
-- **Fallback de recusa (beta).** O cliente usa `fallbacks: "default"`. Se a conta não tiver o beta, ele desliga
-  sozinho. Se der problema, use `AGENTE_FALLBACK=0`.
+- **Modelo Haiku 5.5.** É o padrão desde 20/10/2026 (D29): mais barato e rápido, mas é o menor modelo. Se a
+  avaliação ficar abaixo das metas, teste `AGENTE_ESFORCO=high` ou `AGENTE_MODELO=claude-sonnet-5-5`, sempre medindo
+  com `python -m agente.avaliar`. O Haiku não tem fallback de recusa no servidor; uma recusa vira pendência.
 - **Filtro de injeção por padrões.** Pega as variantes testadas, mas não toda formulação possível. O prompt de
   sistema e a avaliação são as outras barreiras.
 - **Pseudonimização por padrões.** Nome em caixa mista, sem rótulo e solto no texto não é detectado.

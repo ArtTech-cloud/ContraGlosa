@@ -59,7 +59,7 @@ Um agente de IA para o **faturista de clínica médica pequena**. Ele:
 - Python 3.12, `venv` local.
 - Bibliotecas: `anthropic`, `pydantic`, `pdfplumber`, `reportlab`, `rank-bm25`, `streamlit`, `pyyaml`, `pytest`,
   `ruff`. Dependência nova só com motivo registrado em `docs/DECISOES.md`.
-- **Modelo:** a variável `AGENTE_MODELO` define o modelo, com padrão `claude-sonnet-5-5`. A chave é
+- **Modelo:** a variável `AGENTE_MODELO` define o modelo, com padrão `claude-haiku-5-5`. A chave é
   `ANTHROPIC_API_KEY`, no `.env`.
 - **Para o SDK** (tool use, saída estruturada, PDF): consulte a documentação oficial em https://docs.claude.com, não
   a memória.

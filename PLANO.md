@@ -142,7 +142,7 @@ agente-glosas/
 - **E0.3** Prepare o ambiente:
   - `venv` e `requirements.txt`;
   - `.gitignore` com `.env`, `.venv` e `__pycache__`;
-  - `.env.example` com `ANTHROPIC_API_KEY=` e `AGENTE_MODELO=claude-sonnet-5-5`;
+  - `.env.example` com `ANTHROPIC_API_KEY=` e `AGENTE_MODELO=claude-haiku-5-5`;
   - `LICENSE` Apache-2.0, com o titular `Equipe Agente de Glosas — AKCIT Camp 2026` como provisório. Avise o Arthur
     para a equipe confirmar.
 - **E0.4** Teste de fumaça da API: uma chamada mínima. Se falhar, **pare e peça a chave** ao Arthur.

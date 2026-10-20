@@ -16,7 +16,7 @@ import streamlit as st
 from agente.consolidar import painel_geral
 from agente.dinheiro import format_brl
 from agente.ferramentas.base import trechos
-from agente.llm import ClienteAnthropic
+from agente.llm import MODELO_PADRAO, ClienteAnthropic
 from agente.modelos import PassoTrilha, Resultado
 from agente.orquestrador import Orquestrador
 from agente.pdf import PDFInvalido, extrair_texto
@@ -120,7 +120,7 @@ with st.sidebar:
         load_dotenv(RAIZ / ".env")
         if not os.getenv("ANTHROPIC_API_KEY"):
             st.warning("Sem ANTHROPIC_API_KEY no .env: ligue o modo demo ou configure a chave.")
-    st.caption(f"Modelo: `{os.getenv('AGENTE_MODELO', 'claude-sonnet-5-5')}`")
+    st.caption(f"Modelo: `{os.getenv('AGENTE_MODELO', MODELO_PADRAO)}`")
     st.divider()
     st.markdown("**Dados 100% fictícios.** Operadoras, clínica e pacientes são inventados.")
 

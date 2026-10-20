@@ -20,8 +20,9 @@ from dotenv import load_dotenv
 
 RAIZ = Path(__file__).resolve().parents[1]
 PASTA_CACHE = RAIZ / "cache"
-MODELO_PADRAO = "claude-sonnet-5-5"
-# US$ por milhão de tokens: entrada, saída, leitura de cache, escrita de cache
+MODELO_PADRAO = "claude-haiku-5-5"
+# US$ por milhão de tokens: entrada, saída, leitura de cache, escrita de cache (5 min).
+# Haiku 5.5: tabela para prompts de até 100K tokens; acima disso o preço é 5x (não ocorre aqui).
 PRECOS = {
     "claude-sonnet-5-5": (2.00, 10.00, 0.20, 2.50),
     "claude-opus-5-5": (4.00, 20.00, 0.20, 5.00),
@@ -132,7 +133,10 @@ class ClienteAnthropic:
         self.modo_demo = (
             modo_demo if modo_demo is not None else os.getenv("MODO_DEMO", "0").strip() == "1"
         )
-        self.usar_fallback = os.getenv("AGENTE_FALLBACK", "1") != "0"
+        # O fallback de recusa no servidor não existe para o Haiku 5.5: lá ele não é enviado.
+        self.usar_fallback = os.getenv(
+            "AGENTE_FALLBACK", "1"
+        ) != "0" and not self.modelo.startswith("claude-haiku")
         self._cliente = None
         self.pasta_cache = Path(os.getenv("AGENTE_PASTA_CACHE") or PASTA_CACHE)
         self.pasta_cache.mkdir(parents=True, exist_ok=True)
