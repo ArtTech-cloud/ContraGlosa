@@ -26,7 +26,7 @@ TipoPendencia = Literal[
     "sem_cache",
     "erro_api",
 ]
-TipoAlerta = Literal["instrucao_no_documento", "dado_pessoal_no_texto"]
+TipoAlerta = Literal["instrucao_no_documento"]
 
 
 def parse_data(texto: str) -> dt.date:
@@ -82,7 +82,8 @@ class ItemExtraido(_Base):
     @field_validator("valor_apresentado", "valor_glosado", "valor_pago")
     @classmethod
     def _valor(cls, v: str) -> str:
-        parse_brl(v)
+        if parse_brl(v) < 0:
+            raise ValueError("valor de item não pode ser negativo")
         return v.strip()
 
     @field_validator("data_atendimento")
@@ -143,7 +144,7 @@ class TotaisImpressos(_Base):
 
 
 class Extracao(_Base):
-    itens: list[ItemExtraido]
+    itens: list[ItemExtraido] = Field(min_length=1)
     totais: TotaisImpressos | None = None
 
 

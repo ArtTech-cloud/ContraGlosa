@@ -52,12 +52,15 @@ class DocumentoTexto:
 def extrair_texto(origem: str | Path | bytes, nome: str | None = None) -> DocumentoTexto:
     """Lê o PDF e devolve as linhas numeradas por página (1, 2, ...)."""
     if isinstance(origem, (str, Path)):
-        dados = Path(origem).read_bytes()
+        try:
+            dados = Path(origem).read_bytes()
+        except OSError as e:
+            raise PDFInvalido(f"não foi possível abrir o arquivo: {type(e).__name__}") from e
         nome = nome or Path(origem).name
     else:
-        dados = origem
+        dados = bytes(origem)
         nome = nome or "documento.pdf"
-    if not dados.startswith(b"%PDF"):
+    if b"%PDF" not in dados[:1024]:
         raise PDFInvalido("o arquivo não começa com a assinatura %PDF")
     doc = DocumentoTexto(nome=nome, sha256=hashlib.sha256(dados).hexdigest(), total_paginas=0)
     try:
@@ -75,6 +78,8 @@ def extrair_texto(origem: str | Path | bytes, nome: str | None = None) -> Docume
                         n += 1
                         doc.linhas.append(Linha(p, n, t))
     except Exception as e:  # pdfminer levanta vários tipos para PDF corrompido
+        if "password" in f"{type(e).__name__} {e}".lower() or "encrypt" in str(e).lower():
+            raise PDFInvalido("o PDF está protegido por senha; abra e salve sem senha") from e
         raise PDFInvalido(f"não foi possível ler o PDF: {type(e).__name__}") from e
     if doc.total_paginas == 0:
         raise PDFInvalido("o PDF não tem páginas")

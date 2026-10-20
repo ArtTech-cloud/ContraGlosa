@@ -7,9 +7,8 @@ Registro curto das decisões tomadas durante a construção. Uma linha de contex
 - **D01 · Pasta do repositório.** O plano previa `D:\Hackathon\agente-glosas`. A sessão de trabalho foi aberta em
   `D:\HackathonGlosas`, que também fica fora de `D:\AS-Sistemas\`. O repositório nasce nessa pasta.
 - **D02 · Código reaproveitado: nenhum.** O repositório indicado para reaproveitamento (`ArtTech-cloud/ContraGlosa`)
-  estava vazio no GitHub em 20/10/2026, sem nenhum branch. O único `glosas-mvp` encontrado na máquina é um ZIP cujo
-  histórico aponta para `D:\AS-Sistemas\glosas-mvp`, que é projeto da A&S. A regra de separação do `CLAUDE.md` proíbe
-  ler ou copiar esse material, então ele não foi aberto. Todo o código aqui foi escrito do zero.
+  estava vazio no GitHub em 20/10/2026, sem nenhum branch. Nenhum outro código foi usado: todo o código aqui foi
+  escrito do zero, respeitando a regra de separação do `CLAUDE.md`.
 - **D03 · Bloqueio de `D:\AS-Sistemas`.** `.claude/settings.json` tem `deny` de `Read` e `Edit` para
   `//d/AS-Sistemas/**` (e a variação com `D` maiúsculo). A documentação do Claude Code diz que, no Windows, os caminhos
   são normalizados para a forma POSIX (`C:\Users` vira `/c/Users`) e que `//` marca caminho absoluto. Testado em
@@ -59,3 +58,37 @@ Registro curto das decisões tomadas durante a construção. Uma linha de contex
   existe vai direto para revisão humana com a pendência `codigo_inexistente`, sem dar ao modelo a chance de adivinhar.
 - **D18 · Confiança baixa e evidência que não confere bloqueiam o recurso.** Decisão com confiança baixa vira revisão
   humana, com a sugestão do agente registrada. Item cuja evidência não conferiu não recebe recurso automático.
+
+## E7.1 — Revisão independente
+
+Um subagente que não escreveu o código revisou o projeto contra o `PLANO.md` e o `CLAUDE.md` e tentou quebrá-lo.
+Tudo o que ele confirmou foi corrigido, com um teste de regressão em `tests/test_revisao.py`.
+
+- **D19 · Evidência mais estrita.** Antes, a linha citada só precisava conter os valores apresentado e glosado como
+  substring, e a guia em qualquer ponto da página. Trocar guia e código entre dois itens de mesmo valor passava.
+  Agora os três valores precisam estar na linha como números inteiros, o código de glosa na linha ou logo abaixo, e
+  a guia até 6 linhas acima.
+- **D20 · Decisão duplicada vira revisão humana.** Antes, a primeira decisão de um item repetido valia em silêncio.
+- **D21 · Fonte precisa ter vindo de uma ferramenta.** Uma fonte que existe na base mas não foi consultada na análise
+  (por exemplo, `op-boreal` num documento da Aurora) é recusada.
+- **D22 · Triagem conferida contra o PDF.** A data de emissão e a operadora lidas pelo modelo precisam estar escritas
+  no documento. Se não estiverem, o prazo não é calculado e vira pendência. Assim o prazo continua sendo do código.
+- **D23 · Pseudonimização ampliada.** Cobre rótulos no feminino, "Titular", "Nome do paciente", CPF em 5 formatos,
+  carteira com hífen ou barra, CNS, e-mail e telefone. O nome também é trocado sem acento e na forma "primeiro +
+  último". Número rotulado como guia, protocolo, lote ou senha não vira token. **Limitação conhecida:** nome em caixa
+  mista sem rótulo e longe da carteira ("Rafael Barbosa Pereira" solto numa observação) não é detectado. Isso está nas
+  Limitações do README.
+- **D24 · Verificador de recurso ampliado.** Detecta dinheiro em qualquer formato ("R$ 500", "R$ 500.00", "R$ 12,5")
+  e recusa o que não estiver no formato brasileiro ou não for um valor do próprio item. Recusa valor por extenso e
+  outra moeda, e mais formas de citação normativa ("RN/ANS 395", "Lei dos Planos de Saúde", "§", "inciso", "CDC"...).
+  Recusa código de glosa ou de procedimento fora das tabelas oficiais.
+- **D25 · Filtro de injeção revisto.** Pega mais formas, inclusive inglês, homoglifo cirílico, "[INST]" e instrução
+  quebrada em duas linhas. Deixou de marcar texto normal ("Modelo: Demonstrativo", "Você deve enviar o recurso em até
+  30 dias"). O corte vai até o fim da frase ou o próximo valor e preserva os dados de um item na mesma linha.
+- **D26 · Robustez de entrada.** Bloco de ferramenta malformado, JSON muito aninhado, dois blocos JSON, zero itens,
+  PDF com BOM, caminho inexistente e PDF com senha viram pendência ou erro tratado, nunca exceção na tela. Uma falha
+  interna inesperada também vira pendência e a trilha é gravada.
+- **D27 · Dinheiro sem ambiguidade.** `parse_brl` aceita só dígitos ASCII e um sinal; valor de item não pode ser
+  negativo.
+- **D28 · `PSEUDONIMO_SEGREDO` vazio na demo.** O `.env.example` agora diz para deixar vazio: um segredo diferente muda
+  os tokens e o modo demo não acha o cache.

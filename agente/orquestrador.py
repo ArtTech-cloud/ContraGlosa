@@ -19,7 +19,6 @@ from pathlib import Path
 from pydantic import BaseModel, ValidationError
 
 from agente.consolidar import painel
-from agente.dinheiro import parse_brl
 from agente.ferramentas.base import ids_validos
 from agente.ferramentas.basicas import conferir_soma, consultar_t38
 from agente.ferramentas.dados_ref import achar_operadora
@@ -29,7 +28,7 @@ from agente.ferramentas.verificadores import (
     verificar_evidencia,
     verificar_recurso,
 )
-from agente.guardrails import filtrar_instrucoes
+from agente.guardrails import filtrar_instrucoes, normalizar
 from agente.llm import ErroLLM, Pedido, RespostaLLM, SemCache, para_historico
 from agente.modelos import (
     Analise,
@@ -68,11 +67,22 @@ def carregar_prompt(etapa: str, versao: str) -> str:
 
 def extrair_json(texto: str) -> dict:
     """Pega o JSON da resposta: bloco ```json, ou do primeiro '{' ao último '}'."""
-    m = re.search(r"```(?:json)?\s*(\{.*\})\s*```", texto, re.DOTALL)
+    m = re.search(r"```(?:json)?\s*(\{.*?\})\s*```", texto, re.DOTALL)
     bruto = m.group(1) if m else texto[texto.find("{") : texto.rfind("}") + 1]
     if not bruto:
         raise ValueError("a resposta não contém JSON")
     return json.loads(bruto)
+
+
+def conferir_triagem(t: Triagem, texto_doc: str) -> list[str]:
+    """A data de emissão e a operadora da triagem precisam estar escritas no PDF."""
+    erros = []
+    if t.data_emissao and t.data_emissao.strip() not in texto_doc:
+        erros.append(f"a data de emissão {t.data_emissao} não aparece no documento")
+    op = achar_operadora(t.operadora)
+    if op and op["apelido"] not in normalizar(texto_doc):
+        erros.append(f"a operadora {t.operadora} não aparece no documento")
+    return erros
 
 
 class Interrompido(Exception):
@@ -147,7 +157,7 @@ class Orquestrador:
                 saida = modelo_saida.model_validate(extrair_json(r.texto))
                 erros = validar(saida) if validar else []
                 ultimo_ok, erros_ultimo_ok = saida, erros
-            except (ValueError, ValidationError) as e:
+            except (ValueError, ValidationError, RecursionError) as e:
                 erros = [_resumo_erro(e)]
                 saida = None
             if not erros:
@@ -204,11 +214,18 @@ class Orquestrador:
             mensagens.append({"role": "assistant", "content": para_historico(r.content)})
             resultados = []
             for ch in r.chamadas:
-                saida, ids = executar(ch["name"], ch.get("input", {}))
+                if not ch.get("id"):
+                    raise ErroLLM("o modelo pediu uma ferramenta sem id")
+                args = ch.get("input") if isinstance(ch.get("input"), dict) else None
+                if args is None:
+                    saida, ids = '{"erro": "argumentos da ferramenta devem ser um objeto JSON"}', []
+                    args = {}
+                else:
+                    saida, ids = executar(str(ch.get("name", "")), args)
                 self._citaveis.update(ids)
                 passo.ferramentas.append(
                     ChamadaFerramenta(
-                        nome=ch["name"], argumentos=ch.get("input", {}), resultado=saida[:300]
+                        nome=str(ch.get("name", "?")), argumentos=args, resultado=saida[:300]
                     )
                 )
                 resultados.append(
@@ -220,6 +237,8 @@ class Orquestrador:
     # ================================================================ fluxo principal
     def analisar(self, origem: str | Path | bytes, nome: str | None = None) -> Resultado:
         t0 = time.monotonic()
+        if isinstance(origem, bytearray | memoryview):
+            origem = bytes(origem)
         nome = nome or (Path(origem).name if not isinstance(origem, bytes) else "documento.pdf")
         res = Resultado(documento=nome, versoes_prompt=self.versoes, modelo=self.cliente.modelo)
         self._citaveis: set[str] = set()
@@ -232,7 +251,23 @@ class Orquestrador:
             res.interrompido = True
             res.pendencias.append(Pendencia(tipo="erro_api", motivo=f"análise interrompida: {e}"))
             self._passo(res, PassoTrilha(etapa="fluxo", status="erro", detalhe=str(e)))
-        res.painel = painel(res)
+        except Exception as e:  # nenhuma falha interna derruba a tela; vira pendência com o motivo
+            res.interrompido = True
+            msg = f"falha interna ({type(e).__name__}): {str(e)[:200]}"
+            res.pendencias.append(Pendencia(tipo="validacao_falhou", motivo=msg))
+            self._passo(res, PassoTrilha(etapa="fluxo", status="erro", detalhe=msg))
+        try:
+            res.painel = painel(res)
+        except Exception:  # painel parcial se os dados estiverem incompletos
+            res.painel = {
+                "total_apresentado": 0,
+                "total_glosado": 0,
+                "total_pago": 0,
+                "recorrivel": 0,
+                "nao_recorrivel": 0,
+                "a_classificar": 0,
+                "prazo": None,
+            }
         res.latencia_ms = int((time.monotonic() - t0) * 1000)
         self._gravar_trilha(res)
         return res
@@ -287,17 +322,33 @@ class Orquestrador:
 
         # ---------- 1. triagem ----------
         inicio = formatar_para_llm(linhas[:LINHAS_TRIAGEM])
+        texto_doc = "\n".join(lin.texto for lin in doc.linhas)
         tri, erros = self._etapa_json(
             res,
             "triagem",
             carregar_prompt("triagem", self.versoes["triagem"]).format(documento=inicio),
             Triagem,
+            lambda t: conferir_triagem(t, texto_doc),
         )
         if tri is None:
             res.pendencias.append(
                 Pendencia(tipo="validacao_falhou", motivo="triagem: " + "; ".join(erros))
             )
             return
+        if erros:  # formato ok, mas data ou operadora não aparecem no PDF: sem prazo automático
+            atual = {}
+            if any("data de emissão" in e for e in erros):
+                atual["data_emissao"] = None
+            if any("operadora" in e for e in erros):
+                atual["operadora"] = "não confirmada no documento"
+                atual["observacao"] = f"a triagem leu '{tri.operadora}', que não aparece no PDF"
+            tri = tri.model_copy(update=atual)
+            res.pendencias.append(
+                Pendencia(
+                    tipo="validacao_falhou",
+                    motivo="triagem: " + "; ".join(erros) + ". Prazo de recurso não calculado.",
+                )
+            )
         res.triagem = tri
         if tri.tipo_documento != "demonstrativo_retorno":
             res.pendencias.append(
@@ -323,8 +374,6 @@ class Orquestrador:
     def _extrair(self, res: Resultado, doc: DocumentoTexto, texto_llm: str) -> Extracao | None:
         def validar(e: Extracao) -> list[str]:
             erros = []
-            if not e.itens:
-                erros.append("nenhum item extraído")
             for i, it in enumerate(e.itens):
                 err = verificar_evidencia(it, doc)
                 if err:
@@ -338,7 +387,9 @@ class Orquestrador:
                 Pendencia(tipo="validacao_falhou", motivo="extração: " + "; ".join(erros))
             )
             return None
-        if erros:  # validou o formato, mas a evidência de algum item não confere
+        erros_evidencia = erros
+
+        def _pendencias_evidencia(ext: Extracao, erros: list[str]) -> None:
             for e in erros:
                 m = re.match(r"item (\d+):", e)
                 it = ext.itens[int(m.group(1))] if m else None
@@ -385,8 +436,8 @@ class Orquestrador:
                     "estiver certa e o próprio documento estiver inconsistente, devolva os valores como impressos."
                 )
                 ext2, erros2 = self._etapa_json(res, "extracao", prompt2, Extracao, validar)
-                if ext2 is not None and not erros2:
-                    ext = ext2
+                if ext2 is not None and len(erros2) <= len(erros_evidencia):
+                    ext, erros_evidencia = ext2, erros2
                 soma = conferir_soma(ext.itens, ext.totais)
                 passo = PassoTrilha(
                     etapa="conferir_soma", detalhe="após releitura: " + soma.resumo()
@@ -416,6 +467,8 @@ class Orquestrador:
                 passo.status = "fallback"
                 res.pendencias.append(Pendencia(tipo="totais_ausentes", motivo=soma.resumo()))
             self._passo(res, passo)
+        # validou o formato, mas a evidência de algum item não confere (sobre a extração final)
+        _pendencias_evidencia(ext, erros_evidencia)
         res.itens = ext.itens
         res.totais = ext.totais
         return ext
@@ -524,7 +577,7 @@ class Orquestrador:
             "analise",
             prompt,
             Analise,
-            lambda a: verificar_analise(a.decisoes, analisaveis, validos),
+            lambda a: verificar_analise(a.decisoes, analisaveis, validos, self._citaveis),
             ferramentas=FERRAMENTAS_ANALISE,
         )
         por_item: dict = {}
@@ -614,19 +667,12 @@ class Orquestrador:
             return
         tri = res.triagem
         op = achar_operadora(tri.operadora)
-        permitidos = {v for it in res.itens for v in (it.apresentado, it.glosado, it.pago)}
-        if op:
-            permitidos.add(op["valor_consulta_centavos"])
-        if res.totais:
-            permitidos |= {
-                parse_brl(v)
-                for v in (
-                    res.totais.valor_apresentado,
-                    res.totais.valor_glosado,
-                    res.totais.valor_pago,
-                )
-                if v
-            }
+        contratado = {op["valor_consulta_centavos"]} if op else set()
+
+        def permitidos(it) -> set[int]:
+            """Só os valores do próprio item e o valor contratado da operadora."""
+            return {it.apresentado, it.glosado, it.pago} | contratado
+
         blocos = []
         for g in alvo:
             it = res.itens[g.item]
@@ -653,11 +699,15 @@ class Orquestrador:
             vistos = [r.item for r in red.recursos]
             for i in sorted(set(alvo_idx) - set(vistos)):
                 erros.append(f"falta o recurso do item {i}")
+            for i in sorted({x for x in vistos if vistos.count(x) > 1}):
+                erros.append(f"recurso do item {i}: mais de um rascunho para o mesmo item")
             for r in red.recursos:
                 if r.item not in alvo_idx:
                     erros.append(f"item {r.item} não estava na lista para recorrer")
                     continue
-                v = verificar_recurso(r.texto, res.itens[r.item], permitidos, ps.nomes)
+                v = verificar_recurso(
+                    r.texto, res.itens[r.item], permitidos(res.itens[r.item]), ps.nomes
+                )
                 if not v.ok:
                     reprovados[r.item] = v.erros
                     erros += [f"recurso do item {r.item}: {e}" for e in v.erros]
@@ -667,7 +717,7 @@ class Orquestrador:
         passo = PassoTrilha(etapa="verificar_recurso")
         aprovados = []
         for r in red.recursos if red else []:
-            if r.item not in alvo_idx:
+            if r.item not in alvo_idx or r.item in {a.item for a in aprovados}:
                 continue
             ok = r.item not in reprovados
             passo.ferramentas.append(

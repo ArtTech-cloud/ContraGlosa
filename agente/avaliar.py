@@ -269,7 +269,9 @@ def main(argv: list[str] | None = None) -> int:
         if res.interrompido:
             print("  " + res.pendencias[-1].motivo)
             if any(p.tipo == "sem_cache" for p in res.pendencias):
-                print("Parando: o cache do modo demo não tem esta análise. Rode sem --demo, com a chave no .env.")
+                print(
+                    "Parando: o cache do modo demo não tem esta análise. Rode sem --demo, com a chave no .env."
+                )
             else:
                 print("Parando: a API recusou a chamada. Confira a chave e o crédito.")
             break

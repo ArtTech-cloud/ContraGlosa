@@ -155,6 +155,8 @@ evidência correta ≥ 90%.
 ## Limitações
 
 - **Sem OCR.** Página sem camada de texto vai para revisão humana.
+- **Pseudonimização por padrões.** Pega nome com rótulo ou junto da carteira, CPF, carteira, CNS, e-mail e telefone.
+  Um nome em caixa mista, sem rótulo e solto no texto não é detectado. Por isso o projeto só usa dado fictício.
 - **Classificação de demonstração.** A recorribilidade de cada código em `base/classificacao_demo.yaml` é uma
   proposta da equipe e precisa ser validada por especialista em faturamento.
 - **Dados fictícios.** Três layouts inventados. Demonstrativos reais têm mais variações.

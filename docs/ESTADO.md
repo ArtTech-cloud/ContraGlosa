@@ -36,9 +36,11 @@ A avaliação roda os 10 documentos, grava o relatório e popula o cache de uma 
 - **Segurança:** pseudonimização de nome, CPF e carteira antes do LLM, e filtro de instruções no documento.
 - **Interface:** análise de um documento com trilha ao vivo, lote com painel de prazos, pendências e qualidade.
   Foi conferida no navegador com respostas de teste.
-- **Testes:** 118 testes passam, incluindo ponta a ponta nos 10 documentos com o cliente falso. Isso prova o
+- **Testes:** 205 testes passam, incluindo ponta a ponta nos 10 documentos com o cliente falso. Isso prova o
   encanamento, os verificadores e a avaliação, não a qualidade do modelo.
 - **Instalação do zero:** clone limpo, ambiente novo, `pip install`, testes e app sobem sem erro.
+- **Revisão independente:** um subagente tentou quebrar o projeto. Os 14 achados confirmados foram corrigidos e
+  viraram testes em `tests/test_revisao.py` (ver D19 a D28 em `docs/DECISOES.md`).
 
 ## Métricas atuais
 
@@ -54,6 +56,7 @@ quando as respostas são as do gabarito e detecta decisão errada, injeção obe
   sozinho. Se der problema, use `AGENTE_FALLBACK=0`.
 - **Filtro de injeção por padrões.** Pega as variantes testadas, mas não toda formulação possível. O prompt de
   sistema e a avaliação são as outras barreiras.
+- **Pseudonimização por padrões.** Nome em caixa mista, sem rótulo e solto no texto não é detectado.
 - **Classificação de recorribilidade** é proposta da equipe, a validar com especialista.
 - **Sem OCR:** página escaneada vai para revisão humana.
 
