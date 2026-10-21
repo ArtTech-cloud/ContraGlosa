@@ -93,6 +93,9 @@ class Orquestrador:
     def __init__(self, cliente, ao_passo: Callable[[PassoTrilha], None] | None = None):
         self.cliente = cliente
         self.ao_passo = ao_passo
+        # O resultado em construção, para quem acompanha pelo ao_passo (a tela mostra os números
+        # de cada etapa enquanto a análise roda). Só leitura: quem muda o resultado é o orquestrador.
+        self.resultado: Resultado | None = None
         self.versoes = versoes_prompt()
         self.sistema = carregar_prompt("sistema", self.versoes["sistema"])
 
@@ -241,6 +244,7 @@ class Orquestrador:
             origem = bytes(origem)
         nome = nome or (Path(origem).name if not isinstance(origem, bytes) else "documento.pdf")
         res = Resultado(documento=nome, versoes_prompt=self.versoes, modelo=self.cliente.modelo)
+        self.resultado = res
         self._citaveis: set[str] = set()
         try:
             self._fluxo(res, origem, nome)

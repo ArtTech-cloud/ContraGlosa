@@ -43,3 +43,71 @@ def painel_geral(resultados: list) -> dict:
     prazos.sort(key=lambda x: x["dias_restantes"])
     tot["prazos"] = prazos
     return tot
+
+
+# ---------------------------------------------------------------- regras da tela (código, não LLM)
+def semaforo(glosa, resultado) -> tuple[str, str]:
+    """Pronto, confira ou revisão humana, com o motivo em uma linha.
+
+    - pronto: confiança alta e nenhum verificador alertou (evidência confere e, se é para recorrer,
+      o recurso foi aprovado);
+    - confira: confiança média ou algum verificador alertou;
+    - revisao: o agente não decidiu (pendência).
+    """
+    if glosa.decisao == "revisao_humana":
+        motivo = next(
+            (p.motivo for p in resultado.pendencias if p.item == glosa.item),
+            "o agente não decidiu esta glosa",
+        )
+        return "revisao", motivo
+    if not glosa.evidencia_ok:
+        return "confira", "a linha citada não confere com o PDF"
+    if glosa.decisao == "recorrer" and not any(r.item == glosa.item for r in resultado.recursos):
+        return "confira", "o verificador reteve o recurso desta glosa"
+    if glosa.confianca != "alta":
+        return "confira", "confiança média do agente"
+    return "pronto", ""
+
+
+def glosas_priorizadas(resultado) -> list:
+    """Prazo mais curto primeiro e, no empate, maior valor. Num documento, o prazo é um só."""
+    pr = resultado.painel.get("prazo") or {}
+    dias = pr.get("dias_restantes", 10**6)
+    return sorted(resultado.glosas, key=lambda g: (dias, -g.valor_glosado, g.item))
+
+
+def agenda(resultados: list) -> list[dict]:
+    """Cada glosa recorrível de todos os documentos, do vencimento mais próximo ao mais distante."""
+    linhas = []
+    for r in resultados:
+        pr = r.painel.get("prazo")
+        if not pr:
+            continue
+        for g in r.glosas:
+            if g.decisao != "recorrer":
+                continue
+            linhas.append(
+                {
+                    "documento": r.documento,
+                    "operadora": pr["operadora"],
+                    "guia": g.guia,
+                    "codigo_glosa": g.codigo_glosa,
+                    "descricao": g.descricao_oficial or "",
+                    "valor": g.valor_glosado,
+                    "prazo_final": pr["prazo_final"],
+                    "dias_restantes": pr["dias_restantes"],
+                    "vencido": pr["vencido"],
+                }
+            )
+    linhas.sort(key=lambda x: (x["dias_restantes"], -x["valor"]))
+    return linhas
+
+
+def campos_a_preencher(texto: str) -> tuple[list[str], list[str]]:
+    """Os rótulos dos campos [A PREENCHER] e dos [FUNDAMENTO A CONFIRMAR] de um recurso."""
+    preencher, confirmar = [], []
+    for linha in texto.splitlines():
+        rotulo = linha.split(":")[0].strip() if ":" in linha else "campo sem rótulo"
+        preencher += [rotulo] * linha.count("[A PREENCHER]")
+        confirmar += [rotulo] * linha.count("[FUNDAMENTO A CONFIRMAR]")
+    return preencher, confirmar

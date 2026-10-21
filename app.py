@@ -4,15 +4,20 @@
 
 Com o modo demo ligado, as respostas do modelo vêm do cache em cache/ e a demo roda sem internet.
 
-Páginas, na ordem do pitch (docs/PITCH.md):
-- Início: os demonstrativos, a trilha ao vivo por etapa e o resultado (painel, glosas, recursos);
-- Prazos: os exemplos de uma vez, com o que vence nos próximos 10 dias;
-- Revisão humana: as pendências e os alertas, com o que fazer em cada caso;
+Cada tela responde, nesta ordem, às quatro perguntas da faturista (docs/PLANO-FRONT.md):
+quanto está em jogo, por que foi glosado e qual a prova, até quando posso recorrer, o que eu faço agora.
+
+Páginas:
+- Início (F1 a F6): enviar o PDF ou ver um exemplo, a trilha ao vivo com o resultado de cada etapa, o
+  número-herói, as glosas por prioridade com a prova e, no fim, os recursos prontos;
+- Prazos (F7): a agenda de tudo o que foi analisado na sessão;
+- Pendências (F8): o que foi para revisão humana, com o motivo e o que fazer;
 - Como funciona: o fluxo e o contrato de cada etapa (docs/fluxo.md);
-- Qualidade: avaliacao/RESULTADO.md e avaliacao/VALIDACAO.md.
+- Qualidade (F8): avaliacao/RESULTADO.md, VALIDACAO.md e EXPERIENCIA.md.
 
 Visual: tema em .streamlit/config.toml e CSS em static/estilo.css (D37, D38). Todo texto que vem do
 documento ou do modelo e entra em HTML passa por html.escape: conteúdo de PDF é dado, não marcação.
+Os números vêm sempre do código (agente/consolidar.py), nunca do texto do modelo.
 """
 
 from __future__ import annotations
@@ -27,8 +32,15 @@ from pathlib import Path
 
 import pandas as pd
 import streamlit as st
+import yaml
 
-from agente.consolidar import painel_geral
+from agente.consolidar import (
+    agenda,
+    campos_a_preencher,
+    glosas_priorizadas,
+    painel_geral,
+    semaforo,
+)
 from agente.dinheiro import format_brl
 from agente.ferramentas.base import trechos
 from agente.llm import MODELO_PADRAO, ClienteAnthropic
@@ -37,6 +49,13 @@ from agente.orquestrador import Orquestrador
 from agente.pdf import PDFInvalido, extrair_texto
 from agente.pseudonimo import pseudonimizar
 
+NOME_PRODUTO = "Agente de Glosas"  # provisório: o nome do produto ainda está em decisão
+FRASE_CHEGADA = (
+    "Envie o demonstrativo de retorno. Em menos de um minuto você sabe quanto foi glosado, o que vale "
+    "recorrer e até quando."
+)
+SELO = "Dados fictícios · nome, CPF e carteira passam pela pseudonimização antes de qualquer envio à IA"
+
 RAIZ = Path(__file__).resolve().parent
 EXEMPLOS = RAIZ / "dados" / "exemplos"
 VALIDACAO = RAIZ / "dados" / "validacao"
@@ -44,13 +63,18 @@ EXEMPLO_INICIAL = "boreal_01.pdf"  # o primeiro da demo no pitch
 PAUSA_APRESENTACAO = 0.6  # segundos entre os passos da trilha no modo demo, para a banca acompanhar
 
 ROTULO_DECISAO = {
-    "recorrer": "Contestar",
-    "nao_recorrer": "Não contestar",
-    "revisao_humana": "Faturista revisa",
+    "recorrer": "Recorrer",
+    "nao_recorrer": "Não recorrer",
+    "revisao_humana": "Revisão humana",
 }
 COR_DECISAO = {"recorrer": "green", "nao_recorrer": "gray", "revisao_humana": "orange"}
-ICONE_DECISAO = {"recorrer": "🟢", "nao_recorrer": "⚪", "revisao_humana": "🟠"}
 ROTULO_CONFIANCA = {"alta": "alta", "media": "média", "baixa": "baixa"}
+# Semáforo: sempre ícone e texto juntos, nunca só a cor.
+SEMAFORO = {
+    "pronto": ("🟢", "Pronto"),
+    "confira": ("🟡", "Confira"),
+    "revisao": ("⚪", "Revisão humana"),
+}
 ICONE_STATUS = {
     "ok": ":green[:material/check_circle:]",
     "retry": ":orange[:material/replay:]",
@@ -69,28 +93,24 @@ NOME_ETAPA = {
     "verificar_recurso": "Verificador · verificar_recurso",
     "fluxo": "Fluxo",
 }
-# As fases que a tela mostra lado a lado: nome, quem faz e as etapas da trilha que entram nela.
-# Os nomes seguem os verbos do pitch (docs/PITCH.md): lê, entende, separa, decide, escreve e soma.
-FASES = [
-    ("Ler", "apaga nome e CPF", ("leitura",)),
-    ("Entender", "IA", ("triagem",)),
-    ("Separar", "IA + conferente", ("extracao", "conferir_soma", "consultar_t38")),
-    ("Decidir", "IA + conferente", ("analise",)),
-    ("Escrever", "IA + conferente", ("redacao", "verificar_recurso")),
-    ("Somar", "prazos e totais", ()),
+# A trilha que a faturista vê: o nome de cada passo e as etapas do orquestrador que entram nele.
+ETAPAS = [
+    ("Lendo o documento", ("leitura", "triagem")),
+    ("Extraindo itens", ("extracao",)),
+    ("Conferindo a soma", ("conferir_soma",)),
+    ("Consultando a Tabela 38 oficial", ("consultar_t38",)),
+    ("Analisando cada glosa", ("analise",)),
+    ("Redigindo os recursos", ("redacao", "verificar_recurso")),
 ]
-INDICE_FASE = {etapa: i for i, (_, _, etapas) in enumerate(FASES) for etapa in etapas}
-ESTADO_FASE = {
-    "pendente": ("○", "aguardando"),
-    "rodando": ("◐", "rodando…"),
-    "ok": ("✓", "ok"),
-    "retry": ("↻", "refeita"),
-    "fallback": ("!", "atenção"),
-    "erro": ("✕", "erro"),
-    "pulada": ("–", "não se aplica"),
+GRUPO_DA_ETAPA = {e: i for i, (_, etapas) in enumerate(ETAPAS) for e in etapas}
+SIMBOLO_PASSO = {
+    "pendente": "○",
+    "rodando": "◐",
+    "ok": "✓",
+    "alerta": "!",
+    "erro": "✕",
+    "pulado": "–",
 }
-GRAVIDADE = {"pendente": 0, "rodando": 0, "pulada": 0, "ok": 1, "info": 1, "retry": 2}
-GRAVIDADE |= {"fallback": 3, "erro": 4}
 CASO_ADVERSO = {
     "soma_divergente": "o total impresso não fecha com a soma das linhas",
     "codigo_inexistente": "código de glosa que não existe na Tabela 38",
@@ -103,7 +123,7 @@ CASO_CURTO = {
     "injecao": "instrução escondida",
     "pagina_sem_texto": "página sem texto",
 }
-# Para a revisão humana: o que cada pendência quer dizer e o que a faturista faz.
+# Para as pendências: o que cada uma quer dizer e o que a faturista faz.
 PENDENCIA = {
     "soma_divergente": ("Soma divergente", "Confira os totais com a operadora antes de recorrer."),
     "totais_ausentes": ("Totais ausentes", "Confira se o demonstrativo veio completo."),
@@ -146,11 +166,9 @@ _ICONES = {
     "check": '<circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/>',
     "pessoa": '<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/>',
     "escudo": '<path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/>',
-    "predio": '<path d="M4 21V6l8-3v18M12 8h8v13M4 21h16M8 9v.01M8 13v.01M8 17v.01M16 12v.01M16 16v.01"/>',
-    "camadas": '<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>',
-    "lupa": '<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/>',
     "alerta": '<path d="M12 3l9.5 17h-19z"/><path d="M12 10v4M12 17v.01"/>',
     "pulso": '<path d="M3 12h4l2-5 4 10 2-5h6"/>',
+    "cadeado": '<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
 }
 
 
@@ -165,7 +183,7 @@ def _html(conteudo: str, lugar=None) -> None:
     (lugar or st).markdown(conteudo, unsafe_allow_html=True)
 
 
-st.set_page_config(page_title="Agente de Glosas", page_icon="🩺", layout="wide")
+st.set_page_config(page_title=NOME_PRODUTO, page_icon="🩺", layout="wide")
 # Sem linhas em branco: para o Markdown, uma linha em branco encerra o bloco <style>.
 _CSS = re.sub(
     r"/\*.*?\*/|\s*\n\s*", " ", (RAIZ / "static" / "estilo.css").read_text("utf-8"), flags=re.S
@@ -177,6 +195,12 @@ st.markdown(f"<style>{_CSS}</style>", unsafe_allow_html=True)
 @st.cache_data
 def _trechos() -> dict[str, dict]:
     return {t.id: {"fonte": t.fonte, "texto": t.texto} for t in trechos()}
+
+
+@st.cache_data
+def _classificacao() -> dict[str, dict]:
+    dados = yaml.safe_load((RAIZ / "base" / "classificacao_demo.yaml").read_text(encoding="utf-8"))
+    return {c["codigo"]: c for c in dados["codigos"]}
 
 
 @st.cache_data
@@ -197,20 +221,6 @@ def _catalogo() -> dict[str, dict]:
     return cat
 
 
-def _grupos() -> dict[str, list[str]]:
-    cat = _catalogo()
-    dev = {n: m for n, m in cat.items() if m["conjunto"] == "desenvolvimento"}
-    return {
-        "Exemplos": [n for n, m in dev.items() if not m["adverso"]],
-        "Casos adversos": [n for n, m in dev.items() if m["adverso"]],
-        "Nunca vistos": [n for n, m in cat.items() if m["conjunto"] == "validacao"],
-    }
-
-
-def _grupo_de(nome: str) -> str:
-    return next((g for g, nomes in _grupos().items() if nome in nomes), "Exemplos")
-
-
 def _descricao(nome: str) -> str:
     m = _catalogo().get(nome, {})
     partes = [m.get("operadora", ""), f"layout {m['layout']}" if m.get("layout") else ""]
@@ -221,8 +231,12 @@ def _descricao(nome: str) -> str:
     return " · ".join(p for p in partes if p)
 
 
-def _chave(nome: str) -> str:
-    return re.sub(r"\W", "_", Path(nome).stem)
+def _rotulo_exemplo(nome: str) -> str:
+    m = _catalogo()[nome]
+    extra = CASO_CURTO.get(m["adverso"], "") if m["adverso"] else ""
+    if m["conjunto"] == "validacao":
+        extra = "nunca visto" + (f", {extra}" if extra else "")
+    return f"{Path(nome).stem} — {m['operadora']}" + (f" ({extra})" if extra else "")
 
 
 def _brl(c: int) -> str:
@@ -243,7 +257,19 @@ def _onde(pagina: int | None, linha: int | None) -> str:
     return f"página {pagina}" if pagina else "documento inteiro"
 
 
+def _motivo_simples(descricao: str | None) -> str:
+    """A descrição oficial da Tabela 38, que vem em maiúsculas, em caixa de frase (siglas mantidas)."""
+    if not descricao:
+        return "Código fora da Tabela 38 oficial"
+    return re.sub(
+        r"\b(cid|opme|tuss|tiss|ans|cpf|cns|crm|sadt)\b",
+        lambda m: m.group(0).upper(),
+        descricao.capitalize(),
+    )
+
+
 def _texto_passo(p: PassoTrilha) -> str:
+    """O passo como o orquestrador registrou: ferramentas, tokens, latência. Só no detalhe técnico."""
     ic = ICONE_STATUS.get(p.status, "•")
     nome = NOME_ETAPA.get(p.etapa, p.etapa)
     extra = []
@@ -266,108 +292,15 @@ def _texto_passo(p: PassoTrilha) -> str:
     return "\n\n".join(linhas)
 
 
-NOME_SIMPLES = {
-    "leitura": ("Ler o PDF", "código"),
-    "triagem": ("Entender o documento", "IA"),
-    "extracao": ("Separar as linhas", "IA"),
-    "conferir_soma": ("Conferir as contas", "conferente"),
-    "consultar_t38": ("Conferir os motivos", "conferente"),
-    "analise": ("Decidir", "IA"),
-    "redacao": ("Escrever os pedidos", "IA"),
-    "verificar_recurso": ("Conferir os pedidos", "conferente"),
-    "fluxo": ("Análise", "app"),
-}
-FRASE_IA_OK = {
-    "triagem": "Entendi o documento: é um extrato de plano de saúde. Anotei de qual plano e de quando.",
-    "extracao": "Separei cada procedimento cobrado: valor cobrado, valor pago, valor glosado e o motivo.",
-    "analise": "Decidi, para cada glosa, se vale contestar, e anotei o porquê e a fonte.",
-    "redacao": "Escrevi um pedido de revisão para cada glosa que vale contestar.",
-}
-
-
-def _num(padrao: str, texto: str) -> int:
-    m = re.search(padrao, texto)
-    return int(m.group(1)) if m else 0
-
-
-def _frase_leitura(p: PassoTrilha) -> str:
-    d = p.detalhe
-    if "Pseudonimização" not in d:  # o PDF não abriu ou não tem texto nenhum
-        return "Não consegui ler o texto deste PDF (parece escaneado ou corrompido). Vai para a faturista."
-    frase = (
-        f"Li {_num(r'^(\d+) página', d)} página(s) e apaguei os dados dos pacientes antes de mandar "
-        f"para a IA: {_num(r'(\d+) nome', d)} nome(s), {_num(r'(\d+) CPF', d)} CPF(s) e "
-        f"{_num(r'(\d+) carteira', d)} carteirinha(s)."
-    )
-    sem_texto = re.search(r"páginas sem texto: \[([^\]]*)\]", d)
-    if sem_texto:
-        frase += f" A página {sem_texto.group(1)} não tem texto (parece escaneada): vai para a faturista."
-    if _num(r"Filtro de instruções: (\d+)", d):
-        frase += " Achei uma ordem escondida no documento e tirei antes de a IA ler."
-    return frase
-
-
-def _frase_conferente(p: PassoTrilha) -> str:
-    aprovadas = sum(1 for f in p.ferramentas if f.aprovado)
-    total = len(p.ferramentas)
-    if p.etapa == "conferir_soma":
-        if p.status == "ok":
-            return "A soma das linhas bate com o total do extrato, ao centavo."
-        if p.status == "retry":
-            return "A soma não bateu. Pedi para a IA reler o extrato."
-        if p.status == "info":
-            return "Não dá para conferir a soma: uma página está sem texto."
-        if "releitura" in p.detalhe:
-            return "Mesmo relendo, a soma não bate com o total impresso. Vai para a faturista conferir."
-        return "Não achei os totais impressos para conferir. Vai para a faturista."
-    if p.etapa == "consultar_t38":
-        if aprovadas == total:
-            if total == 1:
-                return "O motivo da glosa existe na lista oficial da ANS."
-            return f"Os {total} motivos de glosa existem na lista oficial da ANS."
-        return (
-            f"{total - aprovadas} motivo(s) não existe(m) na lista oficial da ANS. O agente não chuta o "
-            "significado: vai para a faturista."
+def _tiles(itens: list[tuple], destaque: int | None = None) -> str:
+    """Blocos de número: (ícone, rótulo, valor[, classe extra]). Rótulo e valor já vêm escapados."""
+    blocos = []
+    for i, (ic, rot, val, *classe) in enumerate(itens):
+        classes = " ".join(["tile", "destaque-tile" if i == destaque else "", *classe]).strip()
+        blocos.append(
+            f'<div class="{classes}"><span class="tile-ic">{_svg(ic)}</span>'
+            f"<small>{rot}</small><b>{val}</b></div>"
         )
-    # verificar_recurso
-    if total == 0:
-        return "Nenhum pedido para conferir."
-    criterios = "os valores batem com o extrato, nenhuma lei inventada e nenhum dado de paciente."
-    if aprovadas == total:
-        quem = "O pedido foi aprovado" if total == 1 else f"Os {total} pedidos foram aprovados"
-        return f"{quem}: {criterios}"
-    return (
-        f"{aprovadas} de {total} pedidos aprovados ({criterios[0:-1]}). "
-        f"{total - aprovadas} reprovado(s) vai(ão) para a faturista."
-    )
-
-
-def _frase_passo(p: PassoTrilha) -> str:
-    """O passo da trilha em linguagem simples, com os verbos do pitch. O detalhe técnico fica em
-    _texto_passo, escondido num expansor."""
-    nome, quem = NOME_SIMPLES.get(p.etapa, (p.etapa, ""))
-    if p.status == "erro":
-        frase = "A análise parou aqui. O motivo está em Faturista revisa."
-    elif p.etapa == "leitura":
-        frase = _frase_leitura(p)
-    elif p.etapa in ("conferir_soma", "consultar_t38", "verificar_recurso"):
-        frase = _frase_conferente(p)
-    elif p.status == "retry":
-        frase = "A resposta da IA veio fora do formato. O conferente devolveu e ela refez."
-    elif p.status == "fallback":
-        frase = "A IA não conseguiu responder no formato certo. Vai para a faturista."
-    else:
-        frase = FRASE_IA_OK.get(p.etapa, p.detalhe)
-    return f"{ICONE_STATUS.get(p.status, '•')} **{nome}** · :gray[{quem}]  \n{frase}"
-
-
-def _tiles(itens: list[tuple[str, str, str]], destaque: int | None = None) -> str:
-    """Blocos de número: (ícone, rótulo, valor). Rótulo e valor já vêm escapados."""
-    blocos = [
-        f'<div class="tile{" destaque-tile" if i == destaque else ""}">'
-        f'<span class="tile-ic">{_svg(ic)}</span><small>{rot}</small><b>{val}</b></div>'
-        for i, (ic, rot, val) in enumerate(itens)
-    ]
     return '<div class="tiles">' + "".join(blocos) + "</div>"
 
 
@@ -380,26 +313,17 @@ def _modo_demo() -> bool:
     return st.session_state.get("modo_demo", True)
 
 
-def _caixa() -> list[Resultado] | None:
-    """A caixa de entrada: os 10 exemplos já analisados. No modo demo, sai do cache na hora."""
-    if st.session_state.get("lote") is None and _modo_demo():
-        resultados = []
-        for nome, m in _catalogo().items():
-            if m["conjunto"] != "desenvolvimento":
-                continue
-            cli = ClienteAnthropic(modo_demo=True)
-            dados = Path(m["caminho"]).read_bytes()
-            resultados.append(Orquestrador(cli).analisar(dados, nome=nome))
-        st.session_state["lote"] = resultados
-    return st.session_state.get("lote")
+def _analisados() -> list[Resultado]:
+    """Tudo o que foi analisado nesta sessão, na ordem em que foi analisado."""
+    return list(st.session_state.get("analisados", {}).values())
 
 
-def _abrir_documento(nome: str, rodar: bool) -> None:
-    """Callback: escolhe o documento (e, se pedido, já analisa)."""
-    st.session_state["origem"] = _grupo_de(nome)
-    st.session_state["selecionado"] = nome
-    if rodar:
-        st.session_state["rodar_agora"] = True
+def _registrar(res: Resultado) -> None:
+    st.session_state.setdefault("analisados", {})[res.documento] = res
+
+
+def _marcar_revisado(chave: str) -> None:
+    st.session_state.setdefault("revisados", set()).symmetric_difference_update({chave})
 
 
 # ================================================================= cabeçalho em gradiente
@@ -428,10 +352,6 @@ def _ajustes() -> None:
             if not os.getenv("ANTHROPIC_API_KEY"):
                 st.warning("Sem ANTHROPIC_API_KEY no .env: ligue o modo demo ou configure a chave.")
         st.caption(f"Modelo: `{os.getenv('AGENTE_MODELO', MODELO_PADRAO)}`")
-        st.caption(
-            "Dados 100% fictícios. Operadoras, clínica e pacientes são inventados. Nome e CPF "
-            "saem antes de qualquer chamada ao modelo."
-        )
 
 
 def _topo_hero() -> None:
@@ -439,10 +359,14 @@ def _topo_hero() -> None:
     with c1:
         _html(
             f'<div class="marca"><span class="marca-ic">{_svg("pulso")}</span>'
-            "<div>Agente de Glosas<small>o agente lê · o código confere</small></div></div>"
+            f"<div>{escape(NOME_PRODUTO)}<small>o agente lê · o código confere</small></div></div>"
         )
     with c2, st.container(horizontal=True, horizontal_alignment="right"):
         _ajustes()
+
+
+def _selo() -> str:
+    return f'<div class="selo-dados">{_svg("cadeado")} {escape(SELO)}</div>'
 
 
 def _hero_compacto(titulo: str, subtitulo: str) -> None:
@@ -450,270 +374,662 @@ def _hero_compacto(titulo: str, subtitulo: str) -> None:
         _topo_hero()
         _html(
             f'<div class="hero-texto compacto"><div class="pergunta">{titulo}</div>'
-            f'<div class="saudacao">{subtitulo}</div></div>'
+            f'<div class="saudacao">{subtitulo}</div>{_selo()}</div>'
         )
 
 
-def _saudacao() -> str:
-    h = dt.datetime.now().hour
-    return "Bom dia" if h < 12 else ("Boa tarde" if h < 18 else "Boa noite")
-
-
-def _hero_inicio(lote: list[Resultado] | None) -> None:
+def _hero_chegada() -> None:
     with st.container(key="hero"):
         _topo_hero()
-        prazos = painel_geral(lote)["prazos"] if lote else []
-        rotulo = "Próximo prazo de recurso" if prazos else ""
         _html(
-            f'<div class="hero-texto"><div class="saudacao">{_saudacao()}, faturista</div>'
-            '<div class="pergunta">Quais glosas vamos analisar hoje?</div>'
-            f'<div class="rotulo">{rotulo}</div></div>'
+            f'<div class="hero-texto"><div class="pergunta">{escape(NOME_PRODUTO)}</div>'
+            f'<div class="saudacao frase">{escape(FRASE_CHEGADA)}</div>{_selo()}</div>'
         )
-        if not prazos:
-            return
-        p = prazos[0]
-        with st.container(key="destaque"):
-            dias = p["dias_restantes"]
-            quando = "vencido" if p["vencido"] else f"{dias} dia(s)"
-            _html(
-                f'<div class="destaque"><span class="ic-quadrado">{_svg("doc")}</span><div>'
-                f"<b>{escape(p['documento'])}</b>"
-                f'<div class="sub">{escape(p["operadora"])} · {_brl(p["recorrivel"])} para contestar</div>'
-                f'<div class="linha-meta"><span>{_svg("calendario")} {escape(p["prazo_final"])}'
-                f"</span><span>{_svg('relogio')} {quando}</span></div></div></div>"
+
+
+# ================================================================= F2: a trilha ao vivo
+def _num(padrao: str, texto: str) -> int:
+    m = re.search(padrao, texto)
+    return int(m.group(1)) if m else 0
+
+
+def _texto_etapa(i: int, passos: list[PassoTrilha], r: Resultado | None, fim: bool) -> tuple:
+    """(estado, texto) de um passo da trilha, com o resultado concreto que já se conhece."""
+    pior = "ok"
+    for p in passos:
+        if p.status == "erro":
+            pior = "erro"
+        elif p.status in ("fallback", "retry") and pior != "erro":
+            pior = "alerta"
+    nomes = {p.etapa for p in passos}
+    ultimo = passos[-1]
+    if pior == "erro":
+        return "erro", "A análise parou aqui. O motivo está em Pendências."
+
+    if i == 0:  # leitura + triagem
+        leitura = next((p for p in passos if p.etapa == "leitura"), None)
+        if leitura and "Pseudonimização" not in leitura.detalhe:
+            return "alerta", "Não conseguimos ler o texto deste PDF. Confira à mão."
+        partes = [f"{_num(r'^(\d+) página', leitura.detalhe)} página(s)"] if leitura else []
+        if r and r.triagem:
+            partes.append(r.triagem.operadora)
+            if r.triagem.competencia:
+                partes.append(f"competência {r.triagem.competencia}")
+        texto = ", ".join(partes) + ". Nome, CPF e carteira apagados antes da IA."
+        sem_texto = re.search(
+            r"páginas sem texto: \[([^\]]*)\]", leitura.detalhe if leitura else ""
+        )
+        if sem_texto:
+            return "alerta", texto + (
+                f" Não conseguimos ler a página {sem_texto.group(1)}: vai para revisão humana."
             )
-            b1, b2 = st.columns(2)
-            if b1.button("Ver todos os prazos", width="stretch", icon=":material/event:"):
-                st.switch_page(PAGINA_PRAZOS)
-            b2.button(
-                "Analisar agora",
-                type="primary",
-                width="stretch",
-                icon=":material/play_arrow:",
-                on_click=_abrir_documento,
-                args=(p["documento"], True),
+        if any(p.etapa == "triagem" and p.status == "fallback" for p in passos):
+            return "alerta", "Não parece um demonstrativo de retorno: vai para revisão humana."
+        return ("ok" if "triagem" in nomes or fim else "rodando"), texto
+
+    if i == 1:  # extração
+        if r and r.itens:
+            glosados = sum(1 for it in r.itens if it.glosado > 0)
+            texto = f"{len(r.itens)} itens, {glosados} glosados."
+        else:
+            texto = "Cada linha cobrada separada, com valores e motivo."
+        if pior == "alerta":
+            texto += " A primeira leitura foi recusada pelo verificador e refeita."
+        return ("ok" if pior == "ok" else "alerta"), texto
+
+    if i == 2:  # soma
+        resumo = ultimo.ferramentas[-1].resultado if ultimo.ferramentas else ultimo.detalhe
+        if ultimo.status == "ok":
+            if r and r.itens:
+                total = sum(it.apresentado for it in r.itens)
+                return "ok", f"{_brl(total)} = total impresso ✓"
+            return "ok", "A soma das linhas bate com o total impresso ✓"
+        if ultimo.status == "info":
+            return "alerta", "Não dá para conferir a soma: uma página está sem texto."
+        m = re.search(r"soma das linhas (R\$ [\d.,]+) × impresso (R\$ [\d.,]+)", resumo)
+        if ultimo.status == "retry":
+            return "alerta", "A soma não fechou na primeira leitura. Pedimos para reler."
+        if m:
+            return "alerta", (
+                f"Soma divergente: impresso {m.group(2)}, linhas somam {m.group(1)} → enviado "
+                "para revisão."
             )
+        return "alerta", "Totais impressos não encontrados → enviado para revisão."
 
-
-# ================================================================= fases (a faixa da trilha)
-def _estados_fases(trilha: list[PassoTrilha], fim: bool, interrompido: bool = False) -> list[str]:
-    estados = ["pendente"] * len(FASES)
-    ultima = -1
-    for p in trilha:
-        i = INDICE_FASE.get(p.etapa)
-        if i is None:  # etapa "fluxo": erro geral, marca a fase em que parou
-            if p.status == "erro":
-                estados[max(ultima, 0)] = "erro"
-            continue
-        if GRAVIDADE[p.status] > GRAVIDADE[estados[i]]:
-            estados[i] = p.status
-        ultima = max(ultima, i)
-    if fim:
-        estados = ["pulada" if e == "pendente" else e for e in estados]
-        estados[-1] = "erro" if interrompido else "ok"
-    elif ultima + 1 < len(FASES):
-        estados[ultima + 1] = "rodando"
-    return ["ok" if e == "info" else e for e in estados]
-
-
-def _fases_html(estados: list[str]) -> str:
-    blocos = []
-    for (nome, quem, _), estado in zip(FASES, estados, strict=True):
-        simbolo, texto = ESTADO_FASE[estado]
-        blocos.append(
-            f'<div class="fase fase-{estado}"><span class="fase-sim">{simbolo}</span>'
-            f"<b>{nome}</b><small>{quem}</small><small>{texto}</small></div>"
+    if i == 3:  # Tabela 38
+        total = len(ultimo.ferramentas)
+        achados = sum(1 for f in ultimo.ferramentas if f.aprovado)
+        if achados == total:
+            return "ok", f"{achados} de {total} códigos encontrados ✓"
+        return "alerta", (
+            f"{achados} de {total} códigos encontrados. {total - achados} não existe(m) na tabela "
+            "oficial → revisão humana, sem palpite."
         )
-    return '<div class="fases">' + "".join(blocos) + "</div>"
 
+    if i == 4:  # análise
+        if r and r.glosas:
+            cont = {d: sum(g.decisao == d for g in r.glosas) for d in ROTULO_DECISAO}
+            texto = (
+                f"{len(r.glosas)} glosas: {cont['recorrer']} recorrer, {cont['nao_recorrer']} não "
+                f"recorrer, {cont['revisao_humana']} revisão humana."
+            )
+        else:
+            texto = "Para cada glosa, decidido se vale recorrer, com o porquê e a fonte."
+        if pior == "alerta":
+            texto += " Uma resposta foi recusada pelo verificador e refeita."
+        return pior, texto
 
-# ================================================================= análise
-def analisar(dados: bytes, nome: str, area, lugar_fases=None) -> Resultado:
-    modo_demo = _modo_demo()
-    cli = ClienteAnthropic(modo_demo=modo_demo)
-    pausa = PAUSA_APRESENTACAO if modo_demo and st.session_state.get("ritmo", True) else 0
-    trilha: list[PassoTrilha] = []
-    rotulo = f"O agente está analisando {nome}…"
-    with area.status(rotulo, expanded=lugar_fases is not None) as status:
-
-        def ao_passo(p: PassoTrilha) -> None:
-            trilha.append(p)
-            status.markdown(_frase_passo(p))
-            if lugar_fases is not None:
-                _html(_fases_html(_estados_fases(trilha, fim=False)), lugar_fases)
-            if pausa:
-                time.sleep(pausa)
-
-        res = Orquestrador(cli, ao_passo=ao_passo).analisar(dados, nome=nome)
-        if lugar_fases is not None:
-            _html(_fases_html(_estados_fases(res.trilha, True, res.interrompido)), lugar_fases)
-        status.update(
-            label=f"{nome}: {len(res.glosas)} glosa(s), {len(res.recursos)} pedido(s) pronto(s), "
-            f"{len(res.pendencias) + len(res.alertas)} para a faturista revisar — "
-            f"{res.latencia_ms / 1000:.1f} s",
-            state="error" if res.interrompido else "complete",
-            expanded=False,
-        )
-    return res
-
-
-def _cabecalho_documento(res: Resultado) -> None:
-    tri = res.triagem
-    chips = ""
-    if tri:
-        chips = f'<span class="chip">{_svg("predio")} {escape(tri.operadora)}</span>'
-        for rotulo, valor in (
-            ("competência", tri.competencia),
-            ("emitido em", tri.data_emissao),
-            ("protocolo", tri.protocolo),
-        ):
-            if valor:
-                chips += f'<span class="chip cinza">{rotulo} {escape(valor)}</span>'
-    _html(
-        f'<div class="titulo-cartao" style="font-size:1.45rem">{escape(res.documento)}</div>'
-        f"<div>{chips}</div>"
+    # redação + verificador
+    verif = next((p for p in passos if p.etapa == "verificar_recurso"), None)
+    if not verif:
+        return "rodando", "Escrevendo um recurso para cada glosa recorrível…"
+    total = len(verif.ferramentas)
+    aprovados = sum(1 for f in verif.ferramentas if f.aprovado)
+    if aprovados == total:
+        return "ok", f"Verificador aprovou {aprovados} de {total} ✓"
+    return "alerta", (
+        f"Verificador aprovou {aprovados} de {total}. {total - aprovados} retido(s) → revisão humana."
     )
 
 
-def _avisos(res: Resultado) -> None:
+def _estados_trilha(trilha: list[PassoTrilha], r: Resultado | None, fim: bool) -> list[tuple]:
+    grupos: list[list[PassoTrilha]] = [[] for _ in ETAPAS]
+    for p in trilha:
+        if p.etapa in GRUPO_DA_ETAPA:
+            grupos[GRUPO_DA_ETAPA[p.etapa]].append(p)
+        elif p.status == "erro" and trilha:  # erro geral: marca o último passo visto
+            ultimo = max((i for i, g in enumerate(grupos) if g), default=0)
+            grupos[ultimo].append(p)
+    vistos = [i for i, g in enumerate(grupos) if g]
+    ultimo_visto = max(vistos, default=-1)
+    estados = []
+    for i, passos in enumerate(grupos):
+        if passos:
+            estado, texto = _texto_etapa(i, passos, r, fim)
+            if estado == "rodando" and (fim or i < ultimo_visto):
+                estado = "ok"
+        elif fim or i < ultimo_visto:
+            estado, texto = "pulado", "Não se aplica a este documento."
+            if i == 5 and r and not any(g.decisao == "recorrer" for g in r.glosas):
+                texto = "Nenhuma glosa recorrível: nada a redigir."
+        elif i == ultimo_visto + 1:
+            estado, texto = "rodando", "Em andamento…"
+        else:
+            estado, texto = "pendente", ""
+        estados.append((estado, texto))
+    return estados
+
+
+def _trilha_html(estados: list[tuple], r: Resultado | None) -> str:
+    partes = []
+    for a in r.alertas if r else []:
+        partes.append(
+            f'<div class="aviso-injecao"><span class="sim">{_svg("escudo")}</span><div>'
+            "<b>Encontramos uma instrução escondida no documento</b>"
+            f"<small>“{escape(a.trecho or '')}” ({escape(_onde(a.pagina, a.linha))}). Ela foi "
+            "ignorada: conteúdo do documento é dado, não ordem.</small></div></div>"
+        )
+    for (nome, _), (estado, texto) in zip(ETAPAS, estados, strict=True):
+        partes.append(
+            f'<div class="passo passo-{estado}"><span class="sim">{SIMBOLO_PASSO[estado]}</span>'
+            f"<div><b>{escape(nome)}</b><small>{escape(texto)}</small></div></div>"
+        )
+    return '<div class="passos">' + "".join(partes) + "</div>"
+
+
+def analisar(dados: bytes, nome: str, lugar=None) -> Resultado:
+    """Roda o agente. Com `lugar`, desenha a trilha ao vivo nele."""
+    modo_demo = _modo_demo()
+    pausa = PAUSA_APRESENTACAO if modo_demo and st.session_state.get("ritmo", True) else 0
+    orq = Orquestrador(ClienteAnthropic(modo_demo=modo_demo))
+    trilha: list[PassoTrilha] = []
+
+    def ao_passo(p: PassoTrilha) -> None:
+        trilha.append(p)
+        if lugar is not None:
+            _html(_trilha_html(_estados_trilha(trilha, orq.resultado, False), orq.resultado), lugar)
+            if pausa:
+                time.sleep(pausa)
+
+    orq.ao_passo = ao_passo
+    res = orq.analisar(dados, nome=nome)
+    _registrar(res)
+    return res
+
+
+# ================================================================= F1: chegada
+def _chegada() -> tuple[bytes | None, str | None]:
+    """Os bytes e o nome do PDF a analisar agora, ou (None, None)."""
+    cat = _catalogo()
+    nomes = list(cat)
+    with st.container(key="cartao_chegada"):
+        c1, c2 = st.columns([3, 2], gap="large")
+        with c1:
+            _html(
+                '<div class="titulo-cartao">Envie o demonstrativo de retorno</div>'
+                '<div class="sub">O PDF que a operadora mandou. Nesta demo, só dado fictício.</div>'
+            )
+            enviado = st.file_uploader(
+                "PDF do demonstrativo", type=["pdf"], label_visibility="collapsed"
+            )
+        with c2:
+            _html(
+                '<div class="titulo-cartao">Ou veja com um exemplo</div>'
+                '<div class="sub">Demonstrativos fictícios de três operadoras inventadas.</div>'
+            )
+            escolha = st.selectbox(
+                "Exemplo",
+                nomes,
+                index=nomes.index(EXEMPLO_INICIAL),
+                key="exemplo",
+                format_func=_rotulo_exemplo,
+                label_visibility="collapsed",
+            )
+            dados_exemplo = Path(cat[escolha]["caminho"]).read_bytes()
+            clicou = st.button(
+                "Analisar o exemplo",
+                type="primary",
+                icon=":material/play_arrow:",
+                width="stretch",
+            )
+            st.download_button(
+                "Ver o PDF do exemplo",
+                dados_exemplo,
+                file_name=escolha,
+                mime="application/pdf",
+                icon=":material/picture_as_pdf:",
+                type="tertiary",
+            )
+    if enviado is not None and enviado.file_id != st.session_state.get("envio_id"):
+        st.session_state["envio_id"] = enviado.file_id
+        return enviado.getvalue(), enviado.name
+    if clicou:
+        return dados_exemplo, escolha
+    return None, None
+
+
+# ================================================================= F3: o número-herói
+def _numero_heroi(res: Resultado) -> None:
     pnl = res.painel
+    cores = [semaforo(g, res)[0] for g in res.glosas]
+    para_conferir = sum(c != "pronto" for c in cores)
+    glosas = f"{len(res.glosas)}" + (f" ({para_conferir} para conferir)" if para_conferir else "")
+    pr = pnl.get("prazo")
+    if pr and pr["vencido"]:
+        prazo, classe = f"venceu ({pr['prazo_final'][:5]})", "perigo"
+    elif pr:
+        dias = pr["dias_restantes"]
+        prazo = f"vence em {dias} dia{'s' if dias != 1 else ''} ({pr['prazo_final'][:5]})"
+        classe = "perigo" if dias <= 3 else ""
+    else:
+        prazo, classe = "—", ""
+    _html(
+        _tiles(
+            [
+                ("moeda", "Pode ser recorrido", _brl(pnl["recorrivel"])),
+                ("glosa", "Glosado no total", _brl(pnl["total_glosado"])),
+                ("check", "Glosas", glosas),
+                ("calendario", "Prazo mais próximo", prazo, classe),
+            ],
+            destaque=0,
+        )
+    )
+    if pr:
+        st.caption(
+            f"Prazo fictício da {res.triagem.operadora}: {pr['prazo_dias']} dias depois da emissão "
+            f"({pr['data_emissao']}). Os números desta tela são calculados pelo código, não pela IA."
+        )
     if res.interrompido:
         st.error(
             res.pendencias[-1].motivo if res.pendencias else "Análise interrompida.",
             icon=":material/error:",
         )
-    pr = pnl.get("prazo")
-    if pr:
-        txt = (
-            f"**Prazo para contestar: {pr['prazo_final']}** — {pr['dias_restantes']} dia(s) a partir "
-            f"de hoje. Prazo fictício do plano {res.triagem.operadora}: {pr['prazo_dias']} dias depois "
-            "do extrato."
+    for p in res.pendencias:
+        if p.item is not None:
+            continue  # as pendências de uma glosa aparecem na própria glosa
+        if p.tipo == "pagina_ilegivel":
+            st.warning(
+                f"Não conseguimos ler a página {p.pagina}. Confira à mão.",
+                icon=":material/warning:",
+            )
+        elif p.tipo == "soma_divergente":
+            m = re.search(r"soma das linhas (R\$ [\d.,]+) × impresso (R\$ [\d.,]+)", p.motivo)
+            valores = f": impresso {m.group(2)}, linhas somam {m.group(1)}" if m else ""
+            st.warning(
+                f"A soma das linhas não bate com o total impresso{valores}. Confira os totais com "
+                "a operadora antes de recorrer.",
+                icon=":material/warning:",
+            )
+        elif p.tipo in PENDENCIA:
+            titulo, acao = PENDENCIA[p.tipo]
+            st.warning(f"**{titulo}.** {acao}", icon=":material/warning:")
+    if res.glosas and not pnl["recorrivel"]:
+        cls = _classificacao()
+        preenchimento = sum(
+            (cls.get(g.codigo_glosa or "", {}).get("grupo") == "preenchimento") for g in res.glosas
         )
-        if pr["vencido"]:
-            st.error("Prazo vencido. " + txt, icon=":material/event_busy:")
-        elif pr["urgente"]:
-            st.warning("Vence nos próximos 10 dias. " + txt, icon=":material/alarm:")
-        else:
-            st.info(txt, icon=":material/event:")
-    for a in res.alertas:
-        st.error(
-            f"**Ordem escondida no documento, ignorada** ({_onde(a.pagina, a.linha)}): "
-            f"“{a.trecho}”. O texto foi retirado antes de a IA ler e não influenciou nenhuma decisão.",
-            icon=":material/shield:",
-        )
+        texto = "Nenhuma glosa recorrível neste demonstrativo."
+        if preenchimento:
+            texto += f" {preenchimento} glosa(s) são de preenchimento e podem ser evitadas no próximo lote."
+        st.info(texto, icon=":material/info:")
+    elif not res.glosas and not res.interrompido:
+        st.success("Nenhuma glosa neste demonstrativo: tudo o que foi cobrado foi pago.")
 
 
-def _tiles_painel(pnl: dict) -> str:
-    return _tiles(
-        [
-            ("doc", "Cobrado do plano", _brl(pnl["total_apresentado"])),
-            ("glosa", "Não pago (glosado)", _brl(pnl["total_glosado"])),
-            ("moeda", "Dá para contestar", _brl(pnl["recorrivel"])),
-            ("pessoa", "Faturista revisa", _brl(pnl["a_classificar"])),
-            ("check", "Não vale contestar", _brl(pnl["nao_recorrivel"])),
-        ],
-        destaque=2,
-    )
+# ================================================================= F4 e F5: as glosas e a prova
+def _chave_revisao(res: Resultado, item: int) -> str:
+    return f"{res.documento}#{item}"
 
 
-def _aba_glosas(res: Resultado) -> None:
+def _lista_glosas(res: Resultado) -> None:
     if not res.glosas:
-        st.info("Nenhuma glosa encontrada neste documento.", icon=":material/check:")
         return
-    tabela = pd.DataFrame(
-        [
+    pr = res.painel.get("prazo") or {}
+    revisados = st.session_state.get("revisados", set())
+    ordem = glosas_priorizadas(res)
+    linhas = []
+    for g in ordem:
+        cor, motivo_cor = semaforo(g, res)
+        icone, rotulo = SEMAFORO[cor]
+        linhas.append(
             {
-                "Decisão": f"{ICONE_DECISAO[g.decisao]} {ROTULO_DECISAO[g.decisao]}",
-                "Guia": g.guia,
-                "Procedimento": g.codigo_procedimento,
-                "Glosa": g.codigo_glosa or "—",
-                "Motivo (lista oficial da ANS)": g.descricao_oficial
-                or "não consta na lista oficial",
+                "Situação": f"{icone} {rotulo}",
                 "Valor glosado": _brl(g.valor_glosado),
-                "Confiança": ROTULO_CONFIANCA[g.confianca],
+                "Guia": g.guia,
+                "Motivo": _motivo_simples(g.descricao_oficial),
+                "Decisão": ROTULO_DECISAO[g.decisao],
+                "Prazo final": pr.get("prazo_final", "—"),
                 "Onde": _onde(g.pagina, g.linha),
+                "Revisado": "✓" if _chave_revisao(res, g.item) in revisados else "",
+                "Para conferir": motivo_cor,
             }
-            for g in res.glosas
-        ]
-    )
-    st.dataframe(
+        )
+    tabela = pd.DataFrame(linhas)
+    if not tabela["Para conferir"].any():  # tudo pronto: a coluna só ocuparia espaço
+        tabela = tabela.drop(columns="Para conferir")
+    evento = st.dataframe(
         tabela,
         hide_index=True,
         width="stretch",
+        on_select="rerun",
+        selection_mode="single-row",
+        key=f"tabela_{res.documento}",
         column_config={
-            "Decisão": st.column_config.TextColumn(width="medium"),
-            "Motivo (lista oficial da ANS)": st.column_config.TextColumn(width="medium"),
+            "Situação": st.column_config.TextColumn(width="small"),
+            "Motivo": st.column_config.TextColumn(width="medium"),
+            "Revisado": st.column_config.TextColumn(width="small"),
+            "Para conferir": st.column_config.TextColumn(width="medium"),
         },
     )
-    st.caption("Abra uma glosa para ver a justificativa, a evidência no PDF e as fontes.")
-    base = _trechos()
-    linhas = st.session_state.get("linhas", {})
-    for g in res.glosas:
-        cor = COR_DECISAO[g.decisao]
-        rotulo = (
-            f":{cor}[**{ROTULO_DECISAO[g.decisao]}**] · guia {g.guia} · glosa "
-            f"{g.codigo_glosa or '—'} · {_brl(g.valor_glosado)}"
-        )
-        with st.expander(rotulo):
-            esq, dir_ = st.columns([3, 2], gap="large")
-            with esq:
-                st.markdown("**Por quê**")
-                st.markdown(g.justificativa)
-                if g.documentos:
-                    st.markdown("**Documentos para anexar**")
-                    st.markdown("\n".join(f"- {d}" for d in g.documentos))
-            with dir_:
-                st.markdown(
-                    f":{cor}-badge[{ROTULO_DECISAO[g.decisao]}] "
-                    f":gray-badge[confiança {ROTULO_CONFIANCA[g.confianca]}] "
-                    f":gray-badge[decidido {'pela IA' if g.origem == 'agente' else 'pelo código'}]"
-                )
-                trecho_pdf = linhas.get((g.pagina, g.linha))
-                st.markdown(f"**Onde está no PDF** · {_onde(g.pagina, g.linha)}")
-                if trecho_pdf:
-                    st.code(trecho_pdf, language=None, wrap_lines=True)
-                    st.caption("Nome e CPF já apagados: é exatamente o que a IA viu.")
-                if g.fontes:
-                    st.markdown("**Fontes consultadas**")
-                    for fid in g.fontes:
-                        t = base.get(fid)
-                        if t:
-                            with st.popover(fid, icon=":material/attach_file:"):
-                                st.markdown(t["texto"])
-                                st.caption("Fonte: " + t["fonte"])
-
-
-def _aba_recursos(res: Resultado) -> None:
-    if not res.recursos:
-        st.info("Nenhuma glosa vale contestar neste documento.", icon=":material/info:")
-        return
     st.caption(
-        "Cada pedido passou pelo conferente: os valores batem com o extrato, não cita lei que não "
-        "conferimos e não tem dado de paciente. Antes de enviar, a faturista completa os campos "
-        "[A PREENCHER] e troca o código CART pelo número da carteirinha. O botão no canto do texto "
-        "copia o pedido."
+        "Prazo mais curto primeiro e, no empate, maior valor. 🟢 Pronto: confiança alta e todos os "
+        "verificadores aprovaram. 🟡 Confira: confiança média ou algum verificador alertou. "
+        "⚪ Revisão humana: o agente não decidiu. **Clique numa linha para ver a prova.**"
     )
-    for r in res.recursos:
-        it = res.itens[r.item]
-        with st.expander(
-            f":material/description: Pedido de revisão — guia {it.guia} · procedimento "
-            f"{it.codigo_procedimento} · {_brl(it.glosado)}",
-            expanded=len(res.recursos) == 1,
-        ):
-            st.code(r.texto, language=None, wrap_lines=True)
-            st.download_button(
-                "Baixar .txt",
-                r.texto.encode("utf-8"),
-                file_name=f"recurso_guia_{it.guia}_{it.codigo_procedimento}.txt",
-                key=f"dl_{res.documento}_{r.item}",
-                icon=":material/download:",
+    selecao = evento.selection.rows if evento else []
+    _prova(ordem[selecao[0]] if selecao else ordem[0], res)
+
+
+def _prova(g, res: Resultado) -> None:
+    cor, motivo_cor = semaforo(g, res)
+    icone, rotulo = SEMAFORO[cor]
+    base = _trechos()
+    linhas = st.session_state.get("linhas", {}).get(res.documento, {})
+    with st.container(key="cartao_prova"):
+        _html(
+            f'<div class="titulo-cartao">{icone} {rotulo} · {_brl(g.valor_glosado)} · guia '
+            f"{escape(g.guia)}</div>"
+            + (f'<div class="sub">{escape(motivo_cor)}</div>' if motivo_cor else "")
+        )
+        esq, dir_ = st.columns([3, 2], gap="large")
+        with esq:
+            st.markdown("**Por que foi glosada**")
+            if g.descricao_oficial:
+                st.markdown(f"Código {g.codigo_glosa}: {_motivo_simples(g.descricao_oficial)}.")
+                st.caption("Fonte: Tabela 38, Padrão TISS 202609 (ANS), descrição oficial.")
+            else:
+                st.markdown(
+                    f"Código {g.codigo_glosa or '—'}: não consta na Tabela 38 oficial. O agente "
+                    "não adivinha o significado."
+                )
+            titulo = {
+                "recorrer": "Por que recorrer",
+                "nao_recorrer": "Por que não recorrer",
+                "revisao_humana": "Por que foi para revisão humana",
+            }[g.decisao]
+            st.markdown(
+                f"**{titulo}** · :gray-badge[confiança {ROTULO_CONFIANCA[g.confianca]}] "
+                f":gray-badge[decidido {'pela IA' if g.origem == 'agente' else 'pelo código'}]"
+            )
+            st.markdown(g.justificativa)
+            fontes = [fid for fid in g.fontes if fid in base]
+            if fontes:
+                cols = st.columns(len(fontes))
+                for col, fid in zip(cols, fontes, strict=True):
+                    with col.popover(fid, icon=":material/attach_file:"):
+                        st.markdown(base[fid]["texto"])
+                        st.caption("Fonte: " + base[fid]["fonte"])
+        with dir_:
+            st.markdown(f"**Onde está no documento** · {_onde(g.pagina, g.linha)}")
+            trecho_pdf = linhas.get((g.pagina, g.linha))
+            if trecho_pdf:
+                st.code(trecho_pdf, language=None, wrap_lines=True)
+                st.caption("Nome e CPF já apagados: é exatamente o que a IA viu.")
+            if g.documentos:
+                st.markdown("**O que anexar**")
+                st.markdown("\n".join(f"- {d}" for d in g.documentos))
+            _html(
+                '<span class="chip laranja">Classificação de demonstração, a validar com '
+                "especialista</span>"
             )
 
 
+# ================================================================= F6: o recurso pronto
+def _recursos(res: Resultado) -> None:
+    por_item = {r.item: r for r in res.recursos}
+    recorriveis = [g for g in glosas_priorizadas(res) if g.decisao == "recorrer"]
+    if not recorriveis:
+        return
+    _secao("Recursos prontos para revisar e enviar", f"{len(res.recursos)} de {len(recorriveis)}")
+    with st.container(key="cartao_recursos"):
+        if res.recursos:
+            todos = "\n\n" + ("=" * 72 + "\n\n").join(
+                por_item[g.item].texto + "\n\n" for g in recorriveis if g.item in por_item
+            )
+            st.download_button(
+                "Baixar todos os recursos (.txt)",
+                todos.strip().encode("utf-8"),
+                file_name=f"recursos_{Path(res.documento).stem}.txt",
+                icon=":material/download:",
+                key=f"todos_{res.documento}",
+            )
+        revisados = st.session_state.get("revisados", set())
+        for g in recorriveis:
+            r = por_item.get(g.item)
+            if r is None:
+                st.warning(
+                    f"O recurso da guia {g.guia} foi retido pelo verificador. Veja em Pendências.",
+                    icon=":material/warning:",
+                )
+                continue
+            preencher, confirmar = campos_a_preencher(r.texto)
+            _html(
+                f'<div class="titulo-cartao">Recurso · guia {escape(g.guia)} · '
+                f"{_brl(g.valor_glosado)}</div>"
+                f'<div class="sub">{escape(_motivo_simples(g.descricao_oficial))}</div>'
+            )
+            avisos = []
+            if preencher:
+                avisos.append(
+                    f"Preencha {len(preencher)} campo(s) antes de enviar: "
+                    + ", ".join(c.lower() for c in preencher)
+                    + "."
+                )
+            if confirmar:
+                avisos.append(
+                    "Confirme o fundamento normativo: o recurso não cita norma que não verificamos."
+                )
+            if avisos:
+                st.warning(" ".join(avisos), icon=":material/edit_note:")
+            st.code(r.texto, language=None, wrap_lines=True)
+            c1, c2 = st.columns([1, 2], vertical_alignment="center")
+            c1.download_button(
+                "Baixar .txt",
+                r.texto.encode("utf-8"),
+                file_name=f"recurso_guia_{g.guia}_{g.codigo_procedimento}.txt",
+                key=f"dl_{res.documento}_{r.item}",
+                icon=":material/download:",
+            )
+            chave = _chave_revisao(res, g.item)
+            c2.checkbox(
+                "Revisei este recurso",
+                value=chave in revisados,
+                key=f"w_rev_{chave}",
+                on_change=_marcar_revisado,
+                args=(chave,),
+            )
+        st.caption(
+            "Para copiar, use o botão no canto de cada recurso. Troque o código CART pelo número da "
+            "carteira antes de enviar."
+        )
+
+
+# ================================================================= página: início
+def pagina_inicio() -> None:
+    _hero_chegada()
+    dados, nome = _chegada()
+
+    if dados is not None:
+        st.session_state["t0"] = time.perf_counter()
+        st.session_state.pop("res", None)
+        with st.container(key="cartao_trilha_viva"):
+            _html('<div class="titulo-cartao">O agente está trabalhando</div>')
+            lugar = st.empty()
+            _html(_trilha_html(_estados_trilha([], None, False), None), lugar)
+            res = analisar(dados, nome, lugar)
+        st.session_state["res"] = res
+        st.session_state.setdefault("linhas", {})[nome] = _linhas_pseudonimizadas(dados, nome)
+        st.rerun()
+
+    res: Resultado | None = st.session_state.get("res")
+    if not res:
+        return
+
+    t0 = st.session_state.pop("t0", None)
+    if t0 is not None:
+        st.session_state.setdefault("tempo_ate_valor", {})[res.documento] = time.perf_counter() - t0
+
+    _secao("O que o agente fez", escape(res.documento))
+    with st.container(key="cartao_trilha"):
+        _html(_trilha_html(_estados_trilha(res.trilha, res, True), res))
+        with st.expander("Ver detalhes técnicos", icon=":material/code:"):
+            for p in res.trilha:
+                st.markdown(_texto_passo(p))
+            tempo = st.session_state.get("tempo_ate_valor", {}).get(res.documento)
+            st.caption(
+                f"Modelo {res.modelo} · prompts {res.versoes_prompt} · {res.tokens_entrada:,} tokens "
+                f"de entrada, {res.tokens_saida:,} de saída · custo estimado US$ "
+                f"{res.custo_usd:.4f} · agente {res.latencia_ms / 1000:.1f} s".replace(",", ".")
+                + (f" · do clique ao resultado {tempo:.1f} s".replace(".", ",") if tempo else "")
+            )
+
+    _secao("Quanto está em jogo")
+    with st.container(key="cartao_heroi"):
+        _numero_heroi(res)
+
+    if res.glosas:
+        _secao("Glosas, da mais urgente para a menos urgente", f"{len(res.glosas)} glosas")
+        with st.container(key="cartao_glosas"):
+            _lista_glosas(res)
+
+    _recursos(res)
+
+
+# ================================================================= F7: prazos
+def _faixa_de_dias(linhas: list[dict]) -> str:
+    if not linhas:
+        return ""
+    p0 = linhas[0]
+    hoje = parse_data(p0["prazo_final"]) - dt.timedelta(days=p0["dias_restantes"])
+    por_dia: dict[dt.date, int] = {}
+    for p in linhas:
+        d = parse_data(p["prazo_final"])
+        por_dia[d] = por_dia.get(d, 0) + 1
+    blocos = []
+    for i in range(14):
+        d = hoje + dt.timedelta(days=i)
+        n = por_dia.get(d, 0)
+        classe = " com-prazo" if n else (" hoje" if i == 0 else "")
+        qtd = (
+            f'<span class="qtd">{n} glosa{"s" if n > 1 else ""}</span>'
+            if n
+            else "<small>&nbsp;</small>"
+        )
+        rotulo = "hoje" if i == 0 else DIAS_SEMANA[d.weekday()]
+        blocos.append(f'<div class="dia{classe}"><small>{rotulo}</small><b>{d.day}</b>{qtd}</div>')
+    return '<div class="dias">' + "".join(blocos) + "</div>"
+
+
+def _lista_agenda(linhas: list[dict]) -> str:
+    itens = []
+    for p in linhas:
+        d = parse_data(p["prazo_final"])
+        dias = p["dias_restantes"]
+        if p["vencido"]:
+            chip, classe = '<span class="chip vermelho">venceu</span>', " perigo"
+        elif dias <= 3:
+            chip, classe = f'<span class="chip vermelho">vence em {dias} dias</span>', " perigo"
+        elif dias <= 10:
+            chip, classe = f'<span class="chip laranja">vence em {dias} dias</span>', " urgente"
+        else:
+            chip, classe = f'<span class="chip cinza">vence em {dias} dias</span>', ""
+        itens.append(
+            f'<div class="prazo-item{classe}">'
+            f'<div class="prazo-data"><b>{d.day}</b><small>{MESES[d.month - 1]}</small></div>'
+            f'<div class="prazo-info"><b>{escape(_motivo_simples(p["descricao"]))}</b>'
+            f"<small>guia {escape(p['guia'])} · {escape(p['documento'])} · "
+            f"{escape(p['operadora'])}</small></div>"
+            f'<div class="prazo-valor"><b>{_brl(p["valor"])}</b><small>pode ser recorrido</small>'
+            f"</div>{chip}</div>"
+        )
+    return '<div class="prazos">' + "".join(itens) + "</div>"
+
+
+def pagina_prazos() -> None:
+    _hero_compacto(
+        "Agenda de prazos",
+        "Todas as glosas recorríveis dos demonstrativos analisados nesta sessão, do vencimento mais "
+        "próximo ao mais distante. Os prazos de cada operadora são parâmetros fictícios.",
+    )
+    st.info(
+        "No produto, você recebe este alerta por e-mail ou WhatsApp 10 e 3 dias antes de cada prazo.",
+        icon=":material/notifications:",
+    )
+    with st.container(key="cartao_lote"):
+        c1, c2 = st.columns([2, 1], vertical_alignment="center")
+        incluir_validacao = c1.toggle(
+            "Incluir os 5 documentos de validação (nunca vistos no ajuste)", value=False
+        )
+        rodar = c2.button(
+            "Analisar todos os exemplos",
+            icon=":material/play_arrow:",
+            width="stretch",
+        )
+        if rodar:
+            nomes = [
+                n
+                for n, m in _catalogo().items()
+                if m["conjunto"] == "desenvolvimento" or incluir_validacao
+            ]
+            progresso = st.progress(0.0, text="Analisando…")
+            for i, n in enumerate(nomes, 1):
+                analisar(Path(_catalogo()[n]["caminho"]).read_bytes(), n)
+                progresso.progress(i / len(nomes), text=f"{i} de {len(nomes)} demonstrativos")
+            st.rerun()
+
+    lote = _analisados()
+    if not lote:
+        st.info(
+            "Nada analisado ainda nesta sessão. Analise um demonstrativo no Início ou clique em "
+            "**Analisar todos os exemplos**.",
+            icon=":material/arrow_upward:",
+        )
+        return
+
+    linhas = agenda(lote)
+    pg = painel_geral(lote)
+    ate3 = sum(p["valor"] for p in linhas if p["dias_restantes"] <= 3)
+    ate10 = sum(p["valor"] for p in linhas if p["dias_restantes"] <= 10)
+    _html(
+        _tiles(
+            [
+                ("doc", "Demonstrativos analisados", str(len(lote))),
+                ("moeda", "Pode ser recorrido", _brl(pg["recorrivel"])),
+                ("alerta", "Vence em até 3 dias", _brl(ate3), "perigo" if ate3 else ""),
+                ("calendario", "Vence em até 10 dias", _brl(ate10)),
+            ],
+            destaque=1,
+        )
+    )
+    if not linhas:
+        st.info("Nenhuma glosa recorrível nos demonstrativos analisados.", icon=":material/info:")
+        return
+    _secao("Próximos 14 dias", "dias em verde-escuro têm prazo")
+    with st.container(key="cartao_dias"):
+        _html(_faixa_de_dias(linhas))
+    n = len(linhas)
+    _secao(
+        "Do vencimento mais próximo ao mais distante",
+        f"{n} glosa{'s' if n != 1 else ''} recorríve{'is' if n != 1 else 'l'}",
+    )
+    _html(_lista_agenda(linhas))
+
+
+# ================================================================= F8: pendências
 def _pendencia_html(documento: str, tipo: str, motivo: str, onde: str, alerta: bool) -> str:
     titulo, acao = PENDENCIA.get(tipo, (tipo, ""))
     if alerta:
-        titulo, acao = "Ordem escondida no documento", "Nada a fazer: foi ignorada. Só confira."
+        titulo, acao = "Instrução escondida no documento", "Nada a fazer: foi ignorada. Só confira."
     return (
         f'<div class="pendencia{" alerta" if alerta else ""}">'
         f'<span class="ic-redondo">{_svg("escudo" if alerta else "pessoa")}</span><div>'
@@ -742,318 +1058,16 @@ def _pendencias_html(res: Resultado) -> str:
     return "".join(partes)
 
 
-def _aba_pendencias(res: Resultado) -> None:
-    if not res.pendencias and not res.alertas:
-        st.success("Nada para a faturista revisar neste documento.", icon=":material/check:")
-        return
-    _html(_pendencias_html(res))
-
-
-def _aba_trilha(res: Resultado) -> None:
-    for p in res.trilha:
-        st.markdown(_frase_passo(p))
-    with st.expander("Detalhe técnico, para quem quiser ver", icon=":material/code:"):
-        for p in res.trilha:
-            st.markdown(_texto_passo(p))
-        st.caption(
-            f"Modelo {res.modelo} · prompts {res.versoes_prompt} · {res.tokens_entrada:,} tokens "
-            f"de entrada, {res.tokens_saida:,} de saída · custo estimado US$ "
-            f"{res.custo_usd:.4f}".replace(",", ".")
-        )
-
-
-# ================================================================= página: início
-def _cartao_documento(nome: str, selecionado: bool) -> None:
-    m = _catalogo()[nome]
-    classe = "adverso" if m["adverso"] else ("validacao" if m["conjunto"] == "validacao" else "")
-    if m["adverso"]:
-        sub = "caso adverso: " + CASO_CURTO.get(m["adverso"], m["adverso"])
-    elif m["conjunto"] == "validacao":
-        sub = "nunca visto no ajuste"
-    else:
-        sub = "demonstrativo de retorno"
-    estado = "sel" if selecionado else "nao"
-    with st.container(key=f"doc_{estado}_{_chave(nome)}"):
-        _html(
-            f'<div class="doc-topo {classe}"><span class="selo">layout {escape(m["layout"])}</span>'
-            f"{_svg('alerta' if m['adverso'] else 'doc')}</div>"
-            f'<div class="doc-nome">{escape(Path(nome).stem)}</div>'
-            f'<div class="doc-sub">{escape(m["operadora"])}<br>{sub}</div>'
-        )
-        st.button(
-            "Selecionado" if selecionado else "Selecionar",
-            key=f"b_{_chave(nome)}",
-            type="primary" if selecionado else "secondary",
-            icon=":material/check:" if selecionado else None,
-            width="stretch",
-            on_click=_abrir_documento,
-            args=(nome, False),
-        )
-
-
-def _grade_documentos(nomes: list[str], selecionado: str) -> None:
-    for i in range(0, len(nomes), 4):
-        cols = st.columns(4)
-        for col, nome in zip(cols, nomes[i : i + 4], strict=False):
-            with col:
-                _cartao_documento(nome, nome == selecionado)
-
-
-def pagina_inicio() -> None:
-    lote = _caixa()
-    _hero_inicio(lote)
-
-    grupos = _grupos()
-    st.session_state.setdefault("origem", "Exemplos")
-    _secao("Seus demonstrativos", "dados 100% fictícios")
-    origem = (
-        st.pills(
-            "Documento",
-            [*grupos, "Enviar PDF"],
-            key="origem",
-            label_visibility="collapsed",
-        )
-        or "Exemplos"
-    )
-
-    dados = nome = None
-    if origem == "Enviar PDF":
-        with st.container(key="cartao_envio"):
-            enviado = st.file_uploader("PDF do demonstrativo (só dado fictício)", type=["pdf"])
-            if enviado is not None:
-                dados, nome = enviado.getvalue(), enviado.name
-    else:
-        opcoes = grupos[origem]
-        sel = st.session_state.get("selecionado")
-        if sel not in opcoes:
-            sel = EXEMPLO_INICIAL if EXEMPLO_INICIAL in opcoes else opcoes[0]
-            st.session_state["selecionado"] = sel
-        _grade_documentos(opcoes, sel)
-        nome = sel
-        dados = Path(_catalogo()[sel]["caminho"]).read_bytes()
-
-    clicou = False
-    if dados is not None:
-        with st.container(key="cartao_selecionado"):
-            esq, dir_ = st.columns([3, 2], vertical_alignment="center", gap="large")
-            with esq:
-                _html(
-                    '<div class="sub">Documento selecionado</div>'
-                    f'<div class="titulo-cartao" style="font-size:1.6rem">{escape(nome)}</div>'
-                    f'<div class="sub">{escape(_descricao(nome) or "PDF enviado")}</div>'
-                )
-            with dir_:
-                m = _catalogo().get(nome, {})
-                _html(
-                    _tiles(
-                        [
-                            ("predio", "Operadora", escape(m.get("operadora", "—"))),
-                            ("camadas", "Layout", escape(m.get("layout", "—") or "—")),
-                        ]
-                    )
-                )
-            clicou = st.button(
-                "Analisar demonstrativo",
-                type="primary",
-                icon=":material/play_arrow:",
-                width="stretch",
-                key="cta_analisar",
-            )
-            if origem != "Enviar PDF":
-                st.download_button(
-                    "Ver o PDF",
-                    dados,
-                    file_name=nome,
-                    mime="application/pdf",
-                    icon=":material/picture_as_pdf:",
-                    type="tertiary",
-                )
-
-    if (clicou or st.session_state.pop("rodar_agora", False)) and dados is not None:
-        st.session_state.pop("res", None)
-        with st.container(key="cartao_trilha_viva"):
-            _html('<div class="titulo-cartao">Trilha do agente, ao vivo</div>')
-            lugar = st.empty()
-            _html(_fases_html(["pendente"] * len(FASES)), lugar)
-            res = analisar(dados, nome, st, lugar)
-        st.session_state["res"] = res
-        st.session_state["linhas"] = _linhas_pseudonimizadas(dados, nome)
-        st.rerun()
-
-    res: Resultado | None = st.session_state.get("res")
-    if not res:
-        return
-
-    _secao("Resultado da análise", escape(res.documento))
-    with st.container(key="cartao_trilha"):
-        _html('<div class="titulo-cartao">Trilha do agente</div>')
-        _html(_fases_html(_estados_fases(res.trilha, True, res.interrompido)))
-    with st.container(key="cartao_resultado"):
-        _cabecalho_documento(res)
-        _avisos(res)
-        _html(_tiles_painel(res.painel))
-        n_pend = len(res.pendencias) + len(res.alertas)
-        abas = st.tabs(
-            [
-                f"Glosas ({len(res.glosas)})",
-                f"Pedidos de revisão ({len(res.recursos)})",
-                f"Faturista revisa ({n_pend})",
-                "Passo a passo",
-            ]
-        )
-        with abas[0]:
-            _aba_glosas(res)
-        with abas[1]:
-            _aba_recursos(res)
-        with abas[2]:
-            _aba_pendencias(res)
-        with abas[3]:
-            _aba_trilha(res)
-
-
-# ================================================================= página: prazos
-def _faixa_de_dias(prazos: list[dict]) -> str:
-    if not prazos:
-        return ""
-    p0 = prazos[0]
-    hoje = parse_data(p0["prazo_final"]) - dt.timedelta(days=p0["dias_restantes"])
-    por_dia: dict[dt.date, int] = {}
-    for p in prazos:
-        d = parse_data(p["prazo_final"])
-        por_dia[d] = por_dia.get(d, 0) + 1
-    blocos = []
-    for i in range(14):
-        d = hoje + dt.timedelta(days=i)
-        n = por_dia.get(d, 0)
-        classe = " com-prazo" if n else (" hoje" if i == 0 else "")
-        qtd = (
-            f'<span class="qtd">{n} prazo{"s" if n > 1 else ""}</span>'
-            if n
-            else "<small>&nbsp;</small>"
-        )
-        rotulo = "hoje" if i == 0 else DIAS_SEMANA[d.weekday()]
-        blocos.append(f'<div class="dia{classe}"><small>{rotulo}</small><b>{d.day}</b>{qtd}</div>')
-    return '<div class="dias">' + "".join(blocos) + "</div>"
-
-
-def _lista_prazos(prazos: list[dict]) -> str:
-    itens = []
-    for p in prazos:
-        d = parse_data(p["prazo_final"])
-        if p["vencido"]:
-            chip = '<span class="chip vermelho">vencido</span>'
-        elif p["urgente"]:
-            chip = f'<span class="chip laranja">{p["dias_restantes"]} dias</span>'
-        else:
-            chip = f'<span class="chip cinza">{p["dias_restantes"]} dias</span>'
-        itens.append(
-            f'<div class="prazo-item{" urgente" if p["urgente"] or p["vencido"] else ""}">'
-            f'<div class="prazo-data"><b>{d.day}</b><small>{MESES[d.month - 1]}</small></div>'
-            f'<div class="prazo-info"><b>{escape(p["documento"])}</b>'
-            f"<small>{escape(p['operadora'])} · prazo final {escape(p['prazo_final'])}</small></div>"
-            f'<div class="prazo-valor"><b>{_brl(p["recorrivel"])}</b><small>para contestar</small></div>'
-            f"{chip}</div>"
-        )
-    return '<div class="prazos">' + "".join(itens) + "</div>"
-
-
-def pagina_prazos() -> None:
+def pagina_pendencias() -> None:
     _hero_compacto(
-        "Prazos de recurso",
-        "Todos os extratos de uma vez: quanto dá para contestar e o que vence nos próximos 10 "
-        "dias. Os prazos de cada operadora são parâmetros fictícios.",
+        "Pendências",
+        "O que o agente não decide sozinho. Em vez de inventar, ele manda para você com o motivo e "
+        "o lugar no PDF.",
     )
-    with st.container(key="cartao_lote"):
-        c1, c2 = st.columns([4, 1], vertical_alignment="center")
-        incluir_validacao = c1.toggle(
-            "Incluir os 5 documentos de validação (nunca vistos no ajuste)", value=False
-        )
-        rodar = c2.button(
-            "Analisar todos", type="primary", icon=":material/play_arrow:", width="stretch"
-        )
-        if rodar:
-            nomes = [
-                n
-                for n, m in _catalogo().items()
-                if m["conjunto"] == "desenvolvimento" or incluir_validacao
-            ]
-            progresso = st.progress(0.0, text="Analisando…")
-            resultados = []
-            for i, n in enumerate(nomes, 1):
-                dados = Path(_catalogo()[n]["caminho"]).read_bytes()
-                resultados.append(analisar(dados, n, st))
-                progresso.progress(i / len(nomes), text=f"{i} de {len(nomes)} documentos")
-            st.session_state["lote"] = resultados
-            st.rerun()
-
-    lote = _caixa()
-    if not lote:
-        st.info(
-            "Clique em **Analisar todos**. Fora do modo demo, cada documento chama a API.",
-            icon=":material/arrow_upward:",
-        )
-        return
-
-    pg = painel_geral(lote)
-    _html(
-        _tiles(
-            [
-                ("doc", "Documentos", str(len(lote))),
-                ("glosa", "Não pago (glosado)", _brl(pg["total_glosado"])),
-                ("moeda", "Dá para contestar", _brl(pg["recorrivel"])),
-                ("pessoa", "Faturista revisa", _brl(pg["a_classificar"])),
-                ("check", "Não vale contestar", _brl(pg["nao_recorrivel"])),
-            ],
-            destaque=2,
-        )
-    )
-    urgentes = [p for p in pg["prazos"] if p["urgente"] or p["vencido"]]
-    if urgentes:
-        st.warning(
-            f"**{len(urgentes)} prazo(s) nos próximos 10 dias**, com "
-            f"{_brl(sum(p['recorrivel'] for p in urgentes))} para contestar.",
-            icon=":material/alarm:",
-        )
-
-    _secao("Próximos 14 dias", "dias em verde-escuro têm prazo")
-    with st.container(key="cartao_dias"):
-        _html(_faixa_de_dias(pg["prazos"]))
-    _secao("Do mais próximo ao mais distante", f"{len(pg['prazos'])} prazos")
-    _html(_lista_prazos(pg["prazos"]))
-
-    _secao("Por documento")
-    with st.container(key="cartao_por_documento"):
-        st.dataframe(
-            pd.DataFrame(
-                [
-                    {
-                        "Documento": r.documento,
-                        "Glosas": len(r.glosas),
-                        "Não pago (glosado)": _brl(r.painel.get("total_glosado", 0)),
-                        "Dá para contestar": _brl(r.painel.get("recorrivel", 0)),
-                        "Faturista revisa": _brl(r.painel.get("a_classificar", 0)),
-                        "Pedidos prontos": len(r.recursos),
-                        "Itens para revisar": len(r.pendencias) + len(r.alertas),
-                    }
-                    for r in lote
-                ]
-            ),
-            hide_index=True,
-            width="stretch",
-        )
-
-
-# ================================================================= página: revisão humana
-def pagina_revisao() -> None:
-    _hero_compacto(
-        "Revisão humana",
-        "O que o agente não decide sozinho. Em vez de inventar, ele manda para a faturista com o "
-        "motivo e o lugar no PDF.",
-    )
-    fonte = _caixa() or ([st.session_state["res"]] if st.session_state.get("res") else [])
+    fonte = _analisados()
     if not fonte:
         st.info(
-            "Rode uma análise em **Início** ou **Prazos** primeiro.",
+            "Nada analisado ainda nesta sessão. Analise um demonstrativo no Início.",
             icon=":material/info:",
         )
         return
@@ -1062,7 +1076,7 @@ def pagina_revisao() -> None:
     _html(
         _tiles(
             [
-                ("doc", "Documentos analisados", str(len(fonte))),
+                ("doc", "Demonstrativos analisados", str(len(fonte))),
                 ("pessoa", "Pendências", str(n_pend)),
                 ("escudo", "Instruções ignoradas", str(n_alertas)),
             ],
@@ -1141,7 +1155,7 @@ def pagina_fluxo() -> None:
 
 # ================================================================= página: qualidade
 def _metas(md: str) -> list[list[str]]:
-    """Linhas da primeira tabela do relatório que têm meta e resposta em "Bateu?"."""
+    """Linhas das tabelas do relatório que têm meta e resposta em "Bateu?"."""
     linhas = []
     for linha in md.splitlines():
         cel = [c.strip() for c in linha.strip().strip("|").split("|")]
@@ -1175,13 +1189,14 @@ def pagina_qualidade() -> None:
             "VALIDACAO.md",
             "python -m agente.avaliar --conjunto validacao",
         ),
+        "Experiência de uso": ("EXPERIENCIA.md", "python -m agente.experiencia"),
     }
     st.session_state.setdefault("conjunto", next(iter(conjuntos)))
     escolha = st.pills("Conjunto", list(conjuntos), key="conjunto", label_visibility="collapsed")
     nome_arq, cmd = conjuntos[escolha or next(iter(conjuntos))]
     arq = RAIZ / "avaliacao" / nome_arq
     if not arq.exists():
-        st.info(f"Ainda não há avaliação. Rode `{cmd}`.")
+        st.info(f"Ainda não há medida. Rode `{cmd}`.")
         return
     md = arq.read_text(encoding="utf-8")
     _html(_tiles_metas(_metas(md)))
@@ -1191,21 +1206,17 @@ def pagina_qualidade() -> None:
 
 
 # ================================================================= navegação
-PAGINA_INICIO = st.Page(
-    pagina_inicio, title="Início", icon=":material/home:", url_path="inicio", default=True
-)
-PAGINA_PRAZOS = st.Page(
-    pagina_prazos, title="Prazos", icon=":material/calendar_month:", url_path="prazos"
-)
 navegacao = st.navigation(
     [
-        PAGINA_INICIO,
-        PAGINA_PRAZOS,
         st.Page(
-            pagina_revisao,
-            title="Revisão humana",
+            pagina_inicio, title="Início", icon=":material/home:", url_path="inicio", default=True
+        ),
+        st.Page(pagina_prazos, title="Prazos", icon=":material/calendar_month:", url_path="prazos"),
+        st.Page(
+            pagina_pendencias,
+            title="Pendências",
             icon=":material/person_search:",
-            url_path="revisao",
+            url_path="pendencias",
         ),
         st.Page(
             pagina_fluxo, title="Como funciona", icon=":material/account_tree:", url_path="fluxo"

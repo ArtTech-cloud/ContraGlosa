@@ -42,8 +42,8 @@ header[data-testid="stHeader"] {
 }
 /* O Streamlit põe margem negativa embaixo de cada bloco de Markdown; nos blocos desenhados aqui,
    ela faz o texto encostar no componente seguinte. */
-[data-testid="stMarkdownContainer"]:has(> .doc-topo, > .destaque, > .tiles, > .fases, > .dias,
-  > .prazos, > .pendencia, > .titulo-cartao, > .hero-texto, > .marca, > .secao, > .sub) {
+[data-testid="stMarkdownContainer"]:has(> .tiles, > .passos, > .dias, > .prazos, > .pendencia,
+  > .titulo-cartao, > .hero-texto, > .marca, > .secao, > .sub) {
   margin-bottom: 0;
 }
 .marca {
@@ -103,6 +103,29 @@ header[data-testid="stHeader"] {
   max-width: 760px;
 }
 
+/* selo permanente de dados fictícios, dentro do cabeçalho */
+.selo-dados {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-size: 0.8rem;
+}
+.selo-dados svg {
+  width: 14px;
+  height: 14px;
+}
+.hero-texto .frase {
+  max-width: 640px;
+  margin: 6px auto 0;
+  font-size: 1.08rem;
+}
+
 /* botão de ajustes no canto do cabeçalho */
 .st-key-hero [data-testid="stPopover"] button {
   background: rgba(255, 255, 255, 0.18);
@@ -112,58 +135,6 @@ header[data-testid="stHeader"] {
 }
 .st-key-hero [data-testid="stPopover"] button p {
   color: #fff;
-}
-
-/* cartão de destaque dentro do cabeçalho (o "próximo prazo") */
-.st-key-destaque {
-  background: #ffffff;
-  border-radius: 24px;
-  padding: 18px 20px 16px;
-  box-shadow: 0 12px 30px rgba(20, 60, 62, 0.2);
-  max-width: 640px;
-  margin: 0 auto;
-}
-.st-key-destaque .destaque {
-  color: var(--texto);
-}
-.destaque {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.destaque .ic-quadrado {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
-  background: var(--menta);
-  color: var(--petroleo);
-  display: grid;
-  place-items: center;
-  flex: none;
-}
-.destaque .ic-quadrado svg {
-  width: 28px;
-  height: 28px;
-}
-.destaque b {
-  font-size: 1.12rem;
-}
-.destaque .linha-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 14px;
-  color: var(--suave);
-  font-size: 0.86rem;
-  margin-top: 4px;
-}
-.destaque .linha-meta span {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-.destaque .linha-meta svg {
-  width: 15px;
-  height: 15px;
 }
 
 /* ---------------------------------------------------------------- cartões brancos */
@@ -251,61 +222,6 @@ button[data-variant="pills"][aria-checked="true"] p {
   color: #fff;
 }
 
-/* ---------------------------------------------------------------- cartões de documento ("encontre um médico") */
-[class*="st-key-doc_"] {
-  background: #ffffff;
-  border-radius: 22px;
-  padding: 12px 12px 14px;
-  box-shadow: var(--sombra);
-  border: 2px solid transparent;
-  gap: 0.55rem;
-}
-[class*="st-key-doc_sel_"] {
-  border-color: var(--petroleo);
-}
-.doc-topo {
-  position: relative;
-  height: 96px;
-  border-radius: 16px;
-  background: linear-gradient(160deg, var(--menta-forte), var(--menta));
-  display: grid;
-  place-items: center;
-  color: var(--petroleo);
-}
-.doc-topo svg {
-  width: 44px;
-  height: 44px;
-}
-.doc-topo .selo {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: #fff;
-  color: var(--texto);
-  border-radius: 999px;
-  padding: 2px 9px;
-  font-size: 0.74rem;
-  font-weight: 700;
-}
-.doc-topo.adverso {
-  background: linear-gradient(160deg, #f7dfc6, var(--laranja-fundo));
-  color: var(--laranja);
-}
-.doc-topo.validacao {
-  background: linear-gradient(160deg, #d6e2f2, #edf2f9);
-  color: #3b5c8a;
-}
-.doc-nome {
-  font-weight: 700;
-  color: var(--texto);
-  margin-top: 8px;
-}
-.doc-sub {
-  color: var(--suave);
-  font-size: 0.82rem;
-  min-height: 2.4em;
-}
-
 /* ---------------------------------------------------------------- blocos de números (disponibilidade / experiência / pacientes) */
 .tiles {
   display: grid;
@@ -357,6 +273,16 @@ button[data-variant="pills"][aria-checked="true"] p {
   background: rgba(255, 255, 255, 0.18);
   color: #fff;
 }
+.tile.perigo {
+  background: #fdecea;
+}
+.tile.perigo b,
+.tile.perigo small {
+  color: var(--vermelho);
+}
+.tile.perigo .tile-ic {
+  color: var(--vermelho);
+}
 .tile .meta {
   font-size: 0.76rem;
   color: var(--suave);
@@ -370,65 +296,93 @@ button[data-variant="pills"][aria-checked="true"] p {
   font-weight: 600;
 }
 
-/* ---------------------------------------------------------------- fases da trilha (a faixa de dias) */
-.fases {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 10px;
-}
-.fase {
-  border: 1px solid var(--linha);
-  border-radius: 16px;
-  padding: 10px 8px;
-  text-align: center;
+/* ---------------------------------------------------------------- trilha ao vivo */
+.passos {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  background: #fff;
-  color: var(--texto);
+  gap: 8px;
 }
-.fase b {
-  font-size: 0.92rem;
+.passo,
+.aviso-injecao {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: #f5f8f8;
+  border: 1px solid transparent;
 }
-.fase small {
-  color: var(--suave);
-  font-size: 0.74rem;
-}
-.fase .fase-sim {
-  font-size: 1.05rem;
+.passo .sim,
+.aviso-injecao .sim {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
   font-weight: 700;
+  background: #ffffff;
+  color: var(--suave);
 }
-.fase-ok .fase-sim {
+.aviso-injecao .sim svg {
+  width: 18px;
+  height: 18px;
+}
+.passo b,
+.aviso-injecao b {
+  color: var(--texto);
+  font-size: 0.95rem;
+}
+.passo small,
+.aviso-injecao small {
+  display: block;
+  color: var(--suave);
+  font-size: 0.86rem;
+}
+.passo-ok .sim {
+  background: #e3f3ea;
   color: #1f7a4a;
 }
-.fase-retry .fase-sim,
-.fase-fallback .fase-sim {
-  color: var(--laranja);
+.passo-rodando {
+  background: var(--petroleo);
+  box-shadow: 0 8px 18px rgba(43, 100, 103, 0.25);
 }
-.fase-fallback {
-  border-color: #efc8a0;
-  background: var(--laranja-fundo);
+.passo-rodando b,
+.passo-rodando small {
+  color: #ffffff;
 }
-.fase-erro {
-  border-color: #f0b8b3;
+.passo-rodando .sim {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+/* verificador que alertou: amarelo, com o motivo; é material de demo, não erro escondido */
+.passo-alerta {
+  background: #fff6dd;
+  border-color: #f0d48c;
+}
+.passo-alerta .sim {
+  background: #fde9ad;
+  color: #7a5200;
+}
+.passo-alerta small {
+  color: #6b4a00;
+}
+.passo-erro,
+.aviso-injecao {
   background: #fdecea;
+  border-color: #f0b8b3;
 }
-.fase-erro .fase-sim {
+.passo-erro .sim,
+.aviso-injecao .sim {
+  background: #f9d4d0;
   color: var(--vermelho);
 }
-.fase-pendente,
-.fase-pulada {
-  background: #f5f8f8;
-  color: #93a3a5;
+.aviso-injecao small {
+  color: #7d1f19;
 }
-.fase-rodando {
-  background: var(--petroleo);
-  border-color: var(--petroleo);
-  color: #fff;
-  box-shadow: 0 8px 18px rgba(43, 100, 103, 0.3);
-}
-.fase-rodando small {
-  color: #d9ecea;
+.passo-pendente,
+.passo-pulado {
+  opacity: 0.6;
 }
 
 /* ---------------------------------------------------------------- faixa de datas e lista de prazos */
@@ -499,8 +453,12 @@ button[data-variant="pills"][aria-checked="true"] p {
   line-height: 1.05;
 }
 .prazo-item.urgente .prazo-data {
-  background: var(--petroleo);
-  color: #fff;
+  background: var(--laranja-fundo);
+  color: var(--laranja);
+}
+.prazo-item.perigo .prazo-data {
+  background: #fdecea;
+  color: var(--vermelho);
 }
 .prazo-data b {
   font-size: 1.4rem;
@@ -597,9 +555,6 @@ button[data-testid="stBaseButton-primary"] {
 }
 
 @media (max-width: 760px) {
-  .fases {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
   .dias {
     grid-template-columns: repeat(7, minmax(0, 1fr));
   }

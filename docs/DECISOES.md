@@ -164,3 +164,18 @@ Tudo o que ele confirmou foi corrigido, com um teste de regressão em `tests/tes
   revisa"; recurso virou "pedido de revisão". O texto técnico de antes (ferramentas, tokens, versão dos prompts,
   custo) continua inteiro na aba "Passo a passo", no expansor "Detalhe técnico". As páginas Como funciona e
   Qualidade mantêm os termos técnicos, porque são para quem quer o detalhe.
+- **D40 · Plano do front (`docs/PLANO-FRONT.md`), F1 a F8.** A página Início virou a jornada da faturista:
+  chegada com uma ação (enviar o PDF, com o exemplo do pitch ao lado), trilha ao vivo com o resultado concreto de
+  cada etapa (itens, soma em reais, códigos achados, recursos aprovados), número-herói, glosas por prioridade com
+  semáforo e prova, e o fim no recurso pronto, com campos a preencher, "Revisei este recurso" e "Baixar todos". Prazos
+  virou a agenda de cada glosa recorrível analisada na sessão (sem pré-carregar a caixa de entrada, que a D37
+  fazia), com o texto do alerta por e-mail ou WhatsApp como visão de produto. Regras de tela que são decisão ficaram
+  em código testado no `agente/consolidar.py` (`semaforo`, `glosas_priorizadas`, `agenda`, `campos_a_preencher`). O
+  orquestrador passou a expor o resultado em construção (`Orquestrador.resultado`), só para leitura, para a trilha
+  mostrar números enquanto roda; nada mais mudou nele. `python -m agente.experiencia` mede as métricas de experiência
+  em `avaliacao/EXPERIENCIA.md`, e não no `RESULTADO.md`, porque o `RESULTADO.md` é regravado por
+  `agente.avaliar` e perderia a medida. Desvios do plano, decididos com o Arthur: o visual da D38 fica (o plano
+  pedia "sem CSS" e "sem gradientes"); a tela volta aos termos da faturista (recorrer, recurso, demonstrativo),
+  substituindo a parte de vocabulário da D39, e o pitch explica cada termo na primeira vez; o modo demo fica em
+  "Ajustes", porque a navegação está no topo e não há barra lateral. A trilha é desenhada em HTML, não com
+  `st.status`, porque `st.status` não tem estado amarelo para o verificador que alerta.
