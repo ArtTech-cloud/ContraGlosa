@@ -1,0 +1,24 @@
+# Tema da demo (D37, D38). O resto do visual está em static/estilo.css.
+# Fonte padrão do Streamlit, que vem no pacote: a demo roda sem internet.
+
+[theme]
+base = "light"
+primaryColor = "#2B6467"
+backgroundColor = "#DDE7EA"
+secondaryBackgroundColor = "#F1F6F6"
+textColor = "#1C2B2D"
+linkColor = "#2B6467"
+borderColor = "#D6E1E2"
+dataframeBorderColor = "#E3EBEC"
+dataframeHeaderBackgroundColor = "#F1F6F6"
+showWidgetBorder = true
+baseRadius = "0.9rem"
+buttonRadius = "full"
+headingFontWeights = [700, 700, 650, 600, 600, 600]
+
+[client]
+# Esconde o botão "Deploy" e o menu de desenvolvedor durante a apresentação.
+toolbarMode = "minimal"
+
+[browser]
+gatherUsageStats = false

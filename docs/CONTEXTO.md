@@ -178,7 +178,7 @@ e `ruff format --check` limpos.
 | `CLAUDE.md` | regras permanentes do projeto |
 | `PLANO.md` | plano de trabalho por etapa, metas e critérios da banca |
 | `README.md` | apresentação pública, fluxo, inputs, outputs, qualidade medida, segurança, limitações |
-| `app.py` | Streamlit: entrada, trilha ao vivo, painel, glosas, recursos, lote, pendências, qualidade |
+| `app.py` | Streamlit, 5 páginas: início (documentos, trilha ao vivo, resultado), prazos, revisão humana, como funciona, qualidade. Visual em `static/estilo.css` |
 | `agente/orquestrador.py` | as 4 etapas, retries, fallbacks, trilha, versões padrão dos prompts |
 | `agente/llm.py` | cliente Anthropic, cache por SHA-256, cliente falso para testes, modo demo |
 | `agente/modelos.py` | pydantic: Triagem, Extracao, Analise, Redacao, Pendencia, Alerta, Resultado |

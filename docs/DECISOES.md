@@ -138,3 +138,22 @@ Tudo o que ele confirmou foi corrigido, com um teste de regressão em `tests/tes
   algarismos e foi lido como código de procedimento. A regra de 8 dígitos agora ignora número colado em letra ou
   hífen. Como a métrica de decisão não pegava recurso retido, o relatório ganhou a medida "recurso aprovado para cada
   glosa recorrível" (informativa; as metas originais não mudam).
+
+## Interface — redesenho das páginas (20/10/2026)
+
+- **D37 · Cinco páginas e modo demo sempre ligado ao abrir.** A tela única com abas virou navegação em páginas, na
+  ordem do pitch: Início (documentos, trilha ao vivo e resultado), Prazos, Revisão humana, Como funciona (fluxo em
+  Graphviz e o contrato de `docs/fluxo.md`) e Qualidade. A trilha ganhou uma faixa com as 6 fases (leitura, as 4
+  etapas e o painel), que mostra a fase em execução enquanto o agente roda. No modo demo, o cache responde na hora;
+  por isso a opção "Trilha em ritmo de apresentação" espera 0,6 s entre os passos, para a banca acompanhar. No modo
+  demo, a página Início já abre com os 10 exemplos analisados (do cache), para mostrar o próximo prazo. Defeito
+  encontrado e corrigido: a primeira análise carregava o `.env` (com `MODO_DEMO=0`) e toda sessão nova abria com o
+  modo demo desligado; um F5 no meio do pitch faria a demo depender da internet. Agora o interruptor sempre começa
+  ligado.
+- **D38 · CSS, a pedido do Arthur.** O plano dizia "componentes padrão, sem CSS" (E5). O Arthur pediu o visual das
+  referências de app de saúde: cabeçalho em gradiente verde-petróleo com saudação, cartão de destaque, chips em
+  pílula, cartões brancos arredondados, blocos de número com ícone e faixa de datas. Isso exige CSS, que ficou num
+  arquivo só, `static/estilo.css`, com o tema em `.streamlit/config.toml`. Os ícones são traços simples desenhados no
+  próprio `app.py`; não há imagem de pessoa nem marca de terceiros. Sem fonte da internet: a demo continua rodando
+  offline. Risco: os seletores usam a estrutura interna do Streamlit 1.66 e podem quebrar numa atualização. Todo
+  texto que vem do PDF ou do modelo e entra em HTML passa por `html.escape`, porque conteúdo de documento é dado.

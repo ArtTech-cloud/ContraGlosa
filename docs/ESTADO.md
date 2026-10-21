@@ -34,8 +34,9 @@ Ative o ambiente antes (`.venv\Scripts\activate`): com o Python global falta o `
 - **Verificadores:** soma em centavos, evidência de página e linha, existência do código na Tabela 38, fontes da
   análise, e valores, normas, dados pessoais e campos do recurso.
 - **Segurança:** pseudonimização de nome, CPF e carteira antes do LLM, e filtro de instruções no documento.
-- **Interface:** análise de um documento com trilha ao vivo, lote com painel de prazos, pendências e qualidade.
-  Foi conferida no navegador com respostas de teste.
+- **Interface:** cinco páginas (Início, Prazos, Revisão humana, Como funciona, Qualidade), com trilha ao vivo por
+  etapa, faixa de prazos e o visual de app de saúde em `static/estilo.css` (D37, D38). Conferida no navegador no
+  modo demo, em tela larga e de celular.
 - **Testes:** 223 testes passam, incluindo ponta a ponta nos 15 documentos com o cliente falso. Isso prova o
   encanamento, os verificadores e a avaliação, não a qualidade do modelo.
 - **Instalação do zero:** clone limpo, ambiente novo, `pip install`, testes e app sobem sem erro.
