@@ -10,7 +10,7 @@ Quatro pessoas, quatro frentes. **Congelamento às 15h30:** tudo no GitHub.
 | 10h00 | conversa com o mentor; a pessoa 1 anota os ajustes |
 | 13h30 | congelar funcionalidades: daí em diante, só correção de defeito |
 | 14h30 | ensaio geral do pitch com a demo |
-| 15h15 | conferir o GitHub: README, BMC, pitch, fluxo, código e `avaliacao/RESULTADO.md` |
+| 15h15 | conferir o GitHub: README, BMC, pitch, fluxo, código, `avaliacao/RESULTADO.md` e `avaliacao/EXPERIENCIA.md` |
 | 15h30 | congelamento |
 
 ## Para todos: como começar em 15 minutos
@@ -45,6 +45,17 @@ streamlit run app.py
 
 Leia nesta ordem: `docs/CONTEXTO.md`, `README.md` e `docs/fluxo.md`.
 
+**A tela, em 1 minuto.** O app abre na página **Início**, com o modo demo ligado: as respostas vêm de `cache/`, sem
+internet e sem chave. O interruptor fica em **Ajustes**, no canto do cabeçalho. As páginas são:
+
+| Página | O que mostra |
+|---|---|
+| Início | enviar um PDF ou ver um exemplo; a trilha do agente ao vivo; quanto pode ser recorrido; as glosas com semáforo e a prova; os recursos prontos |
+| Prazos | a agenda das glosas recorríveis **analisadas nesta sessão**. Começa vazia: analise algo antes ou clique em "Analisar todos os exemplos" |
+| Pendências | o que foi para revisão humana, com o motivo |
+| Como funciona | o fluxo do agente e o contrato de cada etapa |
+| Qualidade | as métricas contra o gabarito, a validação e a experiência de uso |
+
 ## Pessoa 1 — agente e avaliação
 
 - **Objetivo:** melhorar as métricas com os ajustes do mentor das 10h.
@@ -77,15 +88,22 @@ Leia nesta ordem: `docs/CONTEXTO.md`, `README.md` e `docs/fluxo.md`.
 ## Pessoa 3 — interface e demo
 
 - **Objetivo:** demo clara em 60 segundos e vídeo de backup.
-- **Arquivos:** `app.py`, `docs/PITCH.md` (parte 2).
-- **Primeira tarefa (pequena):** rode a demo com `boreal_01.pdf` e `adverso_injecao.pdf` no modo demo e anote o que
+- **Arquivos:** `app.py`, `static/estilo.css`, `docs/PLANO-FRONT.md` (o que cada tela precisa responder e a lista
+  do que é proibido) e `docs/PITCH.md` (parte 2, o roteiro da demo).
+- **Primeira tarefa (pequena):** siga o roteiro da parte 2 do pitch com `boreal_01` e `adverso_injecao` e anote o que
   confunde quem vê pela primeira vez.
 - **Até 13h30:** polimento. O visual está em `static/estilo.css` e `.streamlit/config.toml` (D38); ajuste ali,
-  sem espalhar estilo pelo `app.py`. Depois disso, só correção.
-- **Até 14h30:** grave o vídeo de backup da demo (2 minutos) e salve no notebook e no celular.
+  sem espalhar estilo pelo `app.py`. As regras que decidem algo na tela (semáforo, ordem das glosas, agenda) estão em
+  `agente/consolidar.py`, com testes: mude ali, não no `app.py`. Depois de mexer na tela, rode
+  `python -m agente.experiencia` e confira o tempo e os cliques. Depois das 13h30, só correção.
+- **Cuidado:** o CSS usa a estrutura interna do Streamlit e foi testado na versão do `requirements.txt`. Não
+  atualize o Streamlit no sábado.
+- **Até 14h30:** grave o vídeo de backup da demo (2 minutos), seguindo o roteiro do pitch, e salve no notebook e no
+  celular. Antes de gravar, analise `boreal_01` e `adverso_injecao`, para a página Prazos ter o que mostrar.
 - **Perguntas da banca para saber responder:**
   - "Mostre o fluxo do agente." (trilha ao vivo)
-  - "Onde está a evidência dessa decisão?" (página, linha e fonte de cada glosa)
+  - "Onde está a evidência dessa decisão?" (clique na glosa: página, linha e fonte)
+  - "Posso confiar nisso?" (semáforo: 🟢 só quando a confiança é alta e todos os verificadores aprovaram)
   - "Funciona sem internet?" (modo demo com cache)
 
 ## Pessoa 4 — pitch e BMC

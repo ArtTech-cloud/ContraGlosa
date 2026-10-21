@@ -1,4 +1,4 @@
-# Estado do projeto — 20/10/2026
+# Estado do projeto — 21/10/2026
 
 Resumo para a equipe chegar no sábado com o projeto instalado.
 
@@ -7,8 +7,9 @@ Resumo para a equipe chegar no sábado com o projeto instalado.
 ## Situação
 
 O agente já rodou no modelo real, o Claude Haiku 5.5. O teste de fumaça passou, a avaliação tem números reais e o
-cache do modo demo cobre os 15 documentos (10 de desenvolvimento e 5 de validação) com a configuração padrão. A demo roda offline em menos de 1 segundo por
-documento.
+cache do modo demo cobre os 15 documentos (10 de desenvolvimento e 5 de validação) com a configuração padrão. A demo
+roda offline: o agente responde do cache em menos de 1 segundo por documento, e a tela mostra o resultado em cerca
+de 5 segundos, porque a trilha espera 0,6 s entre os passos para a banca acompanhar.
 
 Se alguém mudar um prompt, um documento ou a base, o cache daquela parte deixa de valer. Nesse caso, rode de novo
 com a chave no `.env` (copie de `.env.example`):
@@ -39,9 +40,12 @@ Ative o ambiente antes (`.venv\Scripts\activate`): com o Python global falta o `
   prioridade com semáforo e prova, recurso pronto no fim e agenda de prazos da sessão. Métricas de experiência em
   `avaliacao/EXPERIENCIA.md` (6,1 s no pior caso até o número, 2 cliques até copiar). Conferida no navegador no
   modo demo.
-- **Testes:** 223 testes passam, incluindo ponta a ponta nos 15 documentos com o cliente falso. Isso prova o
-  encanamento, os verificadores e a avaliação, não a qualidade do modelo.
-- **Instalação do zero:** clone limpo, ambiente novo, `pip install`, testes e app sobem sem erro.
+- **Testes:** 230 testes passam, incluindo ponta a ponta nos 15 documentos com o cliente falso e as regras da tela
+  (semáforo, prioridade, agenda). Isso prova o encanamento, os verificadores e a avaliação, não a qualidade do
+  modelo.
+- **Instalação do zero:** refeita em 21/10, depois do redesenho da tela: clone do GitHub, ambiente novo,
+  `pip install`, 230 testes, os 15 documentos no modo demo sem chave e sem `.env`, e a tela de ponta a ponta no
+  navegador (D42).
 - **Revisão independente:** um subagente tentou quebrar o projeto. Os 14 achados confirmados foram corrigidos e
   viraram testes em `tests/test_revisao.py` (ver D19 a D28 em `docs/DECISOES.md`).
 
@@ -54,6 +58,17 @@ estão em `avaliacao/RESULTADO.md`.
 
 No **conjunto de validação** (5 documentos que o agente nunca viu, com o layout novo D, 18 glosas), rodado uma vez
 só e sem ajuste depois, também deu 100% em todas as metas (`avaliacao/VALIDACAO.md`).
+
+## Para a demo
+
+- O app abre com o **modo demo ligado**. O interruptor fica em **Ajustes**, no canto do cabeçalho.
+- A página **Prazos** mostra só o que foi analisado na sessão e começa vazia. Analise `boreal_01` e
+  `adverso_injecao` antes de abri-la, ou clique em "Analisar todos os exemplos".
+- O roteiro está na parte 2 do `docs/PITCH.md`. O detalhe técnico de cada análise fica em "Ver detalhes técnicos",
+  embaixo da trilha.
+- O botão de envio do PDF ("Upload", "200MB per file") é texto fixo do Streamlit e aparece em inglês.
+- O nome do produto é **ContraGlosa** (D41). O prompt de sistema ainda diz "Agente de Glosas": trocar exige um prompt
+  v2, nova avaliação e cache novo.
 
 ## O que está frágil
 
@@ -71,6 +86,8 @@ só e sem ajuste depois, também deu 100% em todas as metas (`avaliacao/VALIDACA
 - **Pseudonimização por padrões.** Nome em caixa mista, sem rótulo e solto no texto não é detectado.
 - **Classificação de recorribilidade** é proposta da equipe, a validar com especialista.
 - **Sem OCR:** página escaneada vai para revisão humana.
+- **O visual depende do Streamlit 1.66.** O CSS (`static/estilo.css`) usa a estrutura interna da tela. Por isso o
+  `requirements.txt` prende o Streamlit em `>=1.66,<1.67` (D42). Não atualize no sábado.
 
 ## Comandos para sábado
 
@@ -83,6 +100,7 @@ só e sem ajuste depois, também deu 100% em todas as metas (`avaliacao/VALIDACA
 | Avaliação completa (gasta API) | `python -m agente.avaliar` |
 | Avaliação de um documento | `python -m agente.avaliar --docs aurora_01` |
 | Avaliação só com o cache | `python -m agente.avaliar --demo` |
+| Métricas de experiência da tela | `python -m agente.experiencia` |
 | Testar outra versão de prompt | `AGENTE_PROMPTS=analise=v2 python -m agente.avaliar` |
 | Gerar os dados de novo | `python -m dados.gerar` |
 
