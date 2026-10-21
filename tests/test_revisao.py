@@ -390,3 +390,8 @@ def test_recurso_aceita_senha_de_oito_digitos():
     ).ok
     assert verificar_recurso(BOM + "Autorização nº 48213377.", _it(), PERMITIDOS).ok
     assert not verificar_recurso(BOM + "Procedimento 99999999", _it(), PERMITIDOS).ok
+
+
+# falso positivo achado na validação: token da carteira só com algarismos lido como procedimento
+def test_recurso_aceita_token_de_carteira_numerico():
+    assert verificar_recurso(BOM + "Beneficiário: CART-43054511.", _it(), PERMITIDOS).ok

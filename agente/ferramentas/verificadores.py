@@ -22,7 +22,8 @@ RE_NORMA = re.compile(
 RE_CODIGO_CITADO = re.compile(
     r"(?:glosa|c[oó]d(?:igo)?\.?|motivo)\D{0,25}?(?<![0-9])([0-9]{4})(?![0-9])", re.IGNORECASE
 )
-RE_OITO_DIGITOS = re.compile(r"(?<![0-9])[0-9]{8}(?![0-9])")
+# não começa colado em letra ou hífen: o token CART-43054511 pode sair só com algarismos
+RE_OITO_DIGITOS = re.compile(r"(?<![0-9A-Za-z\-])[0-9]{8}(?![0-9])")
 RE_VALOR_LINHA = re.compile(r"(?<![0-9.,])(?:[0-9]{1,3}(?:\.[0-9]{3})+|[0-9]+),[0-9]{2}(?![0-9])")
 RE_ROTULO_SENHA = re.compile(r"(senha|autoriza[cç][aã]o)\b[^\n0-9]{0,30}$", re.IGNORECASE)
 FUNDAMENTO = "[FUNDAMENTO A CONFIRMAR]"
