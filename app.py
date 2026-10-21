@@ -167,7 +167,6 @@ _ICONES = {
     "pessoa": '<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4.5-6 8-6s7 2 8 6"/>',
     "escudo": '<path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/>',
     "alerta": '<path d="M12 3l9.5 17h-19z"/><path d="M12 10v4M12 17v.01"/>',
-    "pulso": '<path d="M3 12h4l2-5 4 10 2-5h6"/>',
     "cadeado": '<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
 }
 
@@ -183,7 +182,18 @@ def _html(conteudo: str, lugar=None) -> None:
     (lugar or st).markdown(conteudo, unsafe_allow_html=True)
 
 
-st.set_page_config(page_title=NOME_PRODUTO, page_icon="🩺", layout="wide")
+MARCA = RAIZ / "static" / "marca"  # a logo do ContraGlosa, nas versões escura, clara e ícone
+
+
+@st.cache_data
+def _logo(nome: str, classe: str) -> str:
+    """Um SVG da marca embutido na página, com o tamanho dado pela classe CSS."""
+    svg = (MARCA / f"{nome}.svg").read_text(encoding="utf-8").strip()
+    svg = re.sub(r'\s(width|height)="\d+"', "", svg, count=2)
+    return svg.replace("<svg ", f'<svg class="{classe}" ', 1)
+
+
+st.set_page_config(page_title=NOME_PRODUTO, page_icon=str(MARCA / "logo-icone.svg"), layout="wide")
 # Sem linhas em branco: para o Markdown, uma linha em branco encerra o bloco <style>.
 _CSS = re.sub(
     r"/\*.*?\*/|\s*\n\s*", " ", (RAIZ / "static" / "estilo.css").read_text("utf-8"), flags=re.S
@@ -358,8 +368,8 @@ def _topo_hero() -> None:
     c1, c2 = st.columns([5, 1], vertical_alignment="center")
     with c1:
         _html(
-            f'<div class="marca"><span class="marca-ic">{_svg("pulso")}</span>'
-            f"<div>{escape(NOME_PRODUTO)}<small>o agente lê · o código confere</small></div></div>"
+            f'<div class="marca">{_logo("logo-clara", "logo-topo")}'
+            "<small>o agente lê · o código confere</small></div>"
         )
     with c2, st.container(horizontal=True, horizontal_alignment="right"):
         _ajustes()
@@ -382,7 +392,8 @@ def _hero_chegada() -> None:
     with st.container(key="hero"):
         _topo_hero()
         _html(
-            f'<div class="hero-texto"><div class="pergunta">{escape(NOME_PRODUTO)}</div>'
+            f'<div class="hero-texto">{_logo("logo-marca-clara", "logo-grande")}'
+            f'<div class="pergunta">{escape(NOME_PRODUTO)}</div>'
             f'<div class="saudacao frase">{escape(FRASE_CHEGADA)}</div>{_selo()}</div>'
         )
 
@@ -1206,6 +1217,7 @@ def pagina_qualidade() -> None:
 
 
 # ================================================================= navegação
+st.logo(str(MARCA / "logo.svg"), icon_image=str(MARCA / "logo-icone.svg"), size="large")
 navegacao = st.navigation(
     [
         st.Page(

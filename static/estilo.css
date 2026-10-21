@@ -46,31 +46,29 @@ header[data-testid="stHeader"] {
   > .titulo-cartao, > .hero-texto, > .marca, > .secao, > .sub) {
   margin-bottom: 0;
 }
+/* logo do ContraGlosa (static/marca/): versão clara sobre o gradiente */
 .marca {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
   color: #fff;
-  font-weight: 700;
-  font-size: 1.02rem;
 }
-.marca .marca-ic {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
-  display: grid;
-  place-items: center;
-}
-.marca .marca-ic svg {
-  width: 20px;
-  height: 20px;
+.marca .logo-topo {
+  height: 34px;
+  width: auto;
 }
 .marca small {
-  display: block;
   font-weight: 400;
   opacity: 0.8;
   font-size: 0.78rem;
+  padding-left: 14px;
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
+}
+.hero-texto .logo-grande {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 6px;
 }
 .hero-texto {
   text-align: center;
