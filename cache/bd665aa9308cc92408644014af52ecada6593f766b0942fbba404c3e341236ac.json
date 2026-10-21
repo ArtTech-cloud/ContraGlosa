@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "redacao",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"recursos\": [\n    {\"item\": 1, \"texto\": \"Recurso de glosa — guia 248468311\\n\\nOperadora: CERRADO — Operadora de Planos\\nProtocolo do lote: 5100250318\\nGuia: 248468311\\nData do atendimento: 03/09/2026\\nBeneficiário: CART-43054511\\nProcedimento: 10101012 - Consulta em consultório\\nCódigo da glosa: 1705 - VALOR APRESENTADO A MAIOR\\nValor apresentado: R$ 130,00\\nValor glosado: R$ 10,00\\n\\nPedido: Solicitamos a revisão da glosa e o pagamento do valor glosado, R$ 10,00.\\n\\nArgumentação:\\nA glosa 1705 foi aplicada com a justificativa de valor apresentado a maior. Conforme a tabela de preços acordada com a operadora, o valor da consulta 10101012 é R$ 142,50 [A CONFIRMAR NA TABELA CONTRATUAL ANTES DO ENVIO].\\n\\nO valor apresentado, R$ 130,00, está abaixo do valor contratado. Portanto, não há valor apresentado a maior, e a condição que motivaria a glosa não se verifica.\\n\\nSolicitamos, assim, a revisão da glosa e o pagamento do valor glosado, R$ 10,00. Permanecemos à disposição para esclarecimentos.\\n\\nFundamento normativo: [FUNDAMENTO A CONFIRMAR]\\n\\nDocumentos anexos:\\n- Contrato ou tabela de preços acordada com a operadora, com o valor da consulta 10101012\\n- Cópia da guia 248468311\\n\\nProtocolo do recurso: [A PREENCHER]\\nAssinatura do responsável: [A PREENCHER]\"},\n    {\"item\": 3, \"texto\": \"Recurso de glosa — guia 192360155\\n\\nOperadora: CERRADO — Operadora de Planos\\nProtocolo do lote: 5100250318\\nGuia: 192360155\\nData do atendimento: 09/09/2026\\nBeneficiário: CART-806f8989\\nProcedimento: 40901114 - US - Mamas\\nCódigo da glosa: 1822 - COBRANÇA DE PROCEDIMENTO COM AUSÊNCIA DE RESULTADO OU LAUDO TÉCNICO\\nValor apresentado: R$ 110,00\\nValor glosado: R$ 110,00\\n\\nPedido: Solicitamos a revisão da glosa e o pagamento do valor glosado, R$ 110,00.\\n\\nArgumentação:\\nA glosa 1822 foi aplicada por ausência de resultado ou laudo técnico do procedimento. O ultrassom de mamas (código 40901114) foi realizado em 09/09/2026, conforme a guia 192360155.\\n\\nA pendência indicada na glosa se resolve com a apresentação do resultado ou laudo do exame. O laudo do procedimento está sendo anexado a este recurso [A ANEXAR ANTES DO ENVIO].\\n\\nCom o laudo anexado, a justificativa da glosa deixa de existir. Solicitamos, assim, a revisão da glosa e o pagamento do valor glosado, R$ 110,00. Permanecemos à disposição para esclarecimentos.\\n\\nFundamento normativo: [FUNDAMENTO A CONFIRMAR]\\n\\nDocumentos anexos:\\n- Laudo ou resultado do ultrassom de mamas (guia 192360155, 09/09/2026)\\n\\nProtocolo do recurso: [A PREENCHER]\\nAssinatura do responsável: [A PREENCHER]\"}\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 1618,
+  "tokens_cache_leitura": 5078,
+  "tokens_cache_escrita": 1928,
+  "latencia_ms": 6592
+ }
+}

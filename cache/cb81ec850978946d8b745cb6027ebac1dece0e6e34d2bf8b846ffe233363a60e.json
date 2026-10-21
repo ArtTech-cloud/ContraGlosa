@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "redacao",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQS7BQKEAgTGAI4AUIIdGhpbmtpbmcSDFnwrtfZfEdvXlo0shoM3srzgdrIwjRSFTUuIjBKWiQKQiZDq1nzLp/BnoXSmHZBp8zcKblFxFiCnhhrcSvvflRxTDazGs2ZsrmOUacqiRQhV4uK+smrEPv+HSS12qE29q3Ls8KUXG77RhblULmJ8PDIYfWmSIdrI94xq7NdFehsuAQJoVCPThjwQFOeST2rjfNqKnKPN80P0ULddMy+W3KIkm89Q7w42BqndwL6OSu4Cz/xmM9V5uG4/nyAW4x116l+pusLtRDNECfFo51xTXxJeQcltSiK6/DdC/q4mvpzky54TKc248rwvaWIqKuIKn40xUAvPVNOUwCuQObYye7cUEdVoqPsSrm8zk7yRjEjaYVOF8QQ6mzVsk0Rq5s/uUz/04JgPxLkM5DVj3XgQLkhtTmiAIcRtQ4bpM/hDPrGr8Y9ZPbW2B1xNVxTSupjpdFAqbmvYUmyGHt4NMHHUzA42F5JZgQsIF4KMCePsnY0X9FPqS8owfRjhesiLV3qCz7nQ4CkEYATJQ2xb1e/UjsnxNdMX/wcjFEyxrW0awmYRn1nPCQPpAdPZaLvyu3dbUVo3nbEG8gOCec8pW1SiYe9iy+HY1O0P/Unm8yO5SEA1rw0iAhQqhlyhGGW2SQ4Rq3TM0GBdJHHu8I82KWLO7ydmEiExTJy7cc5T6FOrQMN/WEJ8R6xMlOtapRo14KCUiqbSm8R2oVq0Mzkrxu6raQSB470pPrJ7k/XoCrf997ZCpvcU7Cnk3Ee5Faq5UA6XTolzLe9xfJVwzUz4CsX+kQgCz1nLMnpbu7YLN8H7jqccf9+ySNpM6OGYn7c5ClRhTzMofwUpAvmZZ6310CL1dkfKN6NociFoFTN5o1+MLT1bDip5cLw19uw2oPzL42MJefqjHyYLQmNzfjn58iaNa4n+buajpnIekPbuSFdkWJp/4hLciewLyIZt0FH+Lc5Tl5My9nBCddKhH8LfDa8E49HPyL5i/vEvycBA7eRzA1zjPVuvToV1iLPTss7wl7l+2AMvKvxlBaTyuPn8FWykJtAexj/pWSC2LMAGIO1DJ6xtvDCED29MVLZl1bhv+Y84NR2vIgfCJM+221juohYgcp9i6V9w+yTKkQhZYhzglnmR+XsQZLvn/b/hzc1qrAs+H/tdxgWHi0zSkUGVP8CVoQvcJMw+rFX13A/GNf0B+AvyPKJaAfzEglHHITjnwmcIPgnnNnLQabf8whlqO7KmUMMRdiA3B1CaRMrNdTVoCLA86DW3gjXoLqCMIXoees3ZsPOqSCtd8gxSieqZg8kYI8pa/ihpKdTSXNcHBpfVQqt+FWo0n3lOHT8v0e1oZDKDppZTykP5Oo9v6bQ9K0jVkOAv89NXDkBixNz7MbI9CKU/kB0BQllTEw6L/OIEyA+Nc9z3s1m81Nn5dBzhgdJABdRIDRdOZP+s76eoml2q7SQwT4LmB51qs1pHIUX+AGFeqRbKQ1FavrLhqeA4mfY9itRifb6dDwJkiJFKPRi8f5uW3aDn9q5760lGUJZf/R2SoZ9qIFYKZJRiMbT+FIyMojs5bzRoJUNQWnhD+1ZSslyg35sC0Ev4gmo9OAViC+Icj7Kj+bwmjtB34z28uieaAFu164y1UPXogStiE+AaD+iMaWq7ukPgWjKHykuG2XcnFeSvVuJRYSuiuC86mKmF56KG55pS6mJOatdPCyO8K7qSI5SYiSNnmvRCy1UQGZqXbW825R6Sq6cT053OCKeoEDZ6wQqEmeq4y98u1/otq56R2GaJTfIs4tLRNDOo1mbIzZ1kKordg/dTQTS9pBaNrs0nsKS9YZYGB6XVOvy1P4uixAZlXfCCS9jiF9usqPMlfd30SjQVgx1g6bycuBtCokxF1/L0rywGiCl6ngT4cShzb8EZH/tkIgGYimE5MRgik6pXDpmr25IcwNajf66mrELsnLUmgwli2osJNxd/VVKzhjiDWtmZPWMmseHjey6BGt8Mx2psNd6dXEFlpgNr9qZecQT48li23Gm6G28jt35QPUGxUK0eTfNRH9n5ucv1JjQRnBPYlai20ehLV2SaP4bw2salFGfE44FxwhHOtEqMjMuqfmdgarDNyo0U5uro3V1krIIDNi0PkDDahWdmTtOHr0ebrhZKtO9/LB3ENJ9dqg0pZUqw49IhTBl0aDDPqDReFZ/Z9+teeakiJuCueUwtQSCsPuedknm3JL0zuSOPCiWszPJhqbt6aZ5c71oIsBFO8Ysp5aI004alyKjNrxYQ09cIXlgdugWjzLjrT7YLj/UgsVLFtsdwPm2ysT3b+0NDxxhZXpcFafYjDjiWGqCizyJzCNB/tiPb7hhZjhuP+U0ToTM9CD35HosXzQdeS+sM9zO9oaoK6H/BRH8GZCn6QNhtNHeoj3emQbO2IqnmIAEIdxpXflWejLyAW6J80kNOBL/2tMYB6FGkFQUSSEi21PF0kR7u9SBqIgFbz6rAWquiCRVj5/1rKDjeDrMRZY5kdJWW+NqQW45ICCeW/r7pOsXS75YdNZEPK9uailxoqY1ixjASBqnvZ/dGUMgVEm+YAnUTyZ6nlR1cgxjaPemZnWvegpAQX5AdFV4ddyU2jhNOyc91QEHIGEBPZpmTjZchturr9SApGwG8u8VemP5ePB72uxPKq6vGwB6ARF5vmYsCC8HYaSvazRiqgJ+fTnk0MSjPVC5bxFq+U60YNP0Ai1x+W5Jt12OMB6ZsGZ1Xi7hHCE3EMUnWTrKG3elzzNkeDYgmNMLV2ZO0lbyfFkxpNE3JTPY+/+xkc+44nyhnwiaQtogfEvkB2Bky4pmyWJ2gSNO+sPUqKa4qnbzFlkC471hFhbRs6nj2e9WFCd8SdK5e82DoVEurALuD/TXA0MmR0TEy86qYIugKnYor8Kxv+QMZZH3rcuosmm/96939NJ2QW88YlMoypzAhjumzdfK69h+SUypSPTZqnm9vDwpNH8fJed0QKfmysE8tggZs/v4H/h8kED2Xwwat+yjHoFTKItycf6ybp32bydHjbHs+Kb+fkpwdBw+igJVmmAQn+j4ruXmsIgJOPrFJChBHVCYsMNTlZQWJKDxjKVFcEpEuM0nKQEUxU+mrRIHbGdksaOF1U21iGl+aFqVQNZ7S7hUv+8ptI0piHFCiduIsGWhU5nEZwgs8VjZI5464GIP1ReuVFYh85IYj6JtvVWcmhJmMUNC+/5mK+x9lptiuGo7DzULKnBDzcRenAUH5MY61Pdo+ylPtKD/7Y2yJG4Ma4Hyz5YE+SPqQWZutdbLWCXhrToJFqd66TEahO/CW7HnrocP9fk1Eghkgi4K9+nHVuLDIfyv+lNhzCiq6JuB7bBiJojow8O1dtFZNPmCI4h5RJDDQqqxoXGefcrrWROgnyjax1yDfS0SVq7cz+FO+VIoyVxZ9tQ0wWZB9Mjosq7kiZXwaCBWNyfWBVVX4i/f57MV5T1XrLYLCBmFzrs1/2gMPhwHA5xUmkJwnj6evgAot6YGjpFm0sg40cSOLZgh/J29B5vQ6tC2GAE="
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"recursos\": [\n    {\"item\": 2, \"texto\": \"Recurso de glosa — guia 911408710\\n\\nOperadora: Operadora Aurora\\nProtocolo do lote: 2026100691\\nGuia: 911408710\\nData do atendimento: 16/09/2026\\nBeneficiário: CART-518ef7e7\\nProcedimento: 10101012 - Consulta em consultório\\nCódigo da glosa: 1509 - [DESCRIÇÃO OFICIAL A CONFIRMAR NA TABELA 38]\\nValor apresentado: R$ 135,00\\nValor glosado: R$ 135,00\\n\\nPedido:\\nSolicitamos a revisão da glosa e o pagamento do valor glosado, R$ 135,00, referente à guia 911408710.\\n\\nArgumentação:\\nA glosa 1509 foi aplicada sob a justificativa de código CID inválido. Trata-se de erro de preenchimento na guia, que foi identificado por nossa equipe.\\n\\nA guia está sendo reapresentada com o código CID corrigido, [CID CORRIGIDO A INFORMAR], conforme o critério de reapresentação indicado pela operadora.\\n\\nO atendimento de consulta em consultório foi realizado em 16/09/2026 para o beneficiário CART-518ef7e7, e o procedimento 10101012 está devidamente identificado na guia. Assim, o motivo da glosa refere-se apenas à correção de um campo de preenchimento, e não ao direito ao atendimento ou ao seu valor.\\n\\nDiante do exposto, pedimos a análise da guia reapresentada e o processamento do pagamento do valor de R$ 135,00.\\n\\nFundamento normativo: [FUNDAMENTO A CONFIRMAR]\\n\\nDocumentos anexos:\\n- Guia 911408710 corrigida com o CID válido\\n- Relatório médico, se houver\\n\\nProtocolo do recurso: [A PREENCHER]\\nAssinatura do responsável: [A PREENCHER]\"}\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 1512,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 1637,
+  "latencia_ms": 6890
+ }
+}

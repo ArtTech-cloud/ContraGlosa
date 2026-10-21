@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"decisoes\": [\n    {\n      \"item\": 1,\n      \"decisao\": \"recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"As duas consultas 10101012 são do mesmo beneficiário (CART-c049cb0a): guia 943422088 em 10/08/2026 (paga) e guia 318696815 em 04/09/2026 (glosada com 1823). Entre as datas são 25 dias, e o prazo de retorno da operadora é de 20 dias, então o intervalo é maior que o prazo e o critério do código 1823 indica recurso. Anexe as duas guias com as datas.\",\n      \"fontes\": [\"t38-1823\", \"op-boreal\"],\n      \"documentos\": [\"Guia 943422088 (atendimento 10/08/2026)\", \"Guia 318696815 (atendimento 04/09/2026)\"]\n    },\n    {\n      \"item\": 3,\n      \"decisao\": \"recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"O código 3170 (assinatura/carimbo do profissional solicitante inexistente) é de falha formal sanável, e o critério indica recorrer anexando a guia assinada e carimbada. O demonstrativo não traz evidência de que a glosa procede. Anexe a guia 826708125 com a assinatura e o carimbo do profissional solicitante da glicose.\",\n      \"fontes\": [\"t38-3170\"],\n      \"documentos\": [\"Guia 826708125 com assinatura e carimbo do profissional solicitante\"]\n    },\n    {\n      \"item\": 4,\n      \"decisao\": \"nao_recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"O código 1719 (reanálise negada, análise conforme tabela acordada) indica que a reanálise já foi negada com base na tabela acordada, e novo recurso tende a não ter efeito. O documento não traz nenhuma evidência explícita de que a glosa esteja errada.\",\n      \"fontes\": [\"t38-1719\"],\n      \"documentos\": []\n    }\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 1123,
+  "tokens_cache_leitura": 4667,
+  "tokens_cache_escrita": 1803,
+  "latencia_ms": 5343
+ }
+}

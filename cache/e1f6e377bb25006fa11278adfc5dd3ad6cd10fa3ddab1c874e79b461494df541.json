@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "triagem",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQS+AgKEAgTGAI4AUIIdGhpbmtpbmcSDLpy2Dqb4hlqQTO5SBoMhTf5YOwiwHL2DzStIjAbKSQgArfVq6ea2zJRiY2phIjQ++fpLVT9hXi+k44kvBYq9Zy0+u8dgEXKeHlLWIIqlQhC3Huz/1Gh/YZaJStgC4zOR/DYjFicv8Msmy0hIICLhM0fS13g9dHOkSs/RUxpf/PHek98HOhVs8sCzxI0bVHvsUMCtSqgEOwEpsJcEH0vYsecNcKqqdHeA83EEJ2+TtyJOOR4IBC/dkGwGEKWTOELV1214Q5x1EuwNS4fDoBXkkzhjBgiIqkDC5BcgSUKf8SPHH6ChQKSv/jtts1y0eOAfjWwTR+ClC9Qs1xBLefYupDN8+74UWN++YWtzGz/Bt5ipT2cq1qKp9drLBn0bFXVViwMuACplEJsJ9zYTFJhGSyYM2pVPQ1jaWTxfy+6yFF11QHACxoIbodcop9UxgVIE6+JQ/sJcrAssnjJ9YEjXvDDyFfRTrNNSCpwWIjtHiLY32lxmMaWe5vg1Y76YE/AqZYvPmWYY7gEVFj97QV5O+1kUpS+PFMIQmet8f773ss16/xE3DEgqSNrVoGNklIJwuQqL3lPGL53JkNBZy4N6SAm+U3TFGWOZ9b5+Qb5Rdn2mtwpYoBsdlZ3IgPSI+/MA8fQqmLE7P+upP7ZYb8RBpk3RTqESRki2b7EmcqT3OvYrr1KCliFyca9MWOyMgnIzO3ZRHCUcQF4kXt0MtY1bdxRr4dsU5Gn/SxaIiE5Q6rvzisq7EeZ26WKCEhrBP0Ll9C3pMvHiNk+o9ipdLLjJ3Hs77ectuV9MTDWf/EKSXg1d++QlcZKqKqLav/51oWx9H0Elhr8BduY/lC7rhcJqeIwFoaFfhhvHRfXszSVoVZwZLVdr+pic07wQJCti/pYrdhfF4soy+uVqLbZogrzNMpT0Np549EGvkZtGRsucvRq2apUHV22ssRcXQHDxIrS1mMik3AZJqh5mdb0OAiiEwejNGn/CkFnhayJQWZwlfmohBIJ7vMkERvm+aylvPfnAIn5uo371h80BZF6ULYmWC+PGssAxLeRzGXI3dE753batsNtmYGunqvf3Md62A5dCtSJs0Q1bh34G7Bs8zYhqCybSe9cmB8zVr6gDNVCzC089nnw7bFKyoDVu6JrH0jLAVUAEsmAvamkEFGbZ80r5QJ9G+85OGMRSbP1aF3yHOEzRDL3Eqo5FHCDHuDFQThUXGKovAa8ONcpxunNPa36EoH5IEuz2od2Bw8CHJuEQ40RhU3jKnwy+JwxWnX5x8r4ZLhC6n+hzdyrsRz0AIPRuO/5GbmWe6gaSaQMpqllh90PH7/L8JIk8jWVRuvIfQXWVPdSGgoT4AYHaK/uOQloNXg+E1KzBvVuz+nu0Qdq7DC6Vbm/6buRjPVA5O/OsTTlKXpOlM6aIXJkfl6zFZiqMsf12hVkBmqNxjQaRz7k/LFNEvAlJqzur/Pik7S20L5bXw6qqXsZrXfIkm6KLOOdtyG3JmvsGAE="
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"tipo_documento\": \"demonstrativo_retorno\",\n  \"operadora\": \"Operadora Aurora\",\n  \"competencia\": \"09/2026\",\n  \"data_emissao\": \"06/10/2026\",\n  \"protocolo\": \"2026100691\",\n  \"legivel\": true,\n  \"observacao\": \"O cabeçalho traz 'Operadora fictícia — modelo de extrato 2026, só para demonstração'.\"\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 364,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 2009,
+  "latencia_ms": 2780
+ }
+}

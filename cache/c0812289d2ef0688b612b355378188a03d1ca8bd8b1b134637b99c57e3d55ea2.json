@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "triagem",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSygsKEAgTGAI4AUIIdGhpbmtpbmcSDJinKlRKKgF6r00lQRoME76HayG5h5y8uPBnIjDChW9DecGZ0hlFTd2P824E40HWs0p09gegeO6vYpBwTj/Nod2giWwgLDOJ0/kTCAQq5wo/d+F8IzZ0DXCBeaOMCh/UITtrGsmP9c58tilLinNHMe6rxH5/CR6FMg0mbxDQ+GoHztBIRCpuLmTkayyWYrxjTh5oT8vo1p2K+oVR4y9ZRtuigInaGpfgWLWF/m4tb5BO0shmSiI5W7OOhB4lMz7A1j28e7ZTyJzphydXysRKfxOOxWOR4s1TySBmLb7IZ9hgh3+e9pY6aw5qXywacI2ivH6ymf/FZ0sUiZA8a6bN4mOCAnvOERxcq6BUjpdqsNdnj7TQ9eGw7L5lFDa3i+P2UQ3KYjSSl1G7zCTM/rpDsT8dj44y1ZB1SS8V0YY6Is+FnnlcFrYQVqknV7DssVEl/TCxpCjpqnnWiMWw7wto6YbcgoqLTYKKJKSqq2EK7RJW20Gt8AVHkz5+ly00B9qMoPIPO3W+lwCjo86rDq7A9urEg5ndZdAa46VzKzqT69b4G+OwdpLQvPRDcpDqBf0lwYGG8313hCtHi33c4GRBuGP1n4udN9d7zdm36uz9HpfRWTUND6ZdhI8PdW0VvZFulfWoLj04kMvqQVQiL+kK3cJe8x1RV0eqJW/+4q559JSlOKwb0wPoLEh3WcFAQGmrUfDi1TOVyaN4dbvuVM7vLvbtZ89ca5EWldeh3m+b47ke59Z80RA4cRX5qQ2Lhwfy0WXlZlJnsPVS9nvAXikBRdTCt5WU0vR3bQztOu5+YvmvBFkM+Ap2JNPmyz2FsT1hUbxtHOvSwBfb5A+MGlvvo2yJfuXFtI/FjKcdA/25W6JV7OYhTo9UzFMuJQj5L+BxtEeim80XS62ZLS5Ilyk1WYtUC2Y1peIwlgzLaDI6KseZ8kDFdUhBhuSyP/+Eb1PN+OrQTyZ74lEEE2mqN21OLB/mU7DZ9m11zZEqU+/HbS4D2GyytNB5ZAsovaOseojdRxnxKQ6Hwb7sdBnpBd0gRIHZSu896lRCUavu0RCoCbJqn/itFv5IulAioatoEBQieZUVLSlmjlPI9/ht9enS5qgNB+xMari5VKVL2bskDUQZl0lVIbl0wL+rJUZaH1rVLrEjqGMYVLTZ/exIDb7azRXzmwiVa2lR2ERuxt0fqHmf3fB9uXblmzJWxzPnWlg2Bnyzv3yVF1Lu1XVwYWeXA3c/nNC05+u9mNpgXFuAIGsF6Rs1EgVkpo0SD3iju5t+Yxi74PHEWmXYSNui92+MR1oqBxpTM3oLDaZKGAk3NcToNMuLiE6js7Td2edOWpk66a0um71SrX8auaM/stRMrGBMKO3sXfl9XyPZbJsQPdQ3YyAcsd/EOv3QI/eKLSo1gcXSdXT1bXHUFDf2ii2bWOVn7VF4SMSFsibpCr62cCnzsU2Lc2OjpfJQ2fK5O6duIrVx9lngCvRS9Af8n+X4Yxu9ww9L8X0750s7nNxfGJGsVp8fFy74vJ+dQmMqSrqdyzV/TSFLqGuLlKHxoiA0B1OMondvSXbWB/3f1E5yEdpKlGZ4LftlkgslnPP+7HwlMjchWgI/Rxf83TqVvlsMqRzEPmXgAQC86dOMbM5lVwLpqIrZbBcmI+5Bx5taWMmmM4K68G/NxRTAM0IVuB6HC5N5WljS3BrC6ocBI79E0TCKcs/98qQ/UpwkMOS9oq/uf8tSLUeGl/pefr1n6AC1sNvWsb1Rmy1YHIm1PJkVKptahBs07k1l5ZRowpSgayxJtExRfC3pWzioQrRn2GEXEYxhRMPbSjtbPqze5T75rv1Dvy3eu5HnADPCoqYVEWSMvc/E22QssQuevLmbtg9uHSjWp+Unz280SkCJ4Pca2SK6R6EVQoLFsI5X0IjSTTTopQiIgkBKKbx5Ciybjg7wIi6EP1JmPOgYAQ=="
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"tipo_documento\": \"demonstrativo_retorno\",\n  \"operadora\": \"CERRADO — Operadora de Planos (fictícia)\",\n  \"competencia\": \"09/2026\",\n  \"data_emissao\": \"25/09/2026\",\n  \"protocolo\": \"5100250318\",\n  \"legivel\": true,\n  \"observacao\": \"No item 1 (guia 719496168, data 12/09/2026), a senha de autorização aparece como válida até 05/09/2026, anterior à data do atendimento.\"\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 557,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 2412,
+  "latencia_ms": 2891
+ }
+}

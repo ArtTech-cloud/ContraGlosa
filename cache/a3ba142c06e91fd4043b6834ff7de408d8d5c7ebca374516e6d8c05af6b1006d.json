@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"decisoes\": [\n    {\n      \"item\": 1,\n      \"decisao\": \"revisao_humana\",\n      \"confianca\": \"media\",\n      \"justificativa\": \"A glosa 1818 (cobrança de procedimento que exige autorização prévia) é recorrível se houver senha de autorização registrada para o atendimento. No documento, a guia 101582885 (linha l9, US - Abdome total, R$ 148,00) não traz número de senha nem comprovante, e nenhuma linha do extrato menciona autorização. Confira com a recepção se existe senha para esse atendimento antes de decidir.\",\n      \"fontes\": [\"t38-1818\"],\n      \"documentos\": [\"Número e comprovante da senha de autorização, se existir (conferir com a recepção)\"]\n    },\n    {\n      \"item\": 2,\n      \"decisao\": \"recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A glosa 1509 (código CID inválido) é erro de preenchimento corrigível, e o critério é reapresentar a guia com o CID correto. O documento não mostra nada que indique que a glosa procede. A guia 911408710 (16/09/2026, consulta, R$ 135,00, linha l10) deve ser reapresentada com o CID válido.\",\n      \"fontes\": [\"t38-1509\"],\n      \"documentos\": [\"Guia 911408710 corrigida com o CID válido\", \"Relatório médico, se houver\"]\n    },\n    {\n      \"item\": 4,\n      \"decisao\": \"nao_recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A glosa 3209 (cobrança em duplicidade) só é recorrível se as cobranças forem de atendimentos distintos. No documento, o item 3 (linha l11) e o item 4 (linha l12) são a mesma guia 757376897, com a mesma data 18/09/2026, o mesmo código 40304361 (Hemograma), o mesmo beneficiário CART-a8c57873 e o mesmo valor de R$ 18,50. Trata-se do mesmo atendimento cobrado duas vezes, e o item 3 já foi pago, então a glosa procede.\",\n      \"fontes\": [\"t38-3209\"],\n      \"documentos\": []\n    }\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 1399,
+  "tokens_cache_leitura": 4233,
+  "tokens_cache_escrita": 1196,
+  "latencia_ms": 6282
+ }
+}

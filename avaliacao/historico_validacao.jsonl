@@ -1,0 +1,1 @@
+{"recall": 1.0, "valores_exatos": 1.0, "decisao": 1.0, "evidencia": 1.0, "adversos": 1.0, "custo_usd": 0.031527849999999996, "data": "20/10/2026 21:19", "modelo": "claude-haiku-5-5", "versoes_txt": "tri-v1 ext-v1 ana-v2 red-v1 sis-v1", "nota": "rodada única; documentos e configuração fixados antes (commit d593f49)"}

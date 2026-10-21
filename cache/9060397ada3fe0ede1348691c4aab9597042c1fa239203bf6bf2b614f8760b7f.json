@@ -1,0 +1,64 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQShAkKEAgTGAI4AUIIdGhpbmtpbmcSDPW+ehIrRk1VsXwpvxoMtNfOHw0BYDPZZ8DXIjBykePej+Ht9GzqhWqWR4glUhiYpOEGXbILBceLE8p9/0RiDYyu3aLzGNL9KER0i58qoQjDJI+UJLNvwDRKGX1tl+Y8D+umTjVv3MksfrEI1NTOV+5wIno9+/thnO8xq9wWcdZKOS9/JpcN2fnAlfLn44jkU6CsApOCQY+Z5VLZvRSMOJayNd/evgcj0u8Y1QrhPtsbJryEq+N2J+kJsgLgRiXjtDJd8sKu4DD3fkgqnaJR1+gRjYWfQRLqn7sj1ci6kJQiLusLazEKkZ+1IRXGX8m7t3yIWI+hCMeAMvnvhczKaVSluqjRqVAX4lAiAuvSa8jaclXXNuBPGdbzcZCzCDLwoiZ3AvMR1qzJP3SuxRKy2b/T80JlwzWVno5/X9NSkVVnEEG+91yUwaAvJ4O2OLdaKtsn22ELBjK9OmaXOIe5s87WB8RIRB3sH5pFPh6ikLDGHlf/UhKbhrW5PXOqhJEErnXob6xIrWyg0r8vRr31pHcamRFZbjdPt/acjTYP0vw8G5cMM5a7CCdM5cs46golswRczMB0NkrYI79hXcumIKY5lD8DmrekzptBuCW2XcJ0FzZNAs7uT0I2qTrdA9jmh6RAnTk+stdch5AZzQVCHTK4b3b+4FLUGbOF1QvbSpkbHy866FIXYbukxCa2uHfzsXTzA/4jox+OX4CbIM0FuxGL8L/aGbae8+0JGjVx0BSF2U7dvQoZB1XITSMrZNAnFOK1VgC1smEqADFqA/lm4oZn8vlD34yyVQluTfRpBR1efwgHSo0CrYIIXvbNMaNl0NLkbiOM/K9Rkbjqy0Dp5NfLnEqlAZEMmQZ6aaY3U/YxsVlwvqH9velYdCf8tzBIWEMEbF+8slUYahb4cP4ZmSNVELqMC305i6ebOTFcHrSy1FOf0mYQUTZ3AbJ84o35FncmWyc6iHvVDvJ8X9JeALJi+dwJnnZhEv2WZZXbjEGpYzbnD7ieUFBUvlCePO7AvTwdz6lnUQn/biDVmOlwt8NhQPD3ZJseDrj+cchqfiGk6LIltUuX/ZVmoW7Iiw8ZWAFiv9gQrt/3+VBBTtLqgKvbU2s59KAWU/V4ROIs3KySthxduC2/ULdW3u2/dALKREfUpkTtB2jQ03mTsaQ4MrYdHmCgkEh8EgQdAzt7488NS61D+dOfWaf4YBTzA+JXOEvRjPypAWmM2lLduk++LYTJiFiBe3xme8S+J5Zps/wUsaj1Ao/9QZy98gIJ5Vgdktc583XFUeN6XVnP95iai+bJAj7LZkjy8Yb71bUMP8uZ9mf1rQJ8cQ83Y3kUFMAd4PZiuTx1HKNYB0eu6H/7A1YVMJlZAS5OIu5TCkDV3ri5Nt6ec0UZgQ+JenZUUGeuOvOaUOBM4w98Z+lu9RXMohKC/KY7RQTi0ZzKw+fx7rUSr0VxpOxNxq5m1k2Xvs16CN/zQaYe8LxwSskocz5Nmu9o2XSaEhb3lhgN6nez6J44GAE="
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01F6LgmWaGKNCKKiumZBNCVi",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "1823"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01BxGxWrmyNa2SwcdvpjiUyL",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "3170"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01KDNe4a8p2qY9L48oSAhGrY",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "1719"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01RK9xXt3DhgFqfszwnkrN2a",
+    "name": "consultar_operadora",
+    "input": {
+     "nome": "Operadora Boreal de Saúde"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01NFhgddfCpRBxHvb4nzfN4A",
+    "name": "calcular_intervalo",
+    "input": {
+     "data_inicio": "10/08/2026",
+     "data_fim": "04/09/2026"
+    }
+   }
+  ],
+  "stop_reason": "tool_use",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 527,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 4667,
+  "latencia_ms": 3125
+ }
+}

@@ -1,0 +1,55 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQShQYKEAgTGAI4AUIIdGhpbmtpbmcSDPzJ1ZSJvGLnYEIFMRoMYl/X5/mAt5Y8JlmwIjDbantD6LaUsadAn4KJy+TDcr228VdhDlpsjGl7+Pwi/GEVbEXWDJuXzPvZE2HXKL0qogVOObAsGSa1wmmLc74YOVJR2KTVIvWXYR6Tt3Jch7C4Br5EBXO/KTNhrGR8it2Eypq1WCfJkF23CGjQg+c0MMUhen3Vdz2ApqPkDcf3u/lssams9rwEvNm/N5M1eOqM0arR+pV6XCy+OtcvzmjL4gbt8XqagzfKk+MLOPaOAOlTMGbZdRthC/+MKqwUeuW6WbxKsvKGEDVQ/aPS/wd/t0mdyYyvCd0xspmH0bZWg7LxuDssyvoN8ArONbWa0BL78I+7EYw3FJT5AoPalCEprNt68q9s7NJArr+kKILCz+qtUlAKI0Qnz2ojNobd6JI0efKfIePmCKvGs9zjuonOryE65VA+wafClUoOhuGC+e0I664MuOb6RDIW+LNS/w5rpJ/7AkJoiF97ske0518mBqab3fyT5TqoqsFkAztPGlIfRI4NE9ODDgjmz/qpKLwDNb6kiPLNL5MPpqGdp3Wxd+weu28FnBE2GN/Eq/7p4M3b91mrtb1AXBTZJOPWhsKAoYOaFTyMT0l5B99QMY9Gqn0e5gbyxMvPe0tBhTG7ed4EUo2Tiyq6PnG21F2DxNB0YgFCGFxA/sOxwrMmKLmeksCCWv70v0bxDl2Lx/fDFXF6nzS476XtY1VOCOHolQ+CHokf06VIpaGnj6EHW5x15ZwM/pxUGfeO1xFxcStdb+UXCIrMmQixfzyfpMTD3Vx3PLdw9LgbFZjZu8MQK9mznUczxyGRLndVCy/DC/hTXEvBDGJe55RootgL54bH0HvThBjeyH7zLsXZhm3+G1uAjxdjOwhl0B5K2pHJwzJMDEuwDY74SqNNWZMNqKczm4dDsb9uwwy+PTPSNnF2UON6cEOizuEGPKKmN/t0+LultJCE9HRocwTuqX3NtezillgA6lqrnRgB"
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01E3fJTfahpEKKubphuhAJXw",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "1601"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_011dhX8qSr7rixVX1mwYgJgi",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "3287"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01FSHQQsGj4L7dkqKJkt3xEb",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "2909"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_016VUqjguSWWGQV7mKjPQcFi",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "1006"
+    }
+   }
+  ],
+  "stop_reason": "tool_use",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 286,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 4313,
+  "latencia_ms": 2608
+ }
+}

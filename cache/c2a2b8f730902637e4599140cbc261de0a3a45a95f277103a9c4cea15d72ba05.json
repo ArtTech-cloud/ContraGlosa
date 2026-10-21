@@ -1,0 +1,40 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01AAquHs2EUug1xLYjQZi28a",
+    "name": "calcular_intervalo",
+    "input": {
+     "data_inicio": "05/09/2026",
+     "data_fim": "12/09/2026"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01H2RHDtCBuD3iGKrABWA1Wh",
+    "name": "consultar_operadora",
+    "input": {
+     "nome": "CERRADO"
+    }
+   }
+  ],
+  "stop_reason": "tool_use",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 703,
+  "tokens_cache_leitura": 4608,
+  "tokens_cache_escrita": 1499,
+  "latencia_ms": 3718
+ }
+}

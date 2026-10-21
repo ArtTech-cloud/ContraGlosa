@@ -1,0 +1,47 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSmgYKEAgTGAI4AUIIdGhpbmtpbmcSDKBVk7rhuSxoWZZ3CxoMJZepVhrWJN1qjXvxIjAv5MtSZqlPc3BEdoUhwa6/gzkvLZI5GP8BzE0dDSsrpHsaQM1D/sUWZnO6thZwZoEqtwUXlVee3dKx7p3R61wvEHX0af0drENAWbzharV/aRulkj9oHh/JTvANZE9BZpJNYPLuT3nGUEaufb7RMgM+R3jVKI8f3J4qjZFkxrdhCdflbdiB9SKQxKRG0qhzqy+/g1boTwrN1tqRjrSgVK5GQkfV4sh2SwyHBapW06Xi49Kl9JI7b+w/kcNSHbV1nkrdcIfkGNRuz8tfrJEdAHeR9ONKrhsK1yRdDWRFYoxycVz//d4ncSmxW/GhrnXhqZF8aGuQhXSUYcaw+tOyB4NDTeHNfNU8Ll3IKR/019UrvD13Ro2GdBy/iZ3WecY4NjAOaMvst7ag6AXjSurZjGD7wT/XfCurOlxPH9fJYWEgkgUNpCpiDHVij7+/ZW7KtlUVJG23gOkSW0gW+jceEaFUc/0N+MUnH5z+m2hmcCSMBTdGBpI07go6yx6s81YfpfmvdzocmcLmxtaQ1BG49lqFnABNEKMWKW8eicB0/BLTM2zd9aCWCveAZdLxWL8opMmpI0WoJdTejAnEnRpvSOQkxUUr+alO+bL3U5yzNlblSQU7jBR0ecHxhyYBwn10XcVAuxKKfufzMSoRTsfliqakTm+LfeU+GCgoYlqIqc5fQkyyboRsA0WS6oQ41u51k7NdxxfrK7cI5TNubtHsd/A8Z5u9PMat+hL0MCTY9bdlLYNDD0KNxZxqLTbDYyro8Ae66JO2mxc6xaB3HBF82qj2rpcn8IrEUg5J8nJ3B93STk5kOvv+sisIlyhA/2+L9orphfaZOJk5sFYf6ED2ZPghsVxJ784+l5RcvwY/MSFo8l5uGGoFv/H0aKap7jZI2USQkiY0SOb+plAd1Y+/WCBmlOiwjUmiGsR6b6UNbxtNd+5lOXjvAbXgiKF7xRfxhoRAY93gmTrMcZnipUiYPzULc4MPks8f9JYEcRgB"
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01VczQQDVL7ts7BWzTc9Jiv7",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "3209"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01GAwQv2X1b5YJfpjBxn7A3P",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "1705"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01HF977ZckA5J8yH1gevEsHd",
+    "name": "consultar_t38",
+    "input": {
+     "codigo": "3214"
+    }
+   }
+  ],
+  "stop_reason": "tool_use",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 245,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 4068,
+  "latencia_ms": 1968
+ }
+}

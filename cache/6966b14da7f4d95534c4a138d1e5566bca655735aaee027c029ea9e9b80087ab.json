@@ -1,0 +1,49 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSrgkKEAgTGAI4AUIIdGhpbmtpbmcSDG/bF5yIecFmIOeZkhoMMpBGUeRg4SJvsxf5IjAdCTiiXA4aRTkzaGKGRJ0yNheLTdfJt3S3ZUhjUtO7FsDtHhyDszPUylwXqwAA7kQqywjNRTwpE4Q1WUz3g46gjKPeZxjF9tdrStjuOpCEtew/eYth8F+5ikZk61iLRnBgq6503mELrz6D1iYsKMnnA1l8XDwrMw3SCwCmFVX9ZQo5Y+7YILRZXPLNNEELLqhsya7KLVt34NKpqpXYTYAqF5x7SW3dfn/8oKuSM8/jri6SEdYFOLmdQK0uW3wP4IrLjUT+TlVQYB8DDXvExbhGHUW0SzFPkPDVd76YqKA8VSLBVBodu+drFAhPl+MsER1ati6S0uwt79UicnitbP5OEratKffXBpJsAAICZ8yI73Ju8nOxqMF3uLNOYZIHj+pM9Y8WgPp0TywjUYGsIN+c2ltOHIEWM6gSXg0Meijb4z5K0cpb2iUj8hZ5oAe6sNsHCELCgSPKleQbVz67VyhXO28TSwbtkVcpc+6RpiCX/r848/1xUzhqpBNduII9GFzMhtd8V3VLRu/uzPhncVlzIRq2dWz8S0U88oy1j9kLedijbMtURfh0ZGeck0lDUReWv715HcyRx18twSYy/acqSgKfJ6W5FaXCY1Yga+6HIrAdad9KkqDuTAbg0ev88N7xal217xWw+VYWzu0lOCU5jfocssM/GCIBdOmsrdzCktjVLQzzWkUuN8hTYADpBmQaerJGwe/RDUupRKSQoCpDlqsSLMzd3r5hjAoqXJ3BIcGXBY9Y3tGfukYfpg0jiTP9cliIvlAODj/t6E/+in5OxL9Wp/dMjcTkaZoeSOfSKAKVp+67riFBgEZZ23+vxLvhntEJ8imwqY6m/OaQNjsaBGPwgUmYRtz9PlHlaU4sem4mkgmy581IUsyWkDcAzBfBkEV+D4iaXE4Re1WKtxYDLtenHdk7c0a9Tp07z6EgfaZdTQjy+Qq/+jqJbHKeN+6vFqN3oTQm1L9PiRtXlhbbtz/GczePYOgsNRYV708UAl07+blXrPXFRwho0M6jpasbtLojkRNXHrbhbNssdNyTxAIQ3Nvyr1Y5cOuf45Xeum/wctWXSv2jph9aiM/CzyBdCpbAll4NuYV/CEXxyeQ3blhvpMcmnkWtbBb54NbLU5zvK8zJ3y+507ct3zuisLccRdzzYp+X2gVf+Z5Pgr1WbrHVCZ0OkvJpl6x3o2Ua0QssexelIDPwx5CAAIqR9Vpm4+x43g3RkCw99eNP+pqtk+t0oeKmZ+v1S1jncjoY6RN6N5PirFGLBy5gm8wgmnQSAtwW0jlfI5lDnVi8WRtw7CGJ9ykMH6KWTRXgV2v1xAzjYLM+bzVTTGtnGP/XYqJ3dJV0OnMJk6GbTUy3eaBWY2OPw22ni8GMsVKgTdCV8E+np5CHzwI0+aXv2tCWXjd4vwrFhldIQ1X6IOPeEnf95koywT7hQNWNMspVXsxq397lqh0fr9XvXNyIe70JVSMAP0ZpzBEXmAhK67LpMi7PfFPUKRxqwiJR3duDl07EV92OIJy5gdqt0qt43RtOGAE="
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_017betLaEUBvHhUZjHgK3ucp",
+    "name": "consultar_operadora",
+    "input": {
+     "nome": "OPERADORA AURORA"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01GTPXKy22ip1m1jcZLUzRFy",
+    "name": "calcular_intervalo",
+    "input": {
+     "data_inicio": "01/08/2026",
+     "data_fim": "15/09/2026"
+    }
+   },
+   {
+    "type": "tool_use",
+    "id": "toolu_01VHgmN1Sgv1KXxoWRcdWi36",
+    "name": "buscar_base",
+    "input": {
+     "consulta": "cobertura plano procedimento não coberto glosa 3287 Rol ANS contrato",
+     "k": 5
+    }
+   }
+  ],
+  "stop_reason": "tool_use",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 464,
+  "tokens_cache_leitura": 4313,
+  "tokens_cache_escrita": 1569,
+  "latencia_ms": 3391
+ }
+}

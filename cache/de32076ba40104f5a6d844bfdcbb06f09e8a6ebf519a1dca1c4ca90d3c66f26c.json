@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "triagem",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSjQkKEAgTGAI4AUIIdGhpbmtpbmcSDHHQLHvGzKFqPxKtTRoMoZaEyd5anJudNlEHIjAHGHWTQf1EP2Wa/g3kFqLxYUwUQ3GjBHdWM6T6nDdHNKgPm1f619bGDKvW7h2iw+kqqgj7tDnYRSZFXcxXFKhypI4m1mLIVcOetY3OVV3BriDEZqAXxjzAWd6wnmBcYqzKmPOi5lXLkWmoDN/xJAC4Z1voDIP+FbocUxrs3n6DGQn17NyWM20Ht0h7fuxlrY0pA2En4la7I05NpncmlcJQs2+LiXnxtEoSC3UMuY02cq90KHGhTl+tZABy4hRgaw1DHzJqIgyL5M8WXEouaC+UTMaCJBlUGJIByWQ51NPyf2NpkG/2q+R5AMWelbgzTZLEBFMwi7+RZZTk42ba7AVfbbQ0e7Mn+DC6FwBwQWtM8oSLREH3URa1KU4FDwktzW/zBkEwDD1Azf4x7JSHdmKpGh6Vghm5xA+jXcSiig6sj7jFCxb4PxVAe8EcZD84wD2iyXtmbLjSkVhKFbMfnI+76+rESYZ9esSVyN7xWjI6GfHzUrieI1mlH+aEWKPK4SAscsE6rM0hZAdCcz8W85JpfVYVf4NvPYN481LBUnZKgMIuXQ8sdRDId1ofkMq+SVrXN8wIv8C2aWJ4YKEY4LORujvLmSciToZWUAxQTGi69QIpuo8gBtJ9eaDTJ4LlDDvCZq7irvP0wpUK6E8dPbCRHS758z5NP2nlmYHP+b1vnupAHlupqehHEHUn1PqaZmvLDMVU7gzOKNWcWghCHIhpo2muXmWxwvvPaFhtuEuDFhYF+Qshi0nD/JKn9h5v4g1P9XLMBDolCixagV/GhqKEA64cfaNE7h54lbNC7V98Mc/CY8vPzyoVHVuCyxQsmkE1G1qvACErKMtjM07M/ZSkeVqq3JCOEyl/dgQIKOQt80fjs6NDQ5n5qEYcMborPQCxQ2OKc5eGoR1jBdi01PD/B9gGxrqfIwzviM8uB/WkMMmgZJ7YdQeU2PZxVDtW4UKu+dfxGrNAC4H6wwsYEiNRLBlEt00YtfdJOowXfL6N2upteknRrHN4kvE1Y+rY5QK676kCnhw3p3DgjwfY/PoRdSg9nkBJri6CkX+kDzYJuyD3iRpwiJEo0mhR2afi7lw4QlIMim5GJiE7TF6gcZgVJcVkYFDZWEokTX81pfyNrveWMXHREJ4UfFssGpFJ/Qg/9YbWwD8iPgDGAOgbJceE4/74hTdlEaR1CZMIazoDYymJMA3ESBK4Xh/iVG8J4z+d2/92VBr9KTeBLstxtGquNvwJRu+8cW70VAk8Zsx9AqFnRJu1Xg4KnEz0vUx+FHDfJhqBBPtwjTDE6rQK0zWnc1liu8Ttx5TEt/9vg1alencGIOWG2Cp9726Q8nUualNTAOrFx7c9iBqK+mATugzUXccAF+dZOZtLQKhf5MzIuq6TKKEMVtzMxsbQg+DwfRM6CEoE5JIcH/SeCHZz80WheD2oEUK2bzFtfs9cgZ7CZ9qBbnNOUJW1N30ZGM5nlIg3Msioz0fI1C2apj2bGAE="
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"tipo_documento\": \"demonstrativo_retorno\",\n  \"operadora\": \"Operadora Boreal de Saúde\",\n  \"competencia\": \"09/2026\",\n  \"data_emissao\": \"22/09/2026\",\n  \"protocolo\": \"8800922614\",\n  \"legivel\": true,\n  \"observacao\": \"O cabeçalho indica que operadora e credenciado são fictícios, para demonstração.\"\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 373,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 2445,
+  "latencia_ms": 2000
+ }
+}

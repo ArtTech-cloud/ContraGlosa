@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "extracao",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQSoAsKEAgTGAI4AUIIdGhpbmtpbmcSDDW0WAE90hRKosaP7BoMvbqo2Wf0EbZvXGMNIjAyTgWO4SY5e1zJjDGQyUG09+8+UH5XIFdScqKSqvs2UAzZ+xzY/0s6K47N5hcojoIqvQosN6HVIV9p2y8lJRXqBuv/+RzBfPtu4XI7Au09nNQZpYVZIQ+4i/zz8fkjZ+3P8/HI77idKTviHnat7BTPvUyD04QTUD2zal7GQ42IXQOkMvO9uZRo9pMLdVB8nsTCXN7YdDYiWDCxoXV172L8O5KglRm0orq6oYRYVTQK7jvElafxzuWi42nMbLk7DlJZyx/Et3U1iQbbNty677mwSz5PYZPux6KrjiuuPn7VSEXunQJb4WPxx89eoA/yXz3zFTrfdf1CF3GevfV6XqXpTP6PB5QDCNMXwfoqRvzHDerOkRXH/h3pvibrv+3e8wmXr8Z06P7wynXDdaOcmcDeaq1PhSQGSUWcJxUt0xWZKvZ1JxxDNaTtVBBG5LUouKuxxrXP3I6+Urrg0HLqi9KvaSdqv8z17rpAeGurgnZHBh2hT9KbbQ9el+Mw/+93wQlAx1FT6IAdqv3QbquAzj8E/Gp8xKQ2CvmjdGJmgxtg5mI2utfjrM5qLCp5gCxzz5r1DgBZCg9EabDIJn8+V/RICL6fUSDH7Z9r2Uywo4vKy5FUY0eD9SiO8XkyDPGQpcS2kFQCC3vQkGmwUKnEi7Z6924UqmY4l9zsZEU1BXOdAr9dGawiBQCffv6bSiOqbjnuogVrc5ml3TVw3jNj4Yg8oYLY2tsaajJqQwsRmCKyavg5z8j1Uxv42nbEuKuLA+BVfB6elewjHE3QNymSGxw+5XhCiFsvTQb1UzPSIJMPfuGXWCyq3gfMpbzcCQ2cOi83ogJMg8pnG+3IL58S0rSgc5gAo0wFJtWVOPOPpK6hAE5YVdGcu42b5sDwgLWGSRb06N28bNUd8HUM9ZhULNpm3rlc/dsMY7DJoKjwg/GeGDqNaRkjVy8HBI538U4yV04SGFISbU8WlsRZeiTamd+iHYNWbGMkhi3JUhO0U1hJltIiIc8iL3MjYlZ1dqCL6r51vNWObgoHzYI3w95lGF2X7nfy+/RKYYGJIfX5G9d0j/ZLF6ZKB8yQSAB7zNcMSGmNBpj+W1qN28+o5RE7/9/lkoPT226W+7zMQg3qsrDWWy/c6B3s4Ri0MItrKELyqEz0JbxCwmJlU35C0YecAecnD+SouXKkV90IcKp7Kd/xf21RgLwHrZKOiaXH17NOoxSDcRtkGwVQGKT4ez1B+R8lZ2bFS6yDK1/tFFyWuc+UvXlBkpimgSKd5EUa7ViYjpCFVkQ2t9XbhJ/z2vsrpYaCcBjWc9Jx9nJxF3H+GJsa03Jvd7EpUQ6e9zpUeQOgbsyn0QkdSV3TkOJOc+eyPcLJHaIV7TRg8XItLWpQ5RYcwRqEtu+B+ShNKEx1j81YRAz06lVzxF4vkkTynnyXoYmq7NfsHe/ekzALOXFccx0IRo/Kxf1KHcoGfxieoVJMO9YEUt9JcETAXcc0f0uD8DZYFcnmrX/+E6D2GisFMndnx4j1IU0IdVAzU/iNEfG9gEGMuHE1Sx6LlKzTT0zsqyDQO4gNKXuT14Cg2H1rU0fyVkZmIqxOayhs0+yypxZBWSgVmryauG+wYqobXJ9009WTS858C4ZRiCrkE+fZATWvz+tWVizBVh1lXRT2ZJnBixzkwnT08l8ZUvy/E3PrZHrg3+cbEqKBo0HjpgUT5ELhSc1ngajdaICgjmXkq6hKpZQN3cKVbHGnpvq1Lqvuo1zbj1ijQadLtq9va/jN5nv+nI1cqNrYq/WvsPVGxlaA3+s49z9fY5fZLqQQVHc/2kyZOm4oEQcrDlrBBOJij63/A6I7vGh8+riUbSZk5RS8tWwYAQ=="
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"itens\": [\n    {\n      \"pagina\": 1,\n      \"linha\": 8,\n      \"guia\": \"381902735\",\n      \"data_atendimento\": \"02/09/2026\",\n      \"beneficiario\": \"CART-59fd8d43\",\n      \"codigo_procedimento\": \"40302040\",\n      \"descricao\": \"Glicose\",\n      \"quantidade\": 1,\n      \"valor_apresentado\": \"6,90\",\n      \"valor_glosado\": \"0,00\",\n      \"valor_pago\": \"6,90\",\n      \"codigo_glosa\": null,\n      \"motivo_glosa\": null,\n      \"observacao\": null,\n      \"senha\": null\n    },\n    {\n      \"pagina\": 1,\n      \"linha\": 9,\n      \"guia\": \"527075010\",\n      \"data_atendimento\": \"23/09/2026\",\n      \"beneficiario\": \"CART-59fd8d43\",\n      \"codigo_procedimento\": \"40302040\",\n      \"descricao\": \"Glicose\",\n      \"quantidade\": 1,\n      \"valor_apresentado\": \"6,90\",\n      \"valor_glosado\": \"6,90\",\n      \"valor_pago\": \"0,00\",\n      \"codigo_glosa\": \"3209\",\n      \"motivo_glosa\": \"COBRANÇA DE PROCEDIMENTO/ITEM ASSISTENCIAL EM DUPLICIDADE\",\n      \"observacao\": null,\n      \"senha\": null\n    },\n    {\n      \"pagina\": 1,\n      \"linha\": 10,\n      \"guia\": \"717915042\",\n      \"data_atendimento\": \"10/09/2026\",\n      \"beneficiario\": \"CART-834cd060\",\n      \"codigo_procedimento\": \"10101012\",\n      \"descricao\": \"Consulta em consultório\",\n      \"quantidade\": 1,\n      \"valor_apresentado\": \"150,00\",\n      \"valor_glosado\": \"15,00\",\n      \"valor_pago\": \"135,00\",\n      \"codigo_glosa\": \"1705\",\n      \"motivo_glosa\": \"VALOR APRESENTADO A MAIOR\",\n      \"observacao\": null,\n      \"senha\": null\n    },\n    {\n      \"pagina\": 1,\n      \"linha\": 11,\n      \"guia\": \"675324965\",\n      \"data_atendimento\": \"12/09/2026\",\n      \"beneficiario\": \"CART-bdfd08da\",\n      \"codigo_procedimento\": \"40901106\",\n      \"descricao\": \"Ecodopplercardiograma transto.\",\n      \"quantidade\": 1,\n      \"valor_apresentado\": \"260,00\",\n      \"valor_glosado\": \"260,00\",\n      \"valor_pago\": \"0,00\",\n      \"codigo_glosa\": \"3214\",\n      \"motivo_glosa\": \"COBRANÇA FORA DO PRAZO ESTIPULADO NO CONTRATO COM O PRESTADOR\",\n      \"observacao\": null,\n      \"senha\": null\n    },\n    {\n      \"pagina\": 1,\n      \"linha\": 12,\n      \"guia\": \"270751963\",\n      \"data_atendimento\": \"12/09/2026\",\n      \"beneficiario\": \"CART-bdfd08da\",\n      \"codigo_procedimento\": \"10101012\",\n      \"descricao\": \"Consulta em consultório\",\n      \"quantidade\": 1,\n      \"valor_apresentado\": \"135,00\",\n      \"valor_glosado\": \"0,00\",\n      \"valor_pago\": \"135,00\",\n      \"codigo_glosa\": null,\n      \"motivo_glosa\": null,\n      \"observacao\": null,\n      \"senha\": null\n    }\n  ],\n  \"totais\": {\n    \"valor_apresentado\": \"558,80\",\n    \"valor_glosado\": \"281,90\",\n    \"valor_pago\": \"276,90\",\n    \"pagina\": 1,\n    \"linha\": 4\n  }\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 1501,
+  "tokens_cache_leitura": 2433,
+  "tokens_cache_escrita": 2659,
+  "latencia_ms": 5093
+ }
+}

@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "analise",
+  "versao": "v2",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "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"
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"decisoes\": [\n    {\n      \"item\": 1,\n      \"decisao\": \"recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A glosa 3209 (cobrança em duplicidade) foi aplicada à glicose da guia 527075010, de 23/09/2026, do beneficiário CART-59fd8d43. A mesma glicose consta na guia 381902735, de 02/09/2026, do mesmo beneficiário, e foi paga integralmente (item [0] p1 l8). Como as duas cobranças têm datas e guias diferentes, o critério indica que são atendimentos distintos e a glosa é recorrível.\",\n      \"fontes\": [\"t38-3209\"],\n      \"documentos\": [\"Guia 527075010 (23/09/2026, glicose, CART-59fd8d43)\", \"Guia 381902735 (02/09/2026, glicose, CART-59fd8d43)\", \"Comprovação de que as duas cobranças são de datas distintas (02/09/2026 e 23/09/2026)\"]\n    },\n    {\n      \"item\": 2,\n      \"decisao\": \"nao_recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A guia 717915042 apresentou a consulta 10101012 por R$ 150,00, e o valor contratado da operadora para essa consulta é R$ 135,00. O apresentado superou o contratado em R$ 15,00, que é exatamente o valor glosado, então a glosa da diferença procede. O documento não traz evidência de que o valor contratado seja outro.\",\n      \"fontes\": [\"t38-1705\", \"op-aurora\"],\n      \"documentos\": []\n    },\n    {\n      \"item\": 3,\n      \"decisao\": \"nao_recorrer\",\n      \"confianca\": \"alta\",\n      \"justificativa\": \"A guia 675324965 (ecodopplercardiograma, R$ 260,00 glosados integralmente) foi glosada pelo código 3214, cobrança fora do prazo contratual com o prestador. Esse código não é recorrível por critério, e o documento não traz evidência de que a glosa esteja errada.\",\n      \"fontes\": [\"t38-3214\"],\n      \"documentos\": []\n    }\n  ]\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 2,
+  "tokens_saida": 1209,
+  "tokens_cache_leitura": 5294,
+  "tokens_cache_escrita": 889,
+  "latencia_ms": 6108
+ }
+}

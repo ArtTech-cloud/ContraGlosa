@@ -1,0 +1,27 @@
+{
+ "meta": {
+  "etapa": "triagem",
+  "versao": "v1",
+  "modelo": "claude-haiku-5-5"
+ },
+ "resposta": {
+  "content": [
+   {
+    "type": "thinking",
+    "thinking": "",
+    "signature": "CAQS7AgKEAgTGAI4AUIIdGhpbmtpbmcSDEpxekIHFDjwEC/5DhoMGatXs0L5Wdlf5+S3IjCZrOg1s+164PNRzGfY6Spn4nF2cM8S4Z5D8pvoWFY1xaqikqYHPVFqVa/LJ4uEwPEqiQj4RCfvh0EB0pBzMz677q9GTOzIHbFEEv+jb/YSOWh0I6VI5pmGeSXWtwJbsWwWR8aLlq+GGUWy/9lnH1EYzbjnM3x4jzvtwgzJuJAEO1i5hEoFw8XJY01z8qIUlpp2mztzS3ZJlEPaDElHvImI22iBhb5sd2Z7IoWdZ5AGXt2/HM0aWtR3l2lPb7OuC3CElX5olhHlkJJNHMcXaWDf4y5EC4zA5ZTIinZc3S1JiJhjFNwff82NmH+heE22dp7hO73u6OK0Mxo/Vs0N6fP6wSFMA9ueH8QWZzVug5VO8zmWRD5GUsJ0R0canznJVL1iUMORmLulzQVDGVVoxKwJ2/KSie0P9xUff017dIOfjQNMGbTbLNr8Tl8WADIiF5wO08+QnSNDlkZ+tN6mL3POkM03DAWpcAw6XvVjSTHt4NN8iXVFEDJUkQuG3YxFXynG2zYgUc5B4x0RX9ZA6lJjEQC3Zpnz5xfqa8zCMuUQ7uzHGbbzKhhXnA2ZHVfVj8tz2holBRlPboUOSbjHVLJWhP1YGbq3yxRA67MBBtnuHc/BxzFJlRyv7p+UEyV1Mczf11JvtlcFHDP8ozfb775ftvEwmQ/NYRVrQx/bp+ZCIXBZmoxHCHzj2uJZb5bAMHy2PFA/Q+BoOxn8DcXKX2UGbVmxjionlqjVUqt31bexZdxkrVnxMVCmBafycys6D/3OFnF9L8Vts8z2fk273sNHZ9ZPLBC3Xy2UgZFeSwSPzh9l0FrrprL1He63ccJC/HTqZJoXVrgQt5LOCs4mDhgaYVxAgc8PKWUsrmOZglSdREcA0pcgefL2kdMuGW7ul78re1DZh1QP3dKc2+JAVzMXsnxOKUUJ+X2L4ostZqPIzfZ6ooJHB+ORnUBybPq22v/FQAhlEkzCrJfnMnhbRjHxPIHcAUKt+jE0U32Qgwnn6UrxILAkVs404VGjCSY5689R8sDzWj4UKIOv2LgOuuwKrfPSFhSGqHoEu4KvJHap8CYLdak/j/y7nW2/4yWZ7X6ysYZHiXuAv3S5ycN51FRSUdSpi4UX5vupO/vnp6ibvQea0zNrzRmZTCtLo85nHqY622buR7uzMMhBKQ3/C3RW2c8rBBPgSIXYXjtopRCwiHYedoiV5kyVl4ke+Jf6h8k9lDCZVrdlWmAMWPx8bbuAkZ778x02A7H4MorakuToSFEXUg4zF8OAXduU3YkdYjaJkJPL9Y5ReaOHv1pkZhZxAUMeqnuj1fZjbej4FTFgSfiHsAaodTLUjzbizRz/3ZPMjZ38I3X0HXPRtdZiv8M/sZMwRVwo6flV318qyORKpUO7iavbOtu0hCPVWWEdZDgQybCAI7TGGkFcMUptgqLCUB6KMgFKDmraZUyEGAE="
+   },
+   {
+    "type": "text",
+    "text": "```json\n{\n  \"tipo_documento\": \"demonstrativo_retorno\",\n  \"operadora\": \"OPERADORA AURORA\",\n  \"competencia\": \"09/2026\",\n  \"data_emissao\": \"03/10/2026\",\n  \"protocolo\": \"2026100305\",\n  \"legivel\": true,\n  \"observacao\": \"O cabeçalho informa que a operadora é fictícia e criada para demonstração.\"\n}\n```"
+   }
+  ],
+  "stop_reason": "end_turn",
+  "modelo": "claude-haiku-5-5",
+  "tokens_entrada": 4,
+  "tokens_saida": 341,
+  "tokens_cache_leitura": 0,
+  "tokens_cache_escrita": 2085,
+  "latencia_ms": 2641
+ }
+}
