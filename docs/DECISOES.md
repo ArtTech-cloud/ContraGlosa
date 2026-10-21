@@ -133,3 +133,8 @@ Tudo o que ele confirmou foi corrigido, com um teste de regressão em `tests/tes
   um quarto layout (D, modelo novo da Aurora) e combinações de cenários que o agente nunca viu. A regra: este conjunto
   é rodado com a configuração já escolhida e **não é usado para ajustar prompt nem base**. O resultado fica em
   `avaliacao/VALIDACAO.md`, separado do `RESULTADO.md`.
+- **D36 · Resultado da validação e segundo falso positivo do verificador.** A validação deu 100% nas metas (18 glosas,
+  rodada única, commit d593f49 antes da medição). Um recurso foi retido porque o token `CART-43054511` saiu só com
+  algarismos e foi lido como código de procedimento. A regra de 8 dígitos agora ignora número colado em letra ou
+  hífen. Como a métrica de decisão não pegava recurso retido, o relatório ganhou a medida "recurso aprovado para cada
+  glosa recorrível" (informativa; as metas originais não mudam).

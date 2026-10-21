@@ -154,6 +154,14 @@ Resultado com o Claude Haiku 5.5 (20/10/2026):
 O caminho de uma coluna para a outra, e o porquê de 100% em 30 glosas não ser garantia, está na seção "Leitura
 honesta" do relatório.
 
+**Validação com documentos nunca vistos.** Para medir se o agente generaliza, 5 documentos novos foram criados
+depois do ajuste, incluindo um quarto layout. Eles foram rodados uma única vez, sem nenhum ajuste depois:
+100% nas metas, com 18 glosas. Detalhes e ressalvas em [avaliacao/VALIDACAO.md](avaliacao/VALIDACAO.md).
+
+```bash
+python -m agente.avaliar --conjunto validacao
+```
+
 ## Segurança e LGPD
 
 - **Pseudonimização antes do LLM.** Nome e CPF saem do texto; o número da carteira vira um token HMAC

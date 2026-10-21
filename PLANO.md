@@ -11,8 +11,8 @@
 | E1 | Fatia ponta a ponta | 1 PDF fictício → glosas → decisão → recurso, na tela | **ter 23h** | concluída |
 | E2 | Dados fictícios + Tabela 38 oficial | 2 layouts obrigatórios (3º se der), 10 documentos, gabarito | qua 13h | concluída (3 layouts) |
 | E3 | Agente robusto | verificadores, fallback, guardrails, trilha, cache | qua 21h | concluída |
-| E4 | Avaliação | métricas contra o gabarito, relatório | qui 12h | concluída: todas as metas batidas com Haiku 5.5 e análise v2 |
-| E5 | Interface da demo | tela final + modo demo offline | qui 20h | concluída; modo offline com cache dos 10 documentos. E5.5 [C] não iniciada |
+| E4 | Avaliação | métricas contra o gabarito, relatório | qui 12h | concluída: metas batidas no desenvolvimento (30 glosas) e na validação com documentos nunca vistos (18 glosas) |
+| E5 | Interface da demo | tela final + modo demo offline | qui 20h | concluída; modo offline com cache dos 15 documentos. E5.5 [C] descartada (D34) |
 | E6 | Entregáveis do edital | README do fluxo, BMC, pitch, tarefas de sábado | sex 12h | concluída, com os números reais no pitch e no README |
 | E7 | Instalação do zero + revisão | demo roda de um clone limpo; subagente tenta quebrar | sex 16h | concluída (E7.1 a E7.4) |
 

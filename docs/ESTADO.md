@@ -49,10 +49,16 @@ evidência e casos adversos em 100%. A latência média foi de 20,7 s por docume
 pelos 10 documentos. A primeira versão acertava 78,6% das decisões. A evolução e a leitura honesta desses números
 estão em `avaliacao/RESULTADO.md`.
 
+No **conjunto de validação** (5 documentos que o agente nunca viu, com o layout novo D, 18 glosas), rodado uma vez
+só e sem ajuste depois, também deu 100% em todas as metas (`avaliacao/VALIDACAO.md`).
+
 ## O que está frágil
 
-- **100% em 30 glosas não é garantia.** O prompt v2 foi ajustado olhando os erros deste mesmo conjunto. Medir em
-  documentos novos, que o agente nunca viu, é o trabalho mais útil da pessoa 1 e da pessoa 2 no sábado.
+- **100% em 30 + 18 glosas fictícias não é garantia.** O conjunto de validação reduz o risco de ajuste ao teste, mas
+  os dois conjuntos foram desenhados pela equipe. Se a pessoa 2 criar documentos novos no sábado, eles entram num
+  conjunto novo, rodado uma vez antes de qualquer ajuste.
+- **O verificador já teve dois falsos positivos** (senha e token de carteira com 8 dígitos), ambos corrigidos. A
+  medida "recurso aprovado para cada glosa recorrível" agora mostra esse tipo de falha no relatório.
 - **O modelo varia.** Duas rodadas iguais da v1 deram 78,6% e 82,1%. Para comparar versões, rode mais de uma vez.
 - **Modelo Haiku 5.5.** É o padrão desde 20/10/2026 (D29): mais barato e rápido, mas é o menor modelo. Se a
   avaliação ficar abaixo das metas, teste `AGENTE_ESFORCO=high` ou `AGENTE_MODELO=claude-sonnet-5-5`, sempre medindo

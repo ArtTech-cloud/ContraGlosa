@@ -47,8 +47,9 @@ Modo demo ligado. Abas: Análise e Todos os exemplos.
 - Custo: cerca de US$ 0,003 por documento com o Claude Haiku 5.5; menos de US$ 0,20 em todo o desenvolvimento.
 
 > "Na primeira versão, a decisão acertava 78,6%. O próprio agente nos mostrou um erro nos dados de teste, e
-> ajustamos o prompt da análise: chegou a 100%. Mas são 30 glosas, e o ajuste foi feito olhando esses mesmos
-> erros. O próximo passo é medir em documentos que o agente nunca viu."
+> ajustamos o prompt da análise: chegou a 100%. Como o ajuste foi feito olhando esses erros, criamos depois 5
+> documentos novos, com um layout que o agente nunca viu, e rodamos uma vez só: 100% nas 18 glosas. Ainda são
+> dados fictícios; o próximo passo é testar com demonstrativos reais anonimizados."
 
 ## 4. Diferencial e modelo de negócio — 2:15 a 2:45
 
