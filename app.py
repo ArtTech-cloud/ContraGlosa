@@ -1,4 +1,4 @@
-"""Agente de Glosas — interface da demo (Streamlit).
+"""ContraGlosa — interface da demo (Streamlit).
 
     streamlit run app.py
 
@@ -49,7 +49,7 @@ from agente.orquestrador import Orquestrador
 from agente.pdf import PDFInvalido, extrair_texto
 from agente.pseudonimo import pseudonimizar
 
-NOME_PRODUTO = "Agente de Glosas"  # provisório: o nome do produto ainda está em decisão
+NOME_PRODUTO = "ContraGlosa"
 FRASE_CHEGADA = (
     "Envie o demonstrativo de retorno. Em menos de um minuto você sabe quanto foi glosado, o que vale "
     "recorrer e até quando."

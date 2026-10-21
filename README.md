@@ -1,4 +1,4 @@
-# Agente de Glosas
+# ContraGlosa
 
 Agente de IA para o **faturista de clínica médica pequena**. Ele recebe o demonstrativo de retorno da operadora em
 PDF, encontra as glosas, decide para cada uma se vale recorrer e até quando, e redige o rascunho do recurso.

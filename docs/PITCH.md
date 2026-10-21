@@ -6,7 +6,7 @@ percentual de recuperação.
 
 ## A mensagem em uma frase
 
-> **O plano de saúde deixa de pagar parte do que a clínica cobrou. Nosso agente lê o extrato, mostra o que dá para
+> **O plano de saúde deixa de pagar parte do que a clínica cobrou. O ContraGlosa lê o extrato, mostra o que dá para
 > contestar e escreve o pedido. A faturista só revisa e envia.**
 
 Se a banca guardar só três coisas, que sejam estas:

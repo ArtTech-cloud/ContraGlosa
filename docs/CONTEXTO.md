@@ -1,4 +1,4 @@
-# Contexto do projeto — Agente de Glosas
+# Contexto do projeto — ContraGlosa
 
 > Documento de contexto para quem chega agora: pessoa da equipe, mentor ou uma nova sessão do Claude Code.
 > Reúne o que o projeto é, em que estado está, o que foi decidido e o que falta. Escrito em 20/10/2026 às 19h,

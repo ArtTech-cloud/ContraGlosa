@@ -1,4 +1,4 @@
-# Plano — Agente de Glosas (hackathon AKCIT Camp, 24/10/2026)
+# Plano — ContraGlosa (hackathon AKCIT Camp, 24/10/2026)
 
 > Executor: Claude Code, a partir de terça 20/10 à noite. Regras permanentes em `CLAUDE.md`.
 > No sábado, a equipe de 4 refina o projeto a partir de `docs/TAREFAS-SABADO.md`.

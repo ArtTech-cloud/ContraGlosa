@@ -2,7 +2,7 @@
 
 > Detalha a **E5** do `PLANO.md`, com o mesmo prazo: **quinta, 20h**. Prioridades: **[M]** obrigatório,
 > **[S]** deveria ter, **[C]** só se sobrar tempo. Regras permanentes em `CLAUDE.md`.
-> Nome do produto ainda em decisão: use a constante `NOME_PRODUTO` em `app.py` (provisório: "Agente de Glosas").
+> Nome do produto: **ContraGlosa**, na constante `NOME_PRODUTO` em `app.py`.
 >
 > **Desvios decididos com o Arthur (D40):** o visual do cabeçalho em gradiente e dos cartões fica (D38), apesar de
 > "nada de CSS" e "sem gradientes" abaixo; a tela usa os termos da faturista (recorrer, recurso, demonstrativo),

@@ -16,11 +16,11 @@ Quatro pessoas, quatro frentes. **Congelamento às 15h30:** tudo no GitHub.
 ## Para todos: como começar em 15 minutos
 
 ```bash
-git clone <url do repositório> agente-glosas
+git clone https://github.com/ArtTech-cloud/ContraGlosa.git
 ```
 
 ```bash
-cd agente-glosas
+cd ContraGlosa
 ```
 
 ```bash
