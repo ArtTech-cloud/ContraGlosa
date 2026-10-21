@@ -6,8 +6,8 @@
 >
 > **Desvios decididos com o Arthur (D40):** o visual do cabeçalho em gradiente e dos cartões fica (D38), apesar de
 > "nada de CSS" e "sem gradientes" abaixo; a tela usa os termos da faturista (recorrer, recurso, demonstrativo),
-> como este plano pede, e não a língua do pitch da D39. O interruptor do modo demo fica em "Ajustes", no canto do
-> cabeçalho, porque a navegação está no topo e não há barra lateral.
+> como este plano pede, e não a língua do pitch da D39. A navegação e o interruptor do modo demo ficam na barra lateral
+> (D43), como este plano pede; no celular, ela recolhe num menu.
 
 ## Princípio
 

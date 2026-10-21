@@ -22,3 +22,8 @@ toolbarMode = "minimal"
 
 [browser]
 gatherUsageStats = false
+
+[theme.sidebar]
+# barra lateral branca, com a navegação (D43)
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#F1F6F6"

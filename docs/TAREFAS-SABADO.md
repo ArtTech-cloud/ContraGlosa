@@ -46,7 +46,8 @@ streamlit run app.py
 Leia nesta ordem: `docs/CONTEXTO.md`, `README.md` e `docs/fluxo.md`.
 
 **A tela, em 1 minuto.** O app abre na página **Início**, com o modo demo ligado: as respostas vêm de `cache/`, sem
-internet e sem chave. O interruptor fica em **Ajustes**, no canto do cabeçalho. As páginas são:
+internet e sem chave. As páginas e o interruptor do modo demo ficam na **barra lateral**; no celular, ela recolhe
+num menu (o botão » no canto de cima). As páginas são:
 
 | Página | O que mostra |
 |---|---|

@@ -337,8 +337,10 @@ def _marcar_revisado(chave: str) -> None:
 
 
 # ================================================================= cabeçalho em gradiente
-def _ajustes() -> None:
-    with st.popover("Ajustes", icon=":material/tune:"):
+def _barra_lateral() -> None:
+    """Embaixo da navegação: os ajustes da demo. No celular, a barra recolhe num menu."""
+    with st.sidebar:
+        st.caption("Ajustes da demo")
         st.session_state["modo_demo"] = st.toggle(
             "Modo demo (offline)",
             # Sempre começa ligado (D37): o .env de desenvolvimento traz MODO_DEMO=0 e, carregado
@@ -365,14 +367,10 @@ def _ajustes() -> None:
 
 
 def _topo_hero() -> None:
-    c1, c2 = st.columns([5, 1], vertical_alignment="center")
-    with c1:
-        _html(
-            f'<div class="marca">{_logo("logo-clara", "logo-topo")}'
-            "<small>o agente lê · o código confere</small></div>"
-        )
-    with c2, st.container(horizontal=True, horizontal_alignment="right"):
-        _ajustes()
+    _html(
+        f'<div class="marca">{_logo("logo-clara", "logo-topo")}'
+        "<small>o agente lê · o código confere</small></div>"
+    )
 
 
 def _selo() -> str:
@@ -1218,25 +1216,43 @@ def pagina_qualidade() -> None:
 
 # ================================================================= navegação
 st.logo(str(MARCA / "logo.svg"), icon_image=str(MARCA / "logo-icone.svg"), size="large")
+# Navegação na barra lateral (D43): no celular ela recolhe num menu e a tela fica inteira para o conteúdo.
 navegacao = st.navigation(
-    [
-        st.Page(
-            pagina_inicio, title="Início", icon=":material/home:", url_path="inicio", default=True
-        ),
-        st.Page(pagina_prazos, title="Prazos", icon=":material/calendar_month:", url_path="prazos"),
-        st.Page(
-            pagina_pendencias,
-            title="Pendências",
-            icon=":material/person_search:",
-            url_path="pendencias",
-        ),
-        st.Page(
-            pagina_fluxo, title="Como funciona", icon=":material/account_tree:", url_path="fluxo"
-        ),
-        st.Page(
-            pagina_qualidade, title="Qualidade", icon=":material/fact_check:", url_path="qualidade"
-        ),
-    ],
-    position="top",
+    {
+        "Faturamento": [
+            st.Page(
+                pagina_inicio,
+                title="Início",
+                icon=":material/home:",
+                url_path="inicio",
+                default=True,
+            ),
+            st.Page(
+                pagina_prazos, title="Prazos", icon=":material/calendar_month:", url_path="prazos"
+            ),
+            st.Page(
+                pagina_pendencias,
+                title="Pendências",
+                icon=":material/person_search:",
+                url_path="pendencias",
+            ),
+        ],
+        "Transparência": [
+            st.Page(
+                pagina_fluxo,
+                title="Como funciona",
+                icon=":material/account_tree:",
+                url_path="fluxo",
+            ),
+            st.Page(
+                pagina_qualidade,
+                title="Qualidade",
+                icon=":material/fact_check:",
+                url_path="qualidade",
+            ),
+        ],
+    },
+    position="sidebar",
 )
+_barra_lateral()
 navegacao.run()

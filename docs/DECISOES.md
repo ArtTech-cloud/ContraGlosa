@@ -185,3 +185,9 @@ Tudo o que ele confirmou foi corrigido, com um teste de regressão em `tests/tes
   sem `.env`, e a tela de ponta a ponta no navegador. Tudo passou, com o Streamlit 1.66.1. O `requirements.txt`
   aceitava qualquer versão a partir da 1.50, e o CSS da D38 usa a estrutura interna da tela; uma versão nova até
   sábado poderia quebrar o visual num clone novo. O intervalo fica preso à 1.66, que recebe só correções.
+- **D43 · Navegação na barra lateral.** A pedido do Arthur Paes, a navegação saiu do topo e foi para a barra lateral,
+  em duas seções (Faturamento: Início, Prazos e Pendências; Transparência: Como funciona e Qualidade). No celular, o
+  Streamlit recolhe a barra num menu e o conteúdo ocupa a tela inteira; na navegação do topo, os links se
+  espremiam. O interruptor do modo demo e o ritmo de apresentação saíram do botão "Ajustes" do cabeçalho e foram
+  para a barra, embaixo das páginas, como o plano do front pedia (F1). A barra mostra a logo completa; recolhida,
+  mostra o ícone. Em tela estreita, o cabeçalho fica mais compacto e o slogan some.

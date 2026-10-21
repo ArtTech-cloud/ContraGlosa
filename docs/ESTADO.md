@@ -61,7 +61,8 @@ só e sem ajuste depois, também deu 100% em todas as metas (`avaliacao/VALIDACA
 
 ## Para a demo
 
-- O app abre com o **modo demo ligado**. O interruptor fica em **Ajustes**, no canto do cabeçalho.
+- O app abre com o **modo demo ligado**. O interruptor fica na **barra lateral**, embaixo das páginas. No
+  celular, a barra recolhe num menu (o botão » no canto de cima).
 - A página **Prazos** mostra só o que foi analisado na sessão e começa vazia. Analise `boreal_01` e
   `adverso_injecao` antes de abri-la, ou clique em "Analisar todos os exemplos".
 - O roteiro está na parte 2 do `docs/PITCH.md`. O detalhe técnico de cada análise fica em "Ver detalhes técnicos",
