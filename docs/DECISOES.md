@@ -180,3 +180,8 @@ Tudo o que ele confirmou foi corrigido, com um teste de regressão em `tests/tes
   "Ajustes", porque a navegação está no topo e não há barra lateral. A trilha é desenhada em HTML, não com
   `st.status`, porque `st.status` não tem estado amarelo para o verificador que alerta.
 - **D41 · Nome do produto: ContraGlosa.** A pedido do Arthur, "ContraGlosa" passa a ser o nome principal na tela, no README, no pitch, no BMC, no `NOTICE` e no `pyproject.toml`. Ficaram de fora, de propósito, o prompt de sistema (`agente/prompts/sistema_v1.md`), o segredo de demonstração do HMAC (`agente/pseudonimo.py`) e o autor gravado nos PDFs fictícios (`dados/gerar*.py`): mudar qualquer um deles invalida o cache do modo demo ou muda os documentos. Trocar o nome no prompt de sistema fica para uma versão v2 do prompt, com nova avaliação e cache novo. As menções antigas em decisões e no histórico do plano ficam como estavam.
+- **D42 · Streamlit preso em `>=1.66,<1.67`.** A instalação do zero foi refeita em 21/10, depois do redesenho
+  (D37 a D41): clone do GitHub, ambiente novo, `pip install`, 230 testes, os 15 documentos no modo demo sem chave e
+  sem `.env`, e a tela de ponta a ponta no navegador. Tudo passou, com o Streamlit 1.66.1. O `requirements.txt`
+  aceitava qualquer versão a partir da 1.50, e o CSS da D38 usa a estrutura interna da tela; uma versão nova até
+  sábado poderia quebrar o visual num clone novo. O intervalo fica preso à 1.66, que recebe só correções.

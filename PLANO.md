@@ -14,7 +14,7 @@
 | E4 | Avaliação | métricas contra o gabarito, relatório | qui 12h | concluída: metas batidas no desenvolvimento (30 glosas) e na validação com documentos nunca vistos (18 glosas) |
 | E5 | Interface da demo | tela final + modo demo offline | qui 20h | concluída; modo offline com cache dos 15 documentos. E5.5 [C] descartada (D34). Redesenho em 5 páginas com o visual pedido pelo Arthur (D37, D38) e plano do front F1 a F8 (`docs/PLANO-FRONT.md`, D40) |
 | E6 | Entregáveis do edital | README do fluxo, BMC, pitch, tarefas de sábado | sex 12h | concluída, com os números reais no pitch e no README |
-| E7 | Instalação do zero + revisão | demo roda de um clone limpo; subagente tenta quebrar | sex 16h | concluída (E7.1 a E7.4) |
+| E7 | Instalação do zero + revisão | demo roda de um clone limpo; subagente tenta quebrar | sex 16h | concluída (E7.1 a E7.4); E7.2 refeita em 21/10 depois do redesenho, com o Streamlit preso na 1.66 (D42) |
 
 **Regras de corte:**
 
