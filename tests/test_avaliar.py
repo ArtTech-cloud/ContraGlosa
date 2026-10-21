@@ -21,7 +21,15 @@ def test_oraculo_da_cem_por_cento():
     gabs = carregar_gabaritos()
     metricas = [comparar(_rodar(g), g) for g in gabs]
     ag = agregar(metricas)
-    for k in ("recall", "precisao", "valores_exatos", "decisao", "evidencia", "adversos"):
+    for k in (
+        "recall",
+        "precisao",
+        "valores_exatos",
+        "decisao",
+        "evidencia",
+        "adversos",
+        "recursos",
+    ):
         assert ag[k] == 1.0, (k, ag)
     assert ag["adversos_total"] == 4
     rel = escrever_relatorio(
@@ -96,3 +104,13 @@ def test_oraculo_no_conjunto_de_validacao():
     ag = agregar(metricas)
     for k in ("recall", "precisao", "valores_exatos", "decisao", "evidencia", "adversos"):
         assert ag[k] == 1.0, (k, ag)
+
+
+def test_avaliacao_detecta_recurso_retido():
+    gab = next(g for g in carregar_gabaritos(["aurora_01"]))
+
+    def ajuste(etapa, r, p):  # rascunho com valor inventado: o verificador retém o recurso
+        return r.replace("Solicitamos", "Há R$ 999,99. Solicitamos") if etapa == "redacao" else r
+
+    m = comparar(_rodar(gab, ajuste), gab)
+    assert m["recursos_esperados"] == 2 and m["recursos_ok"] == 0

@@ -102,6 +102,11 @@ def comparar(res: Resultado, gab: dict) -> dict:
         "tokens_entrada": res.tokens_entrada,
         "tokens_saida": res.tokens_saida,
         "custo_usd": res.custo_usd,
+        "recursos_esperados": sum(e["decisao_esperada"] == "recorrer" for _, _, e in casadas),
+        "recursos_ok": sum(
+            e["decisao_esperada"] == "recorrer" and any(r.item == g.item for r in res.recursos)
+            for g, _, e in casadas
+        ),
         "latencia_s": res.latencia_ms / 1000,
         "do_cache": all(p.do_cache for p in res.trilha if p.modelo),
         "interrompido": res.interrompido,
@@ -139,6 +144,11 @@ def agregar(metricas: list[dict]) -> dict:
         "valores_exatos": tx(sum(m["valores_ok"] for m in metricas), ver),
         "decisao": tx(sum(m["decisao_ok"] for m in metricas), ver),
         "evidencia": tx(sum(m["evidencia_ok"] for m in metricas), ver),
+        "recursos": tx(
+            sum(m["recursos_ok"] for m in metricas), sum(m["recursos_esperados"] for m in metricas)
+        ),
+        "recursos_ok": sum(m["recursos_ok"] for m in metricas),
+        "recursos_esperados": sum(m["recursos_esperados"] for m in metricas),
         "adversos": tx(sum(m["adverso_ok"] for m in adv), len(adv)),
         "adversos_ok": sum(m["adverso_ok"] for m in adv),
         "adversos_total": len(adv),
@@ -187,6 +197,8 @@ def escrever_relatorio(ag: dict, metricas: list[dict], meta: dict, historico: li
         L.append(f"| {nome} | {_pct(val)}{extra} | {txt} | {'sim' if val >= alvo else '**não**'} |")
     L += [
         f"| Precisão das glosas encontradas | {_pct(ag['precisao'])} | — | — |",
+        f"| Recurso aprovado para cada glosa recorrível | {_pct(ag['recursos'])} "
+        f"({ag['recursos_ok']} de {ag['recursos_esperados']}) | — | — |",
         f"| Latência média por documento | {ag['latencia_media_s']:.1f} s (máx. {ag['latencia_max_s']:.1f} s) | "
         "< 60 s no modo demo | " + ("sim" if ag["latencia_max_s"] < 60 else "**não**") + " |",
         f"| Tokens (entrada / saída) | {ag['tokens_entrada']:,} / {ag['tokens_saida']:,} | — | — |".replace(
