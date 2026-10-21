@@ -7,7 +7,7 @@ Resumo para a equipe chegar no sábado com o projeto instalado.
 ## Situação
 
 O agente já rodou no modelo real, o Claude Haiku 5.5. O teste de fumaça passou, a avaliação tem números reais e o
-cache do modo demo cobre os 10 documentos com a configuração padrão. A demo roda offline em menos de 1 segundo por
+cache do modo demo cobre os 15 documentos (10 de desenvolvimento e 5 de validação) com a configuração padrão. A demo roda offline em menos de 1 segundo por
 documento.
 
 Se alguém mudar um prompt, um documento ou a base, o cache daquela parte deixa de valer. Nesse caso, rode de novo
@@ -21,14 +21,14 @@ python -m agente.fumaca
 python -m agente.avaliar
 ```
 
-A avaliação roda os 10 documentos, grava o relatório e popula o cache de uma vez. Depois, faça o commit de
-`cache/` e de `avaliacao/`. Deixe `PSEUDONIMO_SEGREDO` vazio, senão o cache não serve para o resto da equipe.
+A avaliação roda os 10 documentos de desenvolvimento, grava o relatório e popula o cache de uma vez. Para os 5 de
+validação, use `python -m agente.avaliar --conjunto validacao`. Depois, faça o commit de `cache/` e de `avaliacao/`. Deixe `PSEUDONIMO_SEGREDO` vazio, senão o cache não serve para o resto da equipe.
 Ative o ambiente antes (`.venv\Scripts\activate`): com o Python global falta o `rank_bm25`.
 
 ## O que funciona
 
-- **Dados:** 10 demonstrativos fictícios em 3 layouts (Aurora, Boreal e Cerrado): 6 normais e 4 adversos, com
-  gabarito. Os códigos vêm das Tabelas 38 e 22 oficiais da ANS (Padrão TISS 202609), com SHA-256 registrado.
+- **Dados:** 10 demonstrativos fictícios de desenvolvimento em 3 layouts (Aurora, Boreal e Cerrado), 6 normais e
+  4 adversos, e 5 de validação em `dados/validacao/`, com um quarto layout (D). Todos têm gabarito. Os códigos vêm das Tabelas 38 e 22 oficiais da ANS (Padrão TISS 202609), com SHA-256 registrado.
 - **Agente:** 4 etapas com prompts versionados (triagem, extração, análise e redação), retries com o erro como
   contexto, fallbacks para revisão humana, confiança, trilha JSONL e cache por SHA-256.
 - **Verificadores:** soma em centavos, evidência de página e linha, existência do código na Tabela 38, fontes da
@@ -36,7 +36,7 @@ Ative o ambiente antes (`.venv\Scripts\activate`): com o Python global falta o `
 - **Segurança:** pseudonimização de nome, CPF e carteira antes do LLM, e filtro de instruções no documento.
 - **Interface:** análise de um documento com trilha ao vivo, lote com painel de prazos, pendências e qualidade.
   Foi conferida no navegador com respostas de teste.
-- **Testes:** 205 testes passam, incluindo ponta a ponta nos 10 documentos com o cliente falso. Isso prova o
+- **Testes:** 223 testes passam, incluindo ponta a ponta nos 15 documentos com o cliente falso. Isso prova o
   encanamento, os verificadores e a avaliação, não a qualidade do modelo.
 - **Instalação do zero:** clone limpo, ambiente novo, `pip install`, testes e app sobem sem erro.
 - **Revisão independente:** um subagente tentou quebrar o projeto. Os 14 achados confirmados foram corrigidos e
