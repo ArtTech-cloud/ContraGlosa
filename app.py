@@ -44,9 +44,9 @@ EXEMPLO_INICIAL = "boreal_01.pdf"  # o primeiro da demo no pitch
 PAUSA_APRESENTACAO = 0.6  # segundos entre os passos da trilha no modo demo, para a banca acompanhar
 
 ROTULO_DECISAO = {
-    "recorrer": "Recorrer",
-    "nao_recorrer": "Não recorrer",
-    "revisao_humana": "Revisão humana",
+    "recorrer": "Contestar",
+    "nao_recorrer": "Não contestar",
+    "revisao_humana": "Faturista revisa",
 }
 COR_DECISAO = {"recorrer": "green", "nao_recorrer": "gray", "revisao_humana": "orange"}
 ICONE_DECISAO = {"recorrer": "🟢", "nao_recorrer": "⚪", "revisao_humana": "🟠"}
@@ -70,13 +70,14 @@ NOME_ETAPA = {
     "fluxo": "Fluxo",
 }
 # As fases que a tela mostra lado a lado: nome, quem faz e as etapas da trilha que entram nela.
+# Os nomes seguem os verbos do pitch (docs/PITCH.md): lê, entende, separa, decide, escreve e soma.
 FASES = [
-    ("Leitura", "código", ("leitura",)),
-    ("1 · Triagem", "agente", ("triagem",)),
-    ("2 · Extração", "agente + verificadores", ("extracao", "conferir_soma", "consultar_t38")),
-    ("3 · Análise", "agente + base", ("analise",)),
-    ("4 · Redação", "agente + verificador", ("redacao", "verificar_recurso")),
-    ("Painel", "código", ()),
+    ("Ler", "apaga nome e CPF", ("leitura",)),
+    ("Entender", "IA", ("triagem",)),
+    ("Separar", "IA + conferente", ("extracao", "conferir_soma", "consultar_t38")),
+    ("Decidir", "IA + conferente", ("analise",)),
+    ("Escrever", "IA + conferente", ("redacao", "verificar_recurso")),
+    ("Somar", "prazos e totais", ()),
 ]
 INDICE_FASE = {etapa: i for i, (_, _, etapas) in enumerate(FASES) for etapa in etapas}
 ESTADO_FASE = {
@@ -265,6 +266,101 @@ def _texto_passo(p: PassoTrilha) -> str:
     return "\n\n".join(linhas)
 
 
+NOME_SIMPLES = {
+    "leitura": ("Ler o PDF", "código"),
+    "triagem": ("Entender o documento", "IA"),
+    "extracao": ("Separar as linhas", "IA"),
+    "conferir_soma": ("Conferir as contas", "conferente"),
+    "consultar_t38": ("Conferir os motivos", "conferente"),
+    "analise": ("Decidir", "IA"),
+    "redacao": ("Escrever os pedidos", "IA"),
+    "verificar_recurso": ("Conferir os pedidos", "conferente"),
+    "fluxo": ("Análise", "app"),
+}
+FRASE_IA_OK = {
+    "triagem": "Entendi o documento: é um extrato de plano de saúde. Anotei de qual plano e de quando.",
+    "extracao": "Separei cada procedimento cobrado: valor cobrado, valor pago, valor glosado e o motivo.",
+    "analise": "Decidi, para cada glosa, se vale contestar, e anotei o porquê e a fonte.",
+    "redacao": "Escrevi um pedido de revisão para cada glosa que vale contestar.",
+}
+
+
+def _num(padrao: str, texto: str) -> int:
+    m = re.search(padrao, texto)
+    return int(m.group(1)) if m else 0
+
+
+def _frase_leitura(p: PassoTrilha) -> str:
+    d = p.detalhe
+    if "Pseudonimização" not in d:  # o PDF não abriu ou não tem texto nenhum
+        return "Não consegui ler o texto deste PDF (parece escaneado ou corrompido). Vai para a faturista."
+    frase = (
+        f"Li {_num(r'^(\d+) página', d)} página(s) e apaguei os dados dos pacientes antes de mandar "
+        f"para a IA: {_num(r'(\d+) nome', d)} nome(s), {_num(r'(\d+) CPF', d)} CPF(s) e "
+        f"{_num(r'(\d+) carteira', d)} carteirinha(s)."
+    )
+    sem_texto = re.search(r"páginas sem texto: \[([^\]]*)\]", d)
+    if sem_texto:
+        frase += f" A página {sem_texto.group(1)} não tem texto (parece escaneada): vai para a faturista."
+    if _num(r"Filtro de instruções: (\d+)", d):
+        frase += " Achei uma ordem escondida no documento e tirei antes de a IA ler."
+    return frase
+
+
+def _frase_conferente(p: PassoTrilha) -> str:
+    aprovadas = sum(1 for f in p.ferramentas if f.aprovado)
+    total = len(p.ferramentas)
+    if p.etapa == "conferir_soma":
+        if p.status == "ok":
+            return "A soma das linhas bate com o total do extrato, ao centavo."
+        if p.status == "retry":
+            return "A soma não bateu. Pedi para a IA reler o extrato."
+        if p.status == "info":
+            return "Não dá para conferir a soma: uma página está sem texto."
+        if "releitura" in p.detalhe:
+            return "Mesmo relendo, a soma não bate com o total impresso. Vai para a faturista conferir."
+        return "Não achei os totais impressos para conferir. Vai para a faturista."
+    if p.etapa == "consultar_t38":
+        if aprovadas == total:
+            if total == 1:
+                return "O motivo da glosa existe na lista oficial da ANS."
+            return f"Os {total} motivos de glosa existem na lista oficial da ANS."
+        return (
+            f"{total - aprovadas} motivo(s) não existe(m) na lista oficial da ANS. O agente não chuta o "
+            "significado: vai para a faturista."
+        )
+    # verificar_recurso
+    if total == 0:
+        return "Nenhum pedido para conferir."
+    criterios = "os valores batem com o extrato, nenhuma lei inventada e nenhum dado de paciente."
+    if aprovadas == total:
+        quem = "O pedido foi aprovado" if total == 1 else f"Os {total} pedidos foram aprovados"
+        return f"{quem}: {criterios}"
+    return (
+        f"{aprovadas} de {total} pedidos aprovados ({criterios[0:-1]}). "
+        f"{total - aprovadas} reprovado(s) vai(ão) para a faturista."
+    )
+
+
+def _frase_passo(p: PassoTrilha) -> str:
+    """O passo da trilha em linguagem simples, com os verbos do pitch. O detalhe técnico fica em
+    _texto_passo, escondido num expansor."""
+    nome, quem = NOME_SIMPLES.get(p.etapa, (p.etapa, ""))
+    if p.status == "erro":
+        frase = "A análise parou aqui. O motivo está em Faturista revisa."
+    elif p.etapa == "leitura":
+        frase = _frase_leitura(p)
+    elif p.etapa in ("conferir_soma", "consultar_t38", "verificar_recurso"):
+        frase = _frase_conferente(p)
+    elif p.status == "retry":
+        frase = "A resposta da IA veio fora do formato. O conferente devolveu e ela refez."
+    elif p.status == "fallback":
+        frase = "A IA não conseguiu responder no formato certo. Vai para a faturista."
+    else:
+        frase = FRASE_IA_OK.get(p.etapa, p.detalhe)
+    return f"{ICONE_STATUS.get(p.status, '•')} **{nome}** · :gray[{quem}]  \n{frase}"
+
+
 def _tiles(itens: list[tuple[str, str, str]], destaque: int | None = None) -> str:
     """Blocos de número: (ícone, rótulo, valor). Rótulo e valor já vêm escapados."""
     blocos = [
@@ -382,7 +478,7 @@ def _hero_inicio(lote: list[Resultado] | None) -> None:
             _html(
                 f'<div class="destaque"><span class="ic-quadrado">{_svg("doc")}</span><div>'
                 f"<b>{escape(p['documento'])}</b>"
-                f'<div class="sub">{escape(p["operadora"])} · {_brl(p["recorrivel"])} recorrível</div>'
+                f'<div class="sub">{escape(p["operadora"])} · {_brl(p["recorrivel"])} para contestar</div>'
                 f'<div class="linha-meta"><span>{_svg("calendario")} {escape(p["prazo_final"])}'
                 f"</span><span>{_svg('relogio')} {quando}</span></div></div></div>"
             )
@@ -437,11 +533,12 @@ def analisar(dados: bytes, nome: str, area, lugar_fases=None) -> Resultado:
     cli = ClienteAnthropic(modo_demo=modo_demo)
     pausa = PAUSA_APRESENTACAO if modo_demo and st.session_state.get("ritmo", True) else 0
     trilha: list[PassoTrilha] = []
-    with area.status(f"Analisando {nome}…", expanded=lugar_fases is not None) as status:
+    rotulo = f"O agente está analisando {nome}…"
+    with area.status(rotulo, expanded=lugar_fases is not None) as status:
 
         def ao_passo(p: PassoTrilha) -> None:
             trilha.append(p)
-            status.markdown(_texto_passo(p))
+            status.markdown(_frase_passo(p))
             if lugar_fases is not None:
                 _html(_fases_html(_estados_fases(trilha, fim=False)), lugar_fases)
             if pausa:
@@ -451,8 +548,9 @@ def analisar(dados: bytes, nome: str, area, lugar_fases=None) -> Resultado:
         if lugar_fases is not None:
             _html(_fases_html(_estados_fases(res.trilha, True, res.interrompido)), lugar_fases)
         status.update(
-            label=f"{nome}: {len(res.glosas)} glosa(s), {len(res.recursos)} recurso(s), "
-            f"{len(res.pendencias)} pendência(s) — {res.latencia_ms / 1000:.1f} s",
+            label=f"{nome}: {len(res.glosas)} glosa(s), {len(res.recursos)} pedido(s) pronto(s), "
+            f"{len(res.pendencias) + len(res.alertas)} para a faturista revisar — "
+            f"{res.latencia_ms / 1000:.1f} s",
             state="error" if res.interrompido else "complete",
             expanded=False,
         )
@@ -487,8 +585,9 @@ def _avisos(res: Resultado) -> None:
     pr = pnl.get("prazo")
     if pr:
         txt = (
-            f"**Prazo de recurso: {pr['prazo_final']}** — {pr['dias_restantes']} dia(s) a partir de "
-            f"hoje. Parâmetro fictício da {res.triagem.operadora}: {pr['prazo_dias']} dias da emissão."
+            f"**Prazo para contestar: {pr['prazo_final']}** — {pr['dias_restantes']} dia(s) a partir "
+            f"de hoje. Prazo fictício do plano {res.triagem.operadora}: {pr['prazo_dias']} dias depois "
+            "do extrato."
         )
         if pr["vencido"]:
             st.error("Prazo vencido. " + txt, icon=":material/event_busy:")
@@ -498,8 +597,8 @@ def _avisos(res: Resultado) -> None:
             st.info(txt, icon=":material/event:")
     for a in res.alertas:
         st.error(
-            f"**Instrução dentro do documento ignorada** ({_onde(a.pagina, a.linha)}): "
-            f"“{a.trecho}”. O texto foi retirado antes do modelo e não influenciou as decisões.",
+            f"**Ordem escondida no documento, ignorada** ({_onde(a.pagina, a.linha)}): "
+            f"“{a.trecho}”. O texto foi retirado antes de a IA ler e não influenciou nenhuma decisão.",
             icon=":material/shield:",
         )
 
@@ -507,11 +606,11 @@ def _avisos(res: Resultado) -> None:
 def _tiles_painel(pnl: dict) -> str:
     return _tiles(
         [
-            ("doc", "Total apresentado", _brl(pnl["total_apresentado"])),
-            ("glosa", "Total glosado", _brl(pnl["total_glosado"])),
-            ("moeda", "Recorrível", _brl(pnl["recorrivel"])),
-            ("pessoa", "A classificar", _brl(pnl["a_classificar"])),
-            ("check", "Não recorrível", _brl(pnl["nao_recorrivel"])),
+            ("doc", "Cobrado do plano", _brl(pnl["total_apresentado"])),
+            ("glosa", "Não pago (glosado)", _brl(pnl["total_glosado"])),
+            ("moeda", "Dá para contestar", _brl(pnl["recorrivel"])),
+            ("pessoa", "Faturista revisa", _brl(pnl["a_classificar"])),
+            ("check", "Não vale contestar", _brl(pnl["nao_recorrivel"])),
         ],
         destaque=2,
     )
@@ -528,7 +627,8 @@ def _aba_glosas(res: Resultado) -> None:
                 "Guia": g.guia,
                 "Procedimento": g.codigo_procedimento,
                 "Glosa": g.codigo_glosa or "—",
-                "Descrição oficial (Tabela 38)": g.descricao_oficial or "não consta na Tabela 38",
+                "Motivo (lista oficial da ANS)": g.descricao_oficial
+                or "não consta na lista oficial",
                 "Valor glosado": _brl(g.valor_glosado),
                 "Confiança": ROTULO_CONFIANCA[g.confianca],
                 "Onde": _onde(g.pagina, g.linha),
@@ -542,7 +642,7 @@ def _aba_glosas(res: Resultado) -> None:
         width="stretch",
         column_config={
             "Decisão": st.column_config.TextColumn(width="medium"),
-            "Descrição oficial (Tabela 38)": st.column_config.TextColumn(width="medium"),
+            "Motivo (lista oficial da ANS)": st.column_config.TextColumn(width="medium"),
         },
     )
     st.caption("Abra uma glosa para ver a justificativa, a evidência no PDF e as fontes.")
@@ -557,7 +657,7 @@ def _aba_glosas(res: Resultado) -> None:
         with st.expander(rotulo):
             esq, dir_ = st.columns([3, 2], gap="large")
             with esq:
-                st.markdown("**Justificativa**")
+                st.markdown("**Por quê**")
                 st.markdown(g.justificativa)
                 if g.documentos:
                     st.markdown("**Documentos para anexar**")
@@ -566,15 +666,15 @@ def _aba_glosas(res: Resultado) -> None:
                 st.markdown(
                     f":{cor}-badge[{ROTULO_DECISAO[g.decisao]}] "
                     f":gray-badge[confiança {ROTULO_CONFIANCA[g.confianca]}] "
-                    f":gray-badge[decidido pelo {'agente' if g.origem == 'agente' else 'código'}]"
+                    f":gray-badge[decidido {'pela IA' if g.origem == 'agente' else 'pelo código'}]"
                 )
                 trecho_pdf = linhas.get((g.pagina, g.linha))
-                st.markdown(f"**Evidência no PDF** · {_onde(g.pagina, g.linha)}")
+                st.markdown(f"**Onde está no PDF** · {_onde(g.pagina, g.linha)}")
                 if trecho_pdf:
                     st.code(trecho_pdf, language=None, wrap_lines=True)
-                    st.caption("Texto já pseudonimizado: é o que o modelo viu.")
+                    st.caption("Nome e CPF já apagados: é exatamente o que a IA viu.")
                 if g.fontes:
-                    st.markdown("**Fontes da base**")
+                    st.markdown("**Fontes consultadas**")
                     for fid in g.fontes:
                         t = base.get(fid)
                         if t:
@@ -585,17 +685,18 @@ def _aba_glosas(res: Resultado) -> None:
 
 def _aba_recursos(res: Resultado) -> None:
     if not res.recursos:
-        st.info("Nenhuma glosa recorrível neste documento.", icon=":material/info:")
+        st.info("Nenhuma glosa vale contestar neste documento.", icon=":material/info:")
         return
     st.caption(
-        "Cada rascunho passou pelo verificador: valores conferidos, nenhuma norma inventada, nenhum "
-        "dado pessoal em claro. Complete os campos [A PREENCHER] e troque o token CART pelo número da "
-        "carteira. O botão no canto do texto copia o rascunho."
+        "Cada pedido passou pelo conferente: os valores batem com o extrato, não cita lei que não "
+        "conferimos e não tem dado de paciente. Antes de enviar, a faturista completa os campos "
+        "[A PREENCHER] e troca o código CART pelo número da carteirinha. O botão no canto do texto "
+        "copia o pedido."
     )
     for r in res.recursos:
         it = res.itens[r.item]
         with st.expander(
-            f":material/description: Recurso — guia {it.guia} · procedimento "
+            f":material/description: Pedido de revisão — guia {it.guia} · procedimento "
             f"{it.codigo_procedimento} · {_brl(it.glosado)}",
             expanded=len(res.recursos) == 1,
         ):
@@ -612,7 +713,7 @@ def _aba_recursos(res: Resultado) -> None:
 def _pendencia_html(documento: str, tipo: str, motivo: str, onde: str, alerta: bool) -> str:
     titulo, acao = PENDENCIA.get(tipo, (tipo, ""))
     if alerta:
-        titulo, acao = "Instrução no documento", "Nada a fazer: o texto foi ignorado. Só confira."
+        titulo, acao = "Ordem escondida no documento", "Nada a fazer: foi ignorada. Só confira."
     return (
         f'<div class="pendencia{" alerta" if alerta else ""}">'
         f'<span class="ic-redondo">{_svg("escudo" if alerta else "pessoa")}</span><div>'
@@ -643,20 +744,22 @@ def _pendencias_html(res: Resultado) -> str:
 
 def _aba_pendencias(res: Resultado) -> None:
     if not res.pendencias and not res.alertas:
-        st.success("Nada para revisão humana neste documento.", icon=":material/check:")
+        st.success("Nada para a faturista revisar neste documento.", icon=":material/check:")
         return
     _html(_pendencias_html(res))
 
 
 def _aba_trilha(res: Resultado) -> None:
     for p in res.trilha:
-        st.markdown(_texto_passo(p))
-    st.caption(
-        f"Modelo {res.modelo} · prompts {res.versoes_prompt} · {res.tokens_entrada:,} tokens de "
-        f"entrada, {res.tokens_saida:,} de saída · custo estimado US$ {res.custo_usd:.4f}".replace(
-            ",", "."
+        st.markdown(_frase_passo(p))
+    with st.expander("Detalhe técnico, para quem quiser ver", icon=":material/code:"):
+        for p in res.trilha:
+            st.markdown(_texto_passo(p))
+        st.caption(
+            f"Modelo {res.modelo} · prompts {res.versoes_prompt} · {res.tokens_entrada:,} tokens "
+            f"de entrada, {res.tokens_saida:,} de saída · custo estimado US$ "
+            f"{res.custo_usd:.4f}".replace(",", ".")
         )
-    )
 
 
 # ================================================================= página: início
@@ -793,9 +896,9 @@ def pagina_inicio() -> None:
         abas = st.tabs(
             [
                 f"Glosas ({len(res.glosas)})",
-                f"Recursos ({len(res.recursos)})",
-                f"Revisão humana ({n_pend})",
-                "Trilha completa",
+                f"Pedidos de revisão ({len(res.recursos)})",
+                f"Faturista revisa ({n_pend})",
+                "Passo a passo",
             ]
         )
         with abas[0]:
@@ -848,7 +951,7 @@ def _lista_prazos(prazos: list[dict]) -> str:
             f'<div class="prazo-data"><b>{d.day}</b><small>{MESES[d.month - 1]}</small></div>'
             f'<div class="prazo-info"><b>{escape(p["documento"])}</b>'
             f"<small>{escape(p['operadora'])} · prazo final {escape(p['prazo_final'])}</small></div>"
-            f'<div class="prazo-valor"><b>{_brl(p["recorrivel"])}</b><small>recorrível</small></div>'
+            f'<div class="prazo-valor"><b>{_brl(p["recorrivel"])}</b><small>para contestar</small></div>'
             f"{chip}</div>"
         )
     return '<div class="prazos">' + "".join(itens) + "</div>"
@@ -857,7 +960,7 @@ def _lista_prazos(prazos: list[dict]) -> str:
 def pagina_prazos() -> None:
     _hero_compacto(
         "Prazos de recurso",
-        "Todos os demonstrativos de uma vez: quanto é recorrível e o que vence nos próximos 10 "
+        "Todos os extratos de uma vez: quanto dá para contestar e o que vence nos próximos 10 "
         "dias. Os prazos de cada operadora são parâmetros fictícios.",
     )
     with st.container(key="cartao_lote"):
@@ -896,10 +999,10 @@ def pagina_prazos() -> None:
         _tiles(
             [
                 ("doc", "Documentos", str(len(lote))),
-                ("glosa", "Total glosado", _brl(pg["total_glosado"])),
-                ("moeda", "Recorrível", _brl(pg["recorrivel"])),
-                ("pessoa", "A classificar", _brl(pg["a_classificar"])),
-                ("check", "Não recorrível", _brl(pg["nao_recorrivel"])),
+                ("glosa", "Não pago (glosado)", _brl(pg["total_glosado"])),
+                ("moeda", "Dá para contestar", _brl(pg["recorrivel"])),
+                ("pessoa", "Faturista revisa", _brl(pg["a_classificar"])),
+                ("check", "Não vale contestar", _brl(pg["nao_recorrivel"])),
             ],
             destaque=2,
         )
@@ -908,7 +1011,7 @@ def pagina_prazos() -> None:
     if urgentes:
         st.warning(
             f"**{len(urgentes)} prazo(s) nos próximos 10 dias**, com "
-            f"{_brl(sum(p['recorrivel'] for p in urgentes))} recorríveis.",
+            f"{_brl(sum(p['recorrivel'] for p in urgentes))} para contestar.",
             icon=":material/alarm:",
         )
 
@@ -926,11 +1029,11 @@ def pagina_prazos() -> None:
                     {
                         "Documento": r.documento,
                         "Glosas": len(r.glosas),
-                        "Total glosado": _brl(r.painel.get("total_glosado", 0)),
-                        "Recorrível": _brl(r.painel.get("recorrivel", 0)),
-                        "A classificar": _brl(r.painel.get("a_classificar", 0)),
-                        "Recursos prontos": len(r.recursos),
-                        "Revisão humana": len(r.pendencias) + len(r.alertas),
+                        "Não pago (glosado)": _brl(r.painel.get("total_glosado", 0)),
+                        "Dá para contestar": _brl(r.painel.get("recorrivel", 0)),
+                        "Faturista revisa": _brl(r.painel.get("a_classificar", 0)),
+                        "Pedidos prontos": len(r.recursos),
+                        "Itens para revisar": len(r.pendencias) + len(r.alertas),
                     }
                     for r in lote
                 ]

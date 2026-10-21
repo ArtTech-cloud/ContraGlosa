@@ -157,3 +157,10 @@ Tudo o que ele confirmou foi corrigido, com um teste de regressão em `tests/tes
   próprio `app.py`; não há imagem de pessoa nem marca de terceiros. Sem fonte da internet: a demo continua rodando
   offline. Risco: os seletores usam a estrutura interna do Streamlit 1.66 e podem quebrar numa atualização. Todo
   texto que vem do PDF ou do modelo e entra em HTML passa por `html.escape`, porque conteúdo de documento é dado.
+- **D39 · A tela fala a língua do pitch; o detalhe técnico fica escondido.** A banca e investidores não conhecem
+  "triagem", "verificador" ou "Tabela 38". Os cartões da trilha viraram os verbos do pitch (Ler, Entender, Separar,
+  Decidir, Escrever, Somar), e cada passo aparece numa frase simples, montada no `app.py` a partir da trilha
+  (`_frase_passo`); o orquestrador não mudou. Decisões e números usam "contestar", "dá para contestar" e "faturista
+  revisa"; recurso virou "pedido de revisão". O texto técnico de antes (ferramentas, tokens, versão dos prompts,
+  custo) continua inteiro na aba "Passo a passo", no expansor "Detalhe técnico". As páginas Como funciona e
+  Qualidade mantêm os termos técnicos, porque são para quem quer o detalhe.

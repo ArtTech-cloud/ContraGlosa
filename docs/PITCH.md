@@ -38,7 +38,8 @@ Se a banca guardar só três coisas, que sejam estas:
 ### 2. A demo — 0:30 a 1:45
 
 Antes de começar: app aberto na página **Início**, modo demo ligado (é o padrão). **Aponte para os 6 cartões da
-trilha, não para o texto técnico que aparece embaixo deles.**
+trilha (Ler, Entender, Separar, Decidir, Escrever, Somar).** Embaixo deles, cada passo aparece numa frase
+simples; o detalhe técnico fica escondido na aba "Passo a passo", para quem perguntar.
 
 1. **(0:30) Clique em "Analisar demonstrativo"** (o `boreal_01` já vem selecionado).
    > "Este é um extrato fictício de um plano que inventamos. Vou pedir para o agente analisar. Olhem estes 6 cartões:
@@ -51,12 +52,12 @@ trilha, não para o texto técnico que aparece embaixo deles.**
 3. **(0:55) Mostre os números do resultado** (o bloco verde-escuro é o valor que dá para contestar):
    > "Neste extrato, o plano deixou de pagar R$ 426,50. O agente mostra que R$ 278,50 dá para contestar e quantos
    > dias faltam para o prazo acabar."
-4. **(1:05) Abra a primeira glosa da lista** (Recorrer, duplicidade):
+4. **(1:05) Abra a primeira glosa da lista** (Contestar, duplicidade):
    > "O plano disse que este exame foi cobrado duas vezes. O agente percebeu que são dois atendimentos, em datas
    > diferentes. Então recomenda contestar. E mostra onde achou isso: página e linha do PDF."
-   - Se der tempo, abra a segunda (Não recorrer): "Aqui foi cobrado duas vezes de verdade. Ele não recomenda
+   - Se der tempo, abra a segunda (Não contestar): "Aqui foi cobrado duas vezes de verdade. Ele não recomenda
      contestar. Não é um robô que contesta tudo."
-5. **(1:20) Aba "Recursos":**
+5. **(1:20) Aba "Pedidos de revisão":**
    > "Aqui está o pedido de revisão já escrito. A faturista revisa, completa o que falta e envia. O agente não
    > envia nada sozinho."
 6. **(1:30) Volte ao topo, Casos adversos, `adverso_injecao`, Analisar:**
@@ -104,12 +105,12 @@ para a faturista com o motivo.
 
 | Cartão na tela | O que acontece, em palavras simples | Quem faz | O que o conferente checa |
 |---|---|---|---|
-| **Leitura** | Lê o PDF linha por linha e apaga nome e CPF do paciente. Procura texto tentando dar ordem ao agente. | código | Página sem texto (escaneada) vai para a faturista. |
-| **1 · Triagem** | Descobre que documento é: de qual plano, de quando, se é mesmo um extrato. | IA | Se não for extrato, para e avisa. |
-| **2 · Extração** | Separa cada procedimento cobrado: valor cobrado, valor pago, valor glosado, motivo. | IA | A soma das linhas bate com o total impresso? O motivo existe na lista oficial da ANS? A linha citada existe no PDF? |
-| **3 · Análise** | Para cada glosa, decide: contestar, não contestar ou pedir ajuda. Explica o porquê e cita a fonte. | IA | Toda glosa recebeu decisão? As fontes citadas existem? Na dúvida, vai para a faturista. |
-| **4 · Redação** | Escreve o pedido de revisão de cada glosa que vale contestar. | IA | Todo valor citado existe no extrato? Não citou lei que não conferimos? Não vazou dado de paciente? |
-| **Painel** | Soma tudo e calcula o prazo de cada plano. | código | É conta, não opinião: 100% código. |
+| **Ler** | Lê o PDF linha por linha e apaga nome e CPF do paciente. Procura texto tentando dar ordem ao agente. | código | Página sem texto (escaneada) vai para a faturista. |
+| **Entender** | Descobre que documento é: de qual plano, de quando, se é mesmo um extrato. | IA | Se não for extrato, para e avisa. |
+| **Separar** | Separa cada procedimento cobrado: valor cobrado, valor pago, valor glosado, motivo. | IA | A soma das linhas bate com o total impresso? O motivo existe na lista oficial da ANS? A linha citada existe no PDF? |
+| **Decidir** | Para cada glosa, decide: contestar, não contestar ou pedir ajuda. Explica o porquê e cita a fonte. | IA | Toda glosa recebeu decisão? As fontes citadas existem? Na dúvida, vai para a faturista. |
+| **Escrever** | Escreve o pedido de revisão de cada glosa que vale contestar. | IA | Todo valor citado existe no extrato? Não citou lei que não conferimos? Não vazou dado de paciente? |
+| **Somar** | Soma tudo e calcula o prazo de cada plano. | código | É conta, não opinião: 100% código. |
 
 **Frase para fechar a explicação:** "A IA faz o que exige ler e julgar. O código faz o que exige certeza: contas,
 prazos e conferência. E o que nenhum dos dois resolve vai para a faturista, com o motivo."
