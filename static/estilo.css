@@ -1,0 +1,570 @@
+/* Visual da demo, inspirado nas referências de app de saúde que o Arthur trouxe (D38):
+   cabeçalho em gradiente verde-petróleo, cartões brancos bem arredondados, chips em pílula,
+   faixa de datas e botões em pílula. Os cartões são containers do Streamlit com `key`,
+   que viram a classe `st-key-<key>`. */
+
+:root {
+  --petroleo: #2b6467;
+  --petroleo-medio: #3f7f82;
+  --menta: #e3efee;
+  --menta-forte: #cfe3e2;
+  --fundo: #dde7ea;
+  --texto: #1c2b2d;
+  --suave: #6b7c7f;
+  --linha: #d6e1e2;
+  --laranja: #c4610f;
+  --laranja-fundo: #fdf0e3;
+  --vermelho: #b3261e;
+  --sombra: 0 8px 24px rgba(28, 64, 68, 0.08);
+}
+
+/* ---------------------------------------------------------------- moldura */
+[data-testid="stMainBlockContainer"] {
+  max-width: 1180px;
+  padding-top: 4.2rem;
+  padding-bottom: 4rem;
+}
+header[data-testid="stHeader"] {
+  background: rgba(221, 231, 234, 0.88);
+  backdrop-filter: blur(8px);
+}
+
+/* ---------------------------------------------------------------- cabeçalho em gradiente */
+.st-key-hero {
+  background: linear-gradient(180deg, #295f62 0%, #3f7f82 38%, #8fb8b8 78%, #cfe1e1 100%);
+  border-radius: 32px;
+  padding: 22px 28px 30px;
+  box-shadow: 0 14px 40px rgba(31, 79, 82, 0.22);
+  gap: 0.6rem;
+}
+.st-key-hero .hero-texto {
+  color: #ffffff;
+}
+/* O Streamlit põe margem negativa embaixo de cada bloco de Markdown; nos blocos desenhados aqui,
+   ela faz o texto encostar no componente seguinte. */
+[data-testid="stMarkdownContainer"]:has(> .tiles, > .passos, > .dias, > .prazos, > .pendencia,
+  > .titulo-cartao, > .hero-texto, > .marca, > .secao, > .sub) {
+  margin-bottom: 0;
+}
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.02rem;
+}
+.marca .marca-ic {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: grid;
+  place-items: center;
+}
+.marca .marca-ic svg {
+  width: 20px;
+  height: 20px;
+}
+.marca small {
+  display: block;
+  font-weight: 400;
+  opacity: 0.8;
+  font-size: 0.78rem;
+}
+.hero-texto {
+  text-align: center;
+  padding: 6px 0 4px;
+}
+.hero-texto .saudacao {
+  font-size: 1.05rem;
+  opacity: 0.9;
+}
+.hero-texto .pergunta {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.hero-texto .rotulo {
+  margin-top: 14px;
+  font-size: 0.86rem;
+  opacity: 0.85;
+}
+.hero-texto.compacto {
+  text-align: left;
+  padding: 8px 4px 0;
+}
+.hero-texto.compacto .pergunta {
+  font-size: 1.9rem;
+}
+.hero-texto.compacto .saudacao {
+  font-size: 0.98rem;
+  max-width: 760px;
+}
+
+/* selo permanente de dados fictícios, dentro do cabeçalho */
+.selo-dados {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-size: 0.8rem;
+}
+.selo-dados svg {
+  width: 14px;
+  height: 14px;
+}
+.hero-texto .frase {
+  max-width: 640px;
+  margin: 6px auto 0;
+  font-size: 1.08rem;
+}
+
+/* botão de ajustes no canto do cabeçalho */
+.st-key-hero [data-testid="stPopover"] button {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+}
+.st-key-hero [data-testid="stPopover"] button p {
+  color: #fff;
+}
+
+/* ---------------------------------------------------------------- cartões brancos */
+[class*="st-key-cartao"] {
+  background: #ffffff;
+  border-radius: 26px;
+  padding: 22px 24px;
+  box-shadow: var(--sombra);
+}
+.secao {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 10px 2px -4px;
+}
+.secao h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  color: var(--texto);
+}
+.secao span {
+  color: var(--petroleo-medio);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.titulo-cartao {
+  font-size: 1.08rem;
+  font-weight: 700;
+  color: var(--texto);
+  margin-bottom: 2px;
+}
+.sub {
+  color: var(--suave);
+  font-size: 0.88rem;
+}
+
+/* ---------------------------------------------------------------- chips em pílula */
+button[data-variant="pills"] {
+  background: #ffffff;
+  border: 1px solid var(--linha);
+  border-radius: 999px;
+  padding: 6px 16px;
+}
+button[data-variant="pills"][aria-checked="true"] {
+  background: var(--petroleo) !important;
+  border: 1px solid var(--petroleo) !important;
+  border-radius: 999px;
+  padding: 6px 16px;
+}
+button[data-variant="pills"][aria-checked="true"] p {
+  color: #ffffff !important;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 11px;
+  border-radius: 999px;
+  background: var(--menta);
+  color: var(--petroleo);
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 2px 6px 2px 0;
+}
+.chip svg {
+  width: 14px;
+  height: 14px;
+}
+.chip.cinza {
+  background: #eef2f3;
+  color: var(--suave);
+}
+.chip.laranja {
+  background: var(--laranja-fundo);
+  color: var(--laranja);
+}
+.chip.vermelho {
+  background: #fdecea;
+  color: var(--vermelho);
+}
+.chip.escuro {
+  background: var(--petroleo);
+  color: #fff;
+}
+
+/* ---------------------------------------------------------------- blocos de números (disponibilidade / experiência / pacientes) */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+.tile {
+  background: #f3f8f8;
+  border-radius: 18px;
+  padding: 14px 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.tile .tile-ic {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--petroleo);
+  display: grid;
+  place-items: center;
+  margin-bottom: 4px;
+  box-shadow: 0 2px 8px rgba(28, 64, 68, 0.08);
+}
+.tile .tile-ic svg {
+  width: 20px;
+  height: 20px;
+}
+.tile small {
+  color: var(--suave);
+  font-size: 0.78rem;
+}
+.tile b {
+  color: var(--texto);
+  font-size: 1.22rem;
+  letter-spacing: -0.01em;
+}
+.tile.destaque-tile {
+  background: var(--petroleo);
+}
+.tile.destaque-tile small,
+.tile.destaque-tile b {
+  color: #fff;
+}
+.tile.destaque-tile .tile-ic {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+.tile.perigo {
+  background: #fdecea;
+}
+.tile.perigo b,
+.tile.perigo small {
+  color: var(--vermelho);
+}
+.tile.perigo .tile-ic {
+  color: var(--vermelho);
+}
+.tile .meta {
+  font-size: 0.76rem;
+  color: var(--suave);
+}
+.tile .meta.ok {
+  color: #1f7a4a;
+  font-weight: 600;
+}
+.tile .meta.nao {
+  color: var(--vermelho);
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------- trilha ao vivo */
+.passos {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.passo,
+.aviso-injecao {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: #f5f8f8;
+  border: 1px solid transparent;
+}
+.passo .sim,
+.aviso-injecao .sim {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  background: #ffffff;
+  color: var(--suave);
+}
+.aviso-injecao .sim svg {
+  width: 18px;
+  height: 18px;
+}
+.passo b,
+.aviso-injecao b {
+  color: var(--texto);
+  font-size: 0.95rem;
+}
+.passo small,
+.aviso-injecao small {
+  display: block;
+  color: var(--suave);
+  font-size: 0.86rem;
+}
+.passo-ok .sim {
+  background: #e3f3ea;
+  color: #1f7a4a;
+}
+.passo-rodando {
+  background: var(--petroleo);
+  box-shadow: 0 8px 18px rgba(43, 100, 103, 0.25);
+}
+.passo-rodando b,
+.passo-rodando small {
+  color: #ffffff;
+}
+.passo-rodando .sim {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+/* verificador que alertou: amarelo, com o motivo; é material de demo, não erro escondido */
+.passo-alerta {
+  background: #fff6dd;
+  border-color: #f0d48c;
+}
+.passo-alerta .sim {
+  background: #fde9ad;
+  color: #7a5200;
+}
+.passo-alerta small {
+  color: #6b4a00;
+}
+.passo-erro,
+.aviso-injecao {
+  background: #fdecea;
+  border-color: #f0b8b3;
+}
+.passo-erro .sim,
+.aviso-injecao .sim {
+  background: #f9d4d0;
+  color: var(--vermelho);
+}
+.aviso-injecao small {
+  color: #7d1f19;
+}
+.passo-pendente,
+.passo-pulado {
+  opacity: 0.6;
+}
+
+/* ---------------------------------------------------------------- faixa de datas e lista de prazos */
+.dias {
+  display: grid;
+  grid-template-columns: repeat(14, minmax(0, 1fr));
+  gap: 8px;
+}
+.dia {
+  border: 1px solid var(--linha);
+  border-radius: 14px;
+  padding: 8px 2px;
+  text-align: center;
+  background: #fff;
+  color: var(--texto);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  position: relative;
+}
+.dia small {
+  color: var(--suave);
+  font-size: 0.72rem;
+}
+.dia b {
+  font-size: 1.05rem;
+}
+.dia.hoje {
+  border-color: var(--petroleo);
+}
+.dia.com-prazo {
+  background: var(--petroleo);
+  border-color: var(--petroleo);
+  color: #fff;
+}
+.dia.com-prazo small {
+  color: #d9ecea;
+}
+.dia .qtd {
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.prazos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.prazo-item {
+  display: grid;
+  grid-template-columns: 62px 1fr auto auto;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 12px 16px 12px 12px;
+  box-shadow: var(--sombra);
+}
+.prazo-data {
+  width: 62px;
+  height: 62px;
+  border-radius: 16px;
+  background: var(--menta);
+  color: var(--petroleo);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.05;
+}
+.prazo-item.urgente .prazo-data {
+  background: var(--laranja-fundo);
+  color: var(--laranja);
+}
+.prazo-item.perigo .prazo-data {
+  background: #fdecea;
+  color: var(--vermelho);
+}
+.prazo-data b {
+  font-size: 1.4rem;
+}
+.prazo-data small {
+  font-size: 0.74rem;
+  text-transform: uppercase;
+}
+.prazo-info b,
+.prazo-valor b {
+  color: var(--texto);
+}
+.prazo-info small,
+.prazo-valor small {
+  display: block;
+  color: var(--suave);
+  font-size: 0.8rem;
+}
+.prazo-valor {
+  text-align: right;
+}
+
+/* ---------------------------------------------------------------- revisão humana */
+.pendencia {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 14px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 14px 18px 14px 14px;
+  box-shadow: var(--sombra);
+  margin-bottom: 10px;
+}
+.pendencia .ic-redondo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--laranja-fundo);
+  color: var(--laranja);
+}
+.pendencia.alerta .ic-redondo {
+  background: #fdecea;
+  color: var(--vermelho);
+}
+.pendencia .ic-redondo svg {
+  width: 22px;
+  height: 22px;
+}
+.pendencia b {
+  color: var(--texto);
+}
+.pendencia .onde {
+  color: var(--suave);
+  font-size: 0.82rem;
+}
+.pendencia p {
+  margin: 4px 0 2px;
+  color: var(--texto);
+  font-size: 0.92rem;
+}
+.pendencia .acao {
+  color: var(--petroleo);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------- componentes do Streamlit */
+button[data-testid="stBaseButton-primary"] {
+  box-shadow: 0 8px 18px rgba(43, 100, 103, 0.28);
+}
+[data-testid="stAlert"] > div {
+  border-radius: 16px;
+}
+[data-testid="stExpander"] details {
+  border-radius: 16px;
+  border-color: var(--linha);
+}
+[role="tablist"] {
+  gap: 6px;
+}
+[data-testid="stTab"] {
+  border-radius: 999px !important;
+  padding: 4px 16px !important;
+  background: #f1f6f6 !important;
+  border: none !important;
+}
+[data-testid="stTab"][aria-selected="true"] {
+  background: var(--petroleo) !important;
+}
+[data-testid="stTab"][aria-selected="true"] p {
+  color: #fff !important;
+}
+
+@media (max-width: 760px) {
+  .dias {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+  }
+  .hero-texto .pergunta {
+    font-size: 1.5rem;
+  }
+  .prazo-item {
+    grid-template-columns: 54px 1fr;
+  }
+  .prazo-valor {
+    text-align: left;
+  }
+}

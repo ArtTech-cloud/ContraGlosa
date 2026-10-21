@@ -138,3 +138,45 @@ Tudo o que ele confirmou foi corrigido, com um teste de regressão em `tests/tes
   algarismos e foi lido como código de procedimento. A regra de 8 dígitos agora ignora número colado em letra ou
   hífen. Como a métrica de decisão não pegava recurso retido, o relatório ganhou a medida "recurso aprovado para cada
   glosa recorrível" (informativa; as metas originais não mudam).
+
+## Interface — redesenho das páginas (20/10/2026)
+
+- **D37 · Cinco páginas e modo demo sempre ligado ao abrir.** A tela única com abas virou navegação em páginas, na
+  ordem do pitch: Início (documentos, trilha ao vivo e resultado), Prazos, Revisão humana, Como funciona (fluxo em
+  Graphviz e o contrato de `docs/fluxo.md`) e Qualidade. A trilha ganhou uma faixa com as 6 fases (leitura, as 4
+  etapas e o painel), que mostra a fase em execução enquanto o agente roda. No modo demo, o cache responde na hora;
+  por isso a opção "Trilha em ritmo de apresentação" espera 0,6 s entre os passos, para a banca acompanhar. No modo
+  demo, a página Início já abre com os 10 exemplos analisados (do cache), para mostrar o próximo prazo. Defeito
+  encontrado e corrigido: a primeira análise carregava o `.env` (com `MODO_DEMO=0`) e toda sessão nova abria com o
+  modo demo desligado; um F5 no meio do pitch faria a demo depender da internet. Agora o interruptor sempre começa
+  ligado.
+- **D38 · CSS, a pedido do Arthur.** O plano dizia "componentes padrão, sem CSS" (E5). O Arthur pediu o visual das
+  referências de app de saúde: cabeçalho em gradiente verde-petróleo com saudação, cartão de destaque, chips em
+  pílula, cartões brancos arredondados, blocos de número com ícone e faixa de datas. Isso exige CSS, que ficou num
+  arquivo só, `static/estilo.css`, com o tema em `.streamlit/config.toml`. Os ícones são traços simples desenhados no
+  próprio `app.py`; não há imagem de pessoa nem marca de terceiros. Sem fonte da internet: a demo continua rodando
+  offline. Risco: os seletores usam a estrutura interna do Streamlit 1.66 e podem quebrar numa atualização. Todo
+  texto que vem do PDF ou do modelo e entra em HTML passa por `html.escape`, porque conteúdo de documento é dado.
+- **D39 · A tela fala a língua do pitch; o detalhe técnico fica escondido.** A banca e investidores não conhecem
+  "triagem", "verificador" ou "Tabela 38". Os cartões da trilha viraram os verbos do pitch (Ler, Entender, Separar,
+  Decidir, Escrever, Somar), e cada passo aparece numa frase simples, montada no `app.py` a partir da trilha
+  (`_frase_passo`); o orquestrador não mudou. Decisões e números usam "contestar", "dá para contestar" e "faturista
+  revisa"; recurso virou "pedido de revisão". O texto técnico de antes (ferramentas, tokens, versão dos prompts,
+  custo) continua inteiro na aba "Passo a passo", no expansor "Detalhe técnico". As páginas Como funciona e
+  Qualidade mantêm os termos técnicos, porque são para quem quer o detalhe.
+- **D40 · Plano do front (`docs/PLANO-FRONT.md`), F1 a F8.** A página Início virou a jornada da faturista:
+  chegada com uma ação (enviar o PDF, com o exemplo do pitch ao lado), trilha ao vivo com o resultado concreto de
+  cada etapa (itens, soma em reais, códigos achados, recursos aprovados), número-herói, glosas por prioridade com
+  semáforo e prova, e o fim no recurso pronto, com campos a preencher, "Revisei este recurso" e "Baixar todos". Prazos
+  virou a agenda de cada glosa recorrível analisada na sessão (sem pré-carregar a caixa de entrada, que a D37
+  fazia), com o texto do alerta por e-mail ou WhatsApp como visão de produto. Regras de tela que são decisão ficaram
+  em código testado no `agente/consolidar.py` (`semaforo`, `glosas_priorizadas`, `agenda`, `campos_a_preencher`). O
+  orquestrador passou a expor o resultado em construção (`Orquestrador.resultado`), só para leitura, para a trilha
+  mostrar números enquanto roda; nada mais mudou nele. `python -m agente.experiencia` mede as métricas de experiência
+  em `avaliacao/EXPERIENCIA.md`, e não no `RESULTADO.md`, porque o `RESULTADO.md` é regravado por
+  `agente.avaliar` e perderia a medida. Desvios do plano, decididos com o Arthur: o visual da D38 fica (o plano
+  pedia "sem CSS" e "sem gradientes"); a tela volta aos termos da faturista (recorrer, recurso, demonstrativo),
+  substituindo a parte de vocabulário da D39, e o pitch explica cada termo na primeira vez; o modo demo fica em
+  "Ajustes", porque a navegação está no topo e não há barra lateral. A trilha é desenhada em HTML, não com
+  `st.status`, porque `st.status` não tem estado amarelo para o verificador que alerta.
+- **D41 · Nome do produto: ContraGlosa.** A pedido do Arthur, "ContraGlosa" passa a ser o nome principal na tela, no README, no pitch, no BMC, no `NOTICE` e no `pyproject.toml`. Ficaram de fora, de propósito, o prompt de sistema (`agente/prompts/sistema_v1.md`), o segredo de demonstração do HMAC (`agente/pseudonimo.py`) e o autor gravado nos PDFs fictícios (`dados/gerar*.py`): mudar qualquer um deles invalida o cache do modo demo ou muda os documentos. Trocar o nome no prompt de sistema fica para uma versão v2 do prompt, com nova avaliação e cache novo. As menções antigas em decisões e no histórico do plano ficam como estavam.

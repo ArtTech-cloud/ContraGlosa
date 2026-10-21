@@ -1,4 +1,4 @@
-# Business Model Canvas — Agente de Glosas
+# Business Model Canvas — ContraGlosa
 
 Versão da equipe para o hackathon. Onde depende de pesquisa de mercado ou das entrevistas, o campo diz
 `[A CONFIRMAR COM DADO/ENTREVISTA]`. Nenhum número aqui foi inventado.

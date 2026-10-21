@@ -1,4 +1,4 @@
-# Contexto do projeto — Agente de Glosas
+# Contexto do projeto — ContraGlosa
 
 > Documento de contexto para quem chega agora: pessoa da equipe, mentor ou uma nova sessão do Claude Code.
 > Reúne o que o projeto é, em que estado está, o que foi decidido e o que falta. Escrito em 20/10/2026 às 19h,
@@ -178,7 +178,7 @@ e `ruff format --check` limpos.
 | `CLAUDE.md` | regras permanentes do projeto |
 | `PLANO.md` | plano de trabalho por etapa, metas e critérios da banca |
 | `README.md` | apresentação pública, fluxo, inputs, outputs, qualidade medida, segurança, limitações |
-| `app.py` | Streamlit: entrada, trilha ao vivo, painel, glosas, recursos, lote, pendências, qualidade |
+| `app.py` | Streamlit, 5 páginas: início (chegada, trilha ao vivo, número-herói, glosas com semáforo e prova, recursos), prazos, pendências, como funciona, qualidade. Visual em `static/estilo.css`; plano em `docs/PLANO-FRONT.md` |
 | `agente/orquestrador.py` | as 4 etapas, retries, fallbacks, trilha, versões padrão dos prompts |
 | `agente/llm.py` | cliente Anthropic, cache por SHA-256, cliente falso para testes, modo demo |
 | `agente/modelos.py` | pydantic: Triagem, Extracao, Analise, Redacao, Pendencia, Alerta, Resultado |

@@ -1,4 +1,4 @@
-# Agente de Glosas — hackathon AKCIT Camp Centro-Oeste
+# ContraGlosa — hackathon AKCIT Camp Centro-Oeste
 
 Projeto para o hackathon regional de **sábado, 24/10/2026**, em Goiânia.
 **Congelamento às 15h30.** Até essa hora, tudo precisa estar no GitHub:

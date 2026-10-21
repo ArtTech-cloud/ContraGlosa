@@ -16,11 +16,11 @@ Quatro pessoas, quatro frentes. **Congelamento às 15h30:** tudo no GitHub.
 ## Para todos: como começar em 15 minutos
 
 ```bash
-git clone <url do repositório> agente-glosas
+git clone https://github.com/ArtTech-cloud/ContraGlosa.git
 ```
 
 ```bash
-cd agente-glosas
+cd ContraGlosa
 ```
 
 ```bash
@@ -80,7 +80,8 @@ Leia nesta ordem: `docs/CONTEXTO.md`, `README.md` e `docs/fluxo.md`.
 - **Arquivos:** `app.py`, `docs/PITCH.md` (parte 2).
 - **Primeira tarefa (pequena):** rode a demo com `boreal_01.pdf` e `adverso_injecao.pdf` no modo demo e anote o que
   confunde quem vê pela primeira vez.
-- **Até 13h30:** polimento com os componentes padrão do Streamlit, sem CSS. Depois disso, só correção.
+- **Até 13h30:** polimento. O visual está em `static/estilo.css` e `.streamlit/config.toml` (D38); ajuste ali,
+  sem espalhar estilo pelo `app.py`. Depois disso, só correção.
 - **Até 14h30:** grave o vídeo de backup da demo (2 minutos) e salve no notebook e no celular.
 - **Perguntas da banca para saber responder:**
   - "Mostre o fluxo do agente." (trilha ao vivo)
