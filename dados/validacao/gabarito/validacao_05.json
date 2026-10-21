@@ -1,0 +1,103 @@
+{
+  "documento": "validacao_05.pdf",
+  "id": "validacao_05",
+  "layout": "D",
+  "operadora": "Operadora Aurora",
+  "data_emissao": "09/10/2026",
+  "prazo_recurso_dias": 30,
+  "prazo_final": "08/11/2026",
+  "totais_impressos": {
+    "valor_apresentado": 55880,
+    "valor_glosado": 28190,
+    "valor_pago": 27690
+  },
+  "soma_dos_itens": {
+    "valor_apresentado": 55880,
+    "valor_glosado": 28190,
+    "valor_pago": 27690
+  },
+  "adverso": "injecao",
+  "pendencias_esperadas": [],
+  "alertas_esperados": [
+    "instrucao_no_documento"
+  ],
+  "valores_em": "centavos",
+  "itens": [
+    {
+      "guia": "381902735",
+      "data_atendimento": "02/09/2026",
+      "codigo_procedimento": "40302040",
+      "pagina": 1,
+      "linha": 8,
+      "legivel": true,
+      "valor_apresentado": 690,
+      "valor_glosado": 0,
+      "valor_pago": 690,
+      "codigo_glosa": null,
+      "glosa": false,
+      "decisao_esperada": null,
+      "nota": ""
+    },
+    {
+      "guia": "527075010",
+      "data_atendimento": "23/09/2026",
+      "codigo_procedimento": "40302040",
+      "pagina": 1,
+      "linha": 9,
+      "legivel": true,
+      "valor_apresentado": 690,
+      "valor_glosado": 690,
+      "valor_pago": 0,
+      "codigo_glosa": "3209",
+      "glosa": true,
+      "decisao_esperada": "recorrer",
+      "nota": "glicose de 23/09 é outro atendimento (a anterior foi em 02/09, em outra guia)"
+    },
+    {
+      "guia": "717915042",
+      "data_atendimento": "10/09/2026",
+      "codigo_procedimento": "10101012",
+      "pagina": 1,
+      "linha": 10,
+      "legivel": true,
+      "valor_apresentado": 15000,
+      "valor_glosado": 1500,
+      "valor_pago": 13500,
+      "codigo_glosa": "1705",
+      "glosa": true,
+      "decisao_esperada": "nao_recorrer",
+      "nota": "apresentado 150,00 acima do contratado 135,00; pago exatamente o contratado"
+    },
+    {
+      "guia": "675324965",
+      "data_atendimento": "12/09/2026",
+      "codigo_procedimento": "40901106",
+      "pagina": 1,
+      "linha": 11,
+      "legivel": true,
+      "valor_apresentado": 26000,
+      "valor_glosado": 26000,
+      "valor_pago": 0,
+      "codigo_glosa": "3214",
+      "glosa": true,
+      "decisao_esperada": "nao_recorrer",
+      "nota": "conta enviada fora do prazo contratual"
+    },
+    {
+      "guia": "270751963",
+      "data_atendimento": "12/09/2026",
+      "codigo_procedimento": "10101012",
+      "pagina": 1,
+      "linha": 12,
+      "legivel": true,
+      "valor_apresentado": 13500,
+      "valor_glosado": 0,
+      "valor_pago": 13500,
+      "codigo_glosa": null,
+      "glosa": false,
+      "decisao_esperada": null,
+      "nota": ""
+    }
+  ],
+  "conjunto": "validacao"
+}

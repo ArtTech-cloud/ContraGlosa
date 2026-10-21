@@ -8,11 +8,13 @@ from agente.pdf import Linha, PDFInvalido, extrair_texto
 from agente.pseudonimo import dados_pessoais_restantes, pseudonimizar, token_carteira
 
 EXEMPLOS = Path(__file__).resolve().parent.parent / "dados" / "exemplos"
-PDFS = sorted(EXEMPLOS.glob("*.pdf"))
+PDFS_DESENV = sorted(EXEMPLOS.glob("*.pdf"))
+PDFS = PDFS_DESENV + sorted((EXEMPLOS.parent / "validacao").glob("*.pdf"))
 
 
 def test_existem_exemplos():
-    assert len(PDFS) == 10
+    assert len(PDFS_DESENV) == 10
+    assert len(PDFS) == 15
 
 
 @pytest.mark.parametrize("pdf", PDFS, ids=lambda p: p.stem)
@@ -104,7 +106,9 @@ def test_injecao_variantes(frase):
 
 
 @pytest.mark.parametrize(
-    "pdf", [p for p in PDFS if p.stem != "adverso_injecao"], ids=lambda p: p.stem
+    "pdf",
+    [p for p in PDFS if p.stem not in ("adverso_injecao", "validacao_05")],
+    ids=lambda p: p.stem,
 )
 def test_sem_falso_positivo_de_injecao(pdf):
     _, alertas = filtrar_instrucoes(extrair_texto(pdf).linhas)
@@ -114,13 +118,14 @@ def test_sem_falso_positivo_de_injecao(pdf):
 def test_gabaritos_apontam_para_linhas_com_os_valores():
     from agente.dinheiro import format_brl
 
-    for g in sorted((EXEMPLOS / "gabarito").glob("*.json")):
-        gab = json.loads(g.read_text(encoding="utf-8"))
-        doc = extrair_texto(EXEMPLOS / gab["documento"])
-        for it in gab["itens"]:
-            if not it["legivel"]:
-                continue
-            lin = doc.linha(it["pagina"], it["linha"])
-            assert lin is not None
-            assert format_brl(it["valor_glosado"], simbolo=False) in lin.texto
-            assert format_brl(it["valor_apresentado"], simbolo=False) in lin.texto
+    for pasta in (EXEMPLOS, EXEMPLOS.parent / "validacao"):
+        for g in sorted((pasta / "gabarito").glob("*.json")):
+            gab = json.loads(g.read_text(encoding="utf-8"))
+            doc = extrair_texto(pasta / gab["documento"])
+            for it in gab["itens"]:
+                if not it["legivel"]:
+                    continue
+                lin = doc.linha(it["pagina"], it["linha"])
+                assert lin is not None
+                assert format_brl(it["valor_glosado"], simbolo=False) in lin.texto
+                assert format_brl(it["valor_apresentado"], simbolo=False) in lin.texto

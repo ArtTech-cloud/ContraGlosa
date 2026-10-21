@@ -1,0 +1,101 @@
+{
+  "documento": "validacao_03.pdf",
+  "id": "validacao_03",
+  "layout": "C",
+  "operadora": "Operadora Cerrado",
+  "data_emissao": "25/09/2026",
+  "prazo_recurso_dias": 40,
+  "prazo_final": "04/11/2026",
+  "totais_impressos": {
+    "valor_apresentado": 54350,
+    "valor_glosado": 28100,
+    "valor_pago": 26250
+  },
+  "soma_dos_itens": {
+    "valor_apresentado": 54350,
+    "valor_glosado": 28100,
+    "valor_pago": 26250
+  },
+  "adverso": null,
+  "pendencias_esperadas": [],
+  "alertas_esperados": [],
+  "valores_em": "centavos",
+  "itens": [
+    {
+      "guia": "719496168",
+      "data_atendimento": "12/09/2026",
+      "codigo_procedimento": "40304361",
+      "pagina": 1,
+      "linha": 10,
+      "legivel": true,
+      "valor_apresentado": 1850,
+      "valor_glosado": 1850,
+      "valor_pago": 0,
+      "codigo_glosa": "1414",
+      "glosa": true,
+      "decisao_esperada": "nao_recorrer",
+      "nota": "atendimento em 12/09, depois da validade da senha (05/09)"
+    },
+    {
+      "guia": "248468311",
+      "data_atendimento": "03/09/2026",
+      "codigo_procedimento": "10101012",
+      "pagina": 1,
+      "linha": 16,
+      "legivel": true,
+      "valor_apresentado": 13000,
+      "valor_glosado": 1000,
+      "valor_pago": 12000,
+      "codigo_glosa": "1705",
+      "glosa": true,
+      "decisao_esperada": "recorrer",
+      "nota": "apresentado 130,00 abaixo do contratado 142,50; a glosa da diferença não procede"
+    },
+    {
+      "guia": "506388748",
+      "data_atendimento": "05/09/2026",
+      "codigo_procedimento": "10101012",
+      "pagina": 1,
+      "linha": 21,
+      "legivel": true,
+      "valor_apresentado": 14250,
+      "valor_glosado": 14250,
+      "valor_pago": 0,
+      "codigo_glosa": "1017",
+      "glosa": true,
+      "decisao_esperada": "revisao_humana",
+      "nota": "carteira vencida: depende de renovação, conferir com o paciente"
+    },
+    {
+      "guia": "192360155",
+      "data_atendimento": "09/09/2026",
+      "codigo_procedimento": "40901114",
+      "pagina": 1,
+      "linha": 26,
+      "legivel": true,
+      "valor_apresentado": 11000,
+      "valor_glosado": 11000,
+      "valor_pago": 0,
+      "codigo_glosa": "1822",
+      "glosa": true,
+      "decisao_esperada": "recorrer",
+      "nota": "anexar o laudo do exame"
+    },
+    {
+      "guia": "445495911",
+      "data_atendimento": "10/09/2026",
+      "codigo_procedimento": "10101012",
+      "pagina": 1,
+      "linha": 31,
+      "legivel": true,
+      "valor_apresentado": 14250,
+      "valor_glosado": 0,
+      "valor_pago": 14250,
+      "codigo_glosa": null,
+      "glosa": false,
+      "decisao_esperada": null,
+      "nota": ""
+    }
+  ],
+  "conjunto": "validacao"
+}

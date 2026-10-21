@@ -120,3 +120,16 @@ Tudo o que ele confirmou foi corrigido, com um teste de regressão em `tests/tes
 - **D33 · Cache do modo demo.** O cache em `cache/` foi gerado pelas rodadas reais da avaliação. Ele cobre a
   configuração padrão (análise v2) dos 10 documentos e também as respostas da v1. Nenhum arquivo do cache tem dado
   pessoal (conferido com `dados_pessoais_restantes`). Custo de API do desenvolvimento até aqui: cerca de US$ 0,15.
+
+## Depois da E7 — itens restantes
+
+- **D34 · E5.5 (ler página escaneada com a visão do modelo) não será feita.** Ela conflita com uma regra fixa do
+  `CLAUDE.md`: antes de qualquer chamada ao LLM, nome e CPF saem do texto. Numa imagem não há como retirar esses dados
+  sem OCR, e OCR está fora do escopo. Mandar a imagem ao modelo exporia nome, CPF e carteira. A página sem texto segue
+  indo para revisão humana com a pendência `pagina_ilegivel`. Se a equipe quiser a E5.5, o caminho é OCR local para
+  achar e tarjar os dados pessoais antes, o que exige uma dependência nova.
+- **D35 · Conjunto de validação separado.** O 100% da avaliação foi medido no mesmo conjunto usado para ajustar o
+  prompt de análise v2. Para saber se o agente generaliza, foram criados 5 documentos novos em `dados/validacao/`, com
+  um quarto layout (D, modelo novo da Aurora) e combinações de cenários que o agente nunca viu. A regra: este conjunto
+  é rodado com a configuração já escolhida e **não é usado para ajustar prompt nem base**. O resultado fica em
+  `avaliacao/VALIDACAO.md`, separado do `RESULTADO.md`.

@@ -16,8 +16,18 @@ from agente.llm import ClienteFalso, Pedido
 EXEMPLOS = Path(__file__).resolve().parents[1] / "dados" / "exemplos"
 
 
+VALIDACAO = EXEMPLOS.parent / "validacao"
+
+
+def pasta_de(doc_id: str) -> Path:
+    """Pasta do documento: validação (dados/validacao) ou desenvolvimento (dados/exemplos)."""
+    return VALIDACAO if doc_id.startswith("validacao_") else EXEMPLOS
+
+
 def gabarito(doc_id: str) -> dict:
-    return json.loads((EXEMPLOS / "gabarito" / f"{doc_id}.json").read_text(encoding="utf-8"))
+    return json.loads(
+        (pasta_de(doc_id) / "gabarito" / f"{doc_id}.json").read_text(encoding="utf-8")
+    )
 
 
 def _v(c: int) -> str:

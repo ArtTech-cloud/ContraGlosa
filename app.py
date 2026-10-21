@@ -24,6 +24,7 @@ from agente.pseudonimo import pseudonimizar
 
 RAIZ = Path(__file__).resolve().parent
 EXEMPLOS = RAIZ / "dados" / "exemplos"
+VALIDACAO = RAIZ / "dados" / "validacao"
 ROTULO_DECISAO = {
     "recorrer": "Recorrer",
     "nao_recorrer": "Não recorrer",
@@ -130,17 +131,25 @@ aba_analise, aba_lote, aba_pend, aba_qualidade = st.tabs(
 
 # ---------------------------------------------------------------- análise de um documento
 with aba_analise:
-    exemplos = sorted(p.name for p in EXEMPLOS.glob("*.pdf"))
+    caminhos = {p.name: p for p in sorted(EXEMPLOS.glob("*.pdf"))}
+    caminhos |= {p.name: p for p in sorted(VALIDACAO.glob("*.pdf"))}
     c1, c2 = st.columns([2, 3])
     with c1:
-        escolha = st.selectbox("Escolha um exemplo", exemplos, index=0)
+        escolha = st.selectbox(
+            "Escolha um exemplo",
+            list(caminhos),
+            index=0,
+            format_func=lambda n: (
+                n + ("  (validação: nunca visto no ajuste)" if n.startswith("validacao_") else "")
+            ),
+        )
     with c2:
         enviado = st.file_uploader("ou envie um PDF (só dado fictício)", type=["pdf"])
     if enviado is not None:
         dados, nome = enviado.getvalue(), enviado.name
     else:
-        dados, nome = (EXEMPLOS / escolha).read_bytes(), escolha
-    with open(EXEMPLOS / escolha, "rb") as f:
+        dados, nome = caminhos[escolha].read_bytes(), escolha
+    with open(caminhos[escolha], "rb") as f:
         st.download_button(
             "Baixar o PDF de exemplo", f.read(), file_name=escolha, mime="application/pdf"
         )
@@ -325,8 +334,14 @@ with aba_pend:
 
 # ---------------------------------------------------------------- qualidade
 with aba_qualidade:
-    arq = RAIZ / "avaliacao" / "RESULTADO.md"
-    if arq.exists():
-        st.markdown(arq.read_text(encoding="utf-8"))
-    else:
-        st.info("Ainda não há avaliação. Rode `python -m agente.avaliar`.")
+    sub_dev, sub_val = st.tabs(["Desenvolvimento", "Validação (documentos nunca vistos)"])
+    for aba, nome_arq, cmd in (
+        (sub_dev, "RESULTADO.md", "python -m agente.avaliar"),
+        (sub_val, "VALIDACAO.md", "python -m agente.avaliar --conjunto validacao"),
+    ):
+        with aba:
+            arq = RAIZ / "avaliacao" / nome_arq
+            if arq.exists():
+                st.markdown(arq.read_text(encoding="utf-8"))
+            else:
+                st.info(f"Ainda não há avaliação. Rode `{cmd}`.")

@@ -1,7 +1,9 @@
-"""Avaliação contra o gabarito: python -m agente.avaliar [--docs aurora_01,boreal_01] [--demo]
+"""Avaliação contra o gabarito: python -m agente.avaliar [--conjunto validacao] [--docs aurora_01] [--demo]
 
-Roda os documentos de dados/exemplos, compara com o gabarito e grava avaliacao/RESULTADO.md.
-Cada execução completa também vai para avaliacao/historico.jsonl, que alimenta a tabela de evolução.
+Dois conjuntos:
+- desenvolvimento (padrão): dados/exemplos, relatório em avaliacao/RESULTADO.md, histórico em historico.jsonl;
+- validacao: dados/validacao, documentos que o agente nunca viu durante o ajuste (D35), relatório em
+  avaliacao/VALIDACAO.md e histórico em historico_validacao.jsonl. Não use este conjunto para ajustar prompt.
 As metas foram fixadas antes de construir (PLANO.md) e não mudam.
 """
 
@@ -20,6 +22,16 @@ from agente.modelos import Resultado
 RAIZ = Path(__file__).resolve().parents[1]
 EXEMPLOS = RAIZ / "dados" / "exemplos"
 PASTA_AVAL = RAIZ / "avaliacao"
+# conjunto -> (pasta dos PDFs, relatório, histórico, título)
+CONJUNTOS = {
+    "desenvolvimento": (EXEMPLOS, "RESULTADO.md", "historico.jsonl", "Resultado da avaliação"),
+    "validacao": (
+        RAIZ / "dados" / "validacao",
+        "VALIDACAO.md",
+        "historico_validacao.jsonl",
+        "Validação — documentos que o agente nunca viu",
+    ),
+}
 METAS = {
     "recall": (0.95, "Glosas encontradas (recall)", "≥ 95%"),
     "valores_exatos": (1.00, "Valores exatos ao centavo nas glosas encontradas", "100%"),
@@ -30,9 +42,11 @@ METAS = {
 ALERTA_CUSTO_USD = 20.0
 
 
-def carregar_gabaritos(ids: list[str] | None = None) -> list[dict]:
+def carregar_gabaritos(
+    ids: list[str] | None = None, conjunto: str = "desenvolvimento"
+) -> list[dict]:
     gabs = []
-    for g in sorted((EXEMPLOS / "gabarito").glob("*.json")):
+    for g in sorted((CONJUNTOS[conjunto][0] / "gabarito").glob("*.json")):
         gab = json.loads(g.read_text(encoding="utf-8"))
         if not ids or gab["id"] in ids:
             gabs.append(gab)
@@ -143,16 +157,26 @@ def _pct(x: float) -> str:
 
 def escrever_relatorio(ag: dict, metricas: list[dict], meta: dict, historico: list[dict]) -> str:
     L = [
-        "# Resultado da avaliação",
+        f"# {CONJUNTOS[meta.get('conjunto', 'desenvolvimento')][3]}",
         "",
         f"- **Data:** {meta['data']}",
         f"- **Modelo:** `{meta['modelo']}` (esforço `{meta['esforco']}`)",
         f"- **Versões dos prompts:** {', '.join(f'{k} {v}' for k, v in meta['versoes'].items())}",
         f"- **Modo:** {'demo (respostas do cache)' if meta['modo_demo'] else 'API ao vivo'}",
-        f"- **Documentos:** {ag['documentos']} (dados fictícios, gabarito em `dados/exemplos/gabarito/`)",
+        f"- **Documentos:** {ag['documentos']} (dados fictícios, gabarito em "
+        f"`{CONJUNTOS[meta.get('conjunto', 'desenvolvimento')][0].relative_to(RAIZ).as_posix()}/gabarito/`)",
         "",
         "Números reais desta execução, sem arredondar para cima. As metas foram fixadas antes de construir e não",
         "mudam.",
+        "",
+        *(
+            [
+                "Estes documentos não foram usados para ajustar prompt nem base (D35). Eles trazem um layout novo (D) e",
+                "combinações de cenários que o agente não viu no conjunto de desenvolvimento. É a medida de generalização.",
+            ]
+            if meta.get("conjunto") == "validacao"
+            else []
+        ),
         "",
         "| O que medimos | Resultado | Meta | Bateu? |",
         "|---|---|---|---|",
@@ -240,6 +264,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--docs", help="ids separados por vírgula (padrão: todos)")
     ap.add_argument("--demo", action="store_true", help="força MODO_DEMO=1 (só cache)")
     ap.add_argument("--sem-historico", action="store_true", help="não registra no histórico")
+    ap.add_argument("--conjunto", choices=sorted(CONJUNTOS), default="desenvolvimento")
     a = ap.parse_args(argv)
     _utf8()
     if a.demo:
@@ -250,12 +275,13 @@ def main(argv: list[str] | None = None) -> int:
     cli = ClienteAnthropic()
     orq = Orquestrador(cli)
     ids = a.docs.split(",") if a.docs else None
-    gabs = carregar_gabaritos(ids)
+    pasta, nome_rel, nome_hist, _ = CONJUNTOS[a.conjunto]
+    gabs = carregar_gabaritos(ids, a.conjunto)
     metricas = []
     custo = 0.0
     for gab in gabs:
         print(f"→ {gab['id']} ...", flush=True)
-        res = orq.analisar(EXEMPLOS / gab["documento"])
+        res = orq.analisar(pasta / gab["documento"])
         m = comparar(res, gab)
         metricas.append(m)
         custo += m["custo_usd"]
@@ -282,9 +308,10 @@ def main(argv: list[str] | None = None) -> int:
         "esforco": cli.esforco,
         "versoes": orq.versoes,
         "modo_demo": cli.modo_demo,
+        "conjunto": a.conjunto,
     }
     PASTA_AVAL.mkdir(exist_ok=True)
-    arq_hist = PASTA_AVAL / "historico.jsonl"
+    arq_hist = PASTA_AVAL / nome_hist
     historico = []
     if arq_hist.exists():
         historico = [
@@ -316,8 +343,8 @@ def main(argv: list[str] | None = None) -> int:
             f.write(json.dumps(reg, ensure_ascii=False) + "\n")
     rel = escrever_relatorio(ag, metricas, meta, historico)
     if not ids:
-        (PASTA_AVAL / "RESULTADO.md").write_text(rel, encoding="utf-8", newline="\n")
-        print(f"\nRelatório gravado em {PASTA_AVAL / 'RESULTADO.md'}")
+        (PASTA_AVAL / nome_rel).write_text(rel, encoding="utf-8", newline="\n")
+        print(f"\nRelatório gravado em {PASTA_AVAL / nome_rel}")
     else:
         print("\n" + rel)
     print(f"Custo desta execução: US$ {custo:.2f}")

@@ -81,3 +81,18 @@ def test_avaliacao_detecta_glosa_perdida():
 
     m = comparar(_rodar(gab, ajuste), gab)
     assert m["verdadeiras"] == 2 and m["glosas_esperadas"] == 3
+
+
+def test_oraculo_no_conjunto_de_validacao():
+    """O layout D e os cenários novos passam pelo encanamento; a avaliação mede 100% quando a resposta é o gabarito."""
+    from tests.oraculo import VALIDACAO
+
+    gabs = carregar_gabaritos(conjunto="validacao")
+    assert len(gabs) == 5 and {g["layout"] for g in gabs} == {"A", "B", "C", "D"}
+    metricas = [
+        comparar(Orquestrador(cliente_oraculo(g["id"])).analisar(VALIDACAO / g["documento"]), g)
+        for g in gabs
+    ]
+    ag = agregar(metricas)
+    for k in ("recall", "precisao", "valores_exatos", "decisao", "evidencia", "adversos"):
+        assert ag[k] == 1.0, (k, ag)
